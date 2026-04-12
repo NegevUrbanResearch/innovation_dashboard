@@ -4,15 +4,6 @@ const sp = (id: string, label: string): SubpageDef => ({ id, label });
 
 export const sections: SectionDef[] = [
   {
-    id: "physical",
-    label: "Physical",
-    subpages: [
-      sp("mobility", "Mobility"),
-      sp("amenities", "Amenities"),
-      sp("infrastructure", "Infrastructure"),
-    ],
-  },
-  {
     id: "network",
     label: "Network",
     subpages: [
@@ -30,6 +21,15 @@ export const sections: SectionDef[] = [
       sp("jobs", "Jobs"),
       sp("growth", "Growth"),
       sp("investment-activity", "Investment Activity"),
+    ],
+  },
+  {
+    id: "physical",
+    label: "Physical",
+    subpages: [
+      sp("mobility", "Mobility"),
+      sp("amenities", "Amenities"),
+      sp("infrastructure", "Infrastructure"),
     ],
   },
 ];
