@@ -11,6 +11,7 @@ export function getTheme(): Theme {
 export function applyTheme(theme: Theme): void {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem(STORAGE_KEY, theme);
+  window.dispatchEvent(new CustomEvent("bsid-theme-change", { detail: { theme } }));
 }
 
 export function initTheme(): void {

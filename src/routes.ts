@@ -16,19 +16,20 @@ export const sections: SectionDef[] = [
     id: "network",
     label: "Network",
     subpages: [
+      sp("talent", "Talent"),
+      sp("talent-bgu", "BGU alumni"),
       sp("social", "Social media"),
       sp("startups", "Startups"),
       sp("tech-networks", "Tech networks"),
-      sp("talent", "Talent"),
     ],
   },
   {
     id: "economy",
     label: "Economy",
     subpages: [
-      sp("growth", "Growth"),
-      sp("fundraising", "Fundraising"),
       sp("jobs", "Jobs"),
+      sp("growth", "Growth"),
+      sp("investment-activity", "Investment Activity"),
     ],
   },
 ];

@@ -1,5 +1,9 @@
 import { getIntegration } from "./integration/registry";
+import { mountLinkedInCharts } from "./linkedin-charts/route-charts";
 import type { SubpageDef } from "./types";
+
+let disposeActiveCharts: (() => void) | null = null;
+let renderGeneration = 0;
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -12,11 +16,14 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node;
 }
 
-export function renderPage(
+export async function renderPage(
   root: HTMLElement,
   sectionId: string,
   page: SubpageDef,
-): void {
+): Promise<void> {
+  const myGen = ++renderGeneration;
+  disposeActiveCharts?.();
+  disposeActiveCharts = null;
   root.textContent = "";
   const routeKey = `${sectionId}/${page.id}`;
   const integration = getIntegration(routeKey);
@@ -34,12 +41,32 @@ export function renderPage(
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     inset.appendChild(iframe);
   } else {
-    inset.classList.add("page-blank__inset--placeholder");
-    inset.appendChild(
-      el("p", "page-blank__placeholder", `${page.label} Graphics Placeholder`),
-    );
+    try {
+      const chartDispose = await mountLinkedInCharts(inset, routeKey);
+      if (myGen !== renderGeneration) return;
+      if (chartDispose) {
+        inset.classList.add("page-blank__inset--charts");
+        disposeActiveCharts = chartDispose;
+      } else {
+        inset.classList.add("page-blank__inset--placeholder");
+        inset.appendChild(
+          el("p", "page-blank__placeholder", `${page.label} Graphics Placeholder`),
+        );
+      }
+    } catch {
+      if (myGen !== renderGeneration) return;
+      inset.classList.add("page-blank__inset--placeholder");
+      inset.appendChild(
+        el(
+          "p",
+          "page-blank__placeholder",
+          `${page.label} — could not load chart data (check public/linkedin-data).`,
+        ),
+      );
+    }
   }
 
+  if (myGen !== renderGeneration) return;
   canvas.appendChild(inset);
   root.appendChild(canvas);
 }

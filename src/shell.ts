@@ -140,7 +140,7 @@ export function mountApp(host: HTMLElement): void {
 
     stage.textContent = "";
     if (section && sub) {
-      renderPage(stage, section.id, sub);
+      void renderPage(stage, section.id, sub);
     }
   };
 
