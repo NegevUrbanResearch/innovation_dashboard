@@ -92,11 +92,6 @@ export function baseChartOptions(): ChartOptions {
   };
 }
 
-type ThemedChart = {
-  options: ChartOptions;
-  update: (mode?: string | number) => void;
-};
-
 export type ChartLayoutTier = 0 | 1 | 2 | 3;
 
 export function layoutTierFromPlotSize(width: number, height: number): ChartLayoutTier {
@@ -120,7 +115,7 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
       labels.padding = tier <= 0 ? 4 : tier === 1 ? 6 : tier === 2 ? 10 : 14;
       labels.boxWidth = tier <= 0 ? 6 : tier === 1 ? 7 : tier === 2 ? 9 : 10;
     }
-    if (chart.config.type === "doughnut") {
+    if ("type" in chart.config && chart.config.type === "doughnut") {
       legend.position = tier >= 3 && width >= 560 ? "right" : "bottom";
     }
   }
@@ -129,7 +124,7 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
   if (title && typeof title === "object" && title.display) {
     const font = (title.font ?? {}) as { size?: number; weight?: string | number };
     font.size = tier <= 0 ? 11 : tier === 1 ? 11.5 : tier === 2 ? 12 : 13;
-    title.font = font;
+    title.font = font as (typeof title)["font"];
     const pad = title.padding;
     const b = tier <= 0 ? 2 : tier === 1 ? 4 : tier === 2 ? 5 : 8;
     title.padding = typeof pad === "object" && pad !== null && !Array.isArray(pad) ? { ...pad, bottom: b } : { bottom: b };
@@ -139,7 +134,6 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
   if (scales) {
     const indexAxis = (chart.options as { indexAxis?: "x" | "y" }).indexAxis ?? "x";
     const categoryAxis: "x" | "y" = indexAxis === "y" ? "y" : "x";
-    const valueAxis: "x" | "y" = indexAxis === "y" ? "x" : "y";
     for (const key of ["x", "y"] as const) {
       const s = scales[key];
       if (!s || typeof s !== "object") continue;
@@ -173,28 +167,40 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
 }
 
 export function wireChartTheme(chartUnknown: unknown): () => void {
-  const chart = chartUnknown as ThemedChart;
+  const chart = chartUnknown as AppChart;
   const onTheme = () => {
     const text = chartTextColor();
     const muted = chartMutedColor();
     const border = chartBorderColor();
-    chart.options.plugins = chart.options.plugins ?? {};
-    if (chart.options.plugins.legend?.labels) {
-      chart.options.plugins.legend.labels.color = text;
+    const root = chart.config.options as ChartOptions & { indexAxis?: "x" | "y" };
+    root.plugins = root.plugins ?? {};
+    if (root.plugins.legend?.labels) {
+      root.plugins.legend.labels.color = text;
     }
-    if (chart.options.plugins.tooltip) {
-      chart.options.plugins.tooltip.backgroundColor = chartSurfaceColor();
-      chart.options.plugins.tooltip.titleColor = text;
-      chart.options.plugins.tooltip.bodyColor = muted;
-      chart.options.plugins.tooltip.borderColor = border;
+    if (root.plugins.tooltip) {
+      root.plugins.tooltip.backgroundColor = chartSurfaceColor();
+      root.plugins.tooltip.titleColor = text;
+      root.plugins.tooltip.bodyColor = muted;
+      root.plugins.tooltip.borderColor = border;
     }
-    const scales = chart.options.scales ?? {};
-    for (const s of Object.values(scales)) {
+    const indexAxis = root.indexAxis ?? "x";
+    const categoryAxis: "x" | "y" = indexAxis === "y" ? "y" : "x";
+    const valueAxis: "x" | "y" = indexAxis === "y" ? "x" : "y";
+    const scales = root.scales ?? {};
+    for (const [id, s] of Object.entries(scales)) {
       if (!s || typeof s !== "object") continue;
-      const sc = s as { ticks?: { color?: string }; grid?: { color?: string }; border?: { color?: string } };
-      if (sc.ticks) sc.ticks.color = text;
+      const sc = s as {
+        ticks?: { color?: string };
+        grid?: { color?: string };
+        border?: { color?: string };
+        title?: { display?: boolean; color?: string };
+      };
+      const tickColor =
+        id === categoryAxis ? text : id === valueAxis ? muted : text;
+      if (sc.ticks) sc.ticks.color = tickColor;
       if (sc.grid) sc.grid.color = border;
       if (sc.border) sc.border.color = border;
+      if (sc.title?.display) sc.title.color = muted;
     }
     chart.update("none");
   };
