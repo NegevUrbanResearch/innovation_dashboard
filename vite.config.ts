@@ -1,8 +1,10 @@
 /// <reference types="node" />
 import { defineConfig } from "vite";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
-  plugins: [],
+  plugins: [cloudflare()],
   base: process.env.VITE_BASE_URL || "/",
   build: {
     rollupOptions: {
