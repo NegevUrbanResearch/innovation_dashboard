@@ -53,7 +53,7 @@ export function mountApp(host: HTMLElement): void {
   const logoWrap = el("div", "brand-logo-wrap");
   const logo = document.createElement("img");
   logo.className = "brand-logo";
-  logo.src = "/id-logo.jpeg";
+  logo.src = `${import.meta.env.BASE_URL}id-logo.jpeg`;
   logo.alt = "Innovation District Beer Sheva";
   logo.width = 160;
   logo.height = 200;
