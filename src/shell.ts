@@ -50,10 +50,23 @@ export function mountApp(host: HTMLElement): void {
 
   const header = el("header", "app-header");
   const brand = el("div", "brand");
+  const logoWrap = el("div", "brand-logo-wrap");
+  const logo = document.createElement("img");
+  logo.className = "brand-logo";
+  logo.src = "/id-logo.jpeg";
+  logo.alt = "Innovation District Beer Sheva";
+  logo.width = 160;
+  logo.height = 200;
+  logo.decoding = "async";
+  logoWrap.appendChild(logo);
+
+  const brandText = el("div", "brand-text");
   const title = el("h1", "brand-title", "Beer Sheva Innovation District");
   const meta = el("span", "brand-meta", "Prototype mockup");
-  brand.appendChild(title);
-  brand.appendChild(meta);
+  brandText.appendChild(title);
+  brandText.appendChild(meta);
+  brand.appendChild(logoWrap);
+  brand.appendChild(brandText);
 
   const primary = el("nav", "primary-nav");
   primary.setAttribute("aria-label", "Primary sections");
