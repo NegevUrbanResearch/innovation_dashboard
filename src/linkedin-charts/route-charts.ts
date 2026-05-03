@@ -18,6 +18,15 @@ import {
 } from "./csv";
 import { loadLinkedInData } from "./load-data";
 import { mountChartPanel, type ChartTabDef } from "./chart-panel";
+import { formatLocaleInt, t, type MessageKey } from "../i18n";
+
+function subs(templateKey: MessageKey, vars: Record<string, string>): string {
+  let out = t(templateKey);
+  for (const [k, v] of Object.entries(vars)) {
+    out = out.replaceAll(`{${k}}`, v);
+  }
+  return out;
+}
 
 function mkChart(canvas: HTMLCanvasElement, cfg: object): AppChart {
   return new Chart(canvas, cfg as never) as AppChart;
@@ -26,8 +35,8 @@ function mkChart(canvas: HTMLCanvasElement, cfg: object): AppChart {
 export type ChartDisposer = () => void;
 
 function truncateLabel(s: string, max = 28): string {
-  const t = s.trim();
-  return t.length <= max ? t : `${t.slice(0, max - 1)}…`;
+  const trimmed = s.trim();
+  return trimmed.length <= max ? trimmed : `${trimmed.slice(0, max - 1)}…`;
 }
 
 function humanSnake(s: string): string {
@@ -38,14 +47,85 @@ function humanSnake(s: string): string {
     .join(" ");
 }
 
+const EDU_BUCKET_MESSAGE: Record<string, MessageKey> = {
+  stem: "chart.educationStem",
+  non_stem: "chart.educationNonStem",
+  medical: "chart.educationMedical",
+};
+
+const LIVE_WORK_KV_MESSAGE: Record<string, MessageKey> = {
+  "work in beer sheva": "chart.liveWork.workInBeerSheva",
+  "work outside beer sheva": "chart.liveWork.workOutsideBeerSheva",
+  "live in beer sheva": "chart.liveWork.liveInBeerSheva",
+  "live outside beer sheva": "chart.liveWork.liveOutsideBeerSheva",
+};
+
+const INDUSTRY_BUCKET_MESSAGE: Record<string, MessageKey> = {
+  unknown: "chart.industry.unknown",
+  high_tech: "chart.industry.high_tech",
+  healthcare: "chart.industry.healthcare",
+  self_employed: "chart.industry.self_employed",
+};
+
+/** Every distinct `education_field_fine` in public/linkedin-data/education_fields_detailed.csv */
+const FIELD_FINE_MESSAGE: Record<string, MessageKey> = {
+  accounting_and_finance: "chart.field.accounting_and_finance",
+  behavioral_sciences: "chart.field.behavioral_sciences",
+  biology: "chart.field.biology",
+  biomedical_engineering: "chart.field.biomedical_engineering",
+  biotechnology: "chart.field.biotechnology",
+  business_administration: "chart.field.business_administration",
+  chemical_engineering: "chart.field.chemical_engineering",
+  civil_engineering: "chart.field.civil_engineering",
+  computer_science: "chart.field.computer_science",
+  data_science: "chart.field.data_science",
+  economics: "chart.field.economics",
+  electrical_and_computer_engineering: "chart.field.electrical_and_computer_engineering",
+  electrical_engineering: "chart.field.electrical_engineering",
+  geography: "chart.field.geography",
+  health_care_administration: "chart.field.health_care_administration",
+  hospitality_management: "chart.field.hospitality_management",
+  industrial_engineering: "chart.field.industrial_engineering",
+  linguistics: "chart.field.linguistics",
+  management_information_systems: "chart.field.management_information_systems",
+  materials_engineering: "chart.field.materials_engineering",
+  mechanical_engineering: "chart.field.mechanical_engineering",
+  medicine: "chart.field.medicine",
+  nursing: "chart.field.nursing",
+  physics: "chart.field.physics",
+  political_science: "chart.field.political_science",
+  psychology: "chart.field.psychology",
+  public_policy: "chart.field.public_policy",
+  social_work: "chart.field.social_work",
+  software_engineering: "chart.field.software_engineering",
+};
+
 function humanEducationBucket(s: string): string {
   const k = s.trim().toLowerCase();
-  const m: Record<string, string> = {
-    stem: "STEM",
-    non_stem: "Non-STEM",
-    medical: "Medical",
-  };
-  return m[k] ?? humanSnake(s);
+  const msgKey = EDU_BUCKET_MESSAGE[k];
+  if (msgKey) return t(msgKey);
+  return humanSnake(s);
+}
+
+function humanIndustryBucket(s: string): string {
+  const k = s.trim().toLowerCase();
+  const msgKey = INDUSTRY_BUCKET_MESSAGE[k];
+  if (msgKey) return t(msgKey);
+  return humanSnake(s);
+}
+
+function humanFieldFine(s: string): string {
+  const k = s.trim().toLowerCase();
+  const msgKey = FIELD_FINE_MESSAGE[k];
+  if (msgKey) return t(msgKey);
+  return humanSnake(s);
+}
+
+function humanLiveWorkKvKey(raw: string): string {
+  const k = raw.trim().toLowerCase();
+  const msgKey = LIVE_WORK_KV_MESSAGE[k];
+  if (msgKey) return t(msgKey);
+  return humanSnake(raw);
 }
 
 function topN<T extends { count: number }>(rows: T[], n: number): T[] {
@@ -75,17 +155,19 @@ function hBarConfig(
     xTitle?: string;
     barColors?: string[];
     maxBarThickness?: number;
+    labelTruncate?: number;
   } = {},
 ): object {
   const barBg = perBarBackgroundColors(values.length, opts.barColors, accentPalette());
   const maxBar = opts.maxBarThickness ?? 22;
+  const labelMax = opts.labelTruncate ?? 34;
   return {
     type: "bar",
     data: {
-      labels: labels.map((l) => truncateLabel(l, 34)),
+      labels: labels.map((l) => truncateLabel(l, labelMax)),
       datasets: [
         {
-          label: opts.xTitle ?? "Count",
+          label: opts.xTitle ?? t("chart.axisCount"),
           data: values,
           backgroundColor: barBg,
           borderRadius: 6,
@@ -199,7 +281,10 @@ function majorsAggregatedFromFields(rows: EducationFieldDetailRow[]): { label: s
     byKey.set(k, (byKey.get(k) ?? 0) + r.count);
   }
   return keys
-    .map((k) => ({ label: truncateLabel(humanSnake(k), 36), count: byKey.get(k) ?? 0 }))
+    .map((k) => ({
+      label: truncateLabel(humanFieldFine(k), 36),
+      count: byKey.get(k) ?? 0,
+    }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -219,14 +304,13 @@ function aggregateBguByBuckets(
 }
 
 function mountBguRetentionHeatmap(parent: HTMLElement, rows: EducationRetentionWideRow[]): () => void {
-  const colDefs = [
-    { key: "abroad" as const, label: "Abroad" },
-    { key: "beerSheva" as const, label: "Beer Sheva" },
-    { key: "israelOther" as const, label: "Elsewhere in Israel" },
-  ];
-
   function paint() {
     parent.replaceChildren();
+    const colDefs = [
+      { key: "abroad" as const, label: t("chart.locationAbroad") },
+      { key: "beerSheva" as const, label: t("chart.locationBeerSheva") },
+      { key: "israelOther" as const, label: t("chart.locationIsraelOther") },
+    ];
     const loc = locationColumnColors();
     const surface = chartSurfaceColor();
     const text = chartTextColor();
@@ -238,7 +322,7 @@ function mountBguRetentionHeatmap(parent: HTMLElement, rows: EducationRetentionW
     const hr = document.createElement("tr");
     const corner = document.createElement("th");
     corner.className = "retention-heatmap__corner";
-    corner.textContent = "Field";
+    corner.textContent = t("chart.heatmapFieldHeader");
     hr.appendChild(corner);
     for (const c of colDefs) {
       const th = document.createElement("th");
@@ -270,7 +354,12 @@ function mountBguRetentionHeatmap(parent: HTMLElement, rows: EducationRetentionW
         td.style.color = text;
         td.style.background = `color-mix(in srgb, ${col} ${pct}%, ${surface})`;
         td.textContent = `${pct}%`;
-        td.title = `${c.label}: ${raw.toLocaleString()} of ${known.toLocaleString()} with a known location (${pct}% of row)`;
+        td.title = subs("chart.heatmapCellTitle", {
+          label: c.label,
+          raw: formatLocaleInt(raw),
+          known: formatLocaleInt(known),
+          pct: String(pct),
+        });
         tr.appendChild(td);
       });
       tb.appendChild(tr);
@@ -292,7 +381,7 @@ function mapToBarSeries(m: Map<string, number>, take: number): { labels: string[
     .sort((a, b) => b[1] - a[1])
     .slice(0, take);
   return {
-    labels: entries.map(([k]) => truncateLabel(humanSnake(k), 34)),
+    labels: entries.map(([k]) => truncateLabel(humanLiveWorkKvKey(k), 34)),
     values: entries.map(([, v]) => v),
   };
 }
@@ -307,32 +396,35 @@ export async function mountLinkedInCharts(
   let sample: string | ((tabId: string) => string) = "";
 
   if (routeKey === "network/talent") {
-    title = "Talent and education";
+    title = t("chart.titleTalentEducation");
     const rw = mapToBarSeries(d.residentsWorkN, 14);
     const wr = mapToBarSeries(d.workersResidenceN, 14);
     tabs = [
       {
         id: "live-work",
-        label: "Residents → workplaces",
+        label: t("chart.tabResidentsWorkplaces"),
         mount: (canvas) =>
           mkChart(
             canvas,
-            hBarConfig(rw.labels, rw.values, { xTitle: "People" }),
+            hBarConfig(rw.labels, rw.values, { xTitle: t("chart.axisPeople") }),
           ),
       },
       {
         id: "work-live",
-        label: "Workers → homes",
+        label: t("chart.tabWorkersHomes"),
         mount: (canvas) =>
           mkChart(
             canvas,
-            hBarConfig(wr.labels, wr.values, { xTitle: "People" }),
+            hBarConfig(wr.labels, wr.values, { xTitle: t("chart.axisPeople") }),
           ),
       },
     ];
-    sample = `Residents in this view: ${d.residentsWorkTotalN.toLocaleString()} · People working in Beer Sheva: ${d.workersTotalN.toLocaleString()}`;
+    sample = subs("chart.sampleTalentOverview", {
+      r: formatLocaleInt(d.residentsWorkTotalN),
+      w: formatLocaleInt(d.workersTotalN),
+    });
   } else if (routeKey === "network/talent-bgu") {
-    title = "BGU alumni";
+    title = t("chart.titleBguAlumni");
     const stemRows = topN(d.stemOverall, 8);
     const stemBarColors = stemRows.map((r) => fieldBucketColor(r.label));
     const majorsAll = majorsAggregatedFromFields(d.educationFieldsDetailed);
@@ -351,7 +443,7 @@ export async function mountLinkedInCharts(
     tabs = [
       {
         id: "bgu-field-mix",
-        label: "Field mix",
+        label: t("chart.tabFieldMix"),
         mount: (canvas) =>
           mkChart(
             canvas,
@@ -359,7 +451,7 @@ export async function mountLinkedInCharts(
               stemRows.map((r) => humanEducationBucket(r.label)),
               stemRows.map((r) => r.count),
               {
-                xTitle: "People",
+                xTitle: t("chart.axisPeople"),
                 barColors: stemBarColors,
               },
             ),
@@ -367,24 +459,27 @@ export async function mountLinkedInCharts(
       },
       {
         id: "bgu-residence",
-        label: "Where they live",
+        label: t("chart.tabWhereTheyLive"),
         kind: "custom",
         mountCustom: (box) => mountBguRetentionHeatmap(box, retRows),
       },
       {
         id: "bgu-edu",
-        label: "Degree × field",
-        viewToggleLabels: ["Undergraduate", "Graduate"],
+        label: t("chart.tabDegreeField"),
+        viewToggleLabels: [
+          t("chart.toggleUndergraduate"),
+          t("chart.toggleGraduate"),
+        ],
         mount: (canvas) =>
           mkChart(
             canvas,
             hBarConfig(
               ugHist.keys.length
                 ? ugHist.keys.map((k) => humanEducationBucket(k))
-                : ["—"],
+                : [t("chart.emptyDash")],
               ugHist.keys.length ? ugHist.values : [0],
               {
-                xTitle: "People",
+                xTitle: t("chart.axisPeople"),
                 barColors: ugHist.keys.length
                   ? ugHist.keys.map((_, i) => pal[i % pal.length]!)
                   : [chartMutedColor()],
@@ -398,10 +493,10 @@ export async function mountLinkedInCharts(
             hBarConfig(
               grHist.keys.length
                 ? grHist.keys.map((k) => humanEducationBucket(k))
-                : ["—"],
+                : [t("chart.emptyDash")],
               grHist.keys.length ? grHist.values : [0],
               {
-                xTitle: "People",
+                xTitle: t("chart.axisPeople"),
                 barColors: grHist.keys.length
                   ? grHist.keys.map((_, i) => pal[i % pal.length]!)
                   : [chartMutedColor()],
@@ -412,7 +507,7 @@ export async function mountLinkedInCharts(
       },
       {
         id: "bgu-degree-major",
-        label: "Degree × Major",
+        label: t("chart.tabDegreeMajor"),
         mount: (canvas) =>
           mkChart(
             canvas,
@@ -420,68 +515,76 @@ export async function mountLinkedInCharts(
               majorsAll.map((r) => r.label),
               majorsAll.map((r) => r.count),
               {
-                xTitle: "People",
+                xTitle: t("chart.axisPeople"),
                 barColors: majorBarColors,
                 maxBarThickness: 18,
+                labelTruncate: 36,
               },
             ),
           ),
       },
     ];
     sample = (tabId: string) => {
-      const bf = d.stemOverallTotalN.toLocaleString();
+      const bf = formatLocaleInt(d.stemOverallTotalN);
       if (tabId === "bgu-field-mix") {
-        return `Counts ${bf} people with a medical, STEM, or non-STEM field label in the export—everyone without that classification is excluded.`;
+        return subs("chart.sampleBguFieldMix", { bf });
       }
       if (tabId === "bgu-degree-major") {
-        return `${d.educationFieldsPeopleSum.toLocaleString()} people with a known major on file; each bar adds STEM and non-STEM rows that share the same major name.`;
+        return subs("chart.sampleBguDegreeMajor", {
+          n: formatLocaleInt(d.educationFieldsPeopleSum),
+        });
       }
       if (tabId === "bgu-residence") {
-        const n = d.bguRetentionLocationKnownN.toLocaleString();
-        return `${n} people in this extract: specified medical, STEM, or non-STEM field (not unspecified) and a known residence abroad, in Beer Sheva, or elsewhere in Israel. Unknown location is excluded from the table and from each row's percentages.`;
+        const n = formatLocaleInt(d.bguRetentionLocationKnownN);
+        return subs("chart.sampleBguResidence", { n });
       }
-      return `${d.bguBguDegreeFieldKnownSum.toLocaleString()} people sit in known BGU degree × field cells; the toggles split undergraduate from graduate, doctoral, and professional without implying the full graduate list.`;
+      return subs("chart.sampleBguDegreeField", {
+        n: formatLocaleInt(d.bguBguDegreeFieldKnownSum),
+      });
     };
   } else if (routeKey === "economy/jobs") {
-    title = "Jobs and hiring";
+    title = t("chart.titleJobsHiring");
     const topEmp = topN(d.companiesInBs, 14);
     const topInbound = topN(d.companiesInbound, 14);
     const topOutbound = topN(d.companiesOutbound, 14);
     const feederTop = topN(d.feederCities, 12);
     const destTop = topN(d.destinationCities, 12);
     const jobTypes = topN(
-      d.jobTypesInBs.map((r) => ({ label: humanSnake(r.label), count: r.count })),
+      d.jobTypesInBs.map((r) => ({
+        label: humanIndustryBucket(r.label),
+        count: r.count,
+      })),
       10,
     );
     const indHome = d.jobTypeVsResidence.map((r) => ({
-      label: humanSnake(r.industry),
+      label: humanIndustryBucket(r.industry),
       inBs: r.inBs,
       outsideBs: r.outsideBs,
     }));
     tabs = [
       {
         id: "employers",
-        label: "Beer Sheva employers",
+        label: t("chart.tabBeerShevaEmployers"),
         mount: (canvas) =>
           mkChart(
             canvas,
             hBarConfig(
               topEmp.map((r) => truncateLabel(r.label, 36)),
               topEmp.map((r) => r.count),
-              { xTitle: "Mentions" },
+              { xTitle: t("chart.axisMentions") },
             ),
           ),
       },
       {
         id: "inbound",
-        label: "Inbound hiring",
+        label: t("chart.tabInboundHiring"),
         mount: (canvas) =>
           mkChart(
             canvas,
             hBarConfig(
               topInbound.map((r) => truncateLabel(r.label, 36)),
               topInbound.map((r) => r.count),
-              { xTitle: "Mentions" },
+              { xTitle: t("chart.axisMentions") },
             ),
           ),
         mountSecondary: (canvas) =>
@@ -490,20 +593,20 @@ export async function mountLinkedInCharts(
             hBarConfig(
               feederTop.map((r) => truncateLabel(r.label, 32)),
               feederTop.map((r) => r.count),
-              { xTitle: "Mentions" },
+              { xTitle: t("chart.axisMentions") },
             ),
           ),
       },
       {
         id: "outbound",
-        label: "Outbound hiring",
+        label: t("chart.tabOutboundHiring"),
         mount: (canvas) =>
           mkChart(
             canvas,
             hBarConfig(
               topOutbound.map((r) => truncateLabel(r.label, 36)),
               topOutbound.map((r) => r.count),
-              { xTitle: "Mentions" },
+              { xTitle: t("chart.axisMentions") },
             ),
           ),
         mountSecondary: (canvas) =>
@@ -512,54 +615,70 @@ export async function mountLinkedInCharts(
             hBarConfig(
               destTop.map((r) => truncateLabel(r.label, 32)),
               destTop.map((r) => r.count),
-              { xTitle: "Mentions" },
+              { xTitle: t("chart.axisMentions") },
             ),
           ),
       },
       {
         id: "job_types",
-        label: "Job types",
+        label: t("chart.tabJobTypes"),
         mount: (canvas) =>
           mkChart(
             canvas,
             hBarConfig(
               jobTypes.map((r) => r.label),
               jobTypes.map((r) => r.count),
-              { xTitle: "People" },
+              { xTitle: t("chart.axisPeople") },
             ),
           ),
       },
       {
         id: "industry_home",
-        label: "Industry vs home",
+        label: t("chart.tabIndustryVsHome"),
         mount: (canvas) =>
           mkChart(
             canvas,
             groupedHBarConfig(
               indHome.map((r) => r.label),
               [
-                { label: "Lives in Beer Sheva", data: indHome.map((r) => r.inBs) },
-                { label: "Lives outside Beer Sheva", data: indHome.map((r) => r.outsideBs) },
+                {
+                  label: t("chart.legendLivesInBeerSheva"),
+                  data: indHome.map((r) => r.inBs),
+                },
+                {
+                  label: t("chart.legendLivesOutsideBeerSheva"),
+                  data: indHome.map((r) => r.outsideBs),
+                },
               ],
-              { xTitle: "People" },
+              { xTitle: t("chart.axisPeople") },
             ),
           ),
       },
     ];
     sample = (tabId: string) => {
       if (tabId === "inbound") {
-        return `Total mentions: ${d.companiesInboundTotalN.toLocaleString()} (employers) and ${d.feederTotalN.toLocaleString()} (where people live).`;
+        return subs("chart.sampleJobsInboundTotals", {
+          employers: formatLocaleInt(d.companiesInboundTotalN),
+          feeders: formatLocaleInt(d.feederTotalN),
+        });
       }
       if (tabId === "outbound") {
-        return `Total mentions: ${d.companiesOutboundTotalN.toLocaleString()} (employers) and ${d.destinationTotalN.toLocaleString()} (where people work).`;
+        return subs("chart.sampleJobsOutboundTotals", {
+          employers: formatLocaleInt(d.companiesOutboundTotalN),
+          destinations: formatLocaleInt(d.destinationTotalN),
+        });
       }
       if (tabId === "job_types") {
-        return `People counted in job-type buckets: ${d.jobTypesInBsTotalN.toLocaleString()}.`;
+        return subs("chart.sampleJobsJobTypes", {
+          n: formatLocaleInt(d.jobTypesInBsTotalN),
+        });
       }
       if (tabId === "industry_home") {
-        return "Industry compared to living in or outside Beer Sheva.";
+        return t("chart.sampleJobsIndustryHome");
       }
-      return `Total employer mentions in Beer Sheva: ${d.companiesInBsTotalN.toLocaleString()}.`;
+      return subs("chart.sampleJobsEmployersDefault", {
+        n: formatLocaleInt(d.companiesInBsTotalN),
+      });
     };
   } else {
     return null;

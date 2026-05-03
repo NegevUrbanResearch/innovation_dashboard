@@ -1,8 +1,15 @@
 import { initTheme } from "./theme";
+import { initLocale } from "./locale";
+import { syncDocumentMeta } from "./i18n";
 import "./styles.css";
 import { mountApp } from "./shell";
 
 initTheme();
+initLocale();
+syncDocumentMeta();
+window.addEventListener("bsid-locale-change", () => {
+  syncDocumentMeta();
+});
 
 async function markBraveUiIfNeeded(): Promise<void> {
   try {

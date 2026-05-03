@@ -13,6 +13,12 @@
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.06);
 }
 
+html[lang="he"],
+html[dir="rtl"] {
+  --font: "Assistant", "Inter Tight", system-ui, sans-serif;
+  --font-display: "Assistant", "Fraunces", Georgia, serif;
+}
+
 html[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0a0c10;
@@ -164,7 +170,7 @@ a:hover {
   align-self: center;
   gap: 0.85rem;
   min-width: 0;
-  flex: 1 1 11rem;
+  flex: 0 1 min(26rem, 42vw);
   max-width: 100%;
 }
 
@@ -213,6 +219,16 @@ html[data-theme="dark"] .brand-logo-wrap {
   color: var(--text);
 }
 
+html[lang="he"] .brand-title,
+html[dir="rtl"] .brand-title {
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: unset;
+}
+
 .brand-meta {
   font-size: 0.75rem;
   font-weight: 500;
@@ -235,6 +251,7 @@ html[data-theme="dark"] .brand-logo-wrap {
 .primary-nav-wrap {
   display: flex;
   align-items: stretch;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -242,6 +259,7 @@ html[data-theme="dark"] .brand-logo-wrap {
   display: flex;
   width: 100%;
   max-width: 24rem;
+  min-inline-size: min(24rem, 100%);
   gap: 0;
   align-items: stretch;
   border-radius: var(--radius-sm);
@@ -266,20 +284,20 @@ html[data-theme="dark"] .brand-logo-wrap {
   -webkit-tap-highlight-color: transparent;
   background: var(--nav-pill-bg);
   border: none;
-  border-right: 1px solid var(--border);
+  border-inline-end: 1px solid var(--border);
   box-shadow: none;
   transition: background 0.14s, color 0.14s, box-shadow 0.14s;
 }
 
 .primary-nav__link:first-child {
-  border-top-left-radius: var(--radius-sm);
-  border-bottom-left-radius: var(--radius-sm);
+  border-start-start-radius: var(--radius-sm);
+  border-end-start-radius: var(--radius-sm);
 }
 
 .primary-nav__link:last-child {
-  border-right: none;
-  border-top-right-radius: var(--radius-sm);
-  border-bottom-right-radius: var(--radius-sm);
+  border-inline-end: none;
+  border-start-end-radius: var(--radius-sm);
+  border-end-end-radius: var(--radius-sm);
 }
 
 .primary-nav__link:hover {
@@ -292,13 +310,43 @@ html[data-theme="dark"] .brand-logo-wrap {
   box-shadow: inset 0 0 0 1px var(--nav-active-border), var(--nav-active-glow);
 }
 
+.locale-toggle {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 44px;
+  inline-size: 3.375rem;
+  min-inline-size: 3.375rem;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background 0.14s, border-color 0.14s, color 0.14s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.locale-toggle:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   flex-shrink: 0;
   min-height: 44px;
-  padding: 0.35rem 0.85rem 0.35rem 0.55rem;
+  padding-block: 0.35rem;
+  padding-inline: 0.55rem 0.85rem;
   font-family: var(--font);
   font-size: 0.78rem;
   font-weight: 600;
@@ -349,7 +397,7 @@ html[data-theme="light"] .theme-toggle__glyph--sun {
 
 .theme-toggle__text {
   min-width: 2.75rem;
-  text-align: left;
+  text-align: start;
 }
 
 .subnav-bar {
@@ -385,13 +433,13 @@ html[data-theme="light"] .theme-toggle__glyph--sun {
   -webkit-tap-highlight-color: transparent;
   background: transparent;
   border: none;
-  border-right: 1px solid var(--border);
+  border-inline-end: 1px solid var(--border);
   box-shadow: none;
   transition: background 0.14s, color 0.14s, box-shadow 0.14s;
 }
 
 .subnav-bar__link:last-child {
-  border-right: none;
+  border-inline-end: none;
 }
 
 .subnav-bar__link:hover {
@@ -570,7 +618,7 @@ html[data-brave-ui="1"] .layout-main {
 }
 
 .chart-panel__view-btn + .chart-panel__view-btn {
-  border-left: 1px solid var(--border-strong);
+  border-inline-start: 1px solid var(--border-strong);
 }
 
 .chart-panel__view-btn:hover {
@@ -666,7 +714,7 @@ html[data-brave-ui="1"] .layout-main {
 .retention-heatmap__corner,
 .retention-heatmap__colhead,
 .retention-heatmap__rowhead {
-  text-align: left;
+  text-align: start;
   font-weight: 600;
   color: var(--text);
   padding: clamp(0.45rem, 2vmin, 1.1rem) clamp(0.4rem, 1.8vmin, 1rem);
@@ -720,10 +768,10 @@ html[data-brave-ui="1"] .layout-main {
 
 .chart-panel__sample {
   position: absolute;
-  right: 0.65rem;
+  inset-inline-end: 0.65rem;
   bottom: 0.45rem;
   max-width: min(22rem, 92vw);
-  text-align: right;
+  text-align: end;
   font-size: 0.72rem;
   line-height: 1.35;
   color: var(--text-secondary);
@@ -756,7 +804,7 @@ html[data-brave-ui="1"] .layout-main {
   }
 
   .chart-panel__sample {
-    right: 0.45rem;
+    inset-inline-end: 0.45rem;
     bottom: 0.35rem;
     font-size: 0.66rem;
     max-width: min(18rem, 88vw);

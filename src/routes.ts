@@ -1,35 +1,36 @@
+import type { MessageKey } from "./messages/en";
 import type { SectionDef, SubpageDef } from "./types";
 
-const sp = (id: string, label: string): SubpageDef => ({ id, label });
+const sp = (id: string, labelKey: MessageKey): SubpageDef => ({ id, labelKey });
 
 export const sections: SectionDef[] = [
   {
     id: "network",
-    label: "Network",
+    labelKey: "nav.network",
     subpages: [
-      sp("talent", "Talent"),
-      sp("talent-bgu", "BGU alumni"),
-      sp("social", "Social media"),
-      sp("startups", "Startups"),
-      sp("tech-networks", "Tech networks"),
+      sp("talent", "nav.network.talent"),
+      sp("talent-bgu", "nav.network.talent-bgu"),
+      sp("social", "nav.network.social"),
+      sp("startups", "nav.network.startups"),
+      sp("tech-networks", "nav.network.tech-networks"),
     ],
   },
   {
     id: "economy",
-    label: "Economy",
+    labelKey: "nav.economy",
     subpages: [
-      sp("jobs", "Jobs"),
-      sp("growth", "Growth"),
-      sp("investment-activity", "Investment Activity"),
+      sp("jobs", "nav.economy.jobs"),
+      sp("growth", "nav.economy.growth"),
+      sp("investment-activity", "nav.economy.investment-activity"),
     ],
   },
   {
     id: "physical",
-    label: "Physical",
+    labelKey: "nav.physical",
     subpages: [
-      sp("mobility", "Mobility"),
-      sp("amenities", "Amenities"),
-      sp("infrastructure", "Infrastructure"),
+      sp("mobility", "nav.physical.mobility"),
+      sp("amenities", "nav.physical.amenities"),
+      sp("infrastructure", "nav.physical.infrastructure"),
     ],
   },
 ];

@@ -5,13 +5,13 @@ export const integrations: IntegrationDef[] = [
     routeKey: "physical/mobility",
     kind: "iframe",
     src: "https://negevurbanresearch.github.io/mobility-dashboard/",
-    title: "Mobility dashboard",
+    titleKey: "iframe.mobilityTitle",
   },
   {
     routeKey: "physical/amenities",
     kind: "iframe",
     src: "https://negevurbanresearch.github.io/urban95/",
-    title: "Urban95 amenities",
+    titleKey: "iframe.amenitiesTitle",
   },
 ];
 

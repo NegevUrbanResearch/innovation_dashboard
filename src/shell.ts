@@ -1,4 +1,6 @@
 import { delegatedAnchorClick } from "./dom";
+import { t } from "./i18n";
+import { getLocale, toggleLocale } from "./locale";
 import { findSection, findSubpage, sections } from "./routes";
 import { formatHash, navigate, onRouteChange, parseHash } from "./router";
 import type { SectionId } from "./types";
@@ -26,15 +28,18 @@ function firstSubpageId(sectionId: SectionId): string | null {
 }
 
 function syncThemeToggle(btn: HTMLButtonElement): void {
-  const t = getTheme();
-  btn.dataset.theme = t;
-  btn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  const theme = getTheme();
+  btn.dataset.theme = theme;
+  btn.setAttribute(
+    "aria-label",
+    theme === "dark" ? t("theme.switchToLight") : t("theme.switchToDark"),
+  );
 }
 
 function applyThemeToggleUi(btn: HTMLButtonElement): void {
   syncThemeToggle(btn);
   const textSpan = btn.querySelector(".theme-toggle__text");
-  if (textSpan) textSpan.textContent = getTheme() === "dark" ? "Dark" : "Light";
+  if (textSpan) textSpan.textContent = getTheme() === "dark" ? t("theme.dark") : t("theme.light");
 }
 
 function mountThemeToggle(): HTMLButtonElement {
@@ -43,6 +48,17 @@ function mountThemeToggle(): HTMLButtonElement {
   btn.innerHTML = `<span class="theme-toggle__icons" aria-hidden="true"><span class="theme-toggle__glyph theme-toggle__glyph--moon">${ICON_MOON}</span><span class="theme-toggle__glyph theme-toggle__glyph--sun">${ICON_SUN}</span></span><span class="theme-toggle__text"></span>`;
   applyThemeToggleUi(btn);
   return btn;
+}
+
+function mountLocaleToggle(): HTMLButtonElement {
+  const btn = el("button", "locale-toggle");
+  btn.type = "button";
+  return btn;
+}
+
+function syncLocaleToggleUi(btn: HTMLButtonElement): void {
+  btn.textContent = getLocale() === "en" ? t("locale.switchToHe") : t("locale.switchToEn");
+  btn.setAttribute("aria-label", t("locale.aria"));
 }
 
 export function mountApp(host: HTMLElement): void {
@@ -54,26 +70,26 @@ export function mountApp(host: HTMLElement): void {
   const logo = document.createElement("img");
   logo.className = "brand-logo";
   logo.src = `${import.meta.env.BASE_URL}id-logo.jpeg`;
-  logo.alt = "Innovation District Beer Sheva";
+  logo.alt = t("shell.logoAlt");
   logo.width = 160;
   logo.height = 200;
   logo.decoding = "async";
   logoWrap.appendChild(logo);
 
   const brandText = el("div", "brand-text");
-  const title = el("h1", "brand-title", "Beer Sheva Innovation District");
-  const meta = el("span", "brand-meta", "Prototype mockup");
+  const title = el("h1", "brand-title", t("shell.brandTitle"));
+  const meta = el("span", "brand-meta", t("shell.brandMeta"));
   brandText.appendChild(title);
   brandText.appendChild(meta);
   brand.appendChild(logoWrap);
   brand.appendChild(brandText);
 
   const primary = el("nav", "primary-nav");
-  primary.setAttribute("aria-label", "Primary sections");
+  primary.setAttribute("aria-label", t("shell.ariaPrimaryNav"));
 
   for (const sec of sections) {
     const sub0 = sec.subpages[0]?.id ?? null;
-    const a = el("a", "primary-nav__link", sec.label);
+    const a = el("a", "primary-nav__link", t(sec.labelKey));
     a.href = formatHash({ section: sec.id, subpage: sub0 });
     a.dataset.section = sec.id;
     a.addEventListener("click", (ev) => {
@@ -90,6 +106,14 @@ export function mountApp(host: HTMLElement): void {
   const navWrap = el("div", "primary-nav-wrap");
   navWrap.appendChild(primary);
 
+  const localeBtn = mountLocaleToggle();
+  syncLocaleToggleUi(localeBtn);
+  localeBtn.addEventListener("click", (ev) => {
+    if (ev.button !== 0) return;
+    ev.preventDefault();
+    toggleLocale();
+  });
+
   const themeBtn = mountThemeToggle();
   themeBtn.addEventListener("click", (ev) => {
     if (ev.button !== 0) return;
@@ -100,19 +124,20 @@ export function mountApp(host: HTMLElement): void {
 
   const toolbar = el("div", "header-toolbar");
   toolbar.appendChild(navWrap);
+  toolbar.appendChild(localeBtn);
   toolbar.appendChild(themeBtn);
 
   header.appendChild(brand);
   header.appendChild(toolbar);
 
   const subbar = el("nav", "subnav-bar");
-  subbar.setAttribute("aria-label", "Section pages");
+  subbar.setAttribute("aria-label", t("shell.ariaSubnav"));
   subbar.addEventListener("click", (e) => {
-    const t = delegatedAnchorClick(subbar, e, "a[data-sub]");
-    if (!t) return;
+    const anchor = delegatedAnchorClick(subbar, e, "a[data-sub]");
+    if (!anchor) return;
     e.preventDefault();
-    const sid = t.dataset.section as SectionId;
-    const sub = t.dataset.sub ?? null;
+    const sid = anchor.dataset.section as SectionId;
+    const sub = anchor.dataset.sub ?? null;
     navigate({ section: sid, subpage: sub });
   });
 
@@ -142,7 +167,7 @@ export function mountApp(host: HTMLElement): void {
     subbar.textContent = "";
     if (section) {
       for (const p of section.subpages) {
-        const a = el("a", "subnav-bar__link", p.label);
+        const a = el("a", "subnav-bar__link", t(p.labelKey));
         a.href = formatHash({ section: section.id, subpage: p.id });
         a.dataset.section = section.id;
         a.dataset.sub = p.id;
@@ -156,6 +181,25 @@ export function mountApp(host: HTMLElement): void {
       void renderPage(stage, section.id, sub);
     }
   };
+
+  const refreshI18nChrome = () => {
+    title.textContent = t("shell.brandTitle");
+    meta.textContent = t("shell.brandMeta");
+    logo.alt = t("shell.logoAlt");
+    primary.setAttribute("aria-label", t("shell.ariaPrimaryNav"));
+    subbar.setAttribute("aria-label", t("shell.ariaSubnav"));
+    for (const sec of sections) {
+      const link = primary.querySelector<HTMLAnchorElement>(`a[data-section="${sec.id}"]`);
+      if (link) link.textContent = t(sec.labelKey);
+    }
+    applyThemeToggleUi(themeBtn);
+    syncLocaleToggleUi(localeBtn);
+    sync();
+  };
+
+  window.addEventListener("bsid-locale-change", () => {
+    refreshI18nChrome();
+  });
 
   sync();
   onRouteChange(sync);

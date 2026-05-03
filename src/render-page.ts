@@ -1,4 +1,5 @@
 import { getIntegration } from "./integration/registry";
+import { t } from "./i18n";
 import { mountLinkedInCharts } from "./linkedin-charts/route-charts";
 import type { SubpageDef } from "./types";
 
@@ -35,7 +36,10 @@ export async function renderPage(
     inset.classList.add("page-blank__inset--media");
     const iframe = document.createElement("iframe");
     iframe.className = "integration-iframe";
-    iframe.title = integration.title ?? page.label;
+    iframe.title =
+      integration.titleKey != null
+        ? t(integration.titleKey)
+        : t(page.labelKey);
     iframe.src = integration.src;
     iframe.loading = "lazy";
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
@@ -50,7 +54,11 @@ export async function renderPage(
       } else {
         inset.classList.add("page-blank__inset--placeholder");
         inset.appendChild(
-          el("p", "page-blank__placeholder", `${page.label} Graphics Placeholder`),
+          el(
+            "p",
+            "page-blank__placeholder",
+            `${t(page.labelKey)} ${t("page.graphicsPlaceholderSuffix")}`,
+          ),
         );
       }
     } catch {
@@ -60,7 +68,7 @@ export async function renderPage(
         el(
           "p",
           "page-blank__placeholder",
-          `${page.label} — could not load chart data (check public/linkedin-data).`,
+          `${t(page.labelKey)} — ${t("page.chartDataError")}`,
         ),
       );
     }

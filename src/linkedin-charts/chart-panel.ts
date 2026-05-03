@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import {
   applyViewportChartSizing,
   layoutTierFromPlotSize,
@@ -38,7 +39,9 @@ export type ChartTabDef =
       bodyHtml: string;
     };
 
-const DEFAULT_TOGGLE: readonly [string, string] = ["Companies", "Cities"];
+function defaultViewToggleLabels(): readonly [string, string] {
+  return [t("chart.toggleCompanies"), t("chart.toggleCities")];
+}
 
 export function mountChartPanel(
   host: HTMLElement,
@@ -63,13 +66,14 @@ export function mountChartPanel(
   }
 
   const plotControls = el("div", "chart-panel__plot-controls");
-  plotControls.setAttribute("aria-label", "Chart data view");
+  plotControls.setAttribute("aria-label", t("chart.ariaChartDataView"));
   plotControls.hidden = true;
   const toggleTrack = el("div", "chart-panel__toggle-track");
-  const btnPrimary = el("button", "chart-panel__view-btn", DEFAULT_TOGGLE[0]);
+  const [tgA, tgB] = defaultViewToggleLabels();
+  const btnPrimary = el("button", "chart-panel__view-btn", tgA);
   btnPrimary.type = "button";
   btnPrimary.dataset.view = "primary";
-  const btnSecondary = el("button", "chart-panel__view-btn", DEFAULT_TOGGLE[1]);
+  const btnSecondary = el("button", "chart-panel__view-btn", tgB);
   btnSecondary.type = "button";
   btnSecondary.dataset.view = "secondary";
   toggleTrack.appendChild(btnPrimary);
@@ -101,15 +105,15 @@ export function mountChartPanel(
   }
 
   function toggleLabelsForActiveTab(): readonly [string, string] {
-    const def = opts.tabs.find((t) => t.id === activeId);
+    const def = opts.tabs.find((tab) => tab.id === activeId);
     if (def && def.kind !== "placeholder" && def.kind !== "custom" && def.viewToggleLabels) {
       return def.viewToggleLabels;
     }
-    return DEFAULT_TOGGLE;
+    return defaultViewToggleLabels();
   }
 
   function activeTabHasSecondaryView(): boolean {
-    const def = opts.tabs.find((t) => t.id === activeId);
+    const def = opts.tabs.find((tab) => tab.id === activeId);
     return Boolean(def && def.kind !== "placeholder" && def.kind !== "custom" && def.mountSecondary);
   }
 
@@ -135,8 +139,8 @@ export function mountChartPanel(
   }
 
   function onViewBtn(ev: Event) {
-    const t = ev.target as HTMLElement;
-    const v = t.closest("button")?.dataset.view;
+    const target = ev.target as HTMLElement;
+    const v = target.closest("button")?.dataset.view;
     if (v !== "primary" && v !== "secondary") return;
     const next = v;
     if (dataView === next) return;
@@ -177,7 +181,7 @@ export function mountChartPanel(
   }
 
   function activate(id: string) {
-    const def = opts.tabs.find((t) => t.id === id);
+    const def = opts.tabs.find((tab) => tab.id === id);
     if (!def) return;
     activeId = id;
     destroyChart();
@@ -216,14 +220,14 @@ export function mountChartPanel(
   }
 
   if (tabRow) {
-    for (const t of opts.tabs) {
-      const btn = el("button", "chart-panel__tab", t.label);
+    for (const tabDef of opts.tabs) {
+      const btn = el("button", "chart-panel__tab", tabDef.label);
       btn.type = "button";
-      btn.dataset.tab = t.id;
+      btn.dataset.tab = tabDef.id;
       btn.setAttribute("role", "tab");
       btn.addEventListener("click", () => {
         dataView = "primary";
-        activate(t.id);
+        activate(tabDef.id);
       });
       tabRow.appendChild(btn);
     }

@@ -1,13 +1,15 @@
+import type { MessageKey } from "./messages/en";
+
 export type SectionId = "physical" | "network" | "economy";
 
 export interface SubpageDef {
   id: string;
-  label: string;
+  labelKey: MessageKey;
 }
 
 export interface SectionDef {
   id: SectionId;
-  label: string;
+  labelKey: MessageKey;
   subpages: SubpageDef[];
 }
 
