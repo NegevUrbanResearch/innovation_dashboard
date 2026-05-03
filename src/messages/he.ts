@@ -67,6 +67,29 @@ export const he = {
   "chart.tabOutboundHiring": "גיוס יוצא",
   "chart.tabJobTypes": "סוגי משרות",
   "chart.tabIndustryVsHome": "תעשייה לעומת מקום מגורים",
+  "chart.tabBguCohortOverlap": "חפיפת קהילות",
+  "chart.tabBguEmployerTreemap": "מעסיקים לפי מגזר",
+
+  "chart.bguTreemapBack": "חזרה למגזרים",
+  "chart.bguTreemapBreadcrumbSectors": "כל המעסיקים",
+  "chart.bguTreemapPanelFilterAria": "לוח מגורים",
+  "chart.bguTreemapOtherBucket": "מעסיקים אחרים",
+
+  "chart.bguTreemapUnknownNote":
+    "לא מוצג באריחים (סיווג לא ידוע): {parts}.",
+  "chart.bguTreemapUnknownPartBucket": "מגזר {n}",
+  "chart.bguTreemapUnknownPartSegment": "מקטע {n}",
+  "chart.bguTreemapUnknownPartEducation": "השכלה {n}",
+  "chart.bguTreemapUnknownSep": " · ",
+
+  "chart.bguTreemapEducationGradientLegend":
+    "צבעים מהחלק הגדול (בהיר) לקטן (כהה) במסגרת המעסיק.",
+
+  "chart.bguTreemapBucketLegendTitle": "צבעי מגזר",
+  "chart.bguTreemapLegendShowAll": "כל המגזרים",
+  "chart.bguTreemapLegendShowAllAria":
+    "הצגת כל מגזרי התעשייה יחד במפת העץ",
+  "chart.bguTreemapLegendFilterAria": "סינון המפה לפי {sector}",
 
   "chart.toggleUndergraduate": "תואר ראשון",
   "chart.toggleGraduate": "תארים מתקדמים",
@@ -84,6 +107,9 @@ export const he = {
 
   "chart.legendLivesInBeerSheva": "מתגורר בבאר שבע",
   "chart.legendLivesOutsideBeerSheva": "מתגורר מחוץ לבאר שבע",
+
+  "chart.treemapResidencePanel.lives_in_bs": "מתגורר בבאר שבע",
+  "chart.treemapResidencePanel.lives_outside_bs": "מתגורר מחוץ לבאר שבע",
 
   "chart.liveWork.workInBeerSheva": "עובד בבאר שבע",
   "chart.liveWork.workOutsideBeerSheva": "עובד מחוץ לבאר שבע",
@@ -146,4 +172,46 @@ export const he = {
     "תעסוקה לעומת מגורים בתוך או מחוץ לבאר שבע.",
   "chart.sampleJobsEmployersDefault":
     "סה\"כ אזכורי מעסיקים בבאר שבע: {n}.",
+  "chart.sampleBguCohortOverlap":
+    "תאי החפיפה מחלקים את {n} פרופילי LinkedIn במדגם זה בין בוגרי בן־גוריון, תושבי באר שבע ועובדים בבאר שבע.",
+  "chart.sampleBguEmployerTreemap":
+    "מפת העץ לפי מעסיקים מבוססת על {n} שורות מצטברות (לוח מגורים × סיווג תעשייה × מגזור × מעסיק × שדה לימודים) בייצוא.",
+
+  "chart.bguCohortPartitionTitle": "חפיפה בין בוגרי בן־גוריון, תושבים ועובדים",
+  "chart.bguCohortPartitionSubtitle":
+    "תרשים ון פרופורציונלי לשטח עבור {n} פרופילי LinkedIn במדגם.",
+  "chart.bguCohortPartitionAria":
+    "תרשים ון המציג כיצד {n} פרופילים חופפים בין בוגרי בן־גוריון, תושבי באר שבע ועובדים בבאר שבע.",
+  "chart.bguCohortVennLegendBgu": "בוגרי בן־גוריון: {n} ({pct} מהמדגם)",
+  "chart.bguCohortVennLegendRes": "תושבי באר שבע: {n} ({pct} מהמדגם)",
+  "chart.bguCohortVennLegendWrk": "עובדים בבאר שבע: {n} ({pct} מהמדגם)",
+  "chart.bguCohortVennLayoutError": "לא ניתן לחשב פריסת ון עבור נתונים אלה.",
+
+  "chart.cohortSegment.only_bgu": "בוגרי בן־גוריון",
+  "chart.cohortSegment.only_beer_sheva_resident": "תושבי באר שבע",
+  "chart.cohortSegment.bgu_and_resident_not_worker": "בוגרי בן־גוריון ותושבי באר שבע",
+  "chart.cohortSegment.only_beer_sheva_worker": "עובדים בבאר שבע",
+  "chart.cohortSegment.bgu_and_worker_not_resident": "בוגר ועובד",
+  "chart.cohortSegment.resident_and_worker_not_bgu": "תושב ועובד",
+  "chart.cohortSegment.bgu_resident_and_worker": "בוגר, תושב ועובד",
+
+  "chart.treemapUnmappedLabel": "{slug}",
+
+  "chart.treemapIndustryBucket.public_sector": "מגזר ציבורי",
+  "chart.treemapIndustryBucket.needs_review": "דורש בדיקה",
+
+  "chart.treemapIndustrySegment.unknown": "מגזור לא ידוע",
+  "chart.treemapIndustrySegment.academic": "אקדמיה",
+  "chart.treemapIndustrySegment.cyber_security": "סייבר",
+  "chart.treemapIndustrySegment.defense_aerospace": "ביטחון ותעופה",
+  "chart.treemapIndustrySegment.finance": "מימון ובנקאות",
+  "chart.treemapIndustrySegment.healthcare_provider": "ספקי בריאות",
+  "chart.treemapIndustrySegment.other": "מגזור אחר",
+  "chart.treemapIndustrySegment.other_high_tech": "היי־טק אחר",
+  "chart.treemapIndustrySegment.pharma_biotech": "פארמה וביוטק",
+  "chart.treemapIndustrySegment.public_sector": "מגזר ציבורי",
+  "chart.treemapIndustrySegment.semiconductors_hardware": "מוליכים למחצה וחומרה",
+  "chart.treemapIndustrySegment.software_it_services": "תוכנה ושירותי IT",
+
+  "chart.treemapEducation.unknown": "תחום לימודים לא ידוע",
 } as const satisfies Record<MessageKey, string>;

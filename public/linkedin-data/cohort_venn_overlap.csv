@@ -1,0 +1,12 @@
+row_kind,segment,count
+venn_partition,only_bgu,50436
+venn_partition,only_beer_sheva_resident,15940
+venn_partition,bgu_and_resident_not_worker,4185
+venn_partition,only_beer_sheva_worker,902
+venn_partition,bgu_and_worker_not_resident,531
+venn_partition,resident_and_worker_not_bgu,623
+venn_partition,bgu_resident_and_worker,395
+set_or_cohort_total,total_profiles,75535
+set_or_cohort_total,n_bgu_graduates,55547
+set_or_cohort_total,n_beer_sheva_residents,21143
+set_or_cohort_total,n_beer_sheva_workers,2451

@@ -45,6 +45,77 @@ export function parseKeyValueCsv(raw: string): Map<string, number> {
   return m;
 }
 
+export type CohortVennRow = {
+  rowKind: "venn_partition" | "set_or_cohort_total";
+  segment: string;
+  count: number;
+};
+
+export type CohortVennModel = {
+  partitions: { segment: string; count: number }[];
+  totals: {
+    totalProfiles: number;
+    nBguGraduates: number;
+    nBeerShevaResidents: number;
+    nBeerShevaWorkers: number;
+  };
+};
+
+export function parseCohortVennOverlap(raw: string): CohortVennModel {
+  const rows = parseCsv(raw);
+  const model: CohortVennModel = {
+    partitions: [],
+    totals: {
+      totalProfiles: 0,
+      nBguGraduates: 0,
+      nBeerShevaResidents: 0,
+      nBeerShevaWorkers: 0,
+    },
+  };
+  if (rows.length < 2) return model;
+
+  const h = rows[0];
+  const iKind = headerIndex(h, "row_kind");
+  const iSegment = headerIndex(h, "segment");
+  const iCount = headerIndex(h, "count");
+  if (iKind < 0 || iSegment < 0 || iCount < 0) return model;
+
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.every((cell) => cell.trim() === "")) continue;
+
+    const rowKind = row[iKind]?.trim();
+    if (rowKind !== "venn_partition" && rowKind !== "set_or_cohort_total") continue;
+
+    const segment = row[iSegment]?.trim();
+    const count = Math.round(Number(row[iCount]));
+    if (!segment || !Number.isFinite(count)) continue;
+
+    const parsedRow: CohortVennRow = { rowKind, segment, count };
+    if (parsedRow.rowKind === "venn_partition") {
+      model.partitions.push({ segment: parsedRow.segment, count: parsedRow.count });
+      continue;
+    }
+
+    if (parsedRow.segment === "total_profiles") model.totals.totalProfiles = parsedRow.count;
+    if (parsedRow.segment === "n_bgu_graduates") model.totals.nBguGraduates = parsedRow.count;
+    if (parsedRow.segment === "n_beer_sheva_residents") {
+      model.totals.nBeerShevaResidents = parsedRow.count;
+    }
+    if (parsedRow.segment === "n_beer_sheva_workers") {
+      model.totals.nBeerShevaWorkers = parsedRow.count;
+    }
+  }
+
+  return model;
+}
+
+export function partitionPct(p: CohortVennModel, segment: string): number {
+  if (p.totals.totalProfiles <= 0) return 0;
+  const partition = p.partitions.find((item) => item.segment === segment);
+  return partition ? partition.count / p.totals.totalProfiles : 0;
+}
+
 export function parseTwoColumnCounts(
   raw: string,
   _keyHeader: string,
@@ -156,6 +227,59 @@ export function parseEducationFieldsDetailed(raw: string): EducationFieldDetailR
 }
 
 export type JobTypeResidenceRow = { industry: string; inBs: number; outsideBs: number };
+
+export type BguTreemapRow = {
+  residencePanel: string;
+  industryBucket: string;
+  industrySegment: string;
+  employer: string;
+  education: string;
+  n: number;
+};
+
+export function parseBguTreemapDrilldown(raw: string): BguTreemapRow[] {
+  const rows = parseCsv(raw);
+  if (rows.length < 2) return [];
+  const h = rows[0];
+  const iPanel = headerIndex(h, "residence_panel");
+  const iBucket = headerIndex(h, "industry_bucket");
+  const iSegment = headerIndex(h, "industry_segment");
+  const iEmployer = headerIndex(h, "employer");
+  const iEducation = headerIndex(h, "education");
+  const iN = headerIndex(h, "n");
+  if (
+    iPanel < 0 ||
+    iBucket < 0 ||
+    iSegment < 0 ||
+    iEmployer < 0 ||
+    iEducation < 0 ||
+    iN < 0
+  ) {
+    return [];
+  }
+  const out: BguTreemapRow[] = [];
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.every((cell) => cell.trim() === "")) continue;
+
+    const residencePanel = row[iPanel]?.trim() ?? "";
+    const industryBucket = row[iBucket]?.trim() ?? "";
+    const industrySegment = row[iSegment]?.trim() ?? "";
+    const employer = row[iEmployer]?.trim() ?? "";
+    const education = row[iEducation]?.trim() ?? "";
+    const n = Math.round(Number(row[iN]));
+    if (!residencePanel || !Number.isFinite(n)) continue;
+    out.push({
+      residencePanel,
+      industryBucket,
+      industrySegment,
+      employer,
+      education,
+      n,
+    });
+  }
+  return out;
+}
 
 export function parseJobTypeVsResidence(raw: string): JobTypeResidenceRow[] {
   const rows = parseCsv(raw);

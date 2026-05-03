@@ -32,6 +32,14 @@ html[data-theme="dark"] {
   --text-secondary: #94a3b8;
   --accent: #38bdf8;
   --accent-muted: rgba(56, 189, 248, 0.14);
+  /* Employer treemap — flat matte sector fills (no glossy gradients). */
+  --bgu-treemap-bucket-public: #4f6fa8;
+  --bgu-treemap-bucket-hitech: #b8923d;
+  --bgu-treemap-bucket-health: #9578ad;
+  --bgu-treemap-bucket-self: #4e9d7a;
+  --bgu-treemap-bucket-review: #6f7f94;
+  --bgu-treemap-bucket-unknown: #5c6678;
+  --bgu-treemap-bucket-other: #5c6678;
   --nav-pill-bg: #222a38;
   --nav-pill-border: rgba(148, 163, 184, 0.22);
   --nav-btn-hover: #2a3445;
@@ -66,6 +74,14 @@ html[data-theme="light"] {
   --text-secondary: #64748b;
   --accent: #4f46e5;
   --accent-muted: rgba(79, 70, 229, 0.08);
+  /* Employer treemap — deeper matte hues for light surfaces. */
+  --bgu-treemap-bucket-public: #1d4ed8;
+  --bgu-treemap-bucket-hitech: #b45309;
+  --bgu-treemap-bucket-health: #86198f;
+  --bgu-treemap-bucket-self: #0f766e;
+  --bgu-treemap-bucket-review: #475569;
+  --bgu-treemap-bucket-unknown: #64748b;
+  --bgu-treemap-bucket-other: #64748b;
   --nav-pill-bg: #ffffff;
   --nav-pill-border: #e2e8f0;
   --nav-btn-hover: #f1f5f9;
@@ -690,6 +706,391 @@ html[data-brave-ui="1"] .layout-main {
   padding: 0.2rem 0.15rem 0.4rem;
   display: flex;
   flex-direction: column;
+}
+
+.bgu-partition.chart-custom-plot,
+.bgu-partition {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.bgu-partition__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1rem, 2.5vmin, 1.15rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.bgu-partition__subtitle {
+  margin-inline: 0;
+  margin-block: 0 0.45rem;
+  font-size: clamp(0.82rem, 2.1vmin, 0.95rem);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.bgu-partition__plot {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bgu-partition__plot-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bgu-partition__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  padding: 0.55rem 0.25rem 0.15rem;
+  margin-top: 0.35rem;
+  font-size: clamp(0.78rem, 2vmin, 0.88rem);
+  color: var(--text-secondary);
+  line-height: 1.35;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.bgu-partition__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bgu-partition__legend-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.bgu-partition__regions,
+.bgu-partition__regions .bgu-partition__region {
+  pointer-events: none;
+}
+
+.bgu-partition__circle-outline {
+  pointer-events: none;
+}
+
+.bgu-partition__labels,
+.bgu-partition__labels .bgu-partition__label-line {
+  pointer-events: none;
+}
+
+.bgu-partition__tooltip {
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  max-width: min(22rem, calc(100vw - 1rem));
+  padding: 0.38rem 0.55rem;
+  margin: 0;
+  pointer-events: none;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.bgu-partition__hits .bgu-partition__hit:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bgu-partition svg {
+  border-radius: var(--radius-sm);
+  overflow: visible;
+}
+
+.bgu-treemap.chart-custom-plot,
+.bgu-treemap {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.bgu-treemap__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: stretch;
+}
+
+.bgu-treemap__toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+}
+
+.bgu-treemap__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(0.42rem, 2.2vmin, 0.6rem) clamp(0.55rem, 3vmin, 1.1rem);
+  font-size: clamp(0.88rem, 2.35vmin, 1.03rem);
+  color: var(--text-secondary);
+  line-height: 1.42;
+}
+
+.bgu-treemap__legend-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-inline-end: 0.25rem;
+  font-size: clamp(0.93rem, 2.35vmin, 1.06rem);
+  flex-basis: 100%;
+}
+
+.bgu-treemap__legend-show-all {
+  font: inherit;
+  font-weight: 600;
+  font-size: clamp(0.86rem, 2.28vmin, 0.98rem);
+  flex: 0 0 auto;
+  padding-block: clamp(0.22rem, 1.8vmin, 0.42rem);
+  padding-inline: clamp(0.5rem, 2.8vmin, 0.82rem);
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-strong);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  margin-inline-end: 0.5rem;
+  margin-block-end: 0.15rem;
+  min-height: clamp(2.45rem, 7vmin, 2.95rem);
+  box-sizing: border-box;
+}
+
+.bgu-treemap__legend-show-all:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.bgu-treemap__legend-show-all:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bgu-treemap__legend-rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: clamp(0.42rem, 2.2vmin, 0.72rem) clamp(0.6rem, 3.2vmin, 1rem);
+}
+
+.bgu-treemap__legend-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.35rem, 2vmin, 0.5rem);
+  max-width: 100%;
+  min-height: clamp(2.52rem, 7.2vmin, 3rem);
+  padding-inline: clamp(0.08rem, 1.2vmin, 0.2rem);
+  padding-block: clamp(0.06rem, 1vmin, 0.22rem);
+  margin: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  line-height: 1.42;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+}
+
+.bgu-treemap__legend-btn:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-color: var(--border);
+}
+
+.bgu-treemap__legend-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bgu-treemap__legend-btn[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 17%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent);
+}
+
+.bgu-treemap__legend-swatch {
+  width: clamp(0.92rem, 4.2vmin, 1.2rem);
+  height: clamp(0.92rem, 4.2vmin, 1.2rem);
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--border-strong) 52%, transparent);
+}
+
+.bgu-treemap__legend-label {
+  min-width: 0;
+}
+
+.bgu-treemap__legend-caption {
+  color: var(--text-secondary);
+  font-size: clamp(0.75rem, 2vmin, 0.82rem);
+}
+
+.bgu-treemap__unknown-note {
+  flex: 0 0 auto;
+  margin-block-start: 0.45rem;
+  font-size: clamp(0.75rem, 2vmin, 0.82rem);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.bgu-treemap__panel-select {
+  font: inherit;
+  font-size: clamp(0.82rem, 2.1vmin, 0.95rem);
+  padding-block: 0.28rem;
+  padding-inline: 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-align: start;
+  max-width: 100%;
+}
+
+.bgu-treemap__crumb {
+  flex: 1 1 12rem;
+  font-size: clamp(0.82rem, 2.1vmin, 0.95rem);
+  color: var(--text-secondary);
+  line-height: 1.35;
+  min-width: 0;
+  text-align: start;
+}
+
+.bgu-treemap .bgu-treemap__toolbar {
+  margin-block-end: 0.45rem;
+}
+
+.bgu-treemap__back {
+  font: inherit;
+  font-size: clamp(0.82rem, 2.1vmin, 0.95rem);
+  padding-block: 0.28rem;
+  padding-inline: 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-raised);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  margin-inline-start: auto;
+}
+
+.bgu-treemap__back:hover {
+  border-color: var(--accent);
+}
+
+.bgu-treemap__back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bgu-treemap__plot {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  min-height: 360px;
+}
+
+.bgu-treemap__svg {
+  transition: opacity 0.22s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgu-treemap__svg {
+    transition: none;
+  }
+}
+
+/* Label halo improves contrast on saturated fills; spot-check light/dark theme manually. */
+.bgu-treemap__cell-label {
+  pointer-events: none;
+  paint-order: stroke fill;
+  stroke: var(--bg);
+  stroke-width: 2.25px;
+  stroke-opacity: 0.55;
+}
+
+html[data-theme="light"] .bgu-treemap__cell-label {
+  stroke: #ffffff;
+  stroke-opacity: 0.92;
+}
+
+.bgu-treemap__cell-label--muted {
+  opacity: 0.92;
+}
+
+.bgu-treemap__tooltip {
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  max-width: min(22rem, calc(100vw - 1rem));
+  padding: 0.38rem 0.55rem;
+  margin: 0;
+  pointer-events: none;
+  font-size: 0.82rem;
+  line-height: 1.38;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.bgu-treemap__tip-title {
+  font-weight: 600;
+  margin-block-end: 0.15rem;
+}
+
+.bgu-treemap__tip-line {
+  color: var(--text);
+}
+
+.bgu-treemap__tip-muted {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.bgu-treemap__layer rect:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.bgu-treemap svg {
+  border-radius: var(--radius-sm);
+  overflow: visible;
 }
 
 .retention-heatmap {

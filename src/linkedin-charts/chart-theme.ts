@@ -23,6 +23,32 @@ export function chartSurfaceColor(): string {
   return readCssVar("--surface-raised", "#232b3b");
 }
 
+/** CSS custom property per `industryBucket` slug — matte, theme-specific (see `styles.css`). */
+const SECTOR_BUCKET_VAR: Record<string, string> = {
+  public_sector: "--bgu-treemap-bucket-public",
+  high_tech: "--bgu-treemap-bucket-hitech",
+  healthcare: "--bgu-treemap-bucket-health",
+  self_employed: "--bgu-treemap-bucket-self",
+  needs_review: "--bgu-treemap-bucket-review",
+  unknown: "--bgu-treemap-bucket-unknown",
+};
+
+const SECTOR_BUCKET_FALLBACK: Record<string, string> = {
+  public_sector: "#4f6fa8",
+  high_tech: "#b8923d",
+  healthcare: "#9578ad",
+  self_employed: "#4e9d7a",
+  needs_review: "#6f7f94",
+  unknown: "#5c6678",
+};
+
+/** Stable sector color for treemap tiles + legend (reads theme from `:root`). */
+export function sectorTreemapBucketColor(slug: string): string {
+  const prop = SECTOR_BUCKET_VAR[slug] ?? "--bgu-treemap-bucket-other";
+  const fb = SECTOR_BUCKET_FALLBACK[slug] ?? SECTOR_BUCKET_FALLBACK.unknown;
+  return readCssVar(prop, fb);
+}
+
 export function accentPalette(): string[] {
   const accent = readCssVar("--accent", "#38bdf8");
   return [

@@ -16,6 +16,8 @@ import {
   type EducationFieldDetailRow,
   type EducationRetentionWideRow,
 } from "./csv";
+import { mountBguCohortPartition } from "./bgu-cohort-partition";
+import { mountBguEmployerTreemap } from "./bgu-employer-treemap";
 import { loadLinkedInData } from "./load-data";
 import { mountChartPanel, type ChartTabDef } from "./chart-panel";
 import { formatLocaleInt, t, type MessageKey } from "../i18n";
@@ -442,6 +444,18 @@ export async function mountLinkedInCharts(
     const grHist = aggregateBguByBuckets(d.bguEducationDetailed, (deg) => gradSet.has(deg));
     tabs = [
       {
+        id: "bgu-cohort-overlap",
+        label: t("chart.tabBguCohortOverlap"),
+        kind: "custom",
+        mountCustom: (box) => mountBguCohortPartition(box, d.cohortVenn),
+      },
+      {
+        id: "bgu-employer-treemap",
+        label: t("chart.tabBguEmployerTreemap"),
+        kind: "custom",
+        mountCustom: (box) => mountBguEmployerTreemap(box, d.bguTreemapRows),
+      },
+      {
         id: "bgu-field-mix",
         label: t("chart.tabFieldMix"),
         mount: (canvas) =>
@@ -526,6 +540,16 @@ export async function mountLinkedInCharts(
     ];
     sample = (tabId: string) => {
       const bf = formatLocaleInt(d.stemOverallTotalN);
+      if (tabId === "bgu-cohort-overlap") {
+        return subs("chart.sampleBguCohortOverlap", {
+          n: formatLocaleInt(d.cohortVenn.totals.totalProfiles),
+        });
+      }
+      if (tabId === "bgu-employer-treemap") {
+        return subs("chart.sampleBguEmployerTreemap", {
+          n: formatLocaleInt(d.bguTreemapRows.length),
+        });
+      }
       if (tabId === "bgu-field-mix") {
         return subs("chart.sampleBguFieldMix", { bf });
       }

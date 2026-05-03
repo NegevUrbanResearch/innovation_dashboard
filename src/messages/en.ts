@@ -65,6 +65,29 @@ export const en = {
   "chart.tabOutboundHiring": "Outbound hiring",
   "chart.tabJobTypes": "Job types",
   "chart.tabIndustryVsHome": "Industry vs home",
+  "chart.tabBguCohortOverlap": "Cohort overlap",
+  "chart.tabBguEmployerTreemap": "Employers by sector",
+
+  "chart.bguTreemapBack": "Back to sectors",
+  "chart.bguTreemapBreadcrumbSectors": "All employers",
+  "chart.bguTreemapPanelFilterAria": "Residence panel",
+  "chart.bguTreemapOtherBucket": "Other employers",
+
+  "chart.bguTreemapUnknownNote":
+    "Not counted in tiles (unknown classification): {parts}.",
+  "chart.bguTreemapUnknownPartBucket": "Industry {n}",
+  "chart.bguTreemapUnknownPartSegment": "Segment {n}",
+  "chart.bguTreemapUnknownPartEducation": "Education {n}",
+  "chart.bguTreemapUnknownSep": " · ",
+
+  "chart.bguTreemapEducationGradientLegend":
+    "Colors run from largest share (bright) to smallest (dark) within this employer.",
+
+  "chart.bguTreemapBucketLegendTitle": "Industry colors",
+  "chart.bguTreemapLegendShowAll": "All sectors",
+  "chart.bguTreemapLegendShowAllAria":
+    "Show every industry sector together in the treemap",
+  "chart.bguTreemapLegendFilterAria": "Filter treemap by {sector}",
 
   "chart.toggleUndergraduate": "Undergraduate",
   "chart.toggleGraduate": "Graduate",
@@ -82,6 +105,9 @@ export const en = {
 
   "chart.legendLivesInBeerSheva": "Lives in Beer Sheva",
   "chart.legendLivesOutsideBeerSheva": "Lives outside Beer Sheva",
+
+  "chart.treemapResidencePanel.lives_in_bs": "Lives in Beer Sheva",
+  "chart.treemapResidencePanel.lives_outside_bs": "Lives outside Beer Sheva",
 
   "chart.liveWork.workInBeerSheva": "Work in Beer Sheva",
   "chart.liveWork.workOutsideBeerSheva": "Work outside Beer Sheva",
@@ -144,6 +170,48 @@ export const en = {
     "Industry compared to living in or outside Beer Sheva.",
   "chart.sampleJobsEmployersDefault":
     "Total employer mentions in Beer Sheva: {n}.",
+  "chart.sampleBguCohortOverlap":
+    "Overlap cells partition {n} LinkedIn profiles in this extract across BGU alumni, Beer Sheva residents, and Beer Sheva workers.",
+  "chart.sampleBguEmployerTreemap":
+    "Employer treemap is built from {n} aggregated rows (residence panel × industry bucket × segment × employer × education) in the export.",
+
+  "chart.bguCohortPartitionTitle": "BGU, residents, and workers overlap",
+  "chart.bguCohortPartitionSubtitle":
+    "Area-proportional Venn diagram across {n} LinkedIn profiles in this extract.",
+  "chart.bguCohortPartitionAria":
+    "Venn diagram showing how {n} profiles overlap across BGU graduates, Beer Sheva residents, and Beer Sheva workers.",
+  "chart.bguCohortVennLegendBgu": "BGU graduates: {n} ({pct} of sample)",
+  "chart.bguCohortVennLegendRes": "Beer Sheva residents: {n} ({pct} of sample)",
+  "chart.bguCohortVennLegendWrk": "Beer Sheva workers: {n} ({pct} of sample)",
+  "chart.bguCohortVennLayoutError": "Could not compute Venn layout for this data.",
+
+  "chart.cohortSegment.only_bgu": "BGU only",
+  "chart.cohortSegment.only_beer_sheva_resident": "Beer Sheva resident only",
+  "chart.cohortSegment.bgu_and_resident_not_worker": "BGU + resident",
+  "chart.cohortSegment.only_beer_sheva_worker": "Beer Sheva worker only",
+  "chart.cohortSegment.bgu_and_worker_not_resident": "BGU + worker",
+  "chart.cohortSegment.resident_and_worker_not_bgu": "Resident + worker",
+  "chart.cohortSegment.bgu_resident_and_worker": "BGU + resident + worker",
+
+  "chart.treemapUnmappedLabel": "{slug}",
+
+  "chart.treemapIndustryBucket.public_sector": "Public sector",
+  "chart.treemapIndustryBucket.needs_review": "Needs review",
+
+  "chart.treemapIndustrySegment.unknown": "Unknown segment",
+  "chart.treemapIndustrySegment.academic": "Academic",
+  "chart.treemapIndustrySegment.cyber_security": "Cyber security",
+  "chart.treemapIndustrySegment.defense_aerospace": "Defense and aerospace",
+  "chart.treemapIndustrySegment.finance": "Finance",
+  "chart.treemapIndustrySegment.healthcare_provider": "Healthcare providers",
+  "chart.treemapIndustrySegment.other": "Other industry segment",
+  "chart.treemapIndustrySegment.other_high_tech": "Other high tech",
+  "chart.treemapIndustrySegment.pharma_biotech": "Pharma and biotech",
+  "chart.treemapIndustrySegment.public_sector": "Public sector",
+  "chart.treemapIndustrySegment.semiconductors_hardware": "Semiconductors and hardware",
+  "chart.treemapIndustrySegment.software_it_services": "Software and IT services",
+
+  "chart.treemapEducation.unknown": "Unknown field of study",
 } as const;
 
 export type MessageKey = keyof typeof en;

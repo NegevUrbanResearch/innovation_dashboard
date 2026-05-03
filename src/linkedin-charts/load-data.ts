@@ -1,12 +1,16 @@
 import {
   isUnspecifiedToken,
   parseBguEducationDetailed,
+  parseBguTreemapDrilldown,
+  parseCohortVennOverlap,
   parseEducationFieldsDetailed,
   parseEducationRetentionWide,
   parseJobTypeVsResidence,
   parseKeyValueCsv,
   parseTwoColumnCounts,
   type BguEducationDetailRow,
+  type BguTreemapRow,
+  type CohortVennModel,
   type EducationFieldDetailRow,
   type EducationRetentionWideRow,
   type JobTypeResidenceRow,
@@ -28,6 +32,8 @@ export const LINKEDIN_DATA_FILES = [
   "education_fields_detailed.csv",
   "job_types_in_bs.csv",
   "job_type_vs_residence.csv",
+  "cohort_venn_overlap.csv",
+  "bgu_treemap_drilldown_agg.csv",
 ] as const;
 
 function publicDataUrl(name: string): string {
@@ -76,6 +82,8 @@ export type LinkedInBundle = {
   jobTypesInBs: { label: string; count: number }[];
   jobTypesInBsTotalN: number;
   jobTypeVsResidence: JobTypeResidenceRow[];
+  cohortVenn: CohortVennModel;
+  bguTreemapRows: BguTreemapRow[];
 };
 
 let cache: LinkedInBundle | null = null;
@@ -97,6 +105,8 @@ function buildBundle(
   educationFieldsDetailedRaw: string,
   jobTypesInBsRaw: string,
   jobTypeVsResidenceRaw: string,
+  cohortVennRaw: string,
+  bguTreemapRaw: string,
 ): LinkedInBundle {
   const residentsWorkPct = parseKeyValueCsv(residentsWorkRaw);
   const residentsWorkNMap = parseKeyValueCsv(residentsWorkNRaw);
@@ -132,6 +142,8 @@ function buildBundle(
   const educationFieldsPeopleSum = educationFieldsDetailed.reduce((acc, r) => acc + r.count, 0);
   const jobTypesInBs = parseTwoColumnCounts(jobTypesInBsRaw, "industry_bucket");
   const jobTypeVsResidence = parseJobTypeVsResidence(jobTypeVsResidenceRaw);
+  const cohortVenn = parseCohortVennOverlap(cohortVennRaw);
+  const bguTreemapRows = parseBguTreemapDrilldown(bguTreemapRaw);
 
   return {
     bguAlumniCohortN,
@@ -162,6 +174,8 @@ function buildBundle(
     jobTypesInBs,
     jobTypesInBsTotalN: sumCounts(jobTypesInBs),
     jobTypeVsResidence,
+    cohortVenn,
+    bguTreemapRows,
   };
 }
 
@@ -185,6 +199,8 @@ export async function loadLinkedInData(): Promise<LinkedInBundle> {
       texts[12]!,
       texts[13]!,
       texts[14]!,
+      texts[15]!,
+      texts[16]!,
     );
     cache = b;
     return b;
