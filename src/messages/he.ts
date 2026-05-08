@@ -8,6 +8,7 @@ export const he = {
   "shell.brandTitle": "רובע החדשנות באר שבע",
   "shell.brandMeta": "אב-טיפוס",
   "shell.logoAlt": "רובע החדשנות באר שבע",
+  "shell.nurLogoAlt": "Nur",
   "shell.ariaPrimaryNav": "מקטעים ראשיים",
   "shell.ariaSubnav": "דפי המקטע",
   "theme.switchToLight": "עבור למצב בהיר",

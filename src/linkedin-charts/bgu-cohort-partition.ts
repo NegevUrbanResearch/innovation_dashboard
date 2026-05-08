@@ -1,3 +1,4 @@
+import { lab, rgb } from "d3-color";
 import {
   circlePath,
   computeTextCentres,
@@ -8,7 +9,7 @@ import {
   type VennArea,
 } from "venn.js";
 import { formatLocaleInt, getLocale, subs, t, type MessageKey } from "../i18n";
-import { chartMutedColor, chartTextColor } from "./chart-theme";
+import { chartMutedColor, chartTextColor, cohortVennPrimaryColors } from "./chart-theme";
 import { partitionPct, type CohortVennModel } from "./csv";
 
 const NS = "http://www.w3.org/2000/svg";
@@ -38,29 +39,68 @@ const SEGMENT_TO_SETS: Record<(typeof PARTITION_ORDER)[number], string[]> = {
   bgu_resident_and_worker: [SET_BGU, SET_RES, SET_WRK],
 };
 
-/** Fills for disjoint Venn partitions (readable singles + pairwise + triple). */
-const REGION_FILL: Record<(typeof PARTITION_ORDER)[number], string> = {
-  only_bgu: "rgba(147, 51, 234, 0.78)",
-  only_beer_sheva_resident: "rgba(22, 163, 74, 0.78)",
-  /** Worker-only lobe: stronger blue vs purple/green neighbors. */
-  only_beer_sheva_worker: "rgba(30, 64, 175, 0.88)",
-  bgu_and_resident_not_worker: "rgba(109, 40, 217, 0.55)",
-  bgu_and_worker_not_resident: "rgba(76, 29, 149, 0.52)",
-  resident_and_worker_not_bgu: "rgba(21, 94, 117, 0.62)",
-  bgu_resident_and_worker: "rgba(52, 32, 88, 0.72)",
-};
+/**
+ * Nominal three-set Venn: primaries from `--venn-cohort-*` (see `cohortVennPrimaryColors()`).
+ * Intersections use Lab averages. Rebuilt each `paint()` so light/dark tracks theme.
+ */
+function labMix(hexes: readonly string[], alpha: number): string {
+  let L = 0;
+  let a = 0;
+  let b = 0;
+  const n = hexes.length;
+  for (const h of hexes) {
+    const c = lab(rgb(h));
+    L += c.l;
+    a += c.a;
+    b += c.b;
+  }
+  const out = lab(L / n, a / n, b / n).rgb();
+  return `rgba(${Math.round(out.r)},${Math.round(out.g)},${Math.round(out.b)},${alpha})`;
+}
 
-const CIRCLE_STROKE: Record<string, string> = {
-  [SET_BGU]: "rgba(126, 34, 206, 0.95)",
-  [SET_RES]: "rgba(21, 128, 61, 0.95)",
-  [SET_WRK]: "rgba(29, 78, 216, 0.95)",
-};
+function rgbaPrimary(hex: string, alpha: number): string {
+  const c = rgb(hex).rgb();
+  return `rgba(${Math.round(c.r)},${Math.round(c.g)},${Math.round(c.b)},${alpha})`;
+}
 
-const LEGEND_DOT: Record<string, string> = {
-  [SET_BGU]: "rgb(147, 51, 234)",
-  [SET_RES]: "rgb(22, 163, 74)",
-  [SET_WRK]: "rgb(37, 99, 235)",
-};
+function strokeForPrimary(hex: string): string {
+  const c = rgb(hex).brighter(0.38).rgb();
+  return `rgba(${Math.round(c.r)},${Math.round(c.g)},${Math.round(c.b)},0.97)`;
+}
+
+function legendDot(hex: string): string {
+  const c = rgb(hex).brighter(0.22).rgb();
+  return `rgb(${Math.round(c.r)},${Math.round(c.g)},${Math.round(c.b)})`;
+}
+
+function buildCohortVennPaintStyle(prim: { bgu: string; res: string; wrk: string }): {
+  regionFill: Record<(typeof PARTITION_ORDER)[number], string>;
+  circleStroke: Record<string, string>;
+  legendDot: Record<string, string>;
+} {
+  const { bgu, res, wrk } = prim;
+  return {
+    regionFill: {
+      only_bgu: rgbaPrimary(bgu, 0.88),
+      only_beer_sheva_resident: rgbaPrimary(res, 0.88),
+      only_beer_sheva_worker: rgbaPrimary(wrk, 0.9),
+      bgu_and_resident_not_worker: labMix([bgu, res], 0.86),
+      bgu_and_worker_not_resident: labMix([bgu, wrk], 0.86),
+      resident_and_worker_not_bgu: labMix([res, wrk], 0.86),
+      bgu_resident_and_worker: labMix([bgu, res, wrk], 0.88),
+    },
+    circleStroke: {
+      [SET_BGU]: strokeForPrimary(bgu),
+      [SET_RES]: strokeForPrimary(res),
+      [SET_WRK]: strokeForPrimary(wrk),
+    },
+    legendDot: {
+      [SET_BGU]: legendDot(bgu),
+      [SET_RES]: legendDot(res),
+      [SET_WRK]: legendDot(wrk),
+    },
+  };
+}
 
 function setsKey(sets: string[]): string {
   return [...sets].sort().join(",");
@@ -257,7 +297,7 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
     tooltip.style.top = `${ly}px`;
   }
 
-  function renderLegend(total: number, rtl: boolean): void {
+  function renderLegend(total: number, rtl: boolean, dots: Record<string, string>): void {
     legend.replaceChildren();
     legend.setAttribute("dir", rtl ? "rtl" : "ltr");
 
@@ -273,7 +313,7 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
 
       const dot = document.createElement("span");
       dot.className = "bgu-partition__legend-dot";
-      dot.style.background = LEGEND_DOT[row.setId] ?? "#666";
+      dot.style.background = dots[row.setId] ?? "#666";
 
       const lab = document.createElement("span");
       const pct = total > 0 ? row.n / total : 0;
@@ -302,8 +342,9 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
 
     const textColor = chartTextColor();
     const muted = chartMutedColor();
+    const vennStyle = buildCohortVennPaintStyle(cohortVennPrimaryColors());
 
-    renderLegend(total, rtl);
+    renderLegend(total, rtl, vennStyle.legendDot);
 
     if (total <= 0 || lastW <= 0 || lastH <= 0) {
       gRegions.replaceChildren();
@@ -378,7 +419,7 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
       const dReg = intersectionAreaPath(circlesForFill);
       const regPath = document.createElementNS(NS, "path");
       regPath.setAttribute("d", dReg);
-      regPath.setAttribute("fill", REGION_FILL[seg] ?? "rgba(100,116,139,0.65)");
+      regPath.setAttribute("fill", vennStyle.regionFill[seg] ?? "rgba(100,116,139,0.65)");
       regPath.setAttribute("stroke", "none");
       regPath.setAttribute("class", "bgu-partition__region");
       regPath.setAttribute("pointer-events", "none");
@@ -396,7 +437,7 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
       const path = document.createElementNS(NS, "path");
       path.setAttribute("d", circlePath(c.x, c.y, c.radius));
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", CIRCLE_STROKE[id] ?? "#64748b");
+      path.setAttribute("stroke", vennStyle.circleStroke[id] ?? "#64748b");
       path.setAttribute("stroke-width", "2");
       path.setAttribute("class", "bgu-partition__circle-outline");
       path.setAttribute("pointer-events", "none");

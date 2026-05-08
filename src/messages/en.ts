@@ -6,6 +6,7 @@ export const en = {
   "shell.brandTitle": "Beer Sheva Innovation District",
   "shell.brandMeta": "Prototype mockup",
   "shell.logoAlt": "Innovation District Beer Sheva",
+  "shell.nurLogoAlt": "Nur",
   "shell.ariaPrimaryNav": "Primary sections",
   "shell.ariaSubnav": "Section pages",
   "theme.switchToLight": "Switch to light mode",

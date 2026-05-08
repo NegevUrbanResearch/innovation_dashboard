@@ -49,6 +49,15 @@ export function sectorTreemapBucketColor(slug: string): string {
   return readCssVar(prop, fb);
 }
 
+/** Cohort Venn primaries — `--venn-cohort-*` in `styles.css`. */
+export function cohortVennPrimaryColors(): { bgu: string; res: string; wrk: string } {
+  return {
+    bgu: readCssVar("--venn-cohort-bgu", "#4a6fa5"),
+    res: readCssVar("--venn-cohort-res", "#47b8a0"),
+    wrk: readCssVar("--venn-cohort-wrk", "#e8c84a"),
+  };
+}
+
 export function accentPalette(): string[] {
   const accent = readCssVar("--accent", "#38bdf8");
   return [
