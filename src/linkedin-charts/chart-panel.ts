@@ -46,17 +46,20 @@ function defaultViewToggleLabels(): readonly [string, string] {
 export function mountChartPanel(
   host: HTMLElement,
   opts: {
-    title: string;
+    title?: string;
     sampleNote: string | ((tabId: string) => string);
     tabs: ChartTabDef[];
   },
 ): () => void {
   host.classList.add("chart-page");
   const panel = el("div", "chart-panel");
-  const head = el("div", "chart-panel__head");
-  const title = el("h2", "chart-panel__title", opts.title);
-  head.appendChild(title);
-  panel.appendChild(head);
+  const trimmedTitle = opts.title?.trim();
+  if (trimmedTitle) {
+    const head = el("div", "chart-panel__head");
+    const titleEl = el("h2", "chart-panel__title", trimmedTitle);
+    head.appendChild(titleEl);
+    panel.appendChild(head);
+  }
 
   let tabRow: HTMLElement | null = null;
   if (opts.tabs.length > 1) {

@@ -17,7 +17,7 @@ export const en = {
   "locale.aria": "Switch language",
 
   "nav.network": "Network",
-  "nav.network.talent": "Talent",
+  "nav.network.talent": "Data sample",
   "nav.network.talent-bgu": "BGU alumni",
   "nav.network.social": "Social media",
   "nav.network.startups": "Startups",
@@ -48,7 +48,6 @@ export const en = {
   "chart.axisPeople": "People",
   "chart.axisMentions": "Mentions",
 
-  "chart.titleTalentEducation": "Talent and education",
   "chart.titleBguAlumni": "BGU alumni",
   "chart.titleJobsHiring": "Jobs and hiring",
 
@@ -151,8 +150,6 @@ export const en = {
 
   "chart.emptyDash": "—",
 
-  "chart.sampleTalentOverview":
-    "Residents in this view: {r} · People working in Beer Sheva: {w}",
   "chart.sampleBguFieldMix":
     "Counts {bf} people with a medical, STEM, or non-STEM field label in the export—everyone without that classification is excluded.",
   "chart.sampleBguDegreeMajor":

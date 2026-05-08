@@ -19,7 +19,7 @@ export const he = {
   "locale.aria": "החלפת שפה",
 
   "nav.network": "רשת",
-  "nav.network.talent": "כישרונות",
+  "nav.network.talent": "מדגם נתונים",
   "nav.network.talent-bgu": "בוגרי אוניברסיטת בן-גוריון",
   "nav.network.social": "רשתות חברתיות",
   "nav.network.startups": "סטארטאפים",
@@ -50,7 +50,6 @@ export const he = {
   "chart.axisPeople": "אנשים",
   "chart.axisMentions": "אזכורים",
 
-  "chart.titleTalentEducation": "כישרונות והשכלה",
   "chart.titleBguAlumni": "בוגרי אוניברסיטת בן-גוריון",
   "chart.titleJobsHiring": "משרות והעסקה",
 
@@ -153,8 +152,6 @@ export const he = {
 
   "chart.emptyDash": "—",
 
-  "chart.sampleTalentOverview":
-    "תושבים בתצוגה זו: {r} · אנשים העובדים בבאר שבע: {w}",
   "chart.sampleBguFieldMix":
     "נספרים {bf} אנשים עם תווית שדה רפואי, במדע וטכנולוגיה או מחוץ להם בייצוא—כל מי שלא בסיווג זה לא נכלל.",
   "chart.sampleBguDegreeMajor":

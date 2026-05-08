@@ -189,9 +189,6 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
   svg.setAttribute("xmlns", NS);
   svg.setAttribute("dir", "ltr");
   svg.setAttribute("role", "group");
-  svg.style.display = "block";
-  svg.style.width = "100%";
-  svg.style.height = "100%";
 
   const gRegions = document.createElementNS(NS, "g");
   gRegions.setAttribute("class", "bgu-partition__regions");
@@ -481,25 +478,13 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
   }
 
   function layoutSizes(): void {
-    const cw = Math.max(
-      1,
-      Math.floor(
-        plot.getBoundingClientRect().width ||
-          host.getBoundingClientRect().width ||
-          plot.clientWidth ||
-          host.clientWidth,
-      ),
-    );
-    const chartH = Math.max(360, Math.round(cw * 0.58));
-    plot.style.flex = "1";
-    plot.style.minHeight = `${chartH}px`;
-    plot.style.height = `${chartH}px`;
-
     requestAnimationFrame(() => {
-      const rect = svg.getBoundingClientRect();
-      lastW = Math.max(1, Math.floor(rect.width));
-      lastH = Math.max(1, Math.floor(rect.height));
-      paint();
+      requestAnimationFrame(() => {
+        const rect = svg.getBoundingClientRect();
+        lastW = Math.max(1, Math.floor(rect.width));
+        lastH = Math.max(1, Math.floor(rect.height));
+        paint();
+      });
     });
   }
 
@@ -510,7 +495,7 @@ export function mountBguCohortPartition(host: HTMLElement, data: CohortVennModel
   window.addEventListener("bsid-locale-change", onExternal);
 
   ro = new ResizeObserver(() => layoutSizes());
-  ro.observe(host);
+  ro.observe(plotInner);
   queueMicrotask(() => layoutSizes());
 
   return () => {
