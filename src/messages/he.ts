@@ -62,7 +62,8 @@ export const he = {
   "chart.tabDegreeField": "תואר × תחום",
   "chart.tabDegreeMajor": "תואר × התמחות",
 
-  "chart.tabBeerShevaEmployers": "מעסיקים בבאר שבע",
+  "chart.tabBeerShevaEmployers": "עובדים בבאר שבע",
+  "chart.tabHiringFlows": "זרמי גיוס",
   "chart.tabInboundHiring": "גיוס נכנס",
   "chart.tabOutboundHiring": "גיוס יוצא",
   "chart.tabJobTypes": "סוגי משרות",
@@ -162,14 +163,26 @@ export const he = {
   "chart.sampleBguDegreeField":
     "{n} אנשים בתאים ידועים של תואר×תחום בבן־גוריון; המתגים מפרידים בין תואר ראשון לבין תארים מתקדמים, דוקטורנטים ומקצועיים—מבלי לטעון לגבי רשימת המתקדמים המלאה.",
   "chart.sampleJobsInboundTotals":
-    "סה\"כ אזכורים: {employers} (מעסיקים) ו־{feeders} (מקום מגורים).",
+    "סה\"כ אזכורים: {employers} (עובדים) ו־{feeders} (מקום מגורים).",
   "chart.sampleJobsOutboundTotals":
-    "סה\"כ אזכורים: {employers} (מעסיקים) ו־{destinations} (מקום עבודה).",
+    "סה\"כ אזכורים: {employers} (עובדים) ו־{destinations} (מקום עבודה).",
+  "chart.sampleJobsHiringCombined":
+    "אזכורי גיוס משולבים: {inbound} נכנסים ו־{outbound} יוצאים לפי מעסיק.",
   "chart.sampleJobsJobTypes": "אנשים בסיווגי סוג המשרות: {n}.",
   "chart.sampleJobsIndustryHome":
     "תעסוקה לעומת מגורים בתוך או מחוץ לבאר שבע.",
   "chart.sampleJobsEmployersDefault":
-    "סה\"כ אזכורי מעסיקים בבאר שבע: {n}.",
+    "סה\"כ אזכורי עובדים בבאר שבע: {n}.",
+  "chart.jobsFlowTitle": "גיוס נכנס ויוצא",
+  "chart.jobsFlowSubtitle":
+    "גיוס נכנס הוא אנשים שגרים מחוץ לבאר שבע ועובדים בה. גיוס יוצא הוא תושבי באר שבע שעובדים מחוץ לעיר.",
+  "chart.jobsFlowSummaryValue": "{n} · {pct}",
+  "chart.jobsFlowInboundEmployers": "עובדים נכנסים",
+  "chart.jobsFlowOutboundEmployers": "עובדים יוצאים",
+  "chart.jobsFlowFeederCities": "ערי מקור",
+  "chart.jobsFlowDestinationCities": "ערי יעד",
+  "chart.jobsFlowTopFeederCities": "ערי מגורים מובילות",
+  "chart.jobsFlowTopDestinationCities": "יעדי עבודה מובילים",
   "chart.sampleBguCohortOverlap":
     "תאי החפיפה מחלקים את {n} פרופילי LinkedIn במדגם זה בין בוגרי בן־גוריון, תושבי באר שבע ועובדים בבאר שבע.",
   "chart.sampleBguEmployerTreemap":

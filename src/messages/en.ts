@@ -61,6 +61,7 @@ export const en = {
   "chart.tabDegreeMajor": "Degree × Major",
 
   "chart.tabBeerShevaEmployers": "Beer Sheva employers",
+  "chart.tabHiringFlows": "Hiring flows",
   "chart.tabInboundHiring": "Inbound hiring",
   "chart.tabOutboundHiring": "Outbound hiring",
   "chart.tabJobTypes": "Job types",
@@ -163,11 +164,23 @@ export const en = {
     "Total mentions: {employers} (employers) and {feeders} (where people live).",
   "chart.sampleJobsOutboundTotals":
     "Total mentions: {employers} (employers) and {destinations} (where people work).",
+  "chart.sampleJobsHiringCombined":
+    "Combined hiring mentions: {inbound} inbound and {outbound} outbound employers.",
   "chart.sampleJobsJobTypes": "People counted in job-type buckets: {n}.",
   "chart.sampleJobsIndustryHome":
     "Industry compared to living in or outside Beer Sheva.",
   "chart.sampleJobsEmployersDefault":
     "Total employer mentions in Beer Sheva: {n}.",
+  "chart.jobsFlowTitle": "Inbound and outbound hiring",
+  "chart.jobsFlowSubtitle":
+    "Inbound means people who live outside Beer Sheva and work here. Outbound means Beer Sheva residents who work elsewhere.",
+  "chart.jobsFlowSummaryValue": "{n} · {pct}",
+  "chart.jobsFlowInboundEmployers": "Inbound employers",
+  "chart.jobsFlowOutboundEmployers": "Outbound employers",
+  "chart.jobsFlowFeederCities": "Feeder cities",
+  "chart.jobsFlowDestinationCities": "Destination cities",
+  "chart.jobsFlowTopFeederCities": "Top feeder cities",
+  "chart.jobsFlowTopDestinationCities": "Top destination cities",
   "chart.sampleBguCohortOverlap":
     "Overlap cells partition {n} LinkedIn profiles in this extract across BGU alumni, Beer Sheva residents, and Beer Sheva workers.",
   "chart.sampleBguEmployerTreemap":

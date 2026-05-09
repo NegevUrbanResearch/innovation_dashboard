@@ -4,10 +4,12 @@ import {
   baseChartOptions,
   chartMutedColor,
   chartTextColor,
+  viridisRankColors,
   type AppChart,
 } from "./chart-theme";
 import { mountBguCohortPartition } from "./bgu-cohort-partition";
 import { mountBguEmployerTreemap } from "./bgu-employer-treemap";
+import { mountJobsMirroredHiring } from "./jobs-mirrored-hiring";
 import { loadLinkedInData } from "./load-data";
 import { mountChartPanel, type ChartTabDef } from "./chart-panel";
 import { formatLocaleInt, t, type MessageKey } from "../i18n";
@@ -90,14 +92,14 @@ function hBarConfig(
           grid: { color: chartMutedColor() + "33" },
           ticks: { color: chartMutedColor(), maxTicksLimit: 8 },
           title: opts.xTitle
-            ? { display: true, text: opts.xTitle, color: chartMutedColor(), font: { size: 11 } }
+            ? { display: true, text: opts.xTitle, color: chartMutedColor(), font: { size: 12 } }
             : undefined,
         },
         y: {
           grid: { display: false },
           ticks: {
             color: chartTextColor(),
-            font: { size: 11 },
+            font: { size: 12 },
             autoSkip: false,
           },
         },
@@ -143,10 +145,7 @@ export async function mountLinkedInCharts(
   } else if (routeKey === "economy/jobs") {
     title = t("chart.titleJobsHiring");
     const topEmp = topN(d.companiesInBs, 14);
-    const topInbound = topN(d.companiesInbound, 14);
-    const topOutbound = topN(d.companiesOutbound, 14);
-    const feederTop = topN(d.feederCities, 12);
-    const destTop = topN(d.destinationCities, 12);
+    const employerBarColors = viridisRankColors(topEmp.length);
     tabs = [
       {
         id: "employers",
@@ -155,68 +154,34 @@ export async function mountLinkedInCharts(
           mkChart(
             canvas,
             hBarConfig(
-              topEmp.map((r) => truncateLabel(r.label, 36)),
+              topEmp.map((r) => r.label),
               topEmp.map((r) => r.count),
-              { xTitle: t("chart.axisMentions") },
+              { xTitle: t("chart.axisMentions"), barColors: employerBarColors, labelTruncate: 36 },
             ),
           ),
       },
       {
-        id: "inbound",
-        label: t("chart.tabInboundHiring"),
-        mount: (canvas) =>
-          mkChart(
-            canvas,
-            hBarConfig(
-              topInbound.map((r) => truncateLabel(r.label, 36)),
-              topInbound.map((r) => r.count),
-              { xTitle: t("chart.axisMentions") },
-            ),
-          ),
-        mountSecondary: (canvas) =>
-          mkChart(
-            canvas,
-            hBarConfig(
-              feederTop.map((r) => truncateLabel(r.label, 32)),
-              feederTop.map((r) => r.count),
-              { xTitle: t("chart.axisMentions") },
-            ),
-          ),
-      },
-      {
-        id: "outbound",
-        label: t("chart.tabOutboundHiring"),
-        mount: (canvas) =>
-          mkChart(
-            canvas,
-            hBarConfig(
-              topOutbound.map((r) => truncateLabel(r.label, 36)),
-              topOutbound.map((r) => r.count),
-              { xTitle: t("chart.axisMentions") },
-            ),
-          ),
-        mountSecondary: (canvas) =>
-          mkChart(
-            canvas,
-            hBarConfig(
-              destTop.map((r) => truncateLabel(r.label, 32)),
-              destTop.map((r) => r.count),
-              { xTitle: t("chart.axisMentions") },
-            ),
-          ),
+        id: "hiring-flow",
+        label: t("chart.tabHiringFlows"),
+        kind: "custom",
+        mountCustom: (box) =>
+          mountJobsMirroredHiring(box, {
+            inboundEmployers: d.companiesInbound,
+            outboundEmployers: d.companiesOutbound,
+            inboundTotalMentions: d.companiesInboundTotalN,
+            outboundTotalMentions: d.companiesOutboundTotalN,
+            feederCities: d.feederCities,
+            destinationCities: d.destinationCities,
+            topEmployerCount: 14,
+            topCityCount: 12,
+          }),
       },
     ];
     sample = (tabId: string) => {
-      if (tabId === "inbound") {
-        return subs("chart.sampleJobsInboundTotals", {
-          employers: formatLocaleInt(d.companiesInboundTotalN),
-          feeders: formatLocaleInt(d.feederTotalN),
-        });
-      }
-      if (tabId === "outbound") {
-        return subs("chart.sampleJobsOutboundTotals", {
-          employers: formatLocaleInt(d.companiesOutboundTotalN),
-          destinations: formatLocaleInt(d.destinationTotalN),
+      if (tabId === "hiring-flow") {
+        return subs("chart.sampleJobsHiringCombined", {
+          inbound: formatLocaleInt(d.companiesInboundTotalN),
+          outbound: formatLocaleInt(d.companiesOutboundTotalN),
         });
       }
       return subs("chart.sampleJobsEmployersDefault", {

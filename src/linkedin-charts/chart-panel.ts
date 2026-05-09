@@ -47,17 +47,25 @@ export function mountChartPanel(
   host: HTMLElement,
   opts: {
     title?: string;
+    leadNote?: string | ((tabId: string) => string);
     sampleNote: string | ((tabId: string) => string);
     tabs: ChartTabDef[];
   },
 ): () => void {
   host.classList.add("chart-page");
   const panel = el("div", "chart-panel");
+  let lead: HTMLDivElement | null = null;
   const trimmedTitle = opts.title?.trim();
-  if (trimmedTitle) {
+  if (trimmedTitle || opts.leadNote) {
     const head = el("div", "chart-panel__head");
-    const titleEl = el("h2", "chart-panel__title", trimmedTitle);
-    head.appendChild(titleEl);
+    if (trimmedTitle) {
+      const titleEl = el("h2", "chart-panel__title", trimmedTitle);
+      head.appendChild(titleEl);
+    }
+    if (opts.leadNote) {
+      lead = el("div", "chart-panel__lead");
+      head.appendChild(lead);
+    }
     panel.appendChild(head);
   }
 
@@ -103,8 +111,20 @@ export function mountChartPanel(
     return typeof opts.sampleNote === "function" ? opts.sampleNote(id) : opts.sampleNote;
   }
 
+  function leadHtmlForTab(id: string): string {
+    if (!opts.leadNote) return "";
+    return typeof opts.leadNote === "function" ? opts.leadNote(id) : opts.leadNote;
+  }
+
   function syncSample() {
     sample.innerHTML = sampleHtmlForTab(activeId);
+  }
+
+  function syncLead() {
+    if (!lead) return;
+    const html = leadHtmlForTab(activeId);
+    lead.innerHTML = html;
+    lead.hidden = html.trim().length === 0;
   }
 
   function toggleLabelsForActiveTab(): readonly [string, string] {
@@ -211,6 +231,7 @@ export function mountChartPanel(
     }
 
     syncSample();
+    syncLead();
     syncPlotControls();
 
     if (tabRow) {

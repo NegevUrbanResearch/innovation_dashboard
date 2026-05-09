@@ -1,4 +1,5 @@
 import type { Chart, ChartOptions, ChartTypeRegistry } from "chart.js";
+import { interpolateViridis } from "d3-scale-chromatic";
 
 export type AppChart = Chart<keyof ChartTypeRegistry, unknown, unknown>;
 
@@ -74,6 +75,44 @@ export function accentPalette(): string[] {
   ];
 }
 
+export function jobsFlowBaseColors(): {
+  inbound: string;
+  outbound: string;
+  center: string;
+} {
+  return {
+    inbound: readCssVar("--jobs-flow-inbound", "#9578ad"),
+    outbound: readCssVar("--jobs-flow-outbound", "#b8923d"),
+    center: readCssVar("--jobs-flow-center", "#64748b"),
+  };
+}
+
+export function jobsFlowRankColor(
+  side: "inbound" | "outbound",
+  rank: number,
+  totalRanks: number,
+): string {
+  const base = jobsFlowBaseColors()[side];
+  const t = totalRanks <= 1 ? 0 : Math.max(0, Math.min(1, (rank - 1) / (totalRanks - 1)));
+  const emphasis = Math.round((0.94 - t * 0.36) * 100);
+  return `color-mix(in srgb, ${base} ${emphasis}%, ${chartSurfaceColor()})`;
+}
+
+export function rankedBarColors(baseColor: string, count: number): string[] {
+  return Array.from({ length: Math.max(0, count) }, (_, i) => {
+    const t = count <= 1 ? 0 : i / (count - 1);
+    const emphasis = Math.round((0.94 - t * 0.36) * 100);
+    return `color-mix(in srgb, ${baseColor} ${emphasis}%, ${chartSurfaceColor()})`;
+  });
+}
+
+export function viridisRankColors(count: number): string[] {
+  return Array.from({ length: Math.max(0, count) }, (_, i) => {
+    const t = count <= 1 ? 0.88 : 0.9 - (i / (count - 1)) * 0.62;
+    return interpolateViridis(Math.max(0, Math.min(1, t)));
+  });
+}
+
 const FIELD_BUCKETS = ["medical", "stem", "non_stem"] as const;
 
 export function orderedFieldBuckets(): readonly string[] {
@@ -110,7 +149,7 @@ export function baseChartOptions(): ChartOptions {
           boxWidth: 10,
           boxHeight: 10,
           padding: 14,
-          font: { family: readCssVar("--font", "system-ui"), size: 11 },
+          font: { family: readCssVar("--font", "system-ui"), size: 12 },
         },
       },
       tooltip: {
@@ -145,7 +184,7 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
     const labels = legend.labels;
     if (labels && typeof labels === "object") {
       const font = (labels.font ?? {}) as { size?: number; family?: string };
-      font.size = tier <= 0 ? 8 : tier === 1 ? 9 : tier === 2 ? 10 : 11;
+      font.size = tier <= 0 ? 9 : tier === 1 ? 10 : tier === 2 ? 11 : 12;
       labels.font = font;
       labels.padding = tier <= 0 ? 4 : tier === 1 ? 6 : tier === 2 ? 10 : 14;
       labels.boxWidth = tier <= 0 ? 6 : tier === 1 ? 7 : tier === 2 ? 9 : 10;
@@ -158,7 +197,7 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
   const title = pl.title;
   if (title && typeof title === "object" && title.display) {
     const font = (title.font ?? {}) as { size?: number; weight?: string | number };
-    font.size = tier <= 0 ? 11 : tier === 1 ? 11.5 : tier === 2 ? 12 : 13;
+    font.size = tier <= 0 ? 12 : tier === 1 ? 12.5 : tier === 2 ? 13 : 14;
     title.font = font as (typeof title)["font"];
     const pad = title.padding;
     const b = tier <= 0 ? 2 : tier === 1 ? 4 : tier === 2 ? 5 : 8;
@@ -176,7 +215,7 @@ export function applyViewportChartSizing(chart: AppChart, tier: ChartLayoutTier,
         ticks?: { font?: { size?: number }; maxTicksLimit?: number; autoSkip?: boolean };
       }).ticks;
       if (!ticks) continue;
-      ticks.font = { ...(ticks.font ?? {}), size: tier <= 0 ? 9 : tier === 1 ? 9.5 : tier === 2 ? 10 : 11 };
+      ticks.font = { ...(ticks.font ?? {}), size: tier <= 0 ? 10 : tier === 1 ? 10.5 : tier === 2 ? 11 : 12 };
       if (key === categoryAxis) {
         ticks.autoSkip = false;
         delete ticks.maxTicksLimit;

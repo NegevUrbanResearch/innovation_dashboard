@@ -40,6 +40,9 @@ html[data-theme="dark"] {
   --bgu-treemap-bucket-review: #6f7f94;
   --bgu-treemap-bucket-unknown: #5c6678;
   --bgu-treemap-bucket-other: #5c6678;
+  --jobs-flow-inbound: #9578ad;
+  --jobs-flow-outbound: #b8923d;
+  --jobs-flow-center: #64748b;
   /* Cohort Venn primaries (high-contrast triad). Lab mixes in TS. */
   --venn-cohort-bgu: #4a6fa5;
   --venn-cohort-res: #47b8a0;
@@ -117,6 +120,9 @@ html[data-theme="light"] {
   --bgu-treemap-bucket-review: #475569;
   --bgu-treemap-bucket-unknown: #64748b;
   --bgu-treemap-bucket-other: #64748b;
+  --jobs-flow-inbound: #86198f;
+  --jobs-flow-outbound: #b45309;
+  --jobs-flow-center: #94a3b8;
   /* Cohort Venn primaries (same triad as dark). Lab mixes in TS. */
   --venn-cohort-bgu: #4a6fa5;
   --venn-cohort-res: #47b8a0;
@@ -178,7 +184,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -536,7 +542,7 @@ html[dir="rtl"] .brand-title {
   justify-content: center;
   min-height: 40px;
   padding: 0.35rem 0.55rem;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 600;
   text-align: center;
   hyphens: auto;
@@ -562,7 +568,7 @@ html[dir="rtl"] .brand-title {
   border: none;
   background: var(--route-nav-tray-bg);
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   line-height: 1.14;
@@ -606,7 +612,7 @@ html[dir="rtl"] .brand-title {
     linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) padding-box,
     var(--route-nav-subpage-bg);
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.79rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   line-height: 1.14;
@@ -769,7 +775,7 @@ html[data-theme="light"] .theme-toggle__glyph--sun {
   .route-nav__subpage-link.subnav-bar__link {
     min-height: 42px;
     padding-inline: 0.6rem;
-    font-size: 0.71rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -902,7 +908,7 @@ html[data-theme="light"] .theme-toggle__glyph--sun {
     background: var(--route-nav-tray-bg);
     box-shadow: none;
     text-align: center;
-    font-size: 0.64rem;
+    font-size: 0.72rem;
     line-height: 1.12;
   }
 
@@ -958,7 +964,7 @@ html[data-theme="light"] .theme-toggle__glyph--sun {
 
   .route-nav__mobile-subpage-link.subnav-bar__link {
     padding-inline: 0.24rem;
-    font-size: 0.64rem;
+    font-size: 0.68rem;
   }
 }
 
@@ -1072,10 +1078,20 @@ html[data-brave-ui="1"] .layout-main {
 .chart-panel__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.12rem, 2.15vw, 1.34rem);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--text);
+}
+
+.chart-panel__lead {
+  font-size: clamp(0.86rem, 1.8vw, 0.98rem);
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.chart-panel__lead[hidden] {
+  display: none;
 }
 
 .chart-panel__tabs {
@@ -1161,10 +1177,10 @@ html[data-brave-ui="1"] .layout-main {
 .chart-panel__tab {
   appearance: none;
   font: inherit;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  min-height: 2.55rem;
+  min-height: 2.7rem;
   padding: 0.42rem 0.72rem;
   border-radius: 10px;
   border: none;
@@ -1624,6 +1640,411 @@ html[data-theme="light"] .bgu-treemap__cell-label {
   overflow: visible;
 }
 
+.jobs-flow.chart-custom-plot,
+.jobs-flow {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.jobs-flow__subtitle {
+  margin: 0 0 0.7rem;
+  font-size: clamp(0.8rem, 2.05vmin, 0.93rem);
+  line-height: 1.42;
+}
+
+.jobs-flow__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.jobs-flow__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.18rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+}
+
+.jobs-flow__toggle-btn {
+  min-width: 5.25rem;
+  min-height: 2rem;
+  padding: 0.28rem 0.72rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.jobs-flow__toggle-btn.is-active {
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface-raised));
+  color: var(--text);
+}
+
+.jobs-flow__toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.jobs-flow__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: stretch;
+  margin-bottom: 0.7rem;
+}
+
+.jobs-flow__summary-pill,
+.jobs-flow__summary-center {
+  min-height: 3rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.jobs-flow__summary-pill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.55rem 0.8rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--jobs-flow-pill, var(--accent)) 20%, var(--surface-raised)),
+      color-mix(in srgb, var(--jobs-flow-pill, var(--accent)) 9%, var(--surface))
+    );
+}
+
+.jobs-flow__summary-label {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.jobs-flow__summary-value {
+  color: var(--text);
+  font-size: clamp(0.84rem, 2.2vmin, 0.96rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.jobs-flow__summary-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.4rem;
+  padding: 0.3rem 0.85rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--jobs-flow-center) 18%, var(--surface-raised)),
+      color-mix(in srgb, var(--jobs-flow-center) 6%, var(--surface))
+    );
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+.jobs-flow__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 20rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 0.9rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.jobs-flow__col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.jobs-flow__side-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.25;
+  padding-bottom: 0.24rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+}
+
+.jobs-flow__col--outbound .jobs-flow__side-head {
+  text-align: end;
+}
+
+.jobs-flow__side-head-count {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.jobs-flow__center {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  padding-top: 2rem;
+}
+
+.jobs-flow__rows {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.34rem;
+}
+
+.jobs-flow__center-rail {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in srgb, var(--jobs-flow-center) 54%, var(--border-strong)) 12%,
+      color-mix(in srgb, var(--jobs-flow-center) 54%, var(--border-strong)) 88%,
+      transparent
+    );
+}
+
+.jobs-flow__row {
+  display: grid;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.18rem 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: default;
+}
+
+.jobs-flow__row--outbound {
+  grid-template-columns: minmax(8rem, 1.25fr) minmax(0, 2.45fr);
+}
+
+.jobs-flow__row--inbound {
+  grid-template-columns: minmax(0, 2.45fr) minmax(8rem, 1.25fr);
+}
+
+.jobs-flow__row-text {
+  display: grid;
+  min-width: 0;
+}
+
+.jobs-flow__row--outbound .jobs-flow__row-text {
+  text-align: end;
+}
+
+.jobs-flow__row-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.jobs-flow__row-label {
+  color: var(--text);
+  font-size: clamp(0.78rem, 1.95vmin, 0.88rem);
+  font-weight: 550;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jobs-flow__row-count {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.jobs-flow__bar-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 1.3rem;
+}
+
+.jobs-flow__row--outbound .jobs-flow__bar-wrap {
+  justify-content: flex-end;
+}
+
+.jobs-flow__bar {
+  display: block;
+  height: 0.92rem;
+  min-width: 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.jobs-flow__footer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.9rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+}
+
+.jobs-flow__city-block {
+  min-width: 0;
+}
+
+.jobs-flow__city-title {
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.25;
+  margin-bottom: 0.38rem;
+}
+
+.jobs-flow__city-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.jobs-flow__city-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.7rem;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  line-height: 1.28;
+}
+
+.jobs-flow__city-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jobs-flow__city-count {
+  flex-shrink: 0;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.jobs-flow__tooltip {
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  max-width: min(22rem, calc(100vw - 1rem));
+  padding: 0.38rem 0.55rem;
+  pointer-events: none;
+  font-size: 0.86rem;
+  line-height: 1.36;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.jobs-flow__tip-title {
+  font-weight: 600;
+  margin-block-end: 0.15rem;
+}
+
+.jobs-flow__tip-line {
+  color: var(--text);
+}
+
+.jobs-flow__row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 760px) {
+  .jobs-flow__toolbar {
+    margin-bottom: 0.6rem;
+  }
+
+  .jobs-flow__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-flow__summary-center {
+    order: -1;
+    min-width: 0;
+  }
+
+  .jobs-flow__stage {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    min-height: 0;
+  }
+
+  .jobs-flow__center {
+    display: none;
+  }
+
+  .jobs-flow__center-rail {
+    display: none;
+  }
+
+  .jobs-flow__row--outbound,
+  .jobs-flow__row--inbound {
+    grid-template-columns: minmax(6.4rem, 10rem) minmax(0, 1fr);
+  }
+
+  .jobs-flow__row--outbound .jobs-flow__bar-wrap,
+  .jobs-flow__row--inbound .jobs-flow__bar-wrap {
+    justify-content: flex-start;
+  }
+
+  .jobs-flow__row--outbound .jobs-flow__row-text,
+  .jobs-flow__row--inbound .jobs-flow__row-text {
+    text-align: start;
+  }
+
+  .jobs-flow__footer {
+    grid-template-columns: 1fr;
+  }
+}
+
 .retention-heatmap {
   flex: 1 1 0%;
   display: flex;
@@ -1685,14 +2106,14 @@ html[data-theme="light"] .bgu-treemap__cell-label {
 
 .chart-panel__ph-title {
   margin: 0 0 0.4rem;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 650;
   color: var(--text);
 }
 
 .chart-panel__ph-copy {
   margin: 0;
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   line-height: 1.45;
   color: var(--text-secondary);
   max-width: 40rem;
@@ -1704,7 +2125,7 @@ html[data-theme="light"] .bgu-treemap__cell-label {
   bottom: 0.45rem;
   max-width: min(22rem, 92vw);
   text-align: end;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   line-height: 1.35;
   color: var(--text-secondary);
   pointer-events: none;
@@ -1732,7 +2153,7 @@ html[data-theme="light"] .bgu-treemap__cell-label {
   }
 
   .chart-panel__title {
-    font-size: clamp(0.98rem, 4.2vw, 1.12rem);
+    font-size: clamp(1.04rem, 4.2vw, 1.2rem);
   }
 
   .chart-panel__plot {
@@ -1742,7 +2163,7 @@ html[data-theme="light"] .bgu-treemap__cell-label {
   .chart-panel__sample {
     inset-inline-end: 0.45rem;
     bottom: 0.35rem;
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     max-width: min(18rem, 88vw);
   }
 }
