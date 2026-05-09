@@ -8,6 +8,7 @@ import { interpolateViridis } from "d3-scale-chromatic";
 import { scaleSequential } from "d3-scale";
 import type { BguTreemapRow } from "./csv";
 import {
+  BGU_COMBINED_RESIDENCE_PANEL,
   buildEmployerEducationHierarchy,
   buildSectorCompanyHierarchy,
   flattenBucketEmployersForLayout,
@@ -82,6 +83,7 @@ function formatUnknownFooter(totals: BguTreemapUnknownTotals): string {
   return subs(t("chart.bguTreemapUnknownNote"), { parts: parts.join(sep) });
 }
 function residencePanelOptionLabel(raw: string): string {
+  if (raw === BGU_COMBINED_RESIDENCE_PANEL) return t("chart.bguTreemapCombinedPanelLabel");
   const key = treemapResidencePanelKey(raw);
   return key === treemapUnmappedLabelKey ? subs(t(key), { slug: raw }) : t(key);
 }
@@ -475,6 +477,10 @@ export function mountBguEmployerTreemap(host: HTMLElement, rows: BguTreemapRow[]
     if (!panels.includes(view.panel) && panels[0])
       view = { kind: "sectors", panel: panels[0], focusBucket: null };
     panelSelect.value = view.panel;
+    const hidePanelSelect = panels.length <= 1;
+    panelSelect.hidden = hidePanelSelect;
+    if (hidePanelSelect) panelSelect.setAttribute("aria-hidden", "true");
+    else panelSelect.removeAttribute("aria-hidden");
   }
   function goBack(): void {
     if (view.kind !== "education") return;
@@ -525,9 +531,6 @@ export function mountBguEmployerTreemap(host: HTMLElement, rows: BguTreemapRow[]
     }
     legend.hidden = false;
     legend.setAttribute("aria-label", t("chart.bguTreemapBucketLegendTitle"));
-    const title = document.createElement("div");
-    title.className = "bgu-treemap__legend-title";
-    title.textContent = t("chart.bguTreemapBucketLegendTitle");
 
     let showAllBtn: HTMLButtonElement | null = null;
     const focusKey = view.kind === "sectors" ? view.focusBucket : null;
@@ -542,19 +545,12 @@ export function mountBguEmployerTreemap(host: HTMLElement, rows: BguTreemapRow[]
         view = { kind: "sectors", panel: view.panel, focusBucket: null };
         paint(true);
       });
-      showAllBtn.addEventListener("keydown", (ev: KeyboardEvent) => {
-        if (ev.key === "Enter" || ev.key === " ") {
-          ev.preventDefault();
-          hideTooltip();
-          view = { kind: "sectors", panel: view.panel, focusBucket: null };
-          paint(true);
-        }
-      });
     }
 
     const rail = document.createElement("div");
     rail.className = "bgu-treemap__legend-rail";
     for (const bucket of bucketNamesSorted) {
+      if (bucket === "needs_review") continue;
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "bgu-treemap__legend-btn";
@@ -574,15 +570,8 @@ export function mountBguEmployerTreemap(host: HTMLElement, rows: BguTreemapRow[]
       lab.textContent = bucketLabelTxt;
       btn.append(dot, lab);
       btn.addEventListener("click", () => toggleSectorFocus(bucket));
-      btn.addEventListener("keydown", (ev: KeyboardEvent) => {
-        if (ev.key === "Enter" || ev.key === " ") {
-          ev.preventDefault();
-          toggleSectorFocus(bucket);
-        }
-      });
       rail.appendChild(btn);
     }
-    legend.append(title);
     if (showAllBtn) legend.append(showAllBtn);
     legend.append(rail);
   }

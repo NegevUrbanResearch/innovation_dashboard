@@ -9,6 +9,20 @@ import {
   type JobsMirroredRow,
 } from "./jobs-mirrored-model";
 
+export type FlowView = "companies" | "cities";
+export type JobsFlowTextToken = "label" | "count";
+export type JobsFlowViewDensity = "relaxed" | "compact";
+export type JobsFlowHostLayout = {
+  dir: "rtl" | "ltr";
+  viewDensity: JobsFlowViewDensity;
+};
+
+type JobsFlowLayoutHost = {
+  dataset: DOMStringMap;
+  setAttribute(name: string, value: string): void;
+  removeAttribute(name: string): void;
+};
+
 type JobsMirroredHiringMountData = {
   inboundEmployers: JobsMirroredEntry[];
   outboundEmployers: JobsMirroredEntry[];
@@ -20,7 +34,34 @@ type JobsMirroredHiringMountData = {
   topCityCount?: number;
 };
 
-type FlowView = "companies" | "cities";
+export function getJobsFlowRowTextOrder(
+  side: "inbound" | "outbound",
+): [JobsFlowTextToken, JobsFlowTextToken] {
+  return side === "outbound" ? ["count", "label"] : ["label", "count"];
+}
+
+export function deriveJobsFlowHostLayout(
+  view: FlowView,
+  rtl: boolean,
+): JobsFlowHostLayout {
+  return {
+    dir: rtl ? "rtl" : "ltr",
+    viewDensity: view === "cities" ? "compact" : "relaxed",
+  };
+}
+
+export function applyJobsFlowHostLayout(
+  host: JobsFlowLayoutHost,
+  layout: JobsFlowHostLayout,
+): void {
+  host.setAttribute("dir", layout.dir);
+  host.dataset.viewDensity = layout.viewDensity;
+}
+
+export function clearJobsFlowHostLayout(host: JobsFlowLayoutHost): void {
+  host.removeAttribute("dir");
+  delete host.dataset.viewDensity;
+}
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -142,10 +183,11 @@ export function mountJobsMirroredHiring(
 
     const text = el("span", "jobs-flow__row-text");
     const line = el("span", "jobs-flow__row-line");
-    line.append(
-      el("span", "jobs-flow__row-label", row.label),
-      el("span", "jobs-flow__row-count", formatLocaleInt(row.count)),
-    );
+    const label = el("span", "jobs-flow__row-label", row.label);
+    const count = el("span", "jobs-flow__row-count", formatLocaleInt(row.count));
+    for (const token of getJobsFlowRowTextOrder(side)) {
+      line.append(token === "label" ? label : count);
+    }
     text.appendChild(line);
 
     const barWrap = el("span", "jobs-flow__bar-wrap");
@@ -190,7 +232,7 @@ export function mountJobsMirroredHiring(
     const inboundLabel = sideLabel(viewMode, "inbound");
     const rtl = getLocale() === "he";
 
-    host.setAttribute("dir", rtl ? "rtl" : "ltr");
+    applyJobsFlowHostLayout(host, deriveJobsFlowHostLayout(viewMode, rtl));
     tooltip.setAttribute("dir", rtl ? "rtl" : "ltr");
 
     companiesBtn.textContent = t("chart.toggleCompanies");
@@ -244,7 +286,7 @@ export function mountJobsMirroredHiring(
     window.removeEventListener("bsid-locale-change", onExternal);
     host.removeEventListener("keydown", onKeyDown);
     toolbar.removeEventListener("click", onToggleClick);
-    host.removeAttribute("dir");
+    clearJobsFlowHostLayout(host);
     host.replaceChildren();
     host.classList.remove("jobs-flow", "chart-custom-plot");
   };

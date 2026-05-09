@@ -1,4 +1,4 @@
-import { lab, rgb } from "d3-color";
+import { rgb } from "d3-color";
 import {
   circlePath,
   computeTextCentres,
@@ -9,7 +9,13 @@ import {
   type VennArea,
 } from "venn.js";
 import { formatLocaleInt, getLocale, subs, t, type MessageKey } from "../i18n";
-import { chartMutedColor, chartTextColor, cohortVennPrimaryColors } from "./chart-theme";
+import {
+  chartMutedColor,
+  chartTextColor,
+  cohortVennPrimaryColors,
+  vennLabAverageRgba,
+  vennPrimaryRgba,
+} from "./chart-theme";
 import { partitionPct, type CohortVennModel } from "./csv";
 
 const NS = "http://www.w3.org/2000/svg";
@@ -41,27 +47,8 @@ const SEGMENT_TO_SETS: Record<(typeof PARTITION_ORDER)[number], string[]> = {
 
 /**
  * Nominal three-set Venn: primaries from `--venn-cohort-*` (see `cohortVennPrimaryColors()`).
- * Intersections use Lab averages. Rebuilt each `paint()` so light/dark tracks theme.
+ * Intersections use Lab averages (`vennLabAverageRgba`). Rebuilt each `paint()` so light/dark tracks theme.
  */
-function labMix(hexes: readonly string[], alpha: number): string {
-  let L = 0;
-  let a = 0;
-  let b = 0;
-  const n = hexes.length;
-  for (const h of hexes) {
-    const c = lab(rgb(h));
-    L += c.l;
-    a += c.a;
-    b += c.b;
-  }
-  const out = lab(L / n, a / n, b / n).rgb();
-  return `rgba(${Math.round(out.r)},${Math.round(out.g)},${Math.round(out.b)},${alpha})`;
-}
-
-function rgbaPrimary(hex: string, alpha: number): string {
-  const c = rgb(hex).rgb();
-  return `rgba(${Math.round(c.r)},${Math.round(c.g)},${Math.round(c.b)},${alpha})`;
-}
 
 function strokeForPrimary(hex: string): string {
   const c = rgb(hex).brighter(0.38).rgb();
@@ -81,13 +68,13 @@ function buildCohortVennPaintStyle(prim: { bgu: string; res: string; wrk: string
   const { bgu, res, wrk } = prim;
   return {
     regionFill: {
-      only_bgu: rgbaPrimary(bgu, 0.88),
-      only_beer_sheva_resident: rgbaPrimary(res, 0.88),
-      only_beer_sheva_worker: rgbaPrimary(wrk, 0.9),
-      bgu_and_resident_not_worker: labMix([bgu, res], 0.86),
-      bgu_and_worker_not_resident: labMix([bgu, wrk], 0.86),
-      resident_and_worker_not_bgu: labMix([res, wrk], 0.86),
-      bgu_resident_and_worker: labMix([bgu, res, wrk], 0.88),
+      only_bgu: vennPrimaryRgba(bgu, 0.88),
+      only_beer_sheva_resident: vennPrimaryRgba(res, 0.88),
+      only_beer_sheva_worker: vennPrimaryRgba(wrk, 0.9),
+      bgu_and_resident_not_worker: vennLabAverageRgba([bgu, res], 0.86),
+      bgu_and_worker_not_resident: vennLabAverageRgba([bgu, wrk], 0.86),
+      resident_and_worker_not_bgu: vennLabAverageRgba([res, wrk], 0.86),
+      bgu_resident_and_worker: vennLabAverageRgba([bgu, res, wrk], 0.88),
     },
     circleStroke: {
       [SET_BGU]: strokeForPrimary(bgu),

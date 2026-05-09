@@ -19,25 +19,28 @@ export const he = {
   "locale.switchToEn": "EN",
   "locale.aria": "החלפת שפה",
 
-  "nav.network": "רשת",
-  "nav.network.talent": "מדגם נתונים",
-  "nav.network.talent-bgu": "בוגרי אוניברסיטת בן-גוריון",
-  "nav.network.social": "רשתות חברתיות",
-  "nav.network.startups": "סטארטאפים",
-  "nav.network.tech-networks": "רשתות טכנולוגיה",
+  "nav.dataIndex": "אינדקס נתונים",
+  "nav.dataIndex.overview": "סקירה",
+  "nav.dataIndex.methodology": "מתודולוגיה",
 
-  "nav.economy": "כלכלה",
-  "nav.economy.jobs": "תעסוקה",
-  "nav.economy.growth": "צמיחה",
-  "nav.economy.investment-activity": "פעילות השקעות",
+  "nav.network": "נכסי רשת",
+  "nav.network.dataSample": "מדגם נתונים",
+  "nav.network.workforce": "כוח עבודה",
+  "nav.network.bgu": "בן-גוריון",
 
-  "nav.physical": "פיזי",
-  "nav.physical.mobility": "ניידות ותחבורה",
-  "nav.physical.amenities": "שירותים ומתקנים",
-  "nav.physical.infrastructure": "תשתיות",
+  "nav.economy": "נכסים כלכליים",
+  "nav.economy.ecosystemDensity": "צפיפות אקוסיסטם",
+  "nav.economy.capitalFlow": "זרימת הון",
+  "nav.economy.innovationBodies": "גופי חדשנות",
+  "nav.economy.synergyIndex": "מדד סינרגיה",
+
+  "nav.urban": "נכסים עירוניים",
+  "nav.urban.mobility": "ניידות ותחבורה",
+  "nav.urban.urbanism": "אורבניזם",
+  "nav.urban.development": "פיתוח עירוני",
 
   "iframe.mobilityTitle": "לוח מידע של ניידות ותחבורה",
-  "iframe.amenitiesTitle": "Urban95 — שירותים ומתקנים עירוניים",
+  "iframe.urbanismTitle": "Urban95 — שירותים ומתקנים עירוניים",
 
   "page.graphicsPlaceholderSuffix": "(תחת בנייה)",
   "page.chartDataError":
@@ -51,7 +54,7 @@ export const he = {
   "chart.axisPeople": "אנשים",
   "chart.axisMentions": "אזכורים",
 
-  "chart.titleBguAlumni": "בוגרי אוניברסיטת בן-גוריון",
+  "chart.titleBguAlumni": "בן-גוריון",
   "chart.titleJobsHiring": "משרות והעסקה",
 
   "chart.tabResidentsWorkplaces": "תושבים → מקומות עבודה",
@@ -63,17 +66,24 @@ export const he = {
   "chart.tabDegreeMajor": "תואר × התמחות",
 
   "chart.tabBeerShevaEmployers": "עובדים בבאר שבע",
-  "chart.tabHiringFlows": "זרמי גיוס",
+  "chart.tabHiringFlows": "נכנסים/יוצאים",
   "chart.tabInboundHiring": "גיוס נכנס",
   "chart.tabOutboundHiring": "גיוס יוצא",
   "chart.tabJobTypes": "סוגי משרות",
   "chart.tabIndustryVsHome": "תעשייה לעומת מקום מגורים",
   "chart.tabBguCohortOverlap": "חפיפת קהילות",
   "chart.tabBguEmployerTreemap": "מעסיקים לפי מגזר",
+  "chart.tabBguResidenceMix": "מגורים — בוגרים",
+  "chart.tabBguEmployersAll": "מעסיקים — כל הבוגרים",
+  "chart.tabBguEmployersInBs": "מעסיקים — גרים בבאר שבע",
+  "chart.bguResidencePieNote":
+    "החלקים לפי סיווג מגורים מקושר במדגם זה (ראו מתודולוגיה). פרוסת \"דרום\" מופיעה רק אם הנתונים תומכים בכך.",
+  "chart.bguResidencePieOther": "אחר",
 
   "chart.bguTreemapBack": "חזרה למגזרים",
   "chart.bguTreemapBreadcrumbSectors": "כל המעסיקים",
   "chart.bguTreemapPanelFilterAria": "לוח מגורים",
+  "chart.bguTreemapCombinedPanelLabel": "כל הבוגרים",
   "chart.bguTreemapOtherBucket": "מעסיקים אחרים",
 
   "chart.bguTreemapUnknownNote":
@@ -110,7 +120,9 @@ export const he = {
   "chart.legendLivesOutsideBeerSheva": "מתגורר מחוץ לבאר שבע",
 
   "chart.treemapResidencePanel.lives_in_bs": "מתגורר בבאר שבע",
-  "chart.treemapResidencePanel.lives_outside_bs": "מתגורר מחוץ לבאר שבע",
+  "chart.treemapResidencePanel.lives_in_south_not_bs":
+    "מתגורר בדרום",
+  "chart.treemapResidencePanel.lives_outside_bs": "מתגורר במקום אחר",
 
   "chart.liveWork.workInBeerSheva": "עובד בבאר שבע",
   "chart.liveWork.workOutsideBeerSheva": "עובד מחוץ לבאר שבע",
@@ -163,9 +175,9 @@ export const he = {
   "chart.sampleBguDegreeField":
     "{n} אנשים בתאים ידועים של תואר×תחום בבן־גוריון; המתגים מפרידים בין תואר ראשון לבין תארים מתקדמים, דוקטורנטים ומקצועיים—מבלי לטעון לגבי רשימת המתקדמים המלאה.",
   "chart.sampleJobsInboundTotals":
-    "סה\"כ אזכורים: {employers} (עובדים) ו־{feeders} (מקום מגורים).",
+    "סה\"כ אזכורים: {employers} (מעסיקים) ו־{feeders} (מקום מגורים).",
   "chart.sampleJobsOutboundTotals":
-    "סה\"כ אזכורים: {employers} (עובדים) ו־{destinations} (מקום עבודה).",
+    "סה\"כ אזכורים: {employers} (מעסיקים) ו־{destinations} (מקום עבודה).",
   "chart.sampleJobsHiringCombined":
     "אזכורי גיוס משולבים: {inbound} נכנסים ו־{outbound} יוצאים לפי מעסיק.",
   "chart.sampleJobsJobTypes": "אנשים בסיווגי סוג המשרות: {n}.",
@@ -177,8 +189,8 @@ export const he = {
   "chart.jobsFlowSubtitle":
     "גיוס נכנס הוא אנשים שגרים מחוץ לבאר שבע ועובדים בה. גיוס יוצא הוא תושבי באר שבע שעובדים מחוץ לעיר.",
   "chart.jobsFlowSummaryValue": "{n} · {pct}",
-  "chart.jobsFlowInboundEmployers": "עובדים נכנסים",
-  "chart.jobsFlowOutboundEmployers": "עובדים יוצאים",
+  "chart.jobsFlowInboundEmployers": "מעסיקים נכנסים",
+  "chart.jobsFlowOutboundEmployers": "מעסיקים יוצאים",
   "chart.jobsFlowFeederCities": "ערי מקור",
   "chart.jobsFlowDestinationCities": "ערי יעד",
   "chart.jobsFlowTopFeederCities": "ערי מגורים מובילות",

@@ -1,4 +1,4 @@
-import { getIntegration } from "./integration/registry";
+import { getIntegration, resolveIntegrationIframeSrc } from "./integration/registry";
 import { t } from "./i18n";
 import { mountLinkedInCharts } from "./linkedin-charts/route-charts";
 import type { SubpageDef } from "./types";
@@ -40,7 +40,7 @@ export async function renderPage(
       integration.titleKey != null
         ? t(integration.titleKey)
         : t(page.labelKey);
-    iframe.src = integration.src;
+    iframe.src = resolveIntegrationIframeSrc(integration);
     iframe.loading = "lazy";
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     inset.appendChild(iframe);

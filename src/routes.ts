@@ -5,32 +5,39 @@ const sp = (id: string, labelKey: MessageKey): SubpageDef => ({ id, labelKey });
 
 export const sections: SectionDef[] = [
   {
+    id: "data-index",
+    labelKey: "nav.dataIndex",
+    subpages: [
+      sp("overview", "nav.dataIndex.overview"),
+      sp("methodology", "nav.dataIndex.methodology"),
+    ],
+  },
+  {
     id: "network",
     labelKey: "nav.network",
     subpages: [
-      sp("talent", "nav.network.talent"),
-      sp("talent-bgu", "nav.network.talent-bgu"),
-      sp("social", "nav.network.social"),
-      sp("startups", "nav.network.startups"),
-      sp("tech-networks", "nav.network.tech-networks"),
+      sp("talent", "nav.network.dataSample"),
+      sp("workforce", "nav.network.workforce"),
+      sp("bgu", "nav.network.bgu"),
     ],
   },
   {
     id: "economy",
     labelKey: "nav.economy",
     subpages: [
-      sp("jobs", "nav.economy.jobs"),
-      sp("growth", "nav.economy.growth"),
-      sp("investment-activity", "nav.economy.investment-activity"),
+      sp("ecosystem-density", "nav.economy.ecosystemDensity"),
+      sp("capital-flow", "nav.economy.capitalFlow"),
+      sp("innovation-bodies", "nav.economy.innovationBodies"),
+      sp("synergy-index", "nav.economy.synergyIndex"),
     ],
   },
   {
-    id: "physical",
-    labelKey: "nav.physical",
+    id: "urban",
+    labelKey: "nav.urban",
     subpages: [
-      sp("mobility", "nav.physical.mobility"),
-      sp("amenities", "nav.physical.amenities"),
-      sp("infrastructure", "nav.physical.infrastructure"),
+      sp("mobility", "nav.urban.mobility"),
+      sp("urbanism", "nav.urban.urbanism"),
+      sp("development", "nav.urban.development"),
     ],
   },
 ];

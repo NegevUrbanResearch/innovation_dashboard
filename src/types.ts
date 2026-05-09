@@ -1,6 +1,6 @@
 import type { MessageKey } from "./messages/en";
 
-export type SectionId = "physical" | "network" | "economy";
+export type SectionId = "data-index" | "network" | "economy" | "urban";
 
 export interface SubpageDef {
   id: string;

@@ -35,6 +35,7 @@ const TREEMAP_EDUCATION_FIELD_SLUGS = new Set<string>([
 
 const TREEMAP_RESIDENCE_PANEL: Record<string, MessageKey> = {
   "Lives in BS": "chart.treemapResidencePanel.lives_in_bs",
+  South: "chart.treemapResidencePanel.lives_in_south_not_bs",
   "Lives outside BS": "chart.treemapResidencePanel.lives_outside_bs",
 };
 

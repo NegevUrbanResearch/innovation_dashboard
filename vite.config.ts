@@ -49,6 +49,20 @@ const vennFminEsbuild: EsbuildPlugin = {
   },
 };
 
+/** Dev / local preview: remote GH Pages embeds often send X-Frame-Options: SAMEORIGIN — iframe from localhost is blocked. Proxy same paths + strip frame headers. */
+const embedProxy = {
+  target: "https://negevurbanresearch.github.io",
+  changeOrigin: true,
+  secure: true,
+  configure(proxy: { on: (ev: string, fn: (...args: unknown[]) => void) => void }) {
+    proxy.on("proxyRes", (...args: unknown[]) => {
+      const proxyRes = args[0] as { headers: Record<string, unknown> };
+      delete proxyRes.headers["x-frame-options"];
+      delete proxyRes.headers["content-security-policy"];
+    });
+  },
+} as const;
+
 export default defineConfig({
   resolve: {
     alias: [
@@ -63,6 +77,18 @@ export default defineConfig({
     },
   },
   base: process.env.VITE_BASE_URL || "/",
+  server: {
+    proxy: {
+      "^/mobility-dashboard": embedProxy,
+      "^/urban95": embedProxy,
+    },
+  },
+  preview: {
+    proxy: {
+      "^/mobility-dashboard": embedProxy,
+      "^/urban95": embedProxy,
+    },
+  },
   build: {
     rollupOptions: {
       output: {

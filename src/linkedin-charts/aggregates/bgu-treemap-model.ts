@@ -3,6 +3,12 @@ import type { HierarchyNode } from "d3-hierarchy";
 
 import type { BguTreemapRow } from "../csv";
 
+/**
+ * Sentinel `residencePanel` for employer treemap when all physical residence
+ * panels have been aggregated into one layer (tabs replace the dropdown).
+ */
+export const BGU_COMBINED_RESIDENCE_PANEL = "__combined__";
+
 /** Tree datum compatible with `d3.hierarchy` + `.sum()` (leaves carry `value`). */
 export type BguTreemapHierarchyDatum = {
   name: string;
@@ -54,19 +60,75 @@ function sortByName<T>(entries: [string, T][]): [string, T][] {
   return [...entries].sort(([a], [b]) => a.localeCompare(b));
 }
 
+const RESIDENCE_PANEL_SORT_ORDER = new Map<string, number>([
+  ["Lives in BS", 0],
+  ["South", 1],
+  ["Lives outside BS", 2],
+]);
+
 export function uniqueResidencePanels(rows: BguTreemapRow[]): string[] {
   const set = new Set<string>();
   for (const r of rows) {
     if (r.residencePanel) set.add(r.residencePanel);
   }
-  const livesInBs = "Lives in BS";
   const arr = [...set];
   arr.sort((a, b) => {
-    if (a === livesInBs) return -1;
-    if (b === livesInBs) return 1;
+    const oa = RESIDENCE_PANEL_SORT_ORDER.has(a)
+      ? RESIDENCE_PANEL_SORT_ORDER.get(a)!
+      : 100;
+    const ob = RESIDENCE_PANEL_SORT_ORDER.has(b)
+      ? RESIDENCE_PANEL_SORT_ORDER.get(b)!
+      : 100;
+    if (oa !== ob) return oa - ob;
     return a.localeCompare(b);
   });
   return arr;
+}
+
+/** Key for merging rows that differ only by original `residencePanel`. */
+function bguCombinedGroupKey(row: BguTreemapRow): string {
+  const bucket = row.industryBucket.trim();
+  const segment = row.industrySegment.trim();
+  const employer = row.employer.trim();
+  const education = row.education.trim();
+  return `${bucket}\0${segment}\0${employer}\0${education}`;
+}
+
+/** One row per `(industry bucket × segment × employer × education)`, counts summed across panels. */
+export function mergeBguRowsAcrossResidencePanels(rows: BguTreemapRow[]): BguTreemapRow[] {
+  const byKey = new Map<
+    string,
+    {
+      industryBucket: string;
+      industrySegment: string;
+      employer: string;
+      education: string;
+      n: number;
+    }
+  >();
+  for (const row of rows) {
+    const k = bguCombinedGroupKey(row);
+    const prev = byKey.get(k);
+    if (!prev) {
+      byKey.set(k, {
+        industryBucket: row.industryBucket.trim(),
+        industrySegment: row.industrySegment.trim(),
+        employer: row.employer.trim(),
+        education: row.education.trim(),
+        n: row.n,
+      });
+    } else {
+      prev.n += row.n;
+    }
+  }
+  return [...byKey.values()].map((v) => ({
+    residencePanel: BGU_COMBINED_RESIDENCE_PANEL,
+    industryBucket: v.industryBucket,
+    industrySegment: v.industrySegment,
+    employer: v.employer,
+    education: v.education,
+    n: v.n,
+  }));
 }
 
 export function buildSectorCompanyHierarchy(

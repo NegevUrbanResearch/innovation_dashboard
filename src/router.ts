@@ -4,7 +4,7 @@ import { findSection, findSubpage, sections } from "./routes";
 function defaultRoute(): ParsedRoute {
   const s = sections[0];
   const sub = s?.subpages[0]?.id ?? null;
-  return { section: (s?.id ?? "physical") as SectionId, subpage: sub };
+  return { section: (s?.id ?? "data-index") as SectionId, subpage: sub };
 }
 
 function normalizeSegment(s: string | undefined): string | null {

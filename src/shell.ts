@@ -122,6 +122,7 @@ export function mountApp(host: HTMLElement): void {
 
   const routeNav = el("nav", "primary-nav route-nav");
   routeNav.setAttribute("aria-label", t("shell.ariaPrimaryNav"));
+  routeNav.style.setProperty("--route-nav-section-columns", String(sections.length));
 
   const routeNavRail = el("div", "route-nav__rail");
   const routeNavList = el("ul", "route-nav__sections");

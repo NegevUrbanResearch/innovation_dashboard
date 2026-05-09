@@ -2,13 +2,16 @@ import Chart from "chart.js/auto";
 import {
   accentPalette,
   baseChartOptions,
+  chartFont,
   chartMutedColor,
   chartTextColor,
   viridisRankColors,
   type AppChart,
 } from "./chart-theme";
+import { mergeBguRowsAcrossResidencePanels } from "./aggregates/bgu-treemap-model";
 import { mountBguCohortPartition } from "./bgu-cohort-partition";
 import { mountBguEmployerTreemap } from "./bgu-employer-treemap";
+import { mountBguResidencePie } from "./bgu-residence-pie";
 import { mountJobsMirroredHiring } from "./jobs-mirrored-hiring";
 import { loadLinkedInData } from "./load-data";
 import { mountChartPanel, type ChartTabDef } from "./chart-panel";
@@ -90,16 +93,16 @@ function hBarConfig(
       scales: {
         x: {
           grid: { color: chartMutedColor() + "33" },
-          ticks: { color: chartMutedColor(), maxTicksLimit: 8 },
+          ticks: { color: chartMutedColor(), maxTicksLimit: 8, font: chartFont(12) },
           title: opts.xTitle
-            ? { display: true, text: opts.xTitle, color: chartMutedColor(), font: { size: 12 } }
+            ? { display: true, text: opts.xTitle, color: chartMutedColor(), font: chartFont(12) }
             : undefined,
         },
         y: {
           grid: { display: false },
           ticks: {
             color: chartTextColor(),
-            font: { size: 12 },
+            font: chartFont(12),
             autoSkip: false,
           },
         },
@@ -129,20 +132,41 @@ export async function mountLinkedInCharts(
     sample = subs("chart.sampleBguCohortOverlap", {
       n: formatLocaleInt(d.cohortVenn.totals.totalProfiles),
     });
-  } else if (routeKey === "network/talent-bgu") {
+  } else if (routeKey === "network/bgu") {
     title = t("chart.titleBguAlumni");
+    const bguRowsBs = d.bguTreemapRows.filter((r) => r.residencePanel === "Lives in BS");
+    const bguEmployersAllRows = mergeBguRowsAcrossResidencePanels(d.bguTreemapRows);
     tabs = [
       {
-        id: "bgu-employer-treemap",
-        label: t("chart.tabBguEmployerTreemap"),
+        id: "bgu-residence-pie",
+        label: t("chart.tabBguResidenceMix"),
+        mount: (canvas) => mountBguResidencePie(canvas, d.bguTreemapRows),
+      },
+      {
+        id: "bgu-employers-all",
+        label: t("chart.tabBguEmployersAll"),
         kind: "custom",
-        mountCustom: (box) => mountBguEmployerTreemap(box, d.bguTreemapRows),
+        mountCustom: (box) => mountBguEmployerTreemap(box, bguEmployersAllRows),
+      },
+      {
+        id: "bgu-employers-bs",
+        label: t("chart.tabBguEmployersInBs"),
+        kind: "custom",
+        mountCustom: (box) => mountBguEmployerTreemap(box, bguRowsBs),
       },
     ];
-    sample = subs("chart.sampleBguEmployerTreemap", {
-      n: formatLocaleInt(d.bguTreemapRows.length),
-    });
-  } else if (routeKey === "economy/jobs") {
+    sample = (tabId: string) => {
+      if (tabId === "bgu-residence-pie") return t("chart.bguResidencePieNote");
+      if (tabId === "bgu-employers-bs") {
+        return subs("chart.sampleBguEmployerTreemap", {
+          n: formatLocaleInt(bguRowsBs.length),
+        });
+      }
+      return subs("chart.sampleBguEmployerTreemap", {
+        n: formatLocaleInt(bguEmployersAllRows.length),
+      });
+    };
+  } else if (routeKey === "network/workforce") {
     title = t("chart.titleJobsHiring");
     const topEmp = topN(d.companiesInBs, 14);
     const employerBarColors = viridisRankColors(topEmp.length);

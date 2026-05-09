@@ -17,25 +17,28 @@ export const en = {
   "locale.switchToEn": "EN",
   "locale.aria": "Switch language",
 
-  "nav.network": "Network",
-  "nav.network.talent": "Data sample",
-  "nav.network.talent-bgu": "BGU alumni",
-  "nav.network.social": "Social media",
-  "nav.network.startups": "Startups",
-  "nav.network.tech-networks": "Tech networks",
+  "nav.dataIndex": "Data Index",
+  "nav.dataIndex.overview": "Overview",
+  "nav.dataIndex.methodology": "Methodology",
 
-  "nav.economy": "Economy",
-  "nav.economy.jobs": "Jobs",
-  "nav.economy.growth": "Growth",
-  "nav.economy.investment-activity": "Investment Activity",
+  "nav.network": "Network Assets",
+  "nav.network.dataSample": "Data Sample",
+  "nav.network.workforce": "Workforce",
+  "nav.network.bgu": "BGU",
 
-  "nav.physical": "Physical",
-  "nav.physical.mobility": "Mobility",
-  "nav.physical.amenities": "Amenities",
-  "nav.physical.infrastructure": "Infrastructure",
+  "nav.economy": "Economic Assets",
+  "nav.economy.ecosystemDensity": "Ecosystem Density",
+  "nav.economy.capitalFlow": "Capital Flow",
+  "nav.economy.innovationBodies": "Innovation bodies",
+  "nav.economy.synergyIndex": "Synergy Index",
+
+  "nav.urban": "Urban Assets",
+  "nav.urban.mobility": "Mobility",
+  "nav.urban.urbanism": "Urbanism",
+  "nav.urban.development": "Development",
 
   "iframe.mobilityTitle": "Mobility dashboard",
-  "iframe.amenitiesTitle": "Urban95 amenities",
+  "iframe.urbanismTitle": "Urban95 amenities",
 
   "page.graphicsPlaceholderSuffix": "Graphics Placeholder",
   "page.chartDataError":
@@ -49,8 +52,8 @@ export const en = {
   "chart.axisPeople": "People",
   "chart.axisMentions": "Mentions",
 
-  "chart.titleBguAlumni": "BGU alumni",
-  "chart.titleJobsHiring": "Jobs and hiring",
+  "chart.titleBguAlumni": "BGU",
+  "chart.titleJobsHiring": "Employers",
 
   "chart.tabResidentsWorkplaces": "Residents → workplaces",
   "chart.tabWorkersHomes": "Workers → homes",
@@ -60,18 +63,25 @@ export const en = {
   "chart.tabDegreeField": "Degree × field",
   "chart.tabDegreeMajor": "Degree × Major",
 
-  "chart.tabBeerShevaEmployers": "Beer Sheva employers",
-  "chart.tabHiringFlows": "Hiring flows",
+  "chart.tabBeerShevaEmployers": "BS Employers",
+  "chart.tabHiringFlows": "Inbound/Outbound",
   "chart.tabInboundHiring": "Inbound hiring",
   "chart.tabOutboundHiring": "Outbound hiring",
   "chart.tabJobTypes": "Job types",
   "chart.tabIndustryVsHome": "Industry vs home",
   "chart.tabBguCohortOverlap": "Cohort overlap",
   "chart.tabBguEmployerTreemap": "Employers by sector",
+  "chart.tabBguResidenceMix": "Alumni residence",
+  "chart.tabBguEmployersAll": "Alumni Jobs by Sector — Total",
+  "chart.tabBguEmployersInBs": "Alumni Jobs by Sector - BS Residents",
+  "chart.bguResidencePieNote":
+    "Shares based on linked residence classification in this extract (see methodology). A \"South\" slice appears only if the data supports it.",
+  "chart.bguResidencePieOther": "Other",
 
   "chart.bguTreemapBack": "Back to sectors",
   "chart.bguTreemapBreadcrumbSectors": "All employers",
   "chart.bguTreemapPanelFilterAria": "Residence panel",
+  "chart.bguTreemapCombinedPanelLabel": "All alumni",
   "chart.bguTreemapOtherBucket": "Other employers",
 
   "chart.bguTreemapUnknownNote":
@@ -105,10 +115,12 @@ export const en = {
     "{label}: {raw} of {known} with a known location ({pct}% of row)",
 
   "chart.legendLivesInBeerSheva": "Lives in Beer Sheva",
-  "chart.legendLivesOutsideBeerSheva": "Lives outside Beer Sheva",
+  "chart.legendLivesOutsideBeerSheva": "Lives Elsewhere",
 
   "chart.treemapResidencePanel.lives_in_bs": "Lives in Beer Sheva",
-  "chart.treemapResidencePanel.lives_outside_bs": "Lives outside Beer Sheva",
+  "chart.treemapResidencePanel.lives_in_south_not_bs":
+    "Lives in the South",
+  "chart.treemapResidencePanel.lives_outside_bs": "Lives Elsewhere",
 
   "chart.liveWork.workInBeerSheva": "Work in Beer Sheva",
   "chart.liveWork.workOutsideBeerSheva": "Work outside Beer Sheva",
