@@ -1,0 +1,61 @@
+.app-header {
+  flex: 0 0 auto;
+  background: #f8fbf9; /* bg/surface — figma-context.md */
+  border-bottom: 1px solid #79747e; /* border/default */
+  padding: 0.75rem 1.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  display: block;
+  height: clamp(44px, 5.2vw, 56px);
+  width: auto;
+  max-width: min(120px, 28vw);
+  object-fit: contain;
+}
+
+/* White SVG asset; invert in light mode for dark mark on light header */
+.brand-logo-nur {
+  display: block;
+  height: clamp(30px, 3.6vw, 40px);
+  width: auto;
+  max-width: min(100px, 24vw);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+html[data-theme="light"] .brand-logo-nur {
+  filter: invert(1);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.brand-title {
+  margin: 0;
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #101317; /* text/primary */
+}
+
+.brand-meta {
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #49454f; /* text/secondary */
+}

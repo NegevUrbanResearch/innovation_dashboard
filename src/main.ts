@@ -1,32 +1,17 @@
-import { initTheme } from "./theme";
-import { initLocale } from "./locale";
-import { syncDocumentMeta } from "./i18n";
-import "./styles.css";
-import { mountApp } from "./shell";
+import { applyLightTheme } from "./theme";
+import { mountAppHeader } from "./app-header";
+import { mountExecutiveOverview } from "./executive-overview/mount-executive-overview";
+import "./app-reset.css";
+import "./app-header.css";
 
-initTheme();
-initLocale();
-syncDocumentMeta();
-window.addEventListener("bsid-locale-change", () => {
-  syncDocumentMeta();
-});
+applyLightTheme();
 
-async function markBraveUiIfNeeded(): Promise<void> {
-  try {
-    const nav = navigator as Navigator & { brave?: { isBrave?: () => Promise<boolean> } };
-    if (nav.brave?.isBrave && (await nav.brave.isBrave())) {
-      document.documentElement.dataset.braveUi = "1";
-      return;
-    }
-  } catch {
-    /* navigator.brave blocked or unavailable */
-  }
-  if (/\bBrave\/\d/i.test(navigator.userAgent)) {
-    document.documentElement.dataset.braveUi = "1";
-  }
+const root = document.querySelector<HTMLElement>("#app");
+if (root) {
+  root.classList.add("app-root");
+  mountAppHeader(root);
+  const main = document.createElement("main");
+  main.className = "app-main";
+  root.appendChild(main);
+  void mountExecutiveOverview(main);
 }
-
-void markBraveUiIfNeeded().finally(() => {
-  const root = document.querySelector<HTMLElement>("#app");
-  if (root) mountApp(root);
-});

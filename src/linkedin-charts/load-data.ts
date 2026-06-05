@@ -41,7 +41,7 @@ function publicDataUrl(name: string): string {
   return base.endsWith("/") ? `${base}linkedin-data/${name}` : `${base}/linkedin-data/${name}`;
 }
 
-async function fetchDataCsv(name: string): Promise<string> {
+export async function fetchDataCsv(name: string): Promise<string> {
   const res = await fetch(publicDataUrl(name), { cache: "default" });
   if (!res.ok) {
     throw new Error(`Failed to load linkedin-data/${name} (${res.status})`);
