@@ -11,7 +11,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node;
 }
 
-/** Brand-only header — logos + title + meta. No nav or toggles. */
+/** Brand-only header — title + logos. No nav or toggles. */
 export function mountAppHeader(root: HTMLElement): void {
   const header = el("header", "app-header");
   const brand = el("div", "brand");
@@ -35,15 +35,14 @@ export function mountAppHeader(root: HTMLElement): void {
   nurLogo.height = 157;
   nurLogo.decoding = "async";
 
-  brandLogos.appendChild(logoWrap);
   brandLogos.appendChild(nurLogo);
+  brandLogos.appendChild(logoWrap);
 
   const brandText = el("div", "brand-text");
   brandText.appendChild(el("h1", "brand-title", COPY.headerTitle));
-  brandText.appendChild(el("span", "brand-meta", COPY.headerMeta));
 
-  brand.appendChild(brandLogos);
   brand.appendChild(brandText);
+  brand.appendChild(brandLogos);
   header.appendChild(brand);
   root.appendChild(header);
 }

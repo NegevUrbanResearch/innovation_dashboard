@@ -17,7 +17,7 @@
   --eo-physical-soft: #fcd68d; /* category/physical/bg-soft = surface */
 
   --eo-font-value: "Libre Bodoni", Georgia, serif;
-  --eo-font-ui: "Public Sans", system-ui, sans-serif;
+  --eo-font-ui: "Open Sans", system-ui, sans-serif;
 
   --eo-card-radius: 10px;
   --eo-card-stroke: 1px;
@@ -205,7 +205,7 @@
   text-align: start;
 }
 
-/* KPI name — Public Sans SemiBold 13px, category accent */
+/* KPI name — Open Sans SemiBold 13px, category accent */
 .exec-kpi-card__name {
   margin: 0;
   font-size: var(--eo-name-size);
@@ -214,7 +214,7 @@
   color: var(--eo-category-accent);
 }
 
-/* Period — Public Sans Regular 13px, text/secondary */
+/* Period — Open Sans Regular 13px, text/secondary */
 .exec-kpi-card__period {
   margin: 0;
   font-size: var(--eo-period-size);
@@ -243,7 +243,7 @@
   color: var(--eo-text-primary);
 }
 
-/* Baseline row — Public Sans 12px */
+/* Baseline row — Open Sans 12px */
 .exec-kpi-card__baseline {
   font-size: var(--eo-baseline-size);
   font-weight: 400;
@@ -283,7 +283,7 @@
   text-align: end;
 }
 
-/* Forecast value — Public Sans Bold 12px, text/secondary */
+/* Forecast value — Open Sans Bold 12px, text/secondary */
 .exec-kpi-card__footer-line--target {
   margin: 0;
   font-size: var(--eo-target-size);
@@ -292,11 +292,11 @@
   line-height: 1.2;
 }
 
-/* Next update — Public Sans ExtraLight 8px, text/primary @ 60% */
+/* Next update — Open Sans Light 8px, text/primary @ 60% */
 .exec-kpi-card__footer-line--next-update {
   margin: 0;
   font-size: var(--eo-next-update-size);
-  font-weight: 200;
+  font-weight: 300;
   color: color-mix(in srgb, var(--eo-text-primary) 60%, transparent);
   line-height: 1.2;
 }
