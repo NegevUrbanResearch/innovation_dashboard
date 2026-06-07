@@ -1,6 +1,7 @@
 import "./executive-overview.css";
 import { attachGridScale } from "./fit-grid-to-host";
 import { loadQuarterAlumniCount } from "./load-cohort-alumni";
+import { loadRealEstateDealsKpi } from "./real-estate-deals";
 import { buildExecutiveOverviewModel } from "./static-kpi-data";
 import { mountKpiCard } from "./kpi-card";
 import type { KpiCardModel, KpiCategory } from "./types";
@@ -40,13 +41,18 @@ export async function mountExecutiveOverview(root: HTMLElement): Promise<void> {
   root.appendChild(el("div", "executive-overview__loading", "Loading…"));
 
   let alumniCount: string | null = null;
+  let realEstateDeals = null;
   try {
-    alumniCount = await loadQuarterAlumniCount();
+    [alumniCount, realEstateDeals] = await Promise.all([
+      loadQuarterAlumniCount(),
+      loadRealEstateDealsKpi(),
+    ]);
   } catch {
     alumniCount = null;
+    realEstateDeals = null;
   }
 
-  const blocks = buildExecutiveOverviewModel(alumniCount);
+  const blocks = buildExecutiveOverviewModel(alumniCount, realEstateDeals);
 
   const page = el("div", "executive-overview");
   const scaleHost = el("div", "executive-overview__scale-host");

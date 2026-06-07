@@ -25,22 +25,31 @@ export type KpiId =
 export type KpiDataSource =
   | "static-companies"
   | "static-amenities"
+  | "static-commuting-count"
+  | "static-pedestrian-activity"
+  | "static-district-employment"
+  | "static-open-positions"
   | "cohort-alumni"
+  | "real-estate-deals"
   | "none";
 
 /** Literal string used for all missing v1 field values. */
 export const NA = "NA";
 
+export type KpiDeltaDirection = "up" | "down" | "flat";
+
 /**
- * Eight user-visible text fields per KPI card (Figma periodic/element-core).
+ * User-visible text fields per KPI card (Figma periodic/element-core).
  *
- * Body baseline row (single combined line):
- *   `{deltaValue} {vs} {baselinePeriodLabel} ({baselineValue})`
- *   where `{vs}` is the COPY.vs connector ("vs.").
+ * Body layout:
+ *   `{periodLabel}`
+ *   `{currentValue}`
+ *   `{deltaDirection arrow} {deltaValue}`  (prominent row when deltaValue is set)
+ *   `{vs} {baselinePeriodLabel} ({baselineValue})`
  *
  * Footer (always two lines):
  *   `{footerTargetPrefix} {forecastValueLabel}`  → "Target: NA"
- *   `{footerNextUpdatePrefix} {forecastDateLabel}` → "Next update: November 2026"
+ *   `{footerNextUpdatePrefix} {forecastDateLabel}` → "Next update: Q2 2026"
  */
 export type KpiDisplayFields = {
   kpiName: string;
@@ -48,6 +57,7 @@ export type KpiDisplayFields = {
   currentValue: string;
   baselineValue: string;
   deltaValue: string;
+  deltaDirection?: KpiDeltaDirection;
   baselinePeriodLabel: string;
   forecastDateLabel: string;
   forecastValueLabel: string;

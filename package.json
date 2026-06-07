@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:real-estate-kpi && vite build",
+    "build:real-estate-kpi": "python scripts/build-real-estate-kpi.py",
     "preview": "vite preview",
     "test:linkedin-charts": "node --experimental-strip-types --test src/linkedin-charts/jobs-mirrored-model.test.ts",
+    "test:executive-overview": "node --experimental-strip-types --test src/executive-overview/real-estate-deals.test.ts",
     "postinstall": "patch-package"
   },
   "devDependencies": {

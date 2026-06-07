@@ -1,5 +1,5 @@
 import { COPY } from "./copy";
-import type { KpiCategory, KpiDisplayFields } from "./types";
+import { NA, type KpiCategory, type KpiDeltaDirection, type KpiDisplayFields } from "./types";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -18,10 +18,87 @@ function numericSpan(className: string, text: string): HTMLSpanElement {
   return span;
 }
 
-function deltaClass(deltaValue: string): string {
-  if (deltaValue.startsWith("+")) return "exec-kpi-card__delta-value exec-kpi-card__delta-value--positive";
-  if (deltaValue.startsWith("-")) return "exec-kpi-card__delta-value exec-kpi-card__delta-value--negative";
-  return "exec-kpi-card__delta-value";
+function resolveDeltaDirection(
+  deltaValue: string,
+  explicit?: KpiDeltaDirection,
+): KpiDeltaDirection | null {
+  if (explicit) return explicit;
+  if (deltaValue === NA) return null;
+  if (deltaValue.startsWith("+")) return "up";
+  if (deltaValue.startsWith("-")) return "down";
+  return "flat";
+}
+
+function deltaToneClass(direction: KpiDeltaDirection): string {
+  if (direction === "up") return "positive";
+  if (direction === "down") return "negative";
+  return "flat";
+}
+
+function deltaModifierClass(direction: KpiDeltaDirection): string {
+  return `exec-kpi-card__delta exec-kpi-card__delta--${deltaToneClass(direction)}`;
+}
+
+function createDeltaArrowIcon(direction: "up" | "down"): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("class", `exec-kpi-card__delta-arrow exec-kpi-card__delta-arrow--${direction}`);
+  svg.setAttribute("aria-hidden", "true");
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  if (direction === "up") {
+    path.setAttribute("d", "M8 2.75 2.5 9.25h11L8 2.75Z");
+  } else {
+    path.setAttribute("d", "M8 13.25 13.5 6.75h-11L8 13.25Z");
+  }
+
+  svg.appendChild(path);
+  return svg;
+}
+
+function createDeltaFlatIcon(): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("class", "exec-kpi-card__delta-flat");
+  svg.setAttribute("aria-hidden", "true");
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M3.5 8h9");
+  path.setAttribute("stroke", "currentColor");
+  path.setAttribute("stroke-width", "2");
+  path.setAttribute("stroke-linecap", "round");
+
+  svg.appendChild(path);
+  return svg;
+}
+
+function mountDeltaIndicator(direction: KpiDeltaDirection): SVGSVGElement {
+  if (direction === "up" || direction === "down") {
+    return createDeltaArrowIcon(direction);
+  }
+  return createDeltaFlatIcon();
+}
+
+function mountDeltaBadge(fields: KpiDisplayFields): HTMLElement | null {
+  const direction = resolveDeltaDirection(fields.deltaValue, fields.deltaDirection);
+  if (!direction) return null;
+
+  const badge = el("span", deltaModifierClass(direction));
+  badge.appendChild(numericSpan("exec-kpi-card__delta-value", fields.deltaValue));
+  badge.appendChild(mountDeltaIndicator(direction));
+  return badge;
+}
+
+function mountValueRow(fields: KpiDisplayFields): HTMLElement {
+  const row = el("div", "exec-kpi-card__value-row");
+  const wrap = el("span", "exec-kpi-card__value-wrap");
+  wrap.appendChild(numericSpan("exec-kpi-card__value", fields.currentValue));
+
+  const deltaBadge = mountDeltaBadge(fields);
+  if (deltaBadge) wrap.appendChild(deltaBadge);
+
+  row.appendChild(wrap);
+  return row;
 }
 
 export function mountKpiCard(
@@ -36,13 +113,10 @@ export function mountKpiCard(
 
   const body = el("div", "exec-kpi-card__body");
   body.appendChild(el("p", "exec-kpi-card__period", fields.periodLabel));
-  body.appendChild(numericSpan("exec-kpi-card__value", fields.currentValue));
+  body.appendChild(mountValueRow(fields));
 
   const baselineRow = el("div", "exec-kpi-card__baseline");
-  baselineRow.appendChild(
-    numericSpan(deltaClass(fields.deltaValue), fields.deltaValue),
-  );
-  baselineRow.append(` ${COPY.vs} `);
+  baselineRow.append(`${COPY.vs} `);
   baselineRow.appendChild(
     el("span", "exec-kpi-card__baseline-period", fields.baselinePeriodLabel),
   );
