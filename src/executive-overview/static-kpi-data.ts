@@ -1,6 +1,14 @@
-import { CATEGORY_LABELS } from "./copy";
-import { CATEGORY_ORDER, KPI_ROSTER } from "./config";
-import { NA, type KpiDef, type KpiDisplayFields, type KpiRowModel } from "./types";
+import { KPI_ROSTER, LAYOUT_BLOCKS } from "./config";
+import {
+  NA,
+  type KpiCardModel,
+  type KpiDef,
+  type KpiDisplayFields,
+  type KpiId,
+  type OverviewBlock,
+} from "./types";
+
+const KPI_BY_ID = new Map(KPI_ROSTER.map((kpi) => [kpi.id, kpi]));
 
 /** Shared metadata for the two populated static KPIs (May 2026 snapshot). */
 const STATIC_KPI_META: Omit<KpiDisplayFields, "kpiName" | "currentValue"> = {
@@ -33,7 +41,7 @@ function emptyFields(kpiName: string): KpiDisplayFields {
   };
 }
 
-/** Quarter Alumni: currentValue plus period and next-update dates from STATIC_KPI_META. */
+/** Alumni Retention: currentValue plus period and next-update dates from STATIC_KPI_META. */
 function alumniFields(kpiName: string, currentValue: string): KpiDisplayFields {
   const { periodLabel, forecastDateLabel } = STATIC_KPI_META;
   return {
@@ -62,16 +70,38 @@ function fieldsForKpi(def: KpiDef, alumniCount: string | null): KpiDisplayFields
   return emptyFields(def.kpiName);
 }
 
+function cardsForIds(ids: KpiId[], alumniCount: string | null): KpiCardModel[] {
+  return ids.map((id) => {
+    const def = KPI_BY_ID.get(id);
+    if (!def) throw new Error(`Unknown KPI id: ${id}`);
+    return { ...def, ...fieldsForKpi(def, alumniCount) };
+  });
+}
+
 /** Sync model build — caller awaits CSV load first, passes formatted count or null. */
 export function buildExecutiveOverviewModel(
   alumniCount: string | null,
-): KpiRowModel[] {
-  return CATEGORY_ORDER.map((category) => ({
-    category,
-    categoryLabel: CATEGORY_LABELS[category],
-    cards: KPI_ROSTER.filter((k) => k.category === category).map((def) => ({
-      ...def,
-      ...fieldsForKpi(def, alumniCount),
-    })),
-  }));
+): OverviewBlock[] {
+  return LAYOUT_BLOCKS.map((block) => {
+    if (block.kind === "row") {
+      return {
+        kind: "row",
+        category: block.category,
+        categoryLabel: block.categoryLabel,
+        row: {
+          category: block.category,
+          cards: cardsForIds(block.kpiIds, alumniCount),
+        },
+      };
+    }
+    return {
+      kind: "group",
+      category: block.category,
+      categoryLabel: block.categoryLabel,
+      rows: block.rows.map((kpiIds) => ({
+        category: block.category,
+        cards: cardsForIds(kpiIds, alumniCount),
+      })),
+    };
+  });
 }

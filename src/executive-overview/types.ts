@@ -3,18 +3,24 @@ export type KpiCategory = "economy" | "network" | "physical";
 
 export type KpiId =
   | "economy-companies"
-  | "economy-gov-investment"
-  | "economy-private-investment"
+  | "economy-government-investment"
+  | "economy-commercial-investment"
+  | "economy-philanthropic-investment"
   | "economy-commercial-patents"
-  | "economy-philanthropy"
-  | "network-quarter-alumni"
-  | "network-idf-bgu-soroka"
-  | "network-mentions"
-  | "physical-amenities"
-  | "physical-deals"
-  | "physical-rights"
-  | "physical-pipeline"
-  | "physical-canopy";
+  | "network-district-employment"
+  | "network-open-positions"
+  | "network-alumni-retention"
+  | "network-partners-integration"
+  | "network-social-mentions"
+  | "physical-commuting-count"
+  | "physical-pedestrian-activity"
+  | "physical-micromobility"
+  | "physical-district-amenities"
+  | "physical-accessibility"
+  | "physical-real-estate-deals"
+  | "physical-development-rights"
+  | "physical-development-pipeline"
+  | "physical-microclimate";
 
 export type KpiDataSource =
   | "static-companies"
@@ -56,8 +62,37 @@ export type KpiDef = {
 
 export type KpiCardModel = KpiDef & KpiDisplayFields;
 
-export type KpiRowModel = {
+export type KpiCardsRow = {
   category: KpiCategory;
-  categoryLabel: string;
   cards: KpiCardModel[];
 };
+
+export type LayoutBlockDef =
+  | {
+      kind: "row";
+      category: KpiCategory;
+      categoryLabel: string;
+      kpiIds: KpiId[];
+    }
+  | {
+      kind: "group";
+      category: KpiCategory;
+      categoryLabel: string;
+      rows: KpiId[][];
+    };
+
+export type OverviewRowBlock = {
+  kind: "row";
+  category: KpiCategory;
+  categoryLabel: string;
+  row: KpiCardsRow;
+};
+
+export type OverviewGroupBlock = {
+  kind: "group";
+  category: KpiCategory;
+  categoryLabel: string;
+  rows: KpiCardsRow[];
+};
+
+export type OverviewBlock = OverviewRowBlock | OverviewGroupBlock;

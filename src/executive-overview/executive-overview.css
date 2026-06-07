@@ -22,10 +22,11 @@
   --eo-card-radius: 10px;
   --eo-card-stroke: 1px;
   --eo-opener-width: 86px;
-  --eo-card-width: 214px;
+  --eo-card-width-base: 214px;
+  --eo-card-width-boost: 0px;
   --eo-card-height: 155px;
   --eo-card-padding: 6px;
-  --eo-row-gap: 1.25rem;
+  --eo-row-gap: 1rem;
   --eo-card-gap: 0.75rem;
   --eo-scale-to-fit: 0;
   --eo-opener-label-size: 16px;
@@ -68,12 +69,12 @@
 @media (min-width: 900px) and (min-height: 600px) {
   .executive-overview {
     --eo-scale-to-fit: 1;
-    padding: 0.5rem;
+    padding: 0.5rem 0.25rem;
   }
 
   .executive-overview__scale-host {
     overflow: hidden;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
   }
 }
@@ -81,7 +82,7 @@
 @media (min-width: 1200px) and (min-height: 760px) {
   .executive-overview {
     --eo-card-height: 170px;
-    --eo-row-gap: 1.5rem;
+    --eo-row-gap: 1.125rem;
     --eo-opener-label-size: 15px;
     --eo-name-size: 12px;
     --eo-period-size: 12px;
@@ -116,6 +117,26 @@
   min-width: 0;
 }
 
+.executive-overview__category-group {
+  flex: 0 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--eo-card-gap);
+}
+
+.executive-overview__category-group--physical {
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+}
+
+.executive-overview__category-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eo-row-gap);
+}
+
 /* Category opener — 86×155, figma periodic/category-opener-core */
 .executive-overview__row-opener {
   flex: 0 0 var(--eo-opener-width);
@@ -129,6 +150,13 @@
   border: var(--eo-card-stroke) solid var(--eo-category-accent);
   background: var(--eo-category-soft);
   box-sizing: border-box;
+}
+
+/* Physical spans both sub-rows — must follow base opener rule */
+.executive-overview__category-group .executive-overview__row-opener {
+  align-self: stretch;
+  height: auto;
+  min-height: var(--eo-card-height);
 }
 
 .executive-overview__row-opener-label {
@@ -166,10 +194,10 @@
   min-width: 0;
 }
 
-/* KPI card — 214×155, figma periodic/element-core */
+/* KPI card — 214×155, figma periodic/element-core; width boost applied on .executive-overview */
 .exec-kpi-card {
-  flex: 0 0 var(--eo-card-width);
-  width: var(--eo-card-width);
+  flex: 0 0 calc(var(--eo-card-width-base) + var(--eo-card-width-boost));
+  width: calc(var(--eo-card-width-base) + var(--eo-card-width-boost));
   height: var(--eo-card-height);
   min-height: unset;
   border-radius: var(--eo-card-radius);
