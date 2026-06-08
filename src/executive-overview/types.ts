@@ -20,7 +20,8 @@ export type KpiId =
   | "physical-real-estate-deals"
   | "physical-development-rights"
   | "physical-development-pipeline"
-  | "physical-microclimate";
+  | "physical-microclimate"
+  | "physical-property-tax";
 
 export type KpiDataSource =
   | "static-companies"

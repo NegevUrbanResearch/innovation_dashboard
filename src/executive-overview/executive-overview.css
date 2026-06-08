@@ -26,8 +26,10 @@
   --eo-card-width-boost: 0px;
   --eo-card-height: 155px;
   --eo-card-padding: 6px;
-  --eo-row-gap: 1rem;
-  --eo-card-gap: 0.75rem;
+  --eo-row-gap: 1.0625rem;
+  --eo-card-gap: 0.875rem;
+  --eo-card-shadow: 5px 5px 0 rgb(16 19 23 / 0.4);
+  --eo-card-shadow-spread: 5px;
   --eo-scale-to-fit: 0;
   --eo-opener-label-size: 16px;
   --eo-name-size: 13px;
@@ -64,16 +66,18 @@
   align-items: flex-start;
   width: fit-content;
   gap: var(--eo-row-gap);
+  padding-inline: var(--eo-card-shadow-spread);
+  padding-bottom: var(--eo-card-shadow-spread);
 }
 
 @media (min-width: 900px) and (min-height: 600px) {
   .executive-overview {
     --eo-scale-to-fit: 1;
-    padding: 0.5rem 0.25rem;
+    padding: 0.5rem 1.25rem;
   }
 
   .executive-overview__scale-host {
-    overflow: hidden;
+    overflow: visible;
     align-items: center;
     justify-content: center;
   }
@@ -115,6 +119,7 @@
   align-items: flex-start;
   gap: var(--eo-card-gap);
   min-width: 0;
+  padding-left: var(--eo-card-shadow-spread);
 }
 
 .executive-overview__category-group {
@@ -124,6 +129,7 @@
   flex-direction: row;
   align-items: stretch;
   gap: var(--eo-card-gap);
+  padding-left: var(--eo-card-shadow-spread);
 }
 
 .executive-overview__category-group--physical {
@@ -149,7 +155,10 @@
   border-radius: var(--eo-card-radius);
   border: var(--eo-card-stroke) solid var(--eo-category-accent);
   background: var(--eo-category-soft);
+  box-shadow: var(--eo-card-shadow);
   box-sizing: border-box;
+  margin-right: var(--eo-card-shadow-spread);
+  margin-bottom: var(--eo-card-shadow-spread);
 }
 
 /* Physical spans both sub-rows — must follow base opener rule */
@@ -192,6 +201,8 @@
   gap: var(--eo-card-gap);
   overflow-x: auto;
   min-width: 0;
+  padding-right: var(--eo-card-shadow-spread);
+  padding-bottom: var(--eo-card-shadow-spread);
 }
 
 /* KPI card — 214×155, figma periodic/element-core; width boost applied on .executive-overview */
@@ -203,6 +214,7 @@
   border-radius: var(--eo-card-radius);
   border: var(--eo-card-stroke) solid var(--eo-category-accent);
   background: var(--eo-category-soft);
+  box-shadow: var(--eo-card-shadow);
   box-sizing: border-box;
   padding: var(--eo-card-padding);
   display: flex;
@@ -223,6 +235,34 @@
 .exec-kpi-card--physical {
   --eo-category-accent: var(--eo-physical-accent);
   --eo-category-soft: var(--eo-physical-soft);
+}
+
+/* No primary value — unified wash: surface, border, title, and copy fade together */
+.exec-kpi-card--empty {
+  --eo-empty-ink: color-mix(in srgb, var(--eo-category-accent) 38%, var(--eo-canvas));
+  --eo-empty-muted: color-mix(in srgb, var(--eo-text-secondary) 52%, var(--eo-canvas));
+  --eo-empty-value: color-mix(in srgb, var(--eo-text-primary) 40%, var(--eo-canvas));
+  --eo-empty-border: color-mix(in srgb, var(--eo-category-accent) 24%, var(--eo-border-default));
+
+  background: color-mix(in srgb, var(--eo-category-soft) 54%, var(--eo-canvas));
+  border-color: var(--eo-empty-border);
+  --eo-card-shadow: 2px 2px 0 color-mix(in srgb, rgb(16 19 23) 12%, var(--eo-canvas));
+}
+
+.exec-kpi-card--empty .exec-kpi-card__name {
+  color: var(--eo-empty-ink);
+}
+
+.exec-kpi-card--empty .exec-kpi-card__value {
+  color: var(--eo-empty-value);
+}
+
+.exec-kpi-card--empty .exec-kpi-card__period,
+.exec-kpi-card--empty .exec-kpi-card__baseline,
+.exec-kpi-card--empty .exec-kpi-card__baseline-period,
+.exec-kpi-card--empty .exec-kpi-card__baseline-value,
+.exec-kpi-card--empty .exec-kpi-card__footer-line {
+  color: var(--eo-empty-muted);
 }
 
 .exec-kpi-card__header {

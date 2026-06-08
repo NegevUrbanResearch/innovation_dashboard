@@ -22,7 +22,7 @@ export const KPI_ROSTER: KpiDef[] = [
   KPI("network-alumni-retention", "network", "Alumni Retention", "cohort-alumni"),
   KPI("network-partners-integration", "network", "Partners Integration", "none"),
   KPI("network-social-mentions", "network", "Social Mentions", "none"),
-  // Physical (9)
+  // Physical (10)
   KPI("physical-commuting-count", "physical", "Commuting Count", "static-commuting-count"),
   KPI("physical-pedestrian-activity", "physical", "Pedestrian Activity", "static-pedestrian-activity"),
   KPI("physical-micromobility", "physical", "Micromobility", "none"),
@@ -32,6 +32,7 @@ export const KPI_ROSTER: KpiDef[] = [
   KPI("physical-development-rights", "physical", "Development Rights", "none"),
   KPI("physical-development-pipeline", "physical", "Development Pipeline", "none"),
   KPI("physical-microclimate", "physical", "Microclimate", "none"),
+  KPI("physical-property-tax", "physical", "Property Tax", "none"),
 ];
 
 /** Card count in the widest row — used to distribute extra width when height-limited. */
@@ -80,6 +81,7 @@ export const LAYOUT_BLOCKS: LayoutBlockDef[] = [
         "physical-development-rights",
         "physical-development-pipeline",
         "physical-microclimate",
+        "physical-property-tax",
       ],
     ],
   },

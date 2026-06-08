@@ -105,7 +105,11 @@ export function mountKpiCard(
   fields: KpiDisplayFields,
   category: KpiCategory,
 ): HTMLElement {
-  const card = el("article", `exec-kpi-card exec-kpi-card--${category}`);
+  const isEmpty = fields.currentValue === NA;
+  const card = el(
+    "article",
+    `exec-kpi-card exec-kpi-card--${category}${isEmpty ? " exec-kpi-card--empty" : ""}`,
+  );
   card.dataset.category = category;
 
   const header = el("header", "exec-kpi-card__header");
