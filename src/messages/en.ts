@@ -1,9 +1,9 @@
 export const en = {
-  "meta.title": "Beer Sheva Innovation District",
+  "meta.title": "Beer Sheva Innovation District Performance Metrics",
   "meta.description":
-    "Beer Sheva Innovation District — data dashboard template",
+    "Beer Sheva Innovation District Performance Metrics — data dashboard template",
 
-  "shell.brandTitle": "Beer Sheva Innovation District",
+  "shell.brandTitle": "Beer Sheva Innovation District Performance Metrics",
   "shell.brandMeta": "Prototype mockup",
   "shell.logoAlt": "Innovation District Beer Sheva",
   "shell.nurLogoAlt": "Nur",

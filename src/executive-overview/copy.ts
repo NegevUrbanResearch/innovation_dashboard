@@ -1,6 +1,6 @@
 /** v1 English-only UI strings. No i18n layer. */
 export const COPY = {
-  headerTitle: "Beer Sheva Innovation District",
+  headerTitle: "Beer Sheva Innovation District Performance Metrics",
   headerLogoAlt: "Innovation District logo",
   headerNurLogoAlt: "Nur logo",
   vs: "vs.",

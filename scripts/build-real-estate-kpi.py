@@ -27,6 +27,7 @@ DEFAULT_AS_OF = date(2026, 6, 8)
 
 RESIDENTIAL = "\u05de\u05d2\u05d5\u05e8\u05d9\u05dd"
 IN_DISTRICT = "1.0"
+NEXT_UPDATE_LABEL = "Q1 2027"
 
 
 def parse_quarter_key(key: str) -> tuple[int, int]:
@@ -135,6 +136,11 @@ def next_quarter_label(key: str) -> str:
     if num == 4:
         return f"Q1 {year + 1}"
     return f"Q{num + 1} {year}"
+
+
+def year_ago_quarter_key(key: str) -> str:
+    year, quarter = parse_quarter_key(key)
+    return format_quarter_key(year - 1, quarter)
 
 
 def format_delta(delta: int) -> str:
@@ -377,7 +383,13 @@ def main() -> int:
         return 1
 
     current_key = complete_keys[-1]
-    previous_key = complete_keys[-2]
+    previous_key = year_ago_quarter_key(current_key)
+    if previous_key not in by_quarter:
+        print(
+            f"build-real-estate-kpi: missing year-ago quarter {previous_key!r} for {current_key!r}",
+            file=sys.stderr,
+        )
+        return 1
     current_count = by_quarter[current_key]
     previous_count = by_quarter[previous_key]
     delta = current_count - previous_count
@@ -398,7 +410,7 @@ def main() -> int:
         "deltaDirection": delta_direction(delta),
         "baselinePeriodLabel": quarter_label(previous_key),
         "baselineValue": f"{previous_count:,}",
-        "nextUpdateLabel": next_quarter_label(current_key),
+        "nextUpdateLabel": NEXT_UPDATE_LABEL,
     }
 
     timeseries_payload = {

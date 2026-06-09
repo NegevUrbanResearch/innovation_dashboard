@@ -124,7 +124,19 @@ function buildDataset(
   });
 }
 
+function completeRowsForResolution(
+  timeseriesData: { monthly: RealEstateTimeseriesRow[]; quarterly: RealEstateTimeseriesRow[] },
+  resolution: RealEstateResolution,
+): RealEstateTimeseriesRow[] {
+  const rows = resolution === "monthly" ? timeseriesData.monthly : timeseriesData.quarterly;
+  return rows.filter((row) => row.complete);
+}
+
 function defaultRangeForRows(rows: RealEstateTimeseriesRow[], resolution: RealEstateResolution): RealEstatePeriodRange {
+  if (rows.length === 0) {
+    return { start: "", end: "" };
+  }
+
   const windowSize = resolution === "monthly" ? 36 : 12;
   const startIndex = Math.max(0, rows.length - windowSize);
   return {
@@ -133,9 +145,14 @@ function defaultRangeForRows(rows: RealEstateTimeseriesRow[], resolution: RealEs
   };
 }
 
-function findIndexForPeriod(rows: RealEstateTimeseriesRow[], period: string): number {
+function findIndexForPeriod(
+  rows: RealEstateTimeseriesRow[],
+  period: string,
+  fallback: "start" | "end" = "start",
+): number {
   const index = rows.findIndex((row) => row.period === period);
-  return index >= 0 ? index : 0;
+  if (index >= 0) return index;
+  return fallback === "end" ? Math.max(0, rows.length - 1) : 0;
 }
 
 function clampIndex(value: number, max: number): number {
@@ -164,9 +181,17 @@ function normalizeRange(
   rows: RealEstateTimeseriesRow[],
   range: RealEstatePeriodRange,
 ): { startIndex: number; endIndex: number; range: RealEstatePeriodRange } {
+  if (rows.length === 0) {
+    return {
+      startIndex: 0,
+      endIndex: 0,
+      range: { start: "", end: "" },
+    };
+  }
+
   const maxIndex = rows.length - 1;
-  const rawStart = clampIndex(findIndexForPeriod(rows, range.start), maxIndex);
-  const rawEnd = clampIndex(findIndexForPeriod(rows, range.end), maxIndex);
+  const rawStart = clampIndex(findIndexForPeriod(rows, range.start, "start"), maxIndex);
+  const rawEnd = clampIndex(findIndexForPeriod(rows, range.end, "end"), maxIndex);
   const startIndex = Math.min(rawStart, rawEnd);
   const endIndex = Math.max(rawStart, rawEnd);
   return {
@@ -206,7 +231,7 @@ export function mountRealEstateDeepDive(
     } = {
       metric: "deals",
       resolution: "quarterly",
-      range: defaultRangeForRows(timeseriesData.quarterly, "quarterly"),
+      range: defaultRangeForRows(completeRowsForResolution(timeseriesData, "quarterly"), "quarterly"),
     };
 
     const shell = el("section", "exec-real-estate");
@@ -334,7 +359,7 @@ export function mountRealEstateDeepDive(
     mapController = mountRealEstateDeepDiveMap(rightSlot, state.resolution, state.range);
 
     function currentRows(): RealEstateTimeseriesRow[] {
-      return state.resolution === "monthly" ? timeseriesData.monthly : timeseriesData.quarterly;
+      return completeRowsForResolution(timeseriesData, state.resolution);
     }
 
     function currentVisibleRows(): RealEstateTimeseriesRow[] {

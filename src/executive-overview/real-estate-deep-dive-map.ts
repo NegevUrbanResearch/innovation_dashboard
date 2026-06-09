@@ -286,26 +286,6 @@ export function mountRealEstateDeepDiveMap(
   initialRange: RealEstatePeriodRange,
 ): RealEstateDeepDiveMapController {
   const shell = el("section", "exec-real-estate-map");
-  const header = el("header", "exec-real-estate-map__header");
-  header.appendChild(el("h3", "exec-real-estate-map__title", "Spatial distribution"));
-  const filterPill = el("p", "exec-real-estate-map__filter");
-  header.appendChild(filterPill);
-
-  const legend = el("div", "exec-real-estate-map__legend");
-  legend.appendChild(
-    el(
-      "span",
-      "exec-real-estate-map__legend-item exec-real-estate-map__legend-item--district",
-      "Innovation District",
-    ),
-  );
-  legend.appendChild(
-    el(
-      "span",
-      "exec-real-estate-map__legend-item exec-real-estate-map__legend-item--outside",
-      "Outside Innovation District",
-    ),
-  );
 
   const canvasWrap = el("div", "exec-real-estate-map__canvas-wrap");
   const canvas = el("div", "exec-real-estate-map__canvas");
@@ -317,8 +297,6 @@ export function mountRealEstateDeepDiveMap(
   canvasWrap.appendChild(canvas);
   canvasWrap.appendChild(loadingState);
 
-  shell.appendChild(header);
-  shell.appendChild(legend);
   shell.appendChild(canvasWrap);
   host.replaceChildren(shell);
 
@@ -351,10 +329,6 @@ export function mountRealEstateDeepDiveMap(
     activePopup = popup;
   }
 
-  function updateFilterPill() {
-    filterPill.textContent = `${range.start} - ${range.end}`;
-  }
-
   function buildFilterKey(allowedPeriods: string[]): string {
     if (allowedPeriods.length === 0) return `${resolution}|${EMPTY_FILTER_KEY}`;
     return `${resolution}|${allowedPeriods.join("|")}`;
@@ -373,7 +347,6 @@ export function mountRealEstateDeepDiveMap(
   }
 
   function scheduleFilterApply(force = false) {
-    updateFilterPill();
     if (scheduledFilterFrame !== null) {
       if (!force) return;
       cancelAnimationFrame(scheduledFilterFrame);
@@ -558,8 +531,6 @@ export function mountRealEstateDeepDiveMap(
       );
     }
   })();
-
-  updateFilterPill();
 
   return {
     setPeriodRange(nextRange, nextResolution) {

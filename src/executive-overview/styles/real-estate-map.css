@@ -1,13 +1,6 @@
 .exec-real-estate-map {
   display: grid;
-  grid-template-rows: auto auto minmax(20rem, 1fr);
-  gap: 0.85rem;
-}
-
-.exec-real-estate-map__filter {
-  flex: 0 0 auto;
-  max-width: 16rem;
-  text-align: end;
+  grid-template-rows: minmax(20rem, 1fr);
 }
 
 .exec-real-estate-map__canvas-wrap {
