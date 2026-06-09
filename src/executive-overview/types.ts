@@ -36,6 +36,21 @@ export type KpiDataSource =
 
 export type KpiDeepDiveId = "real-estate-deals";
 
+export type DeepDiveController = {
+  destroy(): void;
+  onVisible(): void;
+};
+
+export type DeepDiveSlots = {
+  left: HTMLElement;
+  right: HTMLElement;
+};
+
+export type DeepDiveRenderer = (
+  card: KpiCardModel,
+  slots: DeepDiveSlots,
+) => DeepDiveController;
+
 export type DeepDiveCapability = {
   id: KpiDeepDiveId;
   label: string;

@@ -1,4 +1,4 @@
-import { mountRealEstateDeepDive, type RealEstateDeepDiveController } from "./real-estate-deep-dive";
+import { renderRegisteredDeepDive } from "./deep-dive-registry";
 import {
   captureDeepDiveCloseSnapshot,
   captureDeepDiveOpenSnapshot,
@@ -9,13 +9,7 @@ import {
   resetOriginFlipSurface,
   type DeepDiveMotionSnapshot,
 } from "./overlay-motion";
-import type { KpiCardModel } from "./types";
-
-type DeepDiveRenderer = (
-  card: KpiCardModel,
-  leftSlot: HTMLElement,
-  rightSlot: HTMLElement,
-) => RealEstateDeepDiveController | void;
+import type { DeepDiveController, KpiCardModel } from "./types";
 
 const FOCUSABLE_SELECTOR = [
   "a[href]",
@@ -65,44 +59,6 @@ function getFocusableElements(scope: HTMLElement): HTMLElement[] {
   });
 }
 
-function renderUnavailableState(
-  card: KpiCardModel,
-  leftSlot: HTMLElement,
-  rightSlot: HTMLElement,
-): void {
-  const unavailable = el("section", "exec-deep-dive__placeholder exec-deep-dive__placeholder--unavailable");
-  unavailable.appendChild(el("h3", "exec-deep-dive__placeholder-title", `${card.kpiName} is not available yet`));
-  unavailable.appendChild(
-    el(
-      "p",
-      "exec-deep-dive__placeholder-copy",
-      "This KPI does not have a deep-dive content module wired into the shell yet.",
-    ),
-  );
-  leftSlot.appendChild(unavailable);
-  rightSlot.appendChild(el("div", "exec-deep-dive__loading-state", "Deep-dive content unavailable"));
-}
-
-function renderDeepDive(
-  card: KpiCardModel,
-  leftSlot: HTMLElement,
-  rightSlot: HTMLElement,
-): RealEstateDeepDiveController | void {
-  leftSlot.replaceChildren();
-  rightSlot.replaceChildren();
-
-  const renderers: Record<string, DeepDiveRenderer> = {
-    "real-estate-deals": () => mountRealEstateDeepDive(leftSlot, rightSlot),
-  };
-
-  const deepDiveId = card.deepDive?.id;
-  if (deepDiveId && renderers[deepDiveId]) {
-    return renderers[deepDiveId](card, leftSlot, rightSlot);
-  }
-
-  renderUnavailableState(card, leftSlot, rightSlot);
-}
-
 export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayController {
   const overlay = el("section", "exec-deep-dive-overlay");
   overlay.hidden = true;
@@ -147,7 +103,7 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
   let activeMotionSnapshot: DeepDiveMotionSnapshot | null = null;
   let isOpen = false;
   let isDestroyed = false;
-  let activeController: RealEstateDeepDiveController | null = null;
+  let activeController: DeepDiveController | null = null;
   let transitionToken = 0;
   const backgroundSiblings = Array.from(host.children).filter((node) => node !== overlay) as HTMLElement[];
 
@@ -272,7 +228,7 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     const originRect = origin.getBoundingClientRect();
     activeOriginRect = new DOMRect(originRect.left, originRect.top, originRect.width, originRect.height);
     title.textContent = card.kpiName;
-    activeController = renderDeepDive(card, leftSlot, rightSlot) ?? null;
+    activeController = renderRegisteredDeepDive(card, leftSlot, rightSlot) || null;
 
     overlay.hidden = false;
     overlay.setAttribute("aria-hidden", "false");
