@@ -3,7 +3,7 @@ export const COPY = {
   headerTitle: "Beer Sheva Innovation District Performance Metrics",
   headerLogoAlt: "Innovation District logo",
   headerNurLogoAlt: "Nur logo",
-  vs: "vs.",
+  comparedTo: "compared to",
   footerTargetPrefix: "Target:",
   footerNextUpdatePrefix: "Next update:",
 } as const;

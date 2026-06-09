@@ -1,5 +1,5 @@
-import { COPY } from "./copy";
-import { NA, type KpiCardModel, type KpiDeltaDirection, type KpiDisplayFields } from "./types";
+import { COPY } from "./copy.ts";
+import { NA, type KpiCardModel, type KpiDeltaDirection, type KpiDisplayFields } from "./types.ts";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -91,13 +91,35 @@ function mountDeltaBadge(fields: KpiDisplayFields): HTMLElement | null {
 
 function mountValueRow(fields: KpiDisplayFields): HTMLElement {
   const row = el("div", "exec-kpi-card__value-row");
-  const wrap = el("span", "exec-kpi-card__value-wrap");
-  wrap.appendChild(numericSpan("exec-kpi-card__value", fields.currentValue));
+  row.appendChild(numericSpan("exec-kpi-card__value", fields.currentValue));
+  return row;
+}
+
+function mountBaselineCompare(fields: KpiDisplayFields): HTMLElement {
+  const compare = el("span", "exec-kpi-card__baseline-compare");
+  compare.dir = "ltr";
+  compare.appendChild(
+    el("span", "exec-kpi-card__baseline-compare-label", `${COPY.comparedTo} `),
+  );
+  compare.appendChild(
+    el("span", "exec-kpi-card__baseline-period", fields.baselinePeriodLabel),
+  );
+  compare.append(" (");
+  compare.appendChild(
+    numericSpan("exec-kpi-card__baseline-value", fields.baselineValue),
+  );
+  compare.append(")");
+  return compare;
+}
+
+function mountBaselineRow(fields: KpiDisplayFields): HTMLElement {
+  const row = el("div", "exec-kpi-card__baseline");
 
   const deltaBadge = mountDeltaBadge(fields);
-  if (deltaBadge) wrap.appendChild(deltaBadge);
+  if (deltaBadge) row.appendChild(deltaBadge);
 
-  row.appendChild(wrap);
+  row.appendChild(mountBaselineCompare(fields));
+
   return row;
 }
 
@@ -147,17 +169,7 @@ export function mountKpiCard(
   body.appendChild(el("p", "exec-kpi-card__period", fields.periodLabel));
   body.appendChild(mountValueRow(fields));
 
-  const baselineRow = el("div", "exec-kpi-card__baseline");
-  baselineRow.append(`${COPY.vs} `);
-  baselineRow.appendChild(
-    el("span", "exec-kpi-card__baseline-period", fields.baselinePeriodLabel),
-  );
-  baselineRow.append(" (");
-  baselineRow.appendChild(
-    numericSpan("exec-kpi-card__baseline-value", fields.baselineValue),
-  );
-  baselineRow.append(")");
-  body.appendChild(baselineRow);
+  body.appendChild(mountBaselineRow(fields));
 
   const footer = el("footer", "exec-kpi-card__footer");
   const targetLine = el("p", "exec-kpi-card__footer-line exec-kpi-card__footer-line--target");

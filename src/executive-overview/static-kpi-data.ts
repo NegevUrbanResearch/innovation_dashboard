@@ -53,15 +53,16 @@ function emptyFields(kpiName: string): KpiDisplayFields {
   };
 }
 
-/** Alumni Retention: currentValue plus period and next-update dates from STATIC_KPI_META. */
+/** Alumni Retention: currentValue plus shared static snapshot meta (no real baseline yet). */
 function alumniFields(kpiName: string, currentValue: string): KpiDisplayFields {
-  const { periodLabel, forecastDateLabel } = STATIC_KPI_META;
+  const { periodLabel, deltaValue, deltaDirection, forecastDateLabel } = STATIC_KPI_META;
   return {
     kpiName,
     currentValue,
     periodLabel,
     baselineValue: NA,
-    deltaValue: NA,
+    deltaValue,
+    deltaDirection,
     baselinePeriodLabel: NA,
     forecastDateLabel,
     forecastValueLabel: NA,

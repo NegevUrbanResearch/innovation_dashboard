@@ -18,6 +18,7 @@
   --eo-physical-outside-accent: #4d7c82;
 
   --eo-font-value: "Libre Bodoni", Georgia, serif;
+  --eo-font-display: var(--font-display);
   --eo-font-ui: "Open Sans", system-ui, sans-serif;
 
   --eo-card-radius: 10px;

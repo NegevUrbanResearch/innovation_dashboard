@@ -130,9 +130,10 @@
 }
 
 .executive-overview__row-opener-label {
-  font-family: var(--eo-font-ui);
+  font-family: var(--eo-font-display);
   font-size: var(--eo-opener-label-size);
   font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--eo-text-primary);
   text-align: center;
   line-height: 1.2;

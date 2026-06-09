@@ -55,8 +55,9 @@ html[data-theme="light"] .brand-logo-nur {
 
 .brand-title {
   margin: 0;
-  font-family: "Open Sans", system-ui, sans-serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
+  letter-spacing: -0.02em;
   color: #101317; /* text/primary */
 }

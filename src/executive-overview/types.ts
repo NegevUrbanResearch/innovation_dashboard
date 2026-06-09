@@ -52,8 +52,8 @@ export type KpiDeltaDirection = "up" | "down" | "flat";
  * Body layout:
  *   `{periodLabel}`
  *   `{currentValue}`
- *   `{deltaDirection arrow} {deltaValue}`  (prominent row when deltaValue is set)
- *   `{vs} {baselinePeriodLabel} ({baselineValue})`
+ *   `{deltaValue} {deltaDirection arrow}`  (pill chip left of compare when deltaValue is set)
+ *   `{comparedTo} {baselinePeriodLabel} ({baselineValue})`
  *
  * Footer (always two lines):
  *   `{footerTargetPrefix} {forecastValueLabel}`  → "Target: NA"
