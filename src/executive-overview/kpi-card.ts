@@ -1,5 +1,5 @@
 import { COPY } from "./copy";
-import { NA, type KpiCategory, type KpiDeltaDirection, type KpiDisplayFields } from "./types";
+import { NA, type KpiCardModel, type KpiDeltaDirection, type KpiDisplayFields } from "./types";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -102,15 +102,43 @@ function mountValueRow(fields: KpiDisplayFields): HTMLElement {
 }
 
 export function mountKpiCard(
-  fields: KpiDisplayFields,
-  category: KpiCategory,
+  cardModel: KpiCardModel,
+  onOpenDeepDive?: (card: KpiCardModel, origin: HTMLElement) => void,
 ): HTMLElement {
+  const { category } = cardModel;
+  const fields: KpiDisplayFields = cardModel;
   const isEmpty = fields.currentValue === NA;
+  const canOpenDeepDive =
+    !isEmpty &&
+    !!cardModel.deepDive &&
+    typeof onOpenDeepDive === "function";
   const card = el(
     "article",
     `exec-kpi-card exec-kpi-card--${category}${isEmpty ? " exec-kpi-card--empty" : ""}`,
   );
   card.dataset.category = category;
+  card.dataset.kpi = cardModel.id;
+
+  const surface = el("div", "exec-kpi-card__surface");
+  const content = el("div", "exec-kpi-card__surface-content");
+  surface.appendChild(content);
+  card.appendChild(surface);
+
+  if (canOpenDeepDive && cardModel.deepDive) {
+    card.dataset.deepDive = cardModel.deepDive.id;
+    card.setAttribute("role", "button");
+    card.tabIndex = 0;
+    card.setAttribute("aria-label", `${cardModel.kpiName}: ${cardModel.deepDive.label}`);
+
+    const openDeepDive = () => onOpenDeepDive(cardModel, card);
+    card.addEventListener("click", openDeepDive);
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openDeepDive();
+    });
+    card.appendChild(el("span", "exec-kpi-card__corner-open-label", "Deep dive"));
+  }
 
   const header = el("header", "exec-kpi-card__header");
   header.appendChild(el("h3", "exec-kpi-card__name", fields.kpiName));
@@ -147,8 +175,9 @@ export function mountKpiCard(
   footer.appendChild(targetLine);
   footer.appendChild(updateLine);
 
-  card.appendChild(header);
-  card.appendChild(body);
-  card.appendChild(footer);
+  content.appendChild(header);
+  content.appendChild(body);
+  content.appendChild(footer);
+
   return card;
 }

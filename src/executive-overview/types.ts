@@ -34,6 +34,13 @@ export type KpiDataSource =
   | "real-estate-deals"
   | "none";
 
+export type KpiDeepDiveId = "real-estate-deals";
+
+export type DeepDiveCapability = {
+  id: KpiDeepDiveId;
+  label: string;
+};
+
 /** Literal string used for all missing v1 field values. */
 export const NA = "NA";
 
@@ -69,6 +76,7 @@ export type KpiDef = {
   category: KpiCategory;
   kpiName: string;
   dataSource: KpiDataSource;
+  deepDive?: DeepDiveCapability;
 };
 
 export type KpiCardModel = KpiDef & KpiDisplayFields;

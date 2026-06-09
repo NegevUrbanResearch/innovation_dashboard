@@ -1,0 +1,69 @@
+.exec-real-estate-map {
+  display: grid;
+  grid-template-rows: auto auto minmax(20rem, 1fr);
+  gap: 0.85rem;
+}
+
+.exec-real-estate-map__filter {
+  flex: 0 0 auto;
+  max-width: 16rem;
+  text-align: end;
+}
+
+.exec-real-estate-map__canvas-wrap {
+  position: relative;
+  min-block-size: 20rem;
+}
+
+.exec-real-estate-map__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.exec-real-estate-map__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--eo-surface) 80%, white);
+  color: var(--eo-text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.exec-real-estate-map__popup {
+  min-width: 13rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--eo-text-primary);
+  font-family: var(--eo-font-ui);
+}
+
+.exec-real-estate-map__popup-eyebrow {
+  margin: 0;
+  color: var(--eo-physical-accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.exec-real-estate-map__popup-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.exec-real-estate-map__popup-row strong {
+  color: var(--eo-text-primary);
+  font-weight: 700;
+}
+
+
+.exec-real-estate-unavailable--map {
+  justify-content: flex-start;
+}

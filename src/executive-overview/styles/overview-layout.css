@@ -1,0 +1,169 @@
+.executive-overview {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  background: var(--eo-canvas);
+  color: var(--eo-text-primary);
+  font-family: var(--eo-font-ui);
+}
+
+.executive-overview__scale-host {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.executive-overview__rows {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  gap: var(--eo-row-gap);
+  padding-inline: var(--eo-card-shadow-spread);
+  padding-bottom: var(--eo-card-shadow-spread);
+}
+
+@media (min-width: 900px) and (min-height: 600px) {
+  .executive-overview {
+    --eo-scale-to-fit: 1;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .executive-overview__scale-host {
+    overflow: visible;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 760px) {
+  .executive-overview {
+    --eo-card-height: 170px;
+    --eo-row-gap: 1.125rem;
+    --eo-opener-label-size: 15px;
+    --eo-name-size: 12px;
+    --eo-period-size: 12px;
+    --eo-value-size: 32px;
+    --eo-baseline-size: 11px;
+    --eo-target-size: 11px;
+    --eo-next-update-size: 9px;
+  }
+}
+
+@media (max-width: 899px), (max-height: 599px) {
+  .executive-overview__rows {
+    zoom: 1;
+  }
+
+  .executive-overview__scale-host {
+    overflow-x: auto;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+
+.executive-overview__row {
+  flex: 0 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: var(--eo-card-gap);
+  min-width: 0;
+  padding-left: var(--eo-card-shadow-spread);
+}
+
+.executive-overview__category-group {
+  flex: 0 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--eo-card-gap);
+  padding-left: var(--eo-card-shadow-spread);
+}
+
+.executive-overview__category-group--physical {
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+}
+
+.executive-overview__category-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eo-row-gap);
+}
+
+/* Category opener — 86×155, figma periodic/category-opener-core */
+.executive-overview__row-opener {
+  flex: 0 0 var(--eo-opener-width);
+  width: var(--eo-opener-width);
+  height: var(--eo-card-height);
+  min-height: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--eo-card-radius);
+  border: var(--eo-card-stroke) solid var(--eo-category-accent);
+  background: var(--eo-category-soft);
+  box-shadow: var(--eo-card-shadow);
+  box-sizing: border-box;
+  margin-right: var(--eo-card-shadow-spread);
+  margin-bottom: var(--eo-card-shadow-spread);
+}
+
+/* Physical spans both sub-rows — must follow base opener rule */
+.executive-overview__category-group .executive-overview__row-opener {
+  align-self: stretch;
+  height: auto;
+  min-height: var(--eo-card-height);
+}
+
+.executive-overview__row-opener-label {
+  font-family: var(--eo-font-ui);
+  font-size: var(--eo-opener-label-size);
+  font-weight: 600;
+  color: var(--eo-text-primary);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.executive-overview__row--economy {
+  --eo-category-accent: var(--eo-economy-accent);
+  --eo-category-soft: var(--eo-economy-soft);
+}
+
+.executive-overview__row--network {
+  --eo-category-accent: var(--eo-network-accent);
+  --eo-category-soft: var(--eo-network-soft);
+}
+
+.executive-overview__row--physical {
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+}
+
+.executive-overview__cards {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--eo-card-gap);
+  overflow-x: auto;
+  min-width: 0;
+  padding-top: 0.35rem;
+  padding-right: var(--eo-card-shadow-spread);
+  padding-bottom: var(--eo-card-shadow-spread);
+}
+

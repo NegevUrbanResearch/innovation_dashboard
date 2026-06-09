@@ -1,0 +1,4074 @@
+{
+  "generatedAt": "2026-06-08",
+  "source": "dist/real-estate/deals-price-changes.csv",
+  "summary": {
+    "totalRows": 47578,
+    "residentialRows": 43561,
+    "rowsWithCoordinates": 47042,
+    "missingCoordinates": 536,
+    "rowsMissingDealDate": 6218
+  },
+  "monthly": [
+    {
+      "period": "1998-02",
+      "label": "Feb 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5396.551724137931
+    },
+    {
+      "period": "1998-03",
+      "label": "Mar 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4750
+    },
+    {
+      "period": "1998-04",
+      "label": "Apr 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5280.092592592593
+    },
+    {
+      "period": "1998-05",
+      "label": "May 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5366.666666666667
+    },
+    {
+      "period": "1998-06",
+      "label": "Jun 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5288
+    },
+    {
+      "period": "1998-07",
+      "label": "Jul 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4282.608695652174
+    },
+    {
+      "period": "1998-10",
+      "label": "Oct 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4464.285714285714
+    },
+    {
+      "period": "1999-02",
+      "label": "Feb 1999",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": 2338.0281690140846,
+      "nonDistrictMedianPricePerSqm": 4839.285714285715
+    },
+    {
+      "period": "1999-03",
+      "label": "Mar 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5800
+    },
+    {
+      "period": "1999-04",
+      "label": "Apr 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5977.165883143049
+    },
+    {
+      "period": "1999-05",
+      "label": "May 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4959.728698601102
+    },
+    {
+      "period": "1999-07",
+      "label": "Jul 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5450
+    },
+    {
+      "period": "1999-08",
+      "label": "Aug 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 6914.817465998569
+    },
+    {
+      "period": "1999-09",
+      "label": "Sep 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4662.5
+    },
+    {
+      "period": "1999-10",
+      "label": "Oct 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5464.788732394366
+    },
+    {
+      "period": "1999-11",
+      "label": "Nov 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5213.77012770683
+    },
+    {
+      "period": "1999-12",
+      "label": "Dec 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4529.058116232465
+    },
+    {
+      "period": "2000-01",
+      "label": "Jan 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 4,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5256.578947368422
+    },
+    {
+      "period": "2000-02",
+      "label": "Feb 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 6626.589347079038
+    },
+    {
+      "period": "2000-03",
+      "label": "Mar 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 6191.839656406586
+    },
+    {
+      "period": "2000-05",
+      "label": "May 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5344.050827878322
+    },
+    {
+      "period": "2000-06",
+      "label": "Jun 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 6256.338675775092
+    },
+    {
+      "period": "2000-11",
+      "label": "Nov 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5761.363636363636
+    },
+    {
+      "period": "2000-12",
+      "label": "Dec 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5709.342560553633
+    },
+    {
+      "period": "2001-01",
+      "label": "Jan 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5337.8378378378375
+    },
+    {
+      "period": "2001-02",
+      "label": "Feb 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 5,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5219.178082191781
+    },
+    {
+      "period": "2001-03",
+      "label": "Mar 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 6,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5301.552795031055
+    },
+    {
+      "period": "2001-04",
+      "label": "Apr 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 6000
+    },
+    {
+      "period": "2001-05",
+      "label": "May 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 7,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5943.820224719101
+    },
+    {
+      "period": "2001-06",
+      "label": "Jun 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 8,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5396.333478830205
+    },
+    {
+      "period": "2001-07",
+      "label": "Jul 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 12,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5388.073394495413
+    },
+    {
+      "period": "2001-08",
+      "label": "Aug 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 7,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5863.1578947368425
+    },
+    {
+      "period": "2001-09",
+      "label": "Sep 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 7,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5437.5
+    },
+    {
+      "period": "2001-10",
+      "label": "Oct 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 15,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5394.883203559511
+    },
+    {
+      "period": "2001-11",
+      "label": "Nov 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 15,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5666.666666666667
+    },
+    {
+      "period": "2001-12",
+      "label": "Dec 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 21,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5345.238095238095
+    },
+    {
+      "period": "2002-01",
+      "label": "Jan 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 5,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5421.0526315789475
+    },
+    {
+      "period": "2002-02",
+      "label": "Feb 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 9,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5465.924895688456
+    },
+    {
+      "period": "2002-03",
+      "label": "Mar 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5406.099231639764
+    },
+    {
+      "period": "2002-04",
+      "label": "Apr 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5780.690935486565
+    },
+    {
+      "period": "2002-05",
+      "label": "May 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 27,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5645.833333333333
+    },
+    {
+      "period": "2002-06",
+      "label": "Jun 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 30,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5586.206896551724
+    },
+    {
+      "period": "2002-07",
+      "label": "Jul 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 19,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5555.555555555556
+    },
+    {
+      "period": "2002-08",
+      "label": "Aug 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 19,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5437.158469945355
+    },
+    {
+      "period": "2002-09",
+      "label": "Sep 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 15,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5022.935779816514
+    },
+    {
+      "period": "2002-10",
+      "label": "Oct 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 24,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5576.690821256039
+    },
+    {
+      "period": "2002-11",
+      "label": "Nov 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 20,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5497.301784973018
+    },
+    {
+      "period": "2002-12",
+      "label": "Dec 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 27,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5393.939393939394
+    },
+    {
+      "period": "2003-01",
+      "label": "Jan 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 17,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5236.559139784947
+    },
+    {
+      "period": "2003-02",
+      "label": "Feb 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 19,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4770.491803278688
+    },
+    {
+      "period": "2003-03",
+      "label": "Mar 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 24,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5022.935779816514
+    },
+    {
+      "period": "2003-04",
+      "label": "Apr 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 44,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5120.360146097002
+    },
+    {
+      "period": "2003-05",
+      "label": "May 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 11,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5092.592592592592
+    },
+    {
+      "period": "2003-06",
+      "label": "Jun 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 21,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5350.772889417361
+    },
+    {
+      "period": "2003-07",
+      "label": "Jul 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 26,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4940.243902439024
+    },
+    {
+      "period": "2003-08",
+      "label": "Aug 2003",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 39,
+      "districtMedianPricePerSqm": 4726.263308437947,
+      "nonDistrictMedianPricePerSqm": 5204.081632653061
+    },
+    {
+      "period": "2003-09",
+      "label": "Sep 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 46,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5254.310344827586
+    },
+    {
+      "period": "2003-10",
+      "label": "Oct 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 48,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5224.966655691413
+    },
+    {
+      "period": "2003-11",
+      "label": "Nov 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 38,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4895.795493162404
+    },
+    {
+      "period": "2003-12",
+      "label": "Dec 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 30,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4395.057962172056
+    },
+    {
+      "period": "2004-01",
+      "label": "Jan 2004",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 48,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5235.332043842682
+    },
+    {
+      "period": "2004-02",
+      "label": "Feb 2004",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 42,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4729.543930248155
+    },
+    {
+      "period": "2004-03",
+      "label": "Mar 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 42,
+      "districtMedianPricePerSqm": 2833.8136407300676,
+      "nonDistrictMedianPricePerSqm": 4620.194556615212
+    },
+    {
+      "period": "2004-04",
+      "label": "Apr 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 36,
+      "districtMedianPricePerSqm": 2385.964912280702,
+      "nonDistrictMedianPricePerSqm": 4752.275384506069
+    },
+    {
+      "period": "2004-05",
+      "label": "May 2004",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": 6656.453271170741,
+      "nonDistrictMedianPricePerSqm": 4655.1699736760165
+    },
+    {
+      "period": "2004-06",
+      "label": "Jun 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 39,
+      "districtMedianPricePerSqm": 2645.1612903225805,
+      "nonDistrictMedianPricePerSqm": 5353.535353535353
+    },
+    {
+      "period": "2004-07",
+      "label": "Jul 2004",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 32,
+      "districtMedianPricePerSqm": 3482.3362145264864,
+      "nonDistrictMedianPricePerSqm": 4471.396396396396
+    },
+    {
+      "period": "2004-08",
+      "label": "Aug 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 30,
+      "districtMedianPricePerSqm": 3815.3846153846152,
+      "nonDistrictMedianPricePerSqm": 5058.786078098472
+    },
+    {
+      "period": "2004-09",
+      "label": "Sep 2004",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 27,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4380
+    },
+    {
+      "period": "2004-10",
+      "label": "Oct 2004",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 36,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5009.353233830845
+    },
+    {
+      "period": "2004-11",
+      "label": "Nov 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 32,
+      "districtMedianPricePerSqm": 3866.4158043273756,
+      "nonDistrictMedianPricePerSqm": 4922.898032200357
+    },
+    {
+      "period": "2004-12",
+      "label": "Dec 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 34,
+      "districtMedianPricePerSqm": 2421.875,
+      "nonDistrictMedianPricePerSqm": 5011.261261261261
+    },
+    {
+      "period": "2005-01",
+      "label": "Jan 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 25,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4380.952380952381
+    },
+    {
+      "period": "2005-02",
+      "label": "Feb 2005",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 18,
+      "districtMedianPricePerSqm": 18812.6159554731,
+      "nonDistrictMedianPricePerSqm": 5047.311827956989
+    },
+    {
+      "period": "2005-03",
+      "label": "Mar 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 12,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4583.797155225727
+    },
+    {
+      "period": "2005-04",
+      "label": "Apr 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 9,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 3421.0526315789475
+    },
+    {
+      "period": "2005-05",
+      "label": "May 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 20,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4750.871051548578
+    },
+    {
+      "period": "2005-06",
+      "label": "Jun 2005",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": 4992.009632224168,
+      "nonDistrictMedianPricePerSqm": 4359.398976982097
+    },
+    {
+      "period": "2005-07",
+      "label": "Jul 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 34,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4515.625
+    },
+    {
+      "period": "2005-08",
+      "label": "Aug 2005",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": 7600,
+      "nonDistrictMedianPricePerSqm": 4779.166666666667
+    },
+    {
+      "period": "2005-09",
+      "label": "Sep 2005",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 34,
+      "districtMedianPricePerSqm": 3230.769230769231,
+      "nonDistrictMedianPricePerSqm": 4630
+    },
+    {
+      "period": "2005-10",
+      "label": "Oct 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 30,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4394.69696969697
+    },
+    {
+      "period": "2005-11",
+      "label": "Nov 2005",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 28,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4480.185280494081
+    },
+    {
+      "period": "2005-12",
+      "label": "Dec 2005",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 20,
+      "districtMedianPricePerSqm": 5472.808647187975,
+      "nonDistrictMedianPricePerSqm": 4625
+    },
+    {
+      "period": "2006-01",
+      "label": "Jan 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 22,
+      "districtMedianPricePerSqm": 3047.7759472817133,
+      "nonDistrictMedianPricePerSqm": 4448.350292938637
+    },
+    {
+      "period": "2006-02",
+      "label": "Feb 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 23,
+      "districtMedianPricePerSqm": 3372.549019607843,
+      "nonDistrictMedianPricePerSqm": 4019.253910950662
+    },
+    {
+      "period": "2006-03",
+      "label": "Mar 2006",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 27,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4780
+    },
+    {
+      "period": "2006-04",
+      "label": "Apr 2006",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 23,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4136.363636363636
+    },
+    {
+      "period": "2006-05",
+      "label": "May 2006",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 22,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4213.609467455621
+    },
+    {
+      "period": "2006-06",
+      "label": "Jun 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 19,
+      "districtMedianPricePerSqm": 5497.382198952879,
+      "nonDistrictMedianPricePerSqm": 4194.805194805195
+    },
+    {
+      "period": "2006-07",
+      "label": "Jul 2006",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 11,
+      "districtMedianPricePerSqm": 3727.486910994764,
+      "nonDistrictMedianPricePerSqm": 5006.954102920723
+    },
+    {
+      "period": "2006-08",
+      "label": "Aug 2006",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 13,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 3980
+    },
+    {
+      "period": "2006-09",
+      "label": "Sep 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 10,
+      "districtMedianPricePerSqm": 3050,
+      "nonDistrictMedianPricePerSqm": 4287.716955941255
+    },
+    {
+      "period": "2006-10",
+      "label": "Oct 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 21,
+      "districtMedianPricePerSqm": 3566.8789808917195,
+      "nonDistrictMedianPricePerSqm": 4387.28323699422
+    },
+    {
+      "period": "2006-11",
+      "label": "Nov 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 13,
+      "districtMedianPricePerSqm": 4792.96066252588,
+      "nonDistrictMedianPricePerSqm": 3615.3846153846152
+    },
+    {
+      "period": "2006-12",
+      "label": "Dec 2006",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 18,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4029.4871794871797
+    },
+    {
+      "period": "2007-01",
+      "label": "Jan 2007",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 27,
+      "districtMedianPricePerSqm": 6164.021164021165,
+      "nonDistrictMedianPricePerSqm": 4077.9220779220777
+    },
+    {
+      "period": "2007-02",
+      "label": "Feb 2007",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 29,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4487.012987012987
+    },
+    {
+      "period": "2007-03",
+      "label": "Mar 2007",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 32,
+      "districtMedianPricePerSqm": 4291.666666666667,
+      "nonDistrictMedianPricePerSqm": 4207.738095238095
+    },
+    {
+      "period": "2007-04",
+      "label": "Apr 2007",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 32,
+      "districtMedianPricePerSqm": 3419.3548387096776,
+      "nonDistrictMedianPricePerSqm": 4238.754325259516
+    },
+    {
+      "period": "2007-05",
+      "label": "May 2007",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 30,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4822.587719298245
+    },
+    {
+      "period": "2007-06",
+      "label": "Jun 2007",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 32,
+      "districtMedianPricePerSqm": 3289.1566265060237,
+      "nonDistrictMedianPricePerSqm": 3389.4154818325433
+    },
+    {
+      "period": "2007-07",
+      "label": "Jul 2007",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 37,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 3875
+    },
+    {
+      "period": "2007-08",
+      "label": "Aug 2007",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 40,
+      "districtMedianPricePerSqm": 4638.157894736842,
+      "nonDistrictMedianPricePerSqm": 4285.714285714285
+    },
+    {
+      "period": "2007-09",
+      "label": "Sep 2007",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 34,
+      "districtMedianPricePerSqm": 2492.3076923076924,
+      "nonDistrictMedianPricePerSqm": 4234.408602150537
+    },
+    {
+      "period": "2007-10",
+      "label": "Oct 2007",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 37,
+      "districtMedianPricePerSqm": 3641.979683439641,
+      "nonDistrictMedianPricePerSqm": 4443.024344569289
+    },
+    {
+      "period": "2007-11",
+      "label": "Nov 2007",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 54,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4117.857142857143
+    },
+    {
+      "period": "2007-12",
+      "label": "Dec 2007",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 43,
+      "districtMedianPricePerSqm": 2709.677419354839,
+      "nonDistrictMedianPricePerSqm": 4317.879694250581
+    },
+    {
+      "period": "2008-01",
+      "label": "Jan 2008",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 46,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4170.4147926036985
+    },
+    {
+      "period": "2008-02",
+      "label": "Feb 2008",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 47,
+      "districtMedianPricePerSqm": 4967.741935483871,
+      "nonDistrictMedianPricePerSqm": 4117.456197274498
+    },
+    {
+      "period": "2008-03",
+      "label": "Mar 2008",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 44,
+      "districtMedianPricePerSqm": 3962.875939849624,
+      "nonDistrictMedianPricePerSqm": 4672.727272727273
+    },
+    {
+      "period": "2008-04",
+      "label": "Apr 2008",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 52,
+      "districtMedianPricePerSqm": 4445.884536610343,
+      "nonDistrictMedianPricePerSqm": 4503.90625
+    },
+    {
+      "period": "2008-05",
+      "label": "May 2008",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 59,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4750
+    },
+    {
+      "period": "2008-06",
+      "label": "Jun 2008",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 79,
+      "districtMedianPricePerSqm": 4777.777777777777,
+      "nonDistrictMedianPricePerSqm": 4377.780629705681
+    },
+    {
+      "period": "2008-07",
+      "label": "Jul 2008",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 61,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4105.263157894737
+    },
+    {
+      "period": "2008-08",
+      "label": "Aug 2008",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 63,
+      "districtMedianPricePerSqm": 3491.0714285714284,
+      "nonDistrictMedianPricePerSqm": 5307.250221043325
+    },
+    {
+      "period": "2008-09",
+      "label": "Sep 2008",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 51,
+      "districtMedianPricePerSqm": 4854.932301740812,
+      "nonDistrictMedianPricePerSqm": 4257.748776508973
+    },
+    {
+      "period": "2008-10",
+      "label": "Oct 2008",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 33,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4347.826086956522
+    },
+    {
+      "period": "2008-11",
+      "label": "Nov 2008",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 47,
+      "districtMedianPricePerSqm": 4423.076923076923,
+      "nonDistrictMedianPricePerSqm": 4823.911630929175
+    },
+    {
+      "period": "2008-12",
+      "label": "Dec 2008",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 42,
+      "districtMedianPricePerSqm": 5434.782608695652,
+      "nonDistrictMedianPricePerSqm": 5208.333333333333
+    },
+    {
+      "period": "2009-01",
+      "label": "Jan 2009",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 43,
+      "districtMedianPricePerSqm": 5373.134328358209,
+      "nonDistrictMedianPricePerSqm": 4935.064935064935
+    },
+    {
+      "period": "2009-02",
+      "label": "Feb 2009",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 42,
+      "districtMedianPricePerSqm": 6518.375241779497,
+      "nonDistrictMedianPricePerSqm": 5844.1558441558445
+    },
+    {
+      "period": "2009-03",
+      "label": "Mar 2009",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 43,
+      "districtMedianPricePerSqm": 12414.288959798423,
+      "nonDistrictMedianPricePerSqm": 5626.449081505261
+    },
+    {
+      "period": "2009-04",
+      "label": "Apr 2009",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 44,
+      "districtMedianPricePerSqm": 6000,
+      "nonDistrictMedianPricePerSqm": 5588.018433179724
+    },
+    {
+      "period": "2009-05",
+      "label": "May 2009",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 68,
+      "districtMedianPricePerSqm": 6934.975369458128,
+      "nonDistrictMedianPricePerSqm": 5088.197728606441
+    },
+    {
+      "period": "2009-06",
+      "label": "Jun 2009",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 65,
+      "districtMedianPricePerSqm": 4973.821989528796,
+      "nonDistrictMedianPricePerSqm": 6015.118790496761
+    },
+    {
+      "period": "2009-07",
+      "label": "Jul 2009",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 62,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5198.9473684210525
+    },
+    {
+      "period": "2009-08",
+      "label": "Aug 2009",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 56,
+      "districtMedianPricePerSqm": 7989.725425911832,
+      "nonDistrictMedianPricePerSqm": 6449.490662139219
+    },
+    {
+      "period": "2009-09",
+      "label": "Sep 2009",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 38,
+      "districtMedianPricePerSqm": 6324.110671936759,
+      "nonDistrictMedianPricePerSqm": 5707.762557077626
+    },
+    {
+      "period": "2009-10",
+      "label": "Oct 2009",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 46,
+      "districtMedianPricePerSqm": 7115.432632286565,
+      "nonDistrictMedianPricePerSqm": 6250
+    },
+    {
+      "period": "2009-11",
+      "label": "Nov 2009",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 48,
+      "districtMedianPricePerSqm": 5518.8172043010745,
+      "nonDistrictMedianPricePerSqm": 6170.227621840526
+    },
+    {
+      "period": "2009-12",
+      "label": "Dec 2009",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 61,
+      "districtMedianPricePerSqm": 6621.621621621622,
+      "nonDistrictMedianPricePerSqm": 6591.158863762719
+    },
+    {
+      "period": "2010-01",
+      "label": "Jan 2010",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 68,
+      "districtMedianPricePerSqm": 8147.249190938512,
+      "nonDistrictMedianPricePerSqm": 7054.337464251668
+    },
+    {
+      "period": "2010-02",
+      "label": "Feb 2010",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 82,
+      "districtMedianPricePerSqm": 6290.322580645161,
+      "nonDistrictMedianPricePerSqm": 7362.6373626373625
+    },
+    {
+      "period": "2010-03",
+      "label": "Mar 2010",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 92,
+      "districtMedianPricePerSqm": 7749.091041303083,
+      "nonDistrictMedianPricePerSqm": 7087.126137841352
+    },
+    {
+      "period": "2010-04",
+      "label": "Apr 2010",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 67,
+      "districtMedianPricePerSqm": 5368.421052631579,
+      "nonDistrictMedianPricePerSqm": 6865.671641791045
+    },
+    {
+      "period": "2010-05",
+      "label": "May 2010",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 112,
+      "districtMedianPricePerSqm": 8262.639070680627,
+      "nonDistrictMedianPricePerSqm": 7221.374045801526
+    },
+    {
+      "period": "2010-06",
+      "label": "Jun 2010",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 130,
+      "districtMedianPricePerSqm": 8858.138724294178,
+      "nonDistrictMedianPricePerSqm": 7224.95894909688
+    },
+    {
+      "period": "2010-07",
+      "label": "Jul 2010",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 130,
+      "districtMedianPricePerSqm": 8303.051553402183,
+      "nonDistrictMedianPricePerSqm": 6666.666666666667
+    },
+    {
+      "period": "2010-08",
+      "label": "Aug 2010",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 117,
+      "districtMedianPricePerSqm": 7661.290322580645,
+      "nonDistrictMedianPricePerSqm": 7474.581493273082
+    },
+    {
+      "period": "2010-09",
+      "label": "Sep 2010",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 75,
+      "districtMedianPricePerSqm": 7975.898692810458,
+      "nonDistrictMedianPricePerSqm": 7221.367875239053
+    },
+    {
+      "period": "2010-10",
+      "label": "Oct 2010",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 119,
+      "districtMedianPricePerSqm": 7095.165652467884,
+      "nonDistrictMedianPricePerSqm": 7291.666666666667
+    },
+    {
+      "period": "2010-11",
+      "label": "Nov 2010",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 159,
+      "districtMedianPricePerSqm": 8146.551724137931,
+      "nonDistrictMedianPricePerSqm": 8067.345783814375
+    },
+    {
+      "period": "2010-12",
+      "label": "Dec 2010",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 110,
+      "districtMedianPricePerSqm": 8254.240730670195,
+      "nonDistrictMedianPricePerSqm": 7602.739726027397
+    },
+    {
+      "period": "2011-01",
+      "label": "Jan 2011",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 123,
+      "districtMedianPricePerSqm": 11590.90909090909,
+      "nonDistrictMedianPricePerSqm": 8085.106382978724
+    },
+    {
+      "period": "2011-02",
+      "label": "Feb 2011",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 143,
+      "districtMedianPricePerSqm": 8669.354838709678,
+      "nonDistrictMedianPricePerSqm": 7727.272727272727
+    },
+    {
+      "period": "2011-03",
+      "label": "Mar 2011",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 133,
+      "districtMedianPricePerSqm": 8602.150537634408,
+      "nonDistrictMedianPricePerSqm": 8200
+    },
+    {
+      "period": "2011-04",
+      "label": "Apr 2011",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 97,
+      "districtMedianPricePerSqm": 9364.931289244556,
+      "nonDistrictMedianPricePerSqm": 8371.538662486939
+    },
+    {
+      "period": "2011-05",
+      "label": "May 2011",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 122,
+      "districtMedianPricePerSqm": 8897.485493230173,
+      "nonDistrictMedianPricePerSqm": 8380.343878240092
+    },
+    {
+      "period": "2011-06",
+      "label": "Jun 2011",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 121,
+      "districtMedianPricePerSqm": 9279.263118487552,
+      "nonDistrictMedianPricePerSqm": 7731.958762886598
+    },
+    {
+      "period": "2011-07",
+      "label": "Jul 2011",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 129,
+      "districtMedianPricePerSqm": 8504.892743389999,
+      "nonDistrictMedianPricePerSqm": 7946.428571428572
+    },
+    {
+      "period": "2011-08",
+      "label": "Aug 2011",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 59,
+      "districtMedianPricePerSqm": 8300.395256916996,
+      "nonDistrictMedianPricePerSqm": 7583.965330444204
+    },
+    {
+      "period": "2011-09",
+      "label": "Sep 2011",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 59,
+      "districtMedianPricePerSqm": 8588.638466066774,
+      "nonDistrictMedianPricePerSqm": 7250
+    },
+    {
+      "period": "2011-10",
+      "label": "Oct 2011",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 97,
+      "districtMedianPricePerSqm": 8472.222222222223,
+      "nonDistrictMedianPricePerSqm": 7879.234167893961
+    },
+    {
+      "period": "2011-11",
+      "label": "Nov 2011",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 108,
+      "districtMedianPricePerSqm": 10067.219156958347,
+      "nonDistrictMedianPricePerSqm": 7987.804878048781
+    },
+    {
+      "period": "2011-12",
+      "label": "Dec 2011",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 135,
+      "districtMedianPricePerSqm": 7699.805068226121,
+      "nonDistrictMedianPricePerSqm": 8022.727272727273
+    },
+    {
+      "period": "2012-01",
+      "label": "Jan 2012",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 124,
+      "districtMedianPricePerSqm": 8962.49243799153,
+      "nonDistrictMedianPricePerSqm": 7896.346034114499
+    },
+    {
+      "period": "2012-02",
+      "label": "Feb 2012",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 144,
+      "districtMedianPricePerSqm": 9369.116421417933,
+      "nonDistrictMedianPricePerSqm": 7793.9711011459885
+    },
+    {
+      "period": "2012-03",
+      "label": "Mar 2012",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 132,
+      "districtMedianPricePerSqm": 9021.601016518423,
+      "nonDistrictMedianPricePerSqm": 8177.41732679492
+    },
+    {
+      "period": "2012-04",
+      "label": "Apr 2012",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 135,
+      "districtMedianPricePerSqm": 7992.588932806324,
+      "nonDistrictMedianPricePerSqm": 8338.002739384883
+    },
+    {
+      "period": "2012-05",
+      "label": "May 2012",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 189,
+      "districtMedianPricePerSqm": 7453.23416723011,
+      "nonDistrictMedianPricePerSqm": 7946.428571428572
+    },
+    {
+      "period": "2012-06",
+      "label": "Jun 2012",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 146,
+      "districtMedianPricePerSqm": 9269.29815520973,
+      "nonDistrictMedianPricePerSqm": 8160.565549100581
+    },
+    {
+      "period": "2012-07",
+      "label": "Jul 2012",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 160,
+      "districtMedianPricePerSqm": 8534.704370179948,
+      "nonDistrictMedianPricePerSqm": 8460.027100271003
+    },
+    {
+      "period": "2012-08",
+      "label": "Aug 2012",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 212,
+      "districtMedianPricePerSqm": 9548.19053083429,
+      "nonDistrictMedianPricePerSqm": 8275.862068965518
+    },
+    {
+      "period": "2012-09",
+      "label": "Sep 2012",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 132,
+      "districtMedianPricePerSqm": 8785.249457700651,
+      "nonDistrictMedianPricePerSqm": 8388.93362761473
+    },
+    {
+      "period": "2012-10",
+      "label": "Oct 2012",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 201,
+      "districtMedianPricePerSqm": 9156.315231153541,
+      "nonDistrictMedianPricePerSqm": 8487.80487804878
+    },
+    {
+      "period": "2012-11",
+      "label": "Nov 2012",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 133,
+      "districtMedianPricePerSqm": 8654.852140493222,
+      "nonDistrictMedianPricePerSqm": 8247.422680412372
+    },
+    {
+      "period": "2012-12",
+      "label": "Dec 2012",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 230,
+      "districtMedianPricePerSqm": 9247.31182795699,
+      "nonDistrictMedianPricePerSqm": 8224.688747944561
+    },
+    {
+      "period": "2013-01",
+      "label": "Jan 2013",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 201,
+      "districtMedianPricePerSqm": 9677.41935483871,
+      "nonDistrictMedianPricePerSqm": 8544.303797468354
+    },
+    {
+      "period": "2013-02",
+      "label": "Feb 2013",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 10226.71568627451,
+      "nonDistrictMedianPricePerSqm": 9012.635379061372
+    },
+    {
+      "period": "2013-03",
+      "label": "Mar 2013",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 189,
+      "districtMedianPricePerSqm": 9902.65974903812,
+      "nonDistrictMedianPricePerSqm": 8648.180242634315
+    },
+    {
+      "period": "2013-04",
+      "label": "Apr 2013",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 205,
+      "districtMedianPricePerSqm": 10137.4764956445,
+      "nonDistrictMedianPricePerSqm": 8861.386138613861
+    },
+    {
+      "period": "2013-05",
+      "label": "May 2013",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 204,
+      "districtMedianPricePerSqm": 9184.412363558426,
+      "nonDistrictMedianPricePerSqm": 8654.687009944098
+    },
+    {
+      "period": "2013-06",
+      "label": "Jun 2013",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 177,
+      "districtMedianPricePerSqm": 10079.05138339921,
+      "nonDistrictMedianPricePerSqm": 9218.75
+    },
+    {
+      "period": "2013-07",
+      "label": "Jul 2013",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 188,
+      "districtMedianPricePerSqm": 9335.023850286958,
+      "nonDistrictMedianPricePerSqm": 8485.29411764706
+    },
+    {
+      "period": "2013-08",
+      "label": "Aug 2013",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 192,
+      "districtMedianPricePerSqm": 10555.555555555555,
+      "nonDistrictMedianPricePerSqm": 9132.783882783882
+    },
+    {
+      "period": "2013-09",
+      "label": "Sep 2013",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 129,
+      "districtMedianPricePerSqm": 8627.450980392157,
+      "nonDistrictMedianPricePerSqm": 9575.429087624208
+    },
+    {
+      "period": "2013-10",
+      "label": "Oct 2013",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 237,
+      "districtMedianPricePerSqm": 8375.883739198744,
+      "nonDistrictMedianPricePerSqm": 9428.066989507668
+    },
+    {
+      "period": "2013-11",
+      "label": "Nov 2013",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 188,
+      "districtMedianPricePerSqm": 10200,
+      "nonDistrictMedianPricePerSqm": 8991.596638655463
+    },
+    {
+      "period": "2013-12",
+      "label": "Dec 2013",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 218,
+      "districtMedianPricePerSqm": 10015.930013553712,
+      "nonDistrictMedianPricePerSqm": 8923.478482302013
+    },
+    {
+      "period": "2014-01",
+      "label": "Jan 2014",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 164,
+      "districtMedianPricePerSqm": 11930.232558139534,
+      "nonDistrictMedianPricePerSqm": 9504.901960784315
+    },
+    {
+      "period": "2014-02",
+      "label": "Feb 2014",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 189,
+      "districtMedianPricePerSqm": 10526.816667799605,
+      "nonDistrictMedianPricePerSqm": 9322.033898305084
+    },
+    {
+      "period": "2014-03",
+      "label": "Mar 2014",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 162,
+      "districtMedianPricePerSqm": 10273.974532341672,
+      "nonDistrictMedianPricePerSqm": 9582.83152682992
+    },
+    {
+      "period": "2014-04",
+      "label": "Apr 2014",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 108,
+      "districtMedianPricePerSqm": 11650.485436893205,
+      "nonDistrictMedianPricePerSqm": 9831.444847877801
+    },
+    {
+      "period": "2014-05",
+      "label": "May 2014",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 174,
+      "districtMedianPricePerSqm": 12303.664921465968,
+      "nonDistrictMedianPricePerSqm": 9836.984872196139
+    },
+    {
+      "period": "2014-06",
+      "label": "Jun 2014",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 155,
+      "districtMedianPricePerSqm": 9600,
+      "nonDistrictMedianPricePerSqm": 9322.033898305084
+    },
+    {
+      "period": "2014-07",
+      "label": "Jul 2014",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 109,
+      "districtMedianPricePerSqm": 11015.170174652932,
+      "nonDistrictMedianPricePerSqm": 10078.125
+    },
+    {
+      "period": "2014-08",
+      "label": "Aug 2014",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 146,
+      "districtMedianPricePerSqm": 10771.650326797386,
+      "nonDistrictMedianPricePerSqm": 10066.555740432612
+    },
+    {
+      "period": "2014-09",
+      "label": "Sep 2014",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 194,
+      "districtMedianPricePerSqm": 10231.191028997679,
+      "nonDistrictMedianPricePerSqm": 9858.583860759492
+    },
+    {
+      "period": "2014-10",
+      "label": "Oct 2014",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 180,
+      "districtMedianPricePerSqm": 10128.205128205129,
+      "nonDistrictMedianPricePerSqm": 9664.71028971029
+    },
+    {
+      "period": "2014-11",
+      "label": "Nov 2014",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 187,
+      "districtMedianPricePerSqm": 11681.81463566859,
+      "nonDistrictMedianPricePerSqm": 9806.451612903225
+    },
+    {
+      "period": "2014-12",
+      "label": "Dec 2014",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 215,
+      "districtMedianPricePerSqm": 11827.122153209108,
+      "nonDistrictMedianPricePerSqm": 10085.928143712576
+    },
+    {
+      "period": "2015-01",
+      "label": "Jan 2015",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 218,
+      "districtMedianPricePerSqm": 11727.439513817224,
+      "nonDistrictMedianPricePerSqm": 10373.759305210919
+    },
+    {
+      "period": "2015-02",
+      "label": "Feb 2015",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 203,
+      "districtMedianPricePerSqm": 12480.396651144834,
+      "nonDistrictMedianPricePerSqm": 10437.956204379561
+    },
+    {
+      "period": "2015-03",
+      "label": "Mar 2015",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 12549.407114624506,
+      "nonDistrictMedianPricePerSqm": 10381.087230128764
+    },
+    {
+      "period": "2015-04",
+      "label": "Apr 2015",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 170,
+      "districtMedianPricePerSqm": 13448.275862068966,
+      "nonDistrictMedianPricePerSqm": 10551.750380517504
+    },
+    {
+      "period": "2015-05",
+      "label": "May 2015",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 192,
+      "districtMedianPricePerSqm": 12211.981566820277,
+      "nonDistrictMedianPricePerSqm": 10424.221690044475
+    },
+    {
+      "period": "2015-06",
+      "label": "Jun 2015",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 277,
+      "districtMedianPricePerSqm": 12009.222661396574,
+      "nonDistrictMedianPricePerSqm": 10569.761053175902
+    },
+    {
+      "period": "2015-07",
+      "label": "Jul 2015",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 183,
+      "districtMedianPricePerSqm": 12292.183337925966,
+      "nonDistrictMedianPricePerSqm": 10569.620253164558
+    },
+    {
+      "period": "2015-08",
+      "label": "Aug 2015",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 179,
+      "districtMedianPricePerSqm": 11861.136795472328,
+      "nonDistrictMedianPricePerSqm": 10714.285714285714
+    },
+    {
+      "period": "2015-09",
+      "label": "Sep 2015",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 168,
+      "districtMedianPricePerSqm": 12042.520205357596,
+      "nonDistrictMedianPricePerSqm": 10679.723502304147
+    },
+    {
+      "period": "2015-10",
+      "label": "Oct 2015",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 207,
+      "districtMedianPricePerSqm": 12383.40643274854,
+      "nonDistrictMedianPricePerSqm": 10789.473684210527
+    },
+    {
+      "period": "2015-11",
+      "label": "Nov 2015",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 183,
+      "districtMedianPricePerSqm": 10242.290748898678,
+      "nonDistrictMedianPricePerSqm": 11013.513513513513
+    },
+    {
+      "period": "2015-12",
+      "label": "Dec 2015",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 227,
+      "districtMedianPricePerSqm": 12382.19895287958,
+      "nonDistrictMedianPricePerSqm": 11184.21052631579
+    },
+    {
+      "period": "2016-01",
+      "label": "Jan 2016",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 216,
+      "districtMedianPricePerSqm": 13743.455497382198,
+      "nonDistrictMedianPricePerSqm": 10959.173856837928
+    },
+    {
+      "period": "2016-02",
+      "label": "Feb 2016",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 191,
+      "districtMedianPricePerSqm": 13262.59946949602,
+      "nonDistrictMedianPricePerSqm": 11409.883720930233
+    },
+    {
+      "period": "2016-03",
+      "label": "Mar 2016",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 225,
+      "districtMedianPricePerSqm": 12892.670157068062,
+      "nonDistrictMedianPricePerSqm": 11263.157894736842
+    },
+    {
+      "period": "2016-04",
+      "label": "Apr 2016",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 209,
+      "districtMedianPricePerSqm": 14552.620021727573,
+      "nonDistrictMedianPricePerSqm": 10981.481481481482
+    },
+    {
+      "period": "2016-05",
+      "label": "May 2016",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 245,
+      "districtMedianPricePerSqm": 12976.5625,
+      "nonDistrictMedianPricePerSqm": 11111.111111111111
+    },
+    {
+      "period": "2016-06",
+      "label": "Jun 2016",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 244,
+      "districtMedianPricePerSqm": 13546.938627108782,
+      "nonDistrictMedianPricePerSqm": 11186.929292642402
+    },
+    {
+      "period": "2016-07",
+      "label": "Jul 2016",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 238,
+      "districtMedianPricePerSqm": 12880.00780754404,
+      "nonDistrictMedianPricePerSqm": 11434.285714285714
+    },
+    {
+      "period": "2016-08",
+      "label": "Aug 2016",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 220,
+      "districtMedianPricePerSqm": 13826.061663757999,
+      "nonDistrictMedianPricePerSqm": 11376.811594202898
+    },
+    {
+      "period": "2016-09",
+      "label": "Sep 2016",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 213,
+      "districtMedianPricePerSqm": 14864.864864864865,
+      "nonDistrictMedianPricePerSqm": 11389.337641357028
+    },
+    {
+      "period": "2016-10",
+      "label": "Oct 2016",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 166,
+      "districtMedianPricePerSqm": 14528.795811518325,
+      "nonDistrictMedianPricePerSqm": 11476.578976578978
+    },
+    {
+      "period": "2016-11",
+      "label": "Nov 2016",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 185,
+      "districtMedianPricePerSqm": 14640.522875816994,
+      "nonDistrictMedianPricePerSqm": 11527.777777777777
+    },
+    {
+      "period": "2016-12",
+      "label": "Dec 2016",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 144,
+      "districtMedianPricePerSqm": 14162.303664921465,
+      "nonDistrictMedianPricePerSqm": 11111.111111111111
+    },
+    {
+      "period": "2017-01",
+      "label": "Jan 2017",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 153,
+      "districtMedianPricePerSqm": 13973.146427968248,
+      "nonDistrictMedianPricePerSqm": 11656.050955414014
+    },
+    {
+      "period": "2017-02",
+      "label": "Feb 2017",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 174,
+      "districtMedianPricePerSqm": 16361.256544502616,
+      "nonDistrictMedianPricePerSqm": 11508.30995035614
+    },
+    {
+      "period": "2017-03",
+      "label": "Mar 2017",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 206,
+      "districtMedianPricePerSqm": 14032.258064516129,
+      "nonDistrictMedianPricePerSqm": 11962.279579067123
+    },
+    {
+      "period": "2017-04",
+      "label": "Apr 2017",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 116,
+      "districtMedianPricePerSqm": 15801.358234295414,
+      "nonDistrictMedianPricePerSqm": 11343.582887700535
+    },
+    {
+      "period": "2017-05",
+      "label": "May 2017",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 175,
+      "districtMedianPricePerSqm": 12608.599290780143,
+      "nonDistrictMedianPricePerSqm": 11666.666666666666
+    },
+    {
+      "period": "2017-06",
+      "label": "Jun 2017",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 201,
+      "districtMedianPricePerSqm": 13477.35526596881,
+      "nonDistrictMedianPricePerSqm": 11851.851851851852
+    },
+    {
+      "period": "2017-07",
+      "label": "Jul 2017",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 171,
+      "districtMedianPricePerSqm": 16344.086021505376,
+      "nonDistrictMedianPricePerSqm": 11532.846715328467
+    },
+    {
+      "period": "2017-08",
+      "label": "Aug 2017",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 177,
+      "districtMedianPricePerSqm": 14224.137931034484,
+      "nonDistrictMedianPricePerSqm": 11747.285291214215
+    },
+    {
+      "period": "2017-09",
+      "label": "Sep 2017",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 148,
+      "districtMedianPricePerSqm": 14318.181818181818,
+      "nonDistrictMedianPricePerSqm": 11879.542357483533
+    },
+    {
+      "period": "2017-10",
+      "label": "Oct 2017",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 140,
+      "districtMedianPricePerSqm": 16129.032258064515,
+      "nonDistrictMedianPricePerSqm": 11730.70646116613
+    },
+    {
+      "period": "2017-11",
+      "label": "Nov 2017",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 158,
+      "districtMedianPricePerSqm": 13333.333333333334,
+      "nonDistrictMedianPricePerSqm": 11457.883070102522
+    },
+    {
+      "period": "2017-12",
+      "label": "Dec 2017",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 152,
+      "districtMedianPricePerSqm": 16230.366492146595,
+      "nonDistrictMedianPricePerSqm": 11788.077628871713
+    },
+    {
+      "period": "2018-01",
+      "label": "Jan 2018",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 165,
+      "districtMedianPricePerSqm": 14060.22615124701,
+      "nonDistrictMedianPricePerSqm": 11764.70588235294
+    },
+    {
+      "period": "2018-02",
+      "label": "Feb 2018",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 167,
+      "districtMedianPricePerSqm": 13483.146067415732,
+      "nonDistrictMedianPricePerSqm": 11489.36170212766
+    },
+    {
+      "period": "2018-03",
+      "label": "Mar 2018",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 171,
+      "districtMedianPricePerSqm": 14614.094133485218,
+      "nonDistrictMedianPricePerSqm": 11363.636363636364
+    },
+    {
+      "period": "2018-04",
+      "label": "Apr 2018",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 141,
+      "districtMedianPricePerSqm": 14667.255673061594,
+      "nonDistrictMedianPricePerSqm": 11278.195488721805
+    },
+    {
+      "period": "2018-05",
+      "label": "May 2018",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 186,
+      "districtMedianPricePerSqm": 15280.46421663443,
+      "nonDistrictMedianPricePerSqm": 11494.845360824742
+    },
+    {
+      "period": "2018-06",
+      "label": "Jun 2018",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 162,
+      "districtMedianPricePerSqm": 14886.1646234676,
+      "nonDistrictMedianPricePerSqm": 12048.372513562386
+    },
+    {
+      "period": "2018-07",
+      "label": "Jul 2018",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 165,
+      "districtMedianPricePerSqm": 19459.45945945946,
+      "nonDistrictMedianPricePerSqm": 11572.751322751323
+    },
+    {
+      "period": "2018-08",
+      "label": "Aug 2018",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 176,
+      "districtMedianPricePerSqm": 16304.347826086956,
+      "nonDistrictMedianPricePerSqm": 11590.608465608466
+    },
+    {
+      "period": "2018-09",
+      "label": "Sep 2018",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 112,
+      "districtMedianPricePerSqm": 11383.004333172845,
+      "nonDistrictMedianPricePerSqm": 11296.296296296296
+    },
+    {
+      "period": "2018-10",
+      "label": "Oct 2018",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 180,
+      "districtMedianPricePerSqm": 16202.877300352755,
+      "nonDistrictMedianPricePerSqm": 11762.35294117647
+    },
+    {
+      "period": "2018-11",
+      "label": "Nov 2018",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 186,
+      "districtMedianPricePerSqm": 15517.241379310346,
+      "nonDistrictMedianPricePerSqm": 11691.176470588236
+    },
+    {
+      "period": "2018-12",
+      "label": "Dec 2018",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 193,
+      "districtMedianPricePerSqm": 14010.507880910684,
+      "nonDistrictMedianPricePerSqm": 11670.57302190253
+    },
+    {
+      "period": "2019-01",
+      "label": "Jan 2019",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 14950.904902117803,
+      "nonDistrictMedianPricePerSqm": 11576.510721247563
+    },
+    {
+      "period": "2019-02",
+      "label": "Feb 2019",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 154,
+      "districtMedianPricePerSqm": 16964.473961627664,
+      "nonDistrictMedianPricePerSqm": 11574.074074074075
+    },
+    {
+      "period": "2019-03",
+      "label": "Mar 2019",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 190,
+      "districtMedianPricePerSqm": 14680.44731774709,
+      "nonDistrictMedianPricePerSqm": 11730.078361652615
+    },
+    {
+      "period": "2019-04",
+      "label": "Apr 2019",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 155,
+      "districtMedianPricePerSqm": 15486.305890117143,
+      "nonDistrictMedianPricePerSqm": 11532.125205930806
+    },
+    {
+      "period": "2019-05",
+      "label": "May 2019",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 196,
+      "districtMedianPricePerSqm": 16747.311827956986,
+      "nonDistrictMedianPricePerSqm": 11651.019098058096
+    },
+    {
+      "period": "2019-06",
+      "label": "Jun 2019",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 165,
+      "districtMedianPricePerSqm": 18318.96551724138,
+      "nonDistrictMedianPricePerSqm": 12000
+    },
+    {
+      "period": "2019-07",
+      "label": "Jul 2019",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 213,
+      "districtMedianPricePerSqm": 13810.483870967742,
+      "nonDistrictMedianPricePerSqm": 11174.603174603175
+    },
+    {
+      "period": "2019-08",
+      "label": "Aug 2019",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 177,
+      "districtMedianPricePerSqm": 15474.50017268506,
+      "nonDistrictMedianPricePerSqm": 11428.57142857143
+    },
+    {
+      "period": "2019-09",
+      "label": "Sep 2019",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 117,
+      "districtMedianPricePerSqm": 14112.90322580645,
+      "nonDistrictMedianPricePerSqm": 12000
+    },
+    {
+      "period": "2019-10",
+      "label": "Oct 2019",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 171,
+      "districtMedianPricePerSqm": 15099.337748344371,
+      "nonDistrictMedianPricePerSqm": 11382.113821138211
+    },
+    {
+      "period": "2019-11",
+      "label": "Nov 2019",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 185,
+      "districtMedianPricePerSqm": 15208.208274972765,
+      "nonDistrictMedianPricePerSqm": 11451.612903225807
+    },
+    {
+      "period": "2019-12",
+      "label": "Dec 2019",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 162,
+      "districtMedianPricePerSqm": 15217.391304347826,
+      "nonDistrictMedianPricePerSqm": 11539.24942641757
+    },
+    {
+      "period": "2020-01",
+      "label": "Jan 2020",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 218,
+      "districtMedianPricePerSqm": 13510.733905470748,
+      "nonDistrictMedianPricePerSqm": 11619.28945675154
+    },
+    {
+      "period": "2020-02",
+      "label": "Feb 2020",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 209,
+      "districtMedianPricePerSqm": 12500,
+      "nonDistrictMedianPricePerSqm": 11544.71544715447
+    },
+    {
+      "period": "2020-03",
+      "label": "Mar 2020",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 133,
+      "districtMedianPricePerSqm": 11638.591117917305,
+      "nonDistrictMedianPricePerSqm": 11764.227642276423
+    },
+    {
+      "period": "2020-04",
+      "label": "Apr 2020",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 77,
+      "districtMedianPricePerSqm": 13481.675392670157,
+      "nonDistrictMedianPricePerSqm": 11703.360370799537
+    },
+    {
+      "period": "2020-05",
+      "label": "May 2020",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 169,
+      "districtMedianPricePerSqm": 14129.032258064517,
+      "nonDistrictMedianPricePerSqm": 11552.346570397112
+    },
+    {
+      "period": "2020-06",
+      "label": "Jun 2020",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 215,
+      "districtMedianPricePerSqm": 15083.5567834024,
+      "nonDistrictMedianPricePerSqm": 11697.860962566845
+    },
+    {
+      "period": "2020-07",
+      "label": "Jul 2020",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 161,
+      "districtMedianPricePerSqm": 16475.648323845668,
+      "nonDistrictMedianPricePerSqm": 11894.273127753304
+    },
+    {
+      "period": "2020-08",
+      "label": "Aug 2020",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 183,
+      "districtMedianPricePerSqm": 14112.90322580645,
+      "nonDistrictMedianPricePerSqm": 11415.929203539823
+    },
+    {
+      "period": "2020-09",
+      "label": "Sep 2020",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 178,
+      "districtMedianPricePerSqm": 16489.178688015574,
+      "nonDistrictMedianPricePerSqm": 11739.130434782608
+    },
+    {
+      "period": "2020-10",
+      "label": "Oct 2020",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 190,
+      "districtMedianPricePerSqm": 17221.475100522683,
+      "nonDistrictMedianPricePerSqm": 11761.109254928166
+    },
+    {
+      "period": "2020-11",
+      "label": "Nov 2020",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 183,
+      "districtMedianPricePerSqm": 15537.634408602149,
+      "nonDistrictMedianPricePerSqm": 11486.486486486487
+    },
+    {
+      "period": "2020-12",
+      "label": "Dec 2020",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 262,
+      "districtMedianPricePerSqm": 14380.254020467837,
+      "nonDistrictMedianPricePerSqm": 11674.443646805456
+    },
+    {
+      "period": "2021-01",
+      "label": "Jan 2021",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 241,
+      "districtMedianPricePerSqm": 14577.217510295239,
+      "nonDistrictMedianPricePerSqm": 11626.984126984127
+    },
+    {
+      "period": "2021-02",
+      "label": "Feb 2021",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 259,
+      "districtMedianPricePerSqm": 13437.5,
+      "nonDistrictMedianPricePerSqm": 11686.046511627907
+    },
+    {
+      "period": "2021-03",
+      "label": "Mar 2021",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 252,
+      "districtMedianPricePerSqm": 12958.333333333332,
+      "nonDistrictMedianPricePerSqm": 11814.72999259846
+    },
+    {
+      "period": "2021-04",
+      "label": "Apr 2021",
+      "complete": true,
+      "districtDeals": 16,
+      "nonDistrictDeals": 302,
+      "districtMedianPricePerSqm": 14487.369006498448,
+      "nonDistrictMedianPricePerSqm": 11814.453098905797
+    },
+    {
+      "period": "2021-05",
+      "label": "May 2021",
+      "complete": true,
+      "districtDeals": 17,
+      "nonDistrictDeals": 276,
+      "districtMedianPricePerSqm": 13870.967741935483,
+      "nonDistrictMedianPricePerSqm": 11835.033785295565
+    },
+    {
+      "period": "2021-06",
+      "label": "Jun 2021",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 295,
+      "districtMedianPricePerSqm": 14345.583494519666,
+      "nonDistrictMedianPricePerSqm": 11803.79746835443
+    },
+    {
+      "period": "2021-07",
+      "label": "Jul 2021",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 329,
+      "districtMedianPricePerSqm": 14465.986924748535,
+      "nonDistrictMedianPricePerSqm": 11961.057023643949
+    },
+    {
+      "period": "2021-08",
+      "label": "Aug 2021",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 292,
+      "districtMedianPricePerSqm": 15632.183908045978,
+      "nonDistrictMedianPricePerSqm": 11805.52526354053
+    },
+    {
+      "period": "2021-09",
+      "label": "Sep 2021",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 202,
+      "districtMedianPricePerSqm": 14624.67455498493,
+      "nonDistrictMedianPricePerSqm": 11604.439959636731
+    },
+    {
+      "period": "2021-10",
+      "label": "Oct 2021",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 346,
+      "districtMedianPricePerSqm": 12562.396006655574,
+      "nonDistrictMedianPricePerSqm": 12121.742235509972
+    },
+    {
+      "period": "2021-11",
+      "label": "Nov 2021",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 380,
+      "districtMedianPricePerSqm": 14664.534482563598,
+      "nonDistrictMedianPricePerSqm": 12021.78116125914
+    },
+    {
+      "period": "2021-12",
+      "label": "Dec 2021",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 313,
+      "districtMedianPricePerSqm": 15525.634137917801,
+      "nonDistrictMedianPricePerSqm": 11920.529801324503
+    },
+    {
+      "period": "2022-01",
+      "label": "Jan 2022",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 279,
+      "districtMedianPricePerSqm": 15978.090500204442,
+      "nonDistrictMedianPricePerSqm": 12562.853551225646
+    },
+    {
+      "period": "2022-02",
+      "label": "Feb 2022",
+      "complete": true,
+      "districtDeals": 21,
+      "nonDistrictDeals": 288,
+      "districtMedianPricePerSqm": 14870.689655172415,
+      "nonDistrictMedianPricePerSqm": 12040.133779264213
+    },
+    {
+      "period": "2022-03",
+      "label": "Mar 2022",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 348,
+      "districtMedianPricePerSqm": 16146.245059288538,
+      "nonDistrictMedianPricePerSqm": 12439.024390243903
+    },
+    {
+      "period": "2022-04",
+      "label": "Apr 2022",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 14143.258232715101,
+      "nonDistrictMedianPricePerSqm": 12327.512998266899
+    },
+    {
+      "period": "2022-05",
+      "label": "May 2022",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 266,
+      "districtMedianPricePerSqm": 13548.387096774193,
+      "nonDistrictMedianPricePerSqm": 12187.951310088714
+    },
+    {
+      "period": "2022-06",
+      "label": "Jun 2022",
+      "complete": true,
+      "districtDeals": 33,
+      "nonDistrictDeals": 364,
+      "districtMedianPricePerSqm": 15424.164524421594,
+      "nonDistrictMedianPricePerSqm": 12988.095238095239
+    },
+    {
+      "period": "2022-07",
+      "label": "Jul 2022",
+      "complete": true,
+      "districtDeals": 19,
+      "nonDistrictDeals": 304,
+      "districtMedianPricePerSqm": 14097.222222222223,
+      "nonDistrictMedianPricePerSqm": 12742.09671373235
+    },
+    {
+      "period": "2022-08",
+      "label": "Aug 2022",
+      "complete": true,
+      "districtDeals": 23,
+      "nonDistrictDeals": 368,
+      "districtMedianPricePerSqm": 14790.575916230366,
+      "nonDistrictMedianPricePerSqm": 12592.98786513301
+    },
+    {
+      "period": "2022-09",
+      "label": "Sep 2022",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 258,
+      "districtMedianPricePerSqm": 14625,
+      "nonDistrictMedianPricePerSqm": 13232.245478406985
+    },
+    {
+      "period": "2022-10",
+      "label": "Oct 2022",
+      "complete": true,
+      "districtDeals": 13,
+      "nonDistrictDeals": 233,
+      "districtMedianPricePerSqm": 14843.75,
+      "nonDistrictMedianPricePerSqm": 12873.862158647593
+    },
+    {
+      "period": "2022-11",
+      "label": "Nov 2022",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 285,
+      "districtMedianPricePerSqm": 13965.858273133814,
+      "nonDistrictMedianPricePerSqm": 12626.984126984127
+    },
+    {
+      "period": "2022-12",
+      "label": "Dec 2022",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 286,
+      "districtMedianPricePerSqm": 15816.993464052288,
+      "nonDistrictMedianPricePerSqm": 12823.603736685387
+    },
+    {
+      "period": "2023-01",
+      "label": "Jan 2023",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 237,
+      "districtMedianPricePerSqm": 15151.515151515152,
+      "nonDistrictMedianPricePerSqm": 13117.991309223438
+    },
+    {
+      "period": "2023-02",
+      "label": "Feb 2023",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 207,
+      "districtMedianPricePerSqm": 15706.806282722511,
+      "nonDistrictMedianPricePerSqm": 12713.037976334912
+    },
+    {
+      "period": "2023-03",
+      "label": "Mar 2023",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 213,
+      "districtMedianPricePerSqm": 13173.644659151905,
+      "nonDistrictMedianPricePerSqm": 12254.52445128995
+    },
+    {
+      "period": "2023-04",
+      "label": "Apr 2023",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 196,
+      "districtMedianPricePerSqm": 14547.758069846866,
+      "nonDistrictMedianPricePerSqm": 13085.433070866142
+    },
+    {
+      "period": "2023-05",
+      "label": "May 2023",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 205,
+      "districtMedianPricePerSqm": 15032.238716449243,
+      "nonDistrictMedianPricePerSqm": 12789.473684210527
+    },
+    {
+      "period": "2023-06",
+      "label": "Jun 2023",
+      "complete": true,
+      "districtDeals": 13,
+      "nonDistrictDeals": 211,
+      "districtMedianPricePerSqm": 14186.046511627907,
+      "nonDistrictMedianPricePerSqm": 12970.91082498808
+    },
+    {
+      "period": "2023-07",
+      "label": "Jul 2023",
+      "complete": true,
+      "districtDeals": 13,
+      "nonDistrictDeals": 212,
+      "districtMedianPricePerSqm": 14069.264069264069,
+      "nonDistrictMedianPricePerSqm": 13047.077435016228
+    },
+    {
+      "period": "2023-08",
+      "label": "Aug 2023",
+      "complete": true,
+      "districtDeals": 17,
+      "nonDistrictDeals": 224,
+      "districtMedianPricePerSqm": 14606.741573033709,
+      "nonDistrictMedianPricePerSqm": 12633.333333333332
+    },
+    {
+      "period": "2023-09",
+      "label": "Sep 2023",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 17059.891107078038,
+      "nonDistrictMedianPricePerSqm": 13005.499062714247
+    },
+    {
+      "period": "2023-10",
+      "label": "Oct 2023",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 102,
+      "districtMedianPricePerSqm": 14376.996805111821,
+      "nonDistrictMedianPricePerSqm": 12794.340914503453
+    },
+    {
+      "period": "2023-11",
+      "label": "Nov 2023",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 174,
+      "districtMedianPricePerSqm": 13575.543335951821,
+      "nonDistrictMedianPricePerSqm": 12494.260789715336
+    },
+    {
+      "period": "2023-12",
+      "label": "Dec 2023",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 218,
+      "districtMedianPricePerSqm": 14903.984096405296,
+      "nonDistrictMedianPricePerSqm": 12815.731963133236
+    },
+    {
+      "period": "2024-01",
+      "label": "Jan 2024",
+      "complete": true,
+      "districtDeals": 29,
+      "nonDistrictDeals": 420,
+      "districtMedianPricePerSqm": 14700.193423597679,
+      "nonDistrictMedianPricePerSqm": 13296.936170212766
+    },
+    {
+      "period": "2024-02",
+      "label": "Feb 2024",
+      "complete": true,
+      "districtDeals": 26,
+      "nonDistrictDeals": 453,
+      "districtMedianPricePerSqm": 16029,
+      "nonDistrictMedianPricePerSqm": 13504
+    },
+    {
+      "period": "2024-03",
+      "label": "Mar 2024",
+      "complete": true,
+      "districtDeals": 17,
+      "nonDistrictDeals": 448,
+      "districtMedianPricePerSqm": 15154.26497277677,
+      "nonDistrictMedianPricePerSqm": 13170.865853658535
+    },
+    {
+      "period": "2024-04",
+      "label": "Apr 2024",
+      "complete": true,
+      "districtDeals": 24,
+      "nonDistrictDeals": 377,
+      "districtMedianPricePerSqm": 14815,
+      "nonDistrictMedianPricePerSqm": 13210.526315789473
+    },
+    {
+      "period": "2024-05",
+      "label": "May 2024",
+      "complete": true,
+      "districtDeals": 16,
+      "nonDistrictDeals": 432,
+      "districtMedianPricePerSqm": 14672.208576998051,
+      "nonDistrictMedianPricePerSqm": 13546.721293984592
+    },
+    {
+      "period": "2024-06",
+      "label": "Jun 2024",
+      "complete": true,
+      "districtDeals": 23,
+      "nonDistrictDeals": 402,
+      "districtMedianPricePerSqm": 15862,
+      "nonDistrictMedianPricePerSqm": 13586
+    },
+    {
+      "period": "2024-07",
+      "label": "Jul 2024",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 427,
+      "districtMedianPricePerSqm": 16248.5,
+      "nonDistrictMedianPricePerSqm": 13470.319634703197
+    },
+    {
+      "period": "2024-08",
+      "label": "Aug 2024",
+      "complete": true,
+      "districtDeals": 23,
+      "nonDistrictDeals": 358,
+      "districtMedianPricePerSqm": 15314.13612565445,
+      "nonDistrictMedianPricePerSqm": 12993.228876365063
+    },
+    {
+      "period": "2024-09",
+      "label": "Sep 2024",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 299,
+      "districtMedianPricePerSqm": 14822.134387351778,
+      "nonDistrictMedianPricePerSqm": 12985
+    },
+    {
+      "period": "2024-10",
+      "label": "Oct 2024",
+      "complete": true,
+      "districtDeals": 9,
+      "nonDistrictDeals": 208,
+      "districtMedianPricePerSqm": 16344,
+      "nonDistrictMedianPricePerSqm": 13461
+    },
+    {
+      "period": "2024-11",
+      "label": "Nov 2024",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 249,
+      "districtMedianPricePerSqm": 15220.884430176566,
+      "nonDistrictMedianPricePerSqm": 13089
+    },
+    {
+      "period": "2024-12",
+      "label": "Dec 2024",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 279,
+      "districtMedianPricePerSqm": 16403.162055335968,
+      "nonDistrictMedianPricePerSqm": 12777.777777777777
+    },
+    {
+      "period": "2025-01",
+      "label": "Jan 2025",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 224,
+      "districtMedianPricePerSqm": 14600.5,
+      "nonDistrictMedianPricePerSqm": 13212
+    },
+    {
+      "period": "2025-02",
+      "label": "Feb 2025",
+      "complete": true,
+      "districtDeals": 8,
+      "nonDistrictDeals": 178,
+      "districtMedianPricePerSqm": 16020.5,
+      "nonDistrictMedianPricePerSqm": 13070
+    },
+    {
+      "period": "2025-03",
+      "label": "Mar 2025",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 224,
+      "districtMedianPricePerSqm": 15810,
+      "nonDistrictMedianPricePerSqm": 12568
+    },
+    {
+      "period": "2025-04",
+      "label": "Apr 2025",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 204,
+      "districtMedianPricePerSqm": 15610.5,
+      "nonDistrictMedianPricePerSqm": 13189.5
+    },
+    {
+      "period": "2025-05",
+      "label": "May 2025",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 192,
+      "districtMedianPricePerSqm": 15198.5,
+      "nonDistrictMedianPricePerSqm": 13025
+    },
+    {
+      "period": "2025-06",
+      "label": "Jun 2025",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 137,
+      "districtMedianPricePerSqm": 15119,
+      "nonDistrictMedianPricePerSqm": 12530
+    },
+    {
+      "period": "2025-07",
+      "label": "Jul 2025",
+      "complete": true,
+      "districtDeals": 16,
+      "nonDistrictDeals": 211,
+      "districtMedianPricePerSqm": 15228,
+      "nonDistrictMedianPricePerSqm": 14134
+    },
+    {
+      "period": "2025-08",
+      "label": "Aug 2025",
+      "complete": true,
+      "districtDeals": 16,
+      "nonDistrictDeals": 221,
+      "districtMedianPricePerSqm": 15385.5,
+      "nonDistrictMedianPricePerSqm": 13317
+    },
+    {
+      "period": "2025-09",
+      "label": "Sep 2025",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 179,
+      "districtMedianPricePerSqm": 14625,
+      "nonDistrictMedianPricePerSqm": 12765
+    },
+    {
+      "period": "2025-10",
+      "label": "Oct 2025",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 126,
+      "districtMedianPricePerSqm": 15732,
+      "nonDistrictMedianPricePerSqm": 12969
+    },
+    {
+      "period": "2025-11",
+      "label": "Nov 2025",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 172,
+      "districtMedianPricePerSqm": 15316,
+      "nonDistrictMedianPricePerSqm": 12598
+    },
+    {
+      "period": "2025-12",
+      "label": "Dec 2025",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 205,
+      "districtMedianPricePerSqm": 14444.5,
+      "nonDistrictMedianPricePerSqm": 12672
+    },
+    {
+      "period": "2026-01",
+      "label": "Jan 2026",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 132,
+      "districtMedianPricePerSqm": 14136.5,
+      "nonDistrictMedianPricePerSqm": 12894
+    },
+    {
+      "period": "2026-02",
+      "label": "Feb 2026",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 127,
+      "districtMedianPricePerSqm": 16447,
+      "nonDistrictMedianPricePerSqm": 12581
+    },
+    {
+      "period": "2026-03",
+      "label": "Mar 2026",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 95,
+      "districtMedianPricePerSqm": 14508.5,
+      "nonDistrictMedianPricePerSqm": 13470
+    },
+    {
+      "period": "2026-04",
+      "label": "Apr 2026",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 46,
+      "districtMedianPricePerSqm": 13961,
+      "nonDistrictMedianPricePerSqm": 14667.5
+    },
+    {
+      "period": "2026-05",
+      "label": "May 2026",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 21,
+      "districtMedianPricePerSqm": 12515,
+      "nonDistrictMedianPricePerSqm": 13492
+    },
+    {
+      "period": "2026-06",
+      "label": "Jun 2026",
+      "complete": false,
+      "districtDeals": 1,
+      "nonDistrictDeals": 13,
+      "districtMedianPricePerSqm": 12419,
+      "nonDistrictMedianPricePerSqm": 11552
+    },
+    {
+      "period": "2026-07",
+      "label": "Jul 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 12,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 15299
+    },
+    {
+      "period": "2026-08",
+      "label": "Aug 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 13,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13505
+    },
+    {
+      "period": "2026-09",
+      "label": "Sep 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 15,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13634
+    },
+    {
+      "period": "2026-10",
+      "label": "Oct 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 10,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13936.5
+    },
+    {
+      "period": "2026-11",
+      "label": "Nov 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 16,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13720
+    },
+    {
+      "period": "2026-12",
+      "label": "Dec 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 23,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13686
+    }
+  ],
+  "quarterly": [
+    {
+      "period": "1998-Q1",
+      "label": "Q1 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5073.275862068966
+    },
+    {
+      "period": "1998-Q2",
+      "label": "Q2 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 6,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5327.333333333334
+    },
+    {
+      "period": "1998-Q3",
+      "label": "Q3 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4282.608695652174
+    },
+    {
+      "period": "1998-Q4",
+      "label": "Q4 1998",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 1,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4464.285714285714
+    },
+    {
+      "period": "1999-Q1",
+      "label": "Q1 1999",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": 2338.0281690140846,
+      "nonDistrictMedianPricePerSqm": 5319.642857142857
+    },
+    {
+      "period": "1999-Q2",
+      "label": "Q2 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 2,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5468.447290872075
+    },
+    {
+      "period": "1999-Q3",
+      "label": "Q3 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5450
+    },
+    {
+      "period": "1999-Q4",
+      "label": "Q4 1999",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5213.77012770683
+    },
+    {
+      "period": "2000-Q1",
+      "label": "Q1 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 7,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5494.845360824742
+    },
+    {
+      "period": "2000-Q2",
+      "label": "Q2 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 4,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5638.8757815264835
+    },
+    {
+      "period": "2000-Q4",
+      "label": "Q4 2000",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 3,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5761.363636363636
+    },
+    {
+      "period": "2001-Q1",
+      "label": "Q1 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 14,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5278.507960014809
+    },
+    {
+      "period": "2001-Q2",
+      "label": "Q2 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 18,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5815.703446605859
+    },
+    {
+      "period": "2001-Q3",
+      "label": "Q3 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 26,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5681.818181818182
+    },
+    {
+      "period": "2001-Q4",
+      "label": "Q4 2001",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 51,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5420.168874507028
+    },
+    {
+      "period": "2002-Q1",
+      "label": "Q1 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 42,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5443.488763633702
+    },
+    {
+      "period": "2002-Q2",
+      "label": "Q2 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 85,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5667.508167508167
+    },
+    {
+      "period": "2002-Q3",
+      "label": "Q3 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 53,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5465.058108212114
+    },
+    {
+      "period": "2002-Q4",
+      "label": "Q4 2002",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 71,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5523.533204384268
+    },
+    {
+      "period": "2003-Q1",
+      "label": "Q1 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 60,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5090.329874810095
+    },
+    {
+      "period": "2003-Q2",
+      "label": "Q2 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 76,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 5119.111830276879
+    },
+    {
+      "period": "2003-Q3",
+      "label": "Q3 2003",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 111,
+      "districtMedianPricePerSqm": 4726.263308437947,
+      "nonDistrictMedianPricePerSqm": 5179.856115107914
+    },
+    {
+      "period": "2003-Q4",
+      "label": "Q4 2003",
+      "complete": true,
+      "districtDeals": 0,
+      "nonDistrictDeals": 116,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 4897.154471544715
+    },
+    {
+      "period": "2004-Q1",
+      "label": "Q1 2004",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 132,
+      "districtMedianPricePerSqm": 2833.8136407300676,
+      "nonDistrictMedianPricePerSqm": 4843.0972108764145
+    },
+    {
+      "period": "2004-Q2",
+      "label": "Q2 2004",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 103,
+      "districtMedianPricePerSqm": 3238.1012738449836,
+      "nonDistrictMedianPricePerSqm": 4783.333333333333
+    },
+    {
+      "period": "2004-Q3",
+      "label": "Q3 2004",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 89,
+      "districtMedianPricePerSqm": 3602.1505376344085,
+      "nonDistrictMedianPricePerSqm": 4693.333333333333
+    },
+    {
+      "period": "2004-Q4",
+      "label": "Q4 2004",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 102,
+      "districtMedianPricePerSqm": 3144.145402163688,
+      "nonDistrictMedianPricePerSqm": 4976.7441860465115
+    },
+    {
+      "period": "2005-Q1",
+      "label": "Q1 2005",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 55,
+      "districtMedianPricePerSqm": 18812.6159554731,
+      "nonDistrictMedianPricePerSqm": 4575.757575757576
+    },
+    {
+      "period": "2005-Q2",
+      "label": "Q2 2005",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 57,
+      "districtMedianPricePerSqm": 4992.009632224168,
+      "nonDistrictMedianPricePerSqm": 4321.739130434783
+    },
+    {
+      "period": "2005-Q3",
+      "label": "Q3 2005",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 96,
+      "districtMedianPricePerSqm": 5415.384615384615,
+      "nonDistrictMedianPricePerSqm": 4728.606965174129
+    },
+    {
+      "period": "2005-Q4",
+      "label": "Q4 2005",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 78,
+      "districtMedianPricePerSqm": 5472.808647187975,
+      "nonDistrictMedianPricePerSqm": 4480.185280494081
+    },
+    {
+      "period": "2006-Q1",
+      "label": "Q1 2006",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 72,
+      "districtMedianPricePerSqm": 3210.1624834447784,
+      "nonDistrictMedianPricePerSqm": 4448.350292938637
+    },
+    {
+      "period": "2006-Q2",
+      "label": "Q2 2006",
+      "complete": true,
+      "districtDeals": 1,
+      "nonDistrictDeals": 64,
+      "districtMedianPricePerSqm": 5497.382198952879,
+      "nonDistrictMedianPricePerSqm": 4184.7041847041855
+    },
+    {
+      "period": "2006-Q3",
+      "label": "Q3 2006",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 34,
+      "districtMedianPricePerSqm": 3050,
+      "nonDistrictMedianPricePerSqm": 4124.932541824069
+    },
+    {
+      "period": "2006-Q4",
+      "label": "Q4 2006",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 52,
+      "districtMedianPricePerSqm": 4179.9198217088,
+      "nonDistrictMedianPricePerSqm": 4154.6875
+    },
+    {
+      "period": "2007-Q1",
+      "label": "Q1 2007",
+      "complete": true,
+      "districtDeals": 2,
+      "nonDistrictDeals": 88,
+      "districtMedianPricePerSqm": 5227.843915343916,
+      "nonDistrictMedianPricePerSqm": 4208.333333333333
+    },
+    {
+      "period": "2007-Q2",
+      "label": "Q2 2007",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 94,
+      "districtMedianPricePerSqm": 3419.3548387096776,
+      "nonDistrictMedianPricePerSqm": 4238.754325259516
+    },
+    {
+      "period": "2007-Q3",
+      "label": "Q3 2007",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 111,
+      "districtMedianPricePerSqm": 2672.079772079772,
+      "nonDistrictMedianPricePerSqm": 4137.8119492922515
+    },
+    {
+      "period": "2007-Q4",
+      "label": "Q4 2007",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 134,
+      "districtMedianPricePerSqm": 3484.187223276407,
+      "nonDistrictMedianPricePerSqm": 4318.489583333334
+    },
+    {
+      "period": "2008-Q1",
+      "label": "Q1 2008",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 137,
+      "districtMedianPricePerSqm": 4967.741935483871,
+      "nonDistrictMedianPricePerSqm": 4263.1578947368425
+    },
+    {
+      "period": "2008-Q2",
+      "label": "Q2 2008",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 190,
+      "districtMedianPricePerSqm": 4513.888888888889,
+      "nonDistrictMedianPricePerSqm": 4566.210045662101
+    },
+    {
+      "period": "2008-Q3",
+      "label": "Q3 2008",
+      "complete": true,
+      "districtDeals": 3,
+      "nonDistrictDeals": 175,
+      "districtMedianPricePerSqm": 3625,
+      "nonDistrictMedianPricePerSqm": 4475.312934631433
+    },
+    {
+      "period": "2008-Q4",
+      "label": "Q4 2008",
+      "complete": true,
+      "districtDeals": 4,
+      "nonDistrictDeals": 122,
+      "districtMedianPricePerSqm": 5258.762462740261,
+      "nonDistrictMedianPricePerSqm": 4921.0526315789475
+    },
+    {
+      "period": "2009-Q1",
+      "label": "Q1 2009",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 128,
+      "districtMedianPricePerSqm": 5945.754785068853,
+      "nonDistrictMedianPricePerSqm": 5454.545454545455
+    },
+    {
+      "period": "2009-Q2",
+      "label": "Q2 2009",
+      "complete": true,
+      "districtDeals": 6,
+      "nonDistrictDeals": 177,
+      "districtMedianPricePerSqm": 5412.5,
+      "nonDistrictMedianPricePerSqm": 5500
+    },
+    {
+      "period": "2009-Q3",
+      "label": "Q3 2009",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 156,
+      "districtMedianPricePerSqm": 7812.5,
+      "nonDistrictMedianPricePerSqm": 5711.0241356816705
+    },
+    {
+      "period": "2009-Q4",
+      "label": "Q4 2009",
+      "complete": true,
+      "districtDeals": 5,
+      "nonDistrictDeals": 155,
+      "districtMedianPricePerSqm": 6615.384615384615,
+      "nonDistrictMedianPricePerSqm": 6300
+    },
+    {
+      "period": "2010-Q1",
+      "label": "Q1 2010",
+      "complete": true,
+      "districtDeals": 7,
+      "nonDistrictDeals": 242,
+      "districtMedianPricePerSqm": 7961.165048543689,
+      "nonDistrictMedianPricePerSqm": 7135.416666666667
+    },
+    {
+      "period": "2010-Q2",
+      "label": "Q2 2010",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 309,
+      "districtMedianPricePerSqm": 8671.875,
+      "nonDistrictMedianPricePerSqm": 7127.659574468085
+    },
+    {
+      "period": "2010-Q3",
+      "label": "Q3 2010",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 322,
+      "districtMedianPricePerSqm": 8000,
+      "nonDistrictMedianPricePerSqm": 7142.857142857143
+    },
+    {
+      "period": "2010-Q4",
+      "label": "Q4 2010",
+      "complete": true,
+      "districtDeals": 11,
+      "nonDistrictDeals": 388,
+      "districtMedianPricePerSqm": 7942.2382671480145,
+      "nonDistrictMedianPricePerSqm": 7738.636363636364
+    },
+    {
+      "period": "2011-Q1",
+      "label": "Q1 2011",
+      "complete": true,
+      "districtDeals": 10,
+      "nonDistrictDeals": 399,
+      "districtMedianPricePerSqm": 8902.705061082024,
+      "nonDistrictMedianPricePerSqm": 7943.92523364486
+    },
+    {
+      "period": "2011-Q2",
+      "label": "Q2 2011",
+      "complete": true,
+      "districtDeals": 19,
+      "nonDistrictDeals": 340,
+      "districtMedianPricePerSqm": 9187.620889748549,
+      "nonDistrictMedianPricePerSqm": 8333.333333333334
+    },
+    {
+      "period": "2011-Q3",
+      "label": "Q3 2011",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 247,
+      "districtMedianPricePerSqm": 8300.395256916996,
+      "nonDistrictMedianPricePerSqm": 7750
+    },
+    {
+      "period": "2011-Q4",
+      "label": "Q4 2011",
+      "complete": true,
+      "districtDeals": 15,
+      "nonDistrictDeals": 340,
+      "districtMedianPricePerSqm": 8870.967741935483,
+      "nonDistrictMedianPricePerSqm": 7984.2721874498475
+    },
+    {
+      "period": "2012-Q1",
+      "label": "Q1 2012",
+      "complete": true,
+      "districtDeals": 17,
+      "nonDistrictDeals": 400,
+      "districtMedianPricePerSqm": 9021.601016518423,
+      "nonDistrictMedianPricePerSqm": 7896.346034114499
+    },
+    {
+      "period": "2012-Q2",
+      "label": "Q2 2012",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 470,
+      "districtMedianPricePerSqm": 8102.320117017304,
+      "nonDistrictMedianPricePerSqm": 8151.26050420168
+    },
+    {
+      "period": "2012-Q3",
+      "label": "Q3 2012",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 504,
+      "districtMedianPricePerSqm": 8773.66921627779,
+      "nonDistrictMedianPricePerSqm": 8333.333333333334
+    },
+    {
+      "period": "2012-Q4",
+      "label": "Q4 2012",
+      "complete": true,
+      "districtDeals": 23,
+      "nonDistrictDeals": 564,
+      "districtMedianPricePerSqm": 9150.32679738562,
+      "nonDistrictMedianPricePerSqm": 8335.271317829458
+    },
+    {
+      "period": "2013-Q1",
+      "label": "Q1 2013",
+      "complete": true,
+      "districtDeals": 31,
+      "nonDistrictDeals": 562,
+      "districtMedianPricePerSqm": 9747.292418772564,
+      "nonDistrictMedianPricePerSqm": 8651.821213754132
+    },
+    {
+      "period": "2013-Q2",
+      "label": "Q2 2013",
+      "complete": true,
+      "districtDeals": 29,
+      "nonDistrictDeals": 586,
+      "districtMedianPricePerSqm": 10000,
+      "nonDistrictMedianPricePerSqm": 8925.142514251425
+    },
+    {
+      "period": "2013-Q3",
+      "label": "Q3 2013",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 509,
+      "districtMedianPricePerSqm": 9777.242506197881,
+      "nonDistrictMedianPricePerSqm": 9090.90909090909
+    },
+    {
+      "period": "2013-Q4",
+      "label": "Q4 2013",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 643,
+      "districtMedianPricePerSqm": 10000,
+      "nonDistrictMedianPricePerSqm": 9086.021505376344
+    },
+    {
+      "period": "2014-Q1",
+      "label": "Q1 2014",
+      "complete": true,
+      "districtDeals": 23,
+      "nonDistrictDeals": 515,
+      "districtMedianPricePerSqm": 11290.322580645161,
+      "nonDistrictMedianPricePerSqm": 9523.809523809523
+    },
+    {
+      "period": "2014-Q2",
+      "label": "Q2 2014",
+      "complete": true,
+      "districtDeals": 19,
+      "nonDistrictDeals": 437,
+      "districtMedianPricePerSqm": 10968.379446640316,
+      "nonDistrictMedianPricePerSqm": 9629.032258064517
+    },
+    {
+      "period": "2014-Q3",
+      "label": "Q3 2014",
+      "complete": true,
+      "districtDeals": 14,
+      "nonDistrictDeals": 449,
+      "districtMedianPricePerSqm": 10935.259856630824,
+      "nonDistrictMedianPricePerSqm": 9993.981481481482
+    },
+    {
+      "period": "2014-Q4",
+      "label": "Q4 2014",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 582,
+      "districtMedianPricePerSqm": 11055.831423478481,
+      "nonDistrictMedianPricePerSqm": 9881.659056316592
+    },
+    {
+      "period": "2015-Q1",
+      "label": "Q1 2015",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 593,
+      "districtMedianPricePerSqm": 12549.407114624506,
+      "nonDistrictMedianPricePerSqm": 10400.641025641025
+    },
+    {
+      "period": "2015-Q2",
+      "label": "Q2 2015",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 639,
+      "districtMedianPricePerSqm": 12351.778656126482,
+      "nonDistrictMedianPricePerSqm": 10528.131115459882
+    },
+    {
+      "period": "2015-Q3",
+      "label": "Q3 2015",
+      "complete": true,
+      "districtDeals": 30,
+      "nonDistrictDeals": 530,
+      "districtMedianPricePerSqm": 12217.425976007213,
+      "nonDistrictMedianPricePerSqm": 10665.173237753883
+    },
+    {
+      "period": "2015-Q4",
+      "label": "Q4 2015",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 617,
+      "districtMedianPricePerSqm": 12121.56252628038,
+      "nonDistrictMedianPricePerSqm": 10967.741935483871
+    },
+    {
+      "period": "2016-Q1",
+      "label": "Q1 2016",
+      "complete": true,
+      "districtDeals": 18,
+      "nonDistrictDeals": 632,
+      "districtMedianPricePerSqm": 13210.247103169064,
+      "nonDistrictMedianPricePerSqm": 11143.339201877934
+    },
+    {
+      "period": "2016-Q2",
+      "label": "Q2 2016",
+      "complete": true,
+      "districtDeals": 22,
+      "nonDistrictDeals": 698,
+      "districtMedianPricePerSqm": 13717.277486910993,
+      "nonDistrictMedianPricePerSqm": 11111.111111111111
+    },
+    {
+      "period": "2016-Q3",
+      "label": "Q3 2016",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 671,
+      "districtMedianPricePerSqm": 14035.98971722365,
+      "nonDistrictMedianPricePerSqm": 11409.718987734825
+    },
+    {
+      "period": "2016-Q4",
+      "label": "Q4 2016",
+      "complete": true,
+      "districtDeals": 22,
+      "nonDistrictDeals": 495,
+      "districtMedianPricePerSqm": 14632.514402335375,
+      "nonDistrictMedianPricePerSqm": 11462.585034013606
+    },
+    {
+      "period": "2017-Q1",
+      "label": "Q1 2017",
+      "complete": true,
+      "districtDeals": 22,
+      "nonDistrictDeals": 533,
+      "districtMedianPricePerSqm": 14844.21281841907,
+      "nonDistrictMedianPricePerSqm": 11704.545454545454
+    },
+    {
+      "period": "2017-Q2",
+      "label": "Q2 2017",
+      "complete": true,
+      "districtDeals": 24,
+      "nonDistrictDeals": 492,
+      "districtMedianPricePerSqm": 14164.780230145258,
+      "nonDistrictMedianPricePerSqm": 11728.35887940574
+    },
+    {
+      "period": "2017-Q3",
+      "label": "Q3 2017",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 496,
+      "districtMedianPricePerSqm": 14318.181818181818,
+      "nonDistrictMedianPricePerSqm": 11731.450381123075
+    },
+    {
+      "period": "2017-Q4",
+      "label": "Q4 2017",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 450,
+      "districtMedianPricePerSqm": 16129.032258064515,
+      "nonDistrictMedianPricePerSqm": 11604.928596307907
+    },
+    {
+      "period": "2018-Q1",
+      "label": "Q1 2018",
+      "complete": true,
+      "districtDeals": 31,
+      "nonDistrictDeals": 503,
+      "districtMedianPricePerSqm": 13743.455497382198,
+      "nonDistrictMedianPricePerSqm": 11526.717557251908
+    },
+    {
+      "period": "2018-Q2",
+      "label": "Q2 2018",
+      "complete": true,
+      "districtDeals": 24,
+      "nonDistrictDeals": 489,
+      "districtMedianPricePerSqm": 14902.75973108864,
+      "nonDistrictMedianPricePerSqm": 11563.858695652174
+    },
+    {
+      "period": "2018-Q3",
+      "label": "Q3 2018",
+      "complete": true,
+      "districtDeals": 12,
+      "nonDistrictDeals": 453,
+      "districtMedianPricePerSqm": 15345.15636918383,
+      "nonDistrictMedianPricePerSqm": 11532.656778558417
+    },
+    {
+      "period": "2018-Q4",
+      "label": "Q4 2018",
+      "complete": true,
+      "districtDeals": 22,
+      "nonDistrictDeals": 559,
+      "districtMedianPricePerSqm": 15121.778584392016,
+      "nonDistrictMedianPricePerSqm": 11719.466743119265
+    },
+    {
+      "period": "2019-Q1",
+      "label": "Q1 2019",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 516,
+      "districtMedianPricePerSqm": 16402.471418249817,
+      "nonDistrictMedianPricePerSqm": 11631.600935828876
+    },
+    {
+      "period": "2019-Q2",
+      "label": "Q2 2019",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 516,
+      "districtMedianPricePerSqm": 16057.312252964426,
+      "nonDistrictMedianPricePerSqm": 11680.614579928082
+    },
+    {
+      "period": "2019-Q3",
+      "label": "Q3 2019",
+      "complete": true,
+      "districtDeals": 27,
+      "nonDistrictDeals": 507,
+      "districtMedianPricePerSqm": 14112.90322580645,
+      "nonDistrictMedianPricePerSqm": 11324.503311258279
+    },
+    {
+      "period": "2019-Q4",
+      "label": "Q4 2019",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 518,
+      "districtMedianPricePerSqm": 15154.913728432108,
+      "nonDistrictMedianPricePerSqm": 11437.96992481203
+    },
+    {
+      "period": "2020-Q1",
+      "label": "Q1 2020",
+      "complete": true,
+      "districtDeals": 24,
+      "nonDistrictDeals": 560,
+      "districtMedianPricePerSqm": 12434.21052631579,
+      "nonDistrictMedianPricePerSqm": 11624.973942047112
+    },
+    {
+      "period": "2020-Q2",
+      "label": "Q2 2020",
+      "complete": true,
+      "districtDeals": 24,
+      "nonDistrictDeals": 461,
+      "districtMedianPricePerSqm": 14609.800362976406,
+      "nonDistrictMedianPricePerSqm": 11652.542372881355
+    },
+    {
+      "period": "2020-Q3",
+      "label": "Q3 2020",
+      "complete": true,
+      "districtDeals": 29,
+      "nonDistrictDeals": 522,
+      "districtMedianPricePerSqm": 16205.533596837944,
+      "nonDistrictMedianPricePerSqm": 11711.868494472186
+    },
+    {
+      "period": "2020-Q4",
+      "label": "Q4 2020",
+      "complete": true,
+      "districtDeals": 22,
+      "nonDistrictDeals": 635,
+      "districtMedianPricePerSqm": 15537.634408602149,
+      "nonDistrictMedianPricePerSqm": 11647.727272727272
+    },
+    {
+      "period": "2021-Q1",
+      "label": "Q1 2021",
+      "complete": true,
+      "districtDeals": 25,
+      "nonDistrictDeals": 752,
+      "districtMedianPricePerSqm": 13437.5,
+      "nonDistrictMedianPricePerSqm": 11709.6018735363
+    },
+    {
+      "period": "2021-Q2",
+      "label": "Q2 2021",
+      "complete": true,
+      "districtDeals": 47,
+      "nonDistrictDeals": 873,
+      "districtMedianPricePerSqm": 14274.193548387095,
+      "nonDistrictMedianPricePerSqm": 11818.181818181818
+    },
+    {
+      "period": "2021-Q3",
+      "label": "Q3 2021",
+      "complete": true,
+      "districtDeals": 29,
+      "nonDistrictDeals": 823,
+      "districtMedianPricePerSqm": 14921.465968586386,
+      "nonDistrictMedianPricePerSqm": 11867.058890485609
+    },
+    {
+      "period": "2021-Q4",
+      "label": "Q4 2021",
+      "complete": true,
+      "districtDeals": 35,
+      "nonDistrictDeals": 1039,
+      "districtMedianPricePerSqm": 14532.163742690058,
+      "nonDistrictMedianPricePerSqm": 12019.23076923077
+    },
+    {
+      "period": "2022-Q1",
+      "label": "Q1 2022",
+      "complete": true,
+      "districtDeals": 46,
+      "nonDistrictDeals": 915,
+      "districtMedianPricePerSqm": 15928.683385579938,
+      "nonDistrictMedianPricePerSqm": 12399.328859060402
+    },
+    {
+      "period": "2022-Q2",
+      "label": "Q2 2022",
+      "complete": true,
+      "districtDeals": 48,
+      "nonDistrictDeals": 802,
+      "districtMedianPricePerSqm": 14552.87524366472,
+      "nonDistrictMedianPricePerSqm": 12644.903397734844
+    },
+    {
+      "period": "2022-Q3",
+      "label": "Q3 2022",
+      "complete": true,
+      "districtDeals": 57,
+      "nonDistrictDeals": 930,
+      "districtMedianPricePerSqm": 14583.333333333334,
+      "nonDistrictMedianPricePerSqm": 12782.981107909061
+    },
+    {
+      "period": "2022-Q4",
+      "label": "Q4 2022",
+      "complete": true,
+      "districtDeals": 40,
+      "nonDistrictDeals": 804,
+      "districtMedianPricePerSqm": 15033.909327387588,
+      "nonDistrictMedianPricePerSqm": 12766.430024839905
+    },
+    {
+      "period": "2023-Q1",
+      "label": "Q1 2023",
+      "complete": true,
+      "districtDeals": 28,
+      "nonDistrictDeals": 657,
+      "districtMedianPricePerSqm": 15557.469464453492,
+      "nonDistrictMedianPricePerSqm": 12837.883348418194
+    },
+    {
+      "period": "2023-Q2",
+      "label": "Q2 2023",
+      "complete": true,
+      "districtDeals": 31,
+      "nonDistrictDeals": 612,
+      "districtMedianPricePerSqm": 14957.264957264959,
+      "nonDistrictMedianPricePerSqm": 12941.84385909235
+    },
+    {
+      "period": "2023-Q3",
+      "label": "Q3 2023",
+      "complete": true,
+      "districtDeals": 31,
+      "nonDistrictDeals": 608,
+      "districtMedianPricePerSqm": 14453.125,
+      "nonDistrictMedianPricePerSqm": 12898.319948306103
+    },
+    {
+      "period": "2023-Q4",
+      "label": "Q4 2023",
+      "complete": true,
+      "districtDeals": 19,
+      "nonDistrictDeals": 494,
+      "districtMedianPricePerSqm": 14485.387547649301,
+      "nonDistrictMedianPricePerSqm": 12709.811973838541
+    },
+    {
+      "period": "2024-Q1",
+      "label": "Q1 2024",
+      "complete": true,
+      "districtDeals": 72,
+      "nonDistrictDeals": 1321,
+      "districtMedianPricePerSqm": 15371.5,
+      "nonDistrictMedianPricePerSqm": 13297.872340425532
+    },
+    {
+      "period": "2024-Q2",
+      "label": "Q2 2024",
+      "complete": true,
+      "districtDeals": 63,
+      "nonDistrictDeals": 1211,
+      "districtMedianPricePerSqm": 14928,
+      "nonDistrictMedianPricePerSqm": 13496.966257668711
+    },
+    {
+      "period": "2024-Q3",
+      "label": "Q3 2024",
+      "complete": true,
+      "districtDeals": 66,
+      "nonDistrictDeals": 1084,
+      "districtMedianPricePerSqm": 15592.770955165692,
+      "nonDistrictMedianPricePerSqm": 13141.428571428572
+    },
+    {
+      "period": "2024-Q4",
+      "label": "Q4 2024",
+      "complete": true,
+      "districtDeals": 26,
+      "nonDistrictDeals": 736,
+      "districtMedianPricePerSqm": 16066.736842105263,
+      "nonDistrictMedianPricePerSqm": 13041.761467889908
+    },
+    {
+      "period": "2025-Q1",
+      "label": "Q1 2025",
+      "complete": true,
+      "districtDeals": 37,
+      "nonDistrictDeals": 626,
+      "districtMedianPricePerSqm": 15631,
+      "nonDistrictMedianPricePerSqm": 12938.5
+    },
+    {
+      "period": "2025-Q2",
+      "label": "Q2 2025",
+      "complete": true,
+      "districtDeals": 33,
+      "nonDistrictDeals": 533,
+      "districtMedianPricePerSqm": 15316,
+      "nonDistrictMedianPricePerSqm": 12865
+    },
+    {
+      "period": "2025-Q3",
+      "label": "Q3 2025",
+      "complete": true,
+      "districtDeals": 43,
+      "nonDistrictDeals": 611,
+      "districtMedianPricePerSqm": 15176,
+      "nonDistrictMedianPricePerSqm": 13287
+    },
+    {
+      "period": "2025-Q4",
+      "label": "Q4 2025",
+      "complete": true,
+      "districtDeals": 29,
+      "nonDistrictDeals": 503,
+      "districtMedianPricePerSqm": 15699,
+      "nonDistrictMedianPricePerSqm": 12698.5
+    },
+    {
+      "period": "2026-Q1",
+      "label": "Q1 2026",
+      "complete": true,
+      "districtDeals": 20,
+      "nonDistrictDeals": 354,
+      "districtMedianPricePerSqm": 14917,
+      "nonDistrictMedianPricePerSqm": 12887
+    },
+    {
+      "period": "2026-Q2",
+      "label": "Q2 2026",
+      "complete": false,
+      "districtDeals": 7,
+      "nonDistrictDeals": 80,
+      "districtMedianPricePerSqm": 12515,
+      "nonDistrictMedianPricePerSqm": 13315.5
+    },
+    {
+      "period": "2026-Q3",
+      "label": "Q3 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 40,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13721.5
+    },
+    {
+      "period": "2026-Q4",
+      "label": "Q4 2026",
+      "complete": false,
+      "districtDeals": 0,
+      "nonDistrictDeals": 49,
+      "districtMedianPricePerSqm": null,
+      "nonDistrictMedianPricePerSqm": 13686
+    }
+  ]
+}

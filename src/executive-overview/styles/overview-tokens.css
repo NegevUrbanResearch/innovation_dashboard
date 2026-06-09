@@ -1,0 +1,43 @@
+.executive-overview {
+  /* Shared neutrals — figma-context.md */
+  --eo-canvas: #e6eee8; /* bg/canvas */
+  --eo-surface: #f8fbf9; /* bg/surface */
+  --eo-text-primary: #101317; /* text/primary */
+  --eo-text-secondary: #49454f; /* text/secondary */
+  --eo-border-default: #79747e; /* border/default */
+  --eo-delta-positive: #0f8e4a; /* status/delta/positive */
+  --eo-delta-negative: #c93a3a; /* status/delta/negative */
+
+  /* Category palette — figma-context.md Light mode 2026-06-05 */
+  --eo-economy-accent: #368393; /* category/economy/accent */
+  --eo-economy-soft: #c9eaf1; /* category/economy/bg-soft = surface */
+  --eo-network-accent: #74094a; /* category/network/accent */
+  --eo-network-soft: #d3adc4; /* category/network/bg-soft = surface */
+  --eo-physical-accent: #875800; /* category/physical/accent */
+  --eo-physical-soft: #fcd68d; /* category/physical/bg-soft = surface */
+  --eo-physical-outside-accent: #4d7c82;
+
+  --eo-font-value: "Libre Bodoni", Georgia, serif;
+  --eo-font-ui: "Open Sans", system-ui, sans-serif;
+
+  --eo-card-radius: 10px;
+  --eo-card-stroke: 1px;
+  --eo-opener-width: 86px;
+  --eo-card-width-base: 214px;
+  --eo-card-width-boost: 0px;
+  --eo-card-height: 155px;
+  --eo-card-padding: 6px;
+  --eo-row-gap: 1.0625rem;
+  --eo-card-gap: 0.875rem;
+  --eo-card-shadow: 5px 5px 0 rgb(16 19 23 / 0.4);
+  --eo-card-shadow-spread: 5px;
+  --eo-scale-to-fit: 0;
+  --eo-opener-label-size: 16px;
+  --eo-name-size: 13px;
+  --eo-period-size: 13px;
+  --eo-value-size: 34px;
+  --eo-baseline-size: 12px;
+  --eo-target-size: 12px;
+  --eo-next-update-size: 10px;
+
+}

@@ -1,0 +1,438 @@
+.exec-deep-dive-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.exec-deep-dive-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(16 19 23 / 0.18);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 180ms ease,
+    backdrop-filter 180ms ease;
+}
+
+.exec-deep-dive-overlay__shell {
+  position: absolute;
+  inset: 1rem;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 1rem;
+  min-width: 0;
+  min-height: 0;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 24%, var(--eo-border-default));
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 92%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 98%, var(--eo-physical-soft)) 100%
+    );
+  box-shadow:
+    0 26px 48px rgb(16 19 23 / 0.14),
+    0 8px 20px rgb(16 19 23 / 0.1);
+  color: var(--eo-text-primary);
+  font-family: var(--eo-font-ui);
+  pointer-events: auto;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, 18px, 0) scale(0.985) rotateX(-4deg);
+  transform-origin: 50% 0%;
+  transform-style: preserve-3d;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.exec-deep-dive-motion-ghost {
+  --eo-canvas: #e6eee8;
+  --eo-surface: #f8fbf9;
+  --eo-text-primary: #101317;
+  --eo-text-secondary: #49454f;
+  --eo-border-default: #79747e;
+  --eo-physical-accent: #875800;
+  --eo-physical-soft: #fcd68d;
+  --eo-physical-outside-accent: #4d7c82;
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+  --eo-card-radius: 10px;
+  --eo-card-stroke: 1px;
+  --eo-card-shadow: 5px 5px 0 rgb(16 19 23 / 0.4);
+  --eo-fold-size: 2.7rem;
+  --eo-fold-flap-size: 2.05rem;
+  --eo-fold-cut: color-mix(in srgb, var(--eo-canvas) 78%, white);
+  --eo-motion-shell-radius: 16px;
+
+  contain: layout paint style;
+  pointer-events: none;
+  user-select: none;
+  max-width: none;
+  max-height: none;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  will-change: transform, opacity;
+}
+
+.exec-deep-dive-motion-ghost,
+.exec-deep-dive-motion-ghost *,
+.exec-deep-dive-overlay__shell--in-motion,
+.exec-deep-dive-overlay__backdrop {
+  box-sizing: border-box;
+  transition: none !important;
+}
+
+.exec-deep-dive-motion-ghost--shell {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.exec-deep-dive-motion-ghost__inner,
+.exec-deep-dive-motion-ghost__face {
+  position: absolute;
+  inset: 0;
+}
+
+.exec-deep-dive-motion-ghost__inner {
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.exec-deep-dive-motion-ghost__face {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.exec-deep-dive-motion-ghost__face--front {
+  transform: rotateY(0deg) translateZ(0.1px);
+}
+
+.exec-deep-dive-motion-ghost__face--back {
+  transform: rotateY(180deg) translateZ(0.1px);
+}
+
+.exec-deep-dive-motion-ghost__back-card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--eo-card-radius);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--eo-category-soft) 90%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 86%, var(--eo-category-soft)) 46%,
+      color-mix(in srgb, var(--eo-category-accent) 14%, var(--eo-surface)) 100%
+    );
+  box-shadow: var(--eo-card-shadow);
+  transform: translateZ(0);
+}
+
+.exec-deep-dive-motion-ghost__back-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--eo-category-soft) 92%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 82%, var(--eo-category-soft)) 52%,
+      color-mix(in srgb, var(--eo-category-accent) 16%, var(--eo-surface)) 100%
+    );
+  opacity: 0;
+}
+
+.exec-deep-dive-motion-ghost__shell-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  opacity: 1;
+}
+
+.exec-deep-dive-motion-ghost[data-motion-phase="close-final-frame"] .exec-deep-dive-motion-ghost__back-card::before {
+  opacity: 1;
+}
+
+.exec-deep-dive-motion-ghost[data-motion-phase="close-final-frame"] .exec-deep-dive-motion-ghost__shell-scale {
+  opacity: 0;
+}
+
+.exec-deep-dive-overlay__shell--in-motion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+  transform-origin: 0 0;
+  transition: none;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.exec-deep-dive-motion-ghost__shell-surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 24%, var(--eo-border-default));
+  border-radius: var(--eo-motion-shell-radius);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 94%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 96%, var(--eo-physical-soft)) 100%
+    );
+  box-shadow:
+    0 26px 48px rgb(16 19 23 / 0.14),
+    0 8px 20px rgb(16 19 23 / 0.1);
+}
+
+.exec-deep-dive-motion-ghost__shell-header,
+.exec-deep-dive-motion-ghost__shell-panel,
+.exec-deep-dive-motion-ghost__canvas-reveal {
+  position: absolute;
+  display: block;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 12%, white);
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+}
+
+.exec-deep-dive-motion-ghost__shell-header {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: clamp(1.4rem, 8%, 3.2rem);
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--eo-physical-accent) 18%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 92%, white) 48%,
+      transparent 100%
+    );
+  opacity: 0.7;
+}
+
+.exec-deep-dive-motion-ghost__shell-panel {
+  top: calc(1rem + clamp(1.4rem, 8%, 3.2rem) + 1rem);
+  bottom: 1rem;
+  border-radius: 12px;
+}
+
+.exec-deep-dive-motion-ghost__shell-panel--left {
+  left: 1rem;
+  width: calc(48% - 1.5rem);
+}
+
+.exec-deep-dive-motion-ghost__shell-panel--right {
+  right: 1rem;
+  width: calc(52% - 1.5rem);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 82%, white) 0%,
+      color-mix(in srgb, var(--eo-physical-soft) 16%, white) 100%
+    );
+}
+
+.exec-deep-dive-motion-ghost__canvas-reveal {
+  right: 1.75rem;
+  bottom: 1.75rem;
+  width: min(34%, 18rem);
+  height: min(34%, 12rem);
+  border-color: color-mix(in srgb, var(--eo-physical-outside-accent) 20%, white);
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgb(16 19 23 / 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgb(16 19 23 / 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 72% 38%, var(--eo-physical-outside-accent) 0 4px, transparent 5px),
+    radial-gradient(circle at 32% 62%, var(--eo-physical-accent) 0 4px, transparent 5px),
+    color-mix(in srgb, var(--eo-surface) 96%, white);
+  background-size:
+    24px 24px,
+    24px 24px,
+    auto,
+    auto,
+    auto;
+  opacity: 0.72;
+}
+
+.exec-deep-dive-overlay[data-state="opening"],
+.exec-deep-dive-overlay[data-state="open"],
+.exec-deep-dive-overlay[data-state="closing"] {
+  pointer-events: auto;
+}
+
+.exec-deep-dive-overlay[data-state="open"] .exec-deep-dive-overlay__backdrop,
+.exec-deep-dive-overlay[data-state="closing"] .exec-deep-dive-overlay__backdrop {
+  opacity: 1;
+}
+
+.exec-deep-dive-overlay[data-state="open"] .exec-deep-dive-overlay__shell,
+.exec-deep-dive-overlay[data-state="closing"] .exec-deep-dive-overlay__shell {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+}
+
+.exec-deep-dive-overlay__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.exec-deep-dive-overlay__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.exec-deep-dive-overlay__eyebrow {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--eo-physical-accent) 74%, white);
+}
+
+.exec-deep-dive-overlay__title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: clamp(1.65rem, 2vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.02;
+}
+
+.exec-deep-dive-overlay__close {
+  flex: 0 0 auto;
+  min-width: 88px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 32%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 85%, white);
+  color: var(--eo-text-primary);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.55rem 0.95rem;
+  cursor: pointer;
+}
+
+.exec-deep-dive-overlay__close:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.exec-deep-dive-overlay__body {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.95fr) minmax(24rem, 1.15fr);
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 1rem;
+  overflow: auto;
+}
+
+.exec-deep-dive-overlay__panel {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 14%, white);
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+  padding: 1rem;
+  overflow: auto;
+}
+
+.exec-deep-dive-overlay__panel--right {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 82%, white) 0%,
+      color-mix(in srgb, var(--eo-physical-soft) 16%, white) 100%
+    );
+}
+
+.exec-deep-dive__loading-state,
+.exec-deep-dive__placeholder {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.exec-deep-dive__loading-state {
+  align-items: center;
+  justify-content: center;
+  color: var(--eo-text-secondary);
+  font-size: 0.95rem;
+}
+
+.exec-deep-dive__placeholder-kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+}
+
+.exec-deep-dive__placeholder-title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.exec-deep-dive__placeholder-copy {
+  margin: 0.8rem 0 0;
+  max-width: 52ch;
+  color: var(--eo-text-secondary);
+  line-height: 1.45;
+}
+
+.exec-deep-dive__placeholder-list {
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  color: var(--eo-text-primary);
+  line-height: 1.45;
+}
+
+.exec-deep-dive__placeholder-list-item + .exec-deep-dive__placeholder-list-item {
+  margin-top: 0.45rem;
+}
+
+.exec-deep-dive__evidence-well {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.exec-deep-dive__evidence-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 18%, white);
+  background: color-mix(in srgb, var(--eo-physical-soft) 32%, white);
+  color: var(--eo-physical-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+

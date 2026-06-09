@@ -1,10 +1,16 @@
 import "./executive-overview.css";
 import { attachGridScale } from "./fit-grid-to-host";
+import {
+  mountKpiDeepDiveOverlay,
+  type DeepDiveOverlayController,
+} from "./kpi-deep-dive-overlay";
+import { mountKpiCard } from "./kpi-card";
 import { loadQuarterAlumniCount } from "./load-cohort-alumni";
 import { loadRealEstateDealsKpi } from "./real-estate-deals";
 import { buildExecutiveOverviewModel } from "./static-kpi-data";
-import { mountKpiCard } from "./kpi-card";
 import type { KpiCardModel, KpiCategory } from "./types";
+
+const pageCleanupByRoot = new WeakMap<HTMLElement, () => void>();
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -20,11 +26,15 @@ function el<K extends keyof HTMLElementTagNameMap>(
 function mountCardsTrack(
   category: KpiCategory,
   cards: KpiCardModel[],
+  onOpenDeepDive?: (card: KpiCardModel, origin: HTMLElement) => void,
 ): HTMLElement {
   const cardsTrack = el("div", "executive-overview__cards");
+  cardsTrack.dataset.category = category;
+
   for (const card of cards) {
-    cardsTrack.appendChild(mountKpiCard(card, category));
+    cardsTrack.appendChild(mountKpiCard(card, onOpenDeepDive));
   }
+
   return cardsTrack;
 }
 
@@ -37,8 +47,11 @@ function mountCategoryOpener(categoryLabel: string): HTMLElement {
 }
 
 export async function mountExecutiveOverview(root: HTMLElement): Promise<void> {
+  pageCleanupByRoot.get(root)?.();
+  pageCleanupByRoot.delete(root);
+
   root.replaceChildren();
-  root.appendChild(el("div", "executive-overview__loading", "Loading…"));
+  root.appendChild(el("div", "executive-overview__loading", "Loading..."));
 
   let alumniCount: string | null = null;
   let realEstateDeals = null;
@@ -57,6 +70,11 @@ export async function mountExecutiveOverview(root: HTMLElement): Promise<void> {
   const page = el("div", "executive-overview");
   const scaleHost = el("div", "executive-overview__scale-host");
   const grid = el("div", "executive-overview__rows");
+  let overlayController: DeepDiveOverlayController | null = null;
+
+  const openDeepDive = (card: KpiCardModel, origin: HTMLElement) => {
+    overlayController?.open(card, origin);
+  };
 
   for (const block of blocks) {
     if (block.kind === "row") {
@@ -65,7 +83,7 @@ export async function mountExecutiveOverview(root: HTMLElement): Promise<void> {
         `executive-overview__row executive-overview__row--${block.category}`,
       );
       rowEl.appendChild(mountCategoryOpener(block.categoryLabel));
-      rowEl.appendChild(mountCardsTrack(block.row.category, block.row.cards));
+      rowEl.appendChild(mountCardsTrack(block.row.category, block.row.cards, openDeepDive));
       grid.appendChild(rowEl);
       continue;
     }
@@ -82,15 +100,22 @@ export async function mountExecutiveOverview(root: HTMLElement): Promise<void> {
         "section",
         `executive-overview__row executive-overview__row--${row.category}`,
       );
-      rowEl.appendChild(mountCardsTrack(row.category, row.cards));
+      rowEl.appendChild(mountCardsTrack(row.category, row.cards, openDeepDive));
       subRows.appendChild(rowEl);
     }
+
     group.appendChild(subRows);
     grid.appendChild(group);
   }
 
   scaleHost.appendChild(grid);
   page.appendChild(scaleHost);
+  overlayController = mountKpiDeepDiveOverlay(page);
   root.replaceChildren(page);
-  attachGridScale(scaleHost, grid, page);
+
+  const detachGridScale = attachGridScale(scaleHost, grid, page);
+  pageCleanupByRoot.set(root, () => {
+    overlayController?.destroy();
+    detachGridScale();
+  });
 }

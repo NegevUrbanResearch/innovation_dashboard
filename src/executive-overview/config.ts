@@ -1,12 +1,20 @@
 import { CATEGORY_LABELS } from "./copy";
-import type { KpiCategory, KpiDef, KpiId, KpiDataSource, LayoutBlockDef } from "./types";
+import type {
+  DeepDiveCapability,
+  KpiCategory,
+  KpiDataSource,
+  KpiDef,
+  KpiId,
+  LayoutBlockDef,
+} from "./types";
 
 const KPI = (
   id: KpiId,
   category: KpiCategory,
   kpiName: string,
   dataSource: KpiDataSource,
-): KpiDef => ({ id, category, kpiName, dataSource });
+  deepDive?: DeepDiveCapability,
+): KpiDef => ({ id, category, kpiName, dataSource, deepDive });
 
 /** Order matches ID Key numbers — Overview.csv left-to-right within each row. */
 export const KPI_ROSTER: KpiDef[] = [
@@ -28,7 +36,13 @@ export const KPI_ROSTER: KpiDef[] = [
   KPI("physical-micromobility", "physical", "Micromobility", "none"),
   KPI("physical-district-amenities", "physical", "District Amenities", "static-amenities"),
   KPI("physical-accessibility", "physical", "Accessibility", "none"),
-  KPI("physical-real-estate-deals", "physical", "Real Estate Deals", "real-estate-deals"),
+  KPI(
+    "physical-real-estate-deals",
+    "physical",
+    "Real Estate Deals",
+    "real-estate-deals",
+    { id: "real-estate-deals", label: "Open real estate deep dive" },
+  ),
   KPI("physical-development-rights", "physical", "Development Rights", "none"),
   KPI("physical-development-pipeline", "physical", "Development Pipeline", "none"),
   KPI("physical-microclimate", "physical", "Microclimate", "none"),
