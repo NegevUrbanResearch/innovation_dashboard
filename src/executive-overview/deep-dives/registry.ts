@@ -1,6 +1,6 @@
-import { renderUnavailableDeepDive } from "./deep-dive-rendering";
-import { mountRealEstateDeepDive } from "./real-estate-deep-dive";
-import type { DeepDiveController, DeepDiveRenderer, KpiCardModel, KpiDeepDiveId } from "./types";
+import { renderUnavailableDeepDive } from "./rendering.ts";
+import { mountRealEstateDeepDive } from "./real-estate/deep-dive.ts";
+import type { DeepDiveController, DeepDiveRenderer, KpiCardModel, KpiDeepDiveId } from "../types.ts";
 
 export type RegisteredDeepDiveRenderer = DeepDiveRenderer;
 

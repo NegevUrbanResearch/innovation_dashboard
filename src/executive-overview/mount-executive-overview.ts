@@ -1,13 +1,13 @@
 import "./executive-overview.css";
-import { attachGridScale } from "./fit-grid-to-host";
+import { attachGridScale } from "./layout/fit-grid-to-host";
 import {
   mountKpiDeepDiveOverlay,
   type DeepDiveOverlayController,
-} from "./kpi-deep-dive-overlay";
-import { mountKpiCard } from "./kpi-card";
-import { loadQuarterAlumniCount } from "./load-cohort-alumni";
-import { loadRealEstateDealsKpi } from "./real-estate-deals";
-import { buildExecutiveOverviewModel } from "./static-kpi-data";
+} from "./overlay/kpi-deep-dive-overlay";
+import { mountKpiCard } from "./cards/kpi-card";
+import { loadQuarterAlumniCount } from "./data/load-cohort-alumni";
+import { loadRealEstateDealsKpi } from "./deep-dives/real-estate/card-fields";
+import { buildExecutiveOverviewModel } from "./cards/static-kpi-data";
 import type { KpiCardModel, KpiCategory } from "./types";
 
 const pageCleanupByRoot = new WeakMap<HTMLElement, () => void>();

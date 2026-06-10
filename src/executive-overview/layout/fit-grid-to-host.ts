@@ -1,4 +1,4 @@
-import { WIDEST_ROW_CARD_COUNT } from "./config";
+import { WIDEST_ROW_CARD_COUNT } from "../config";
 
 const MIN_SCALE = 0.55;
 

@@ -14,9 +14,9 @@ This is today's explicit registration path and it is intentionally conservative 
 
 ## Required Files For A New Deep Dive
 
-- `src/executive-overview/<domain>-kpi.ts`
-- `src/executive-overview/<domain>-deep-dive-data.ts`
-- `src/executive-overview/<domain>-deep-dive.ts`
+- `src/executive-overview/deep-dives/<domain>/card-fields.ts`
+- `src/executive-overview/deep-dives/<domain>/data.ts`
+- `src/executive-overview/deep-dives/<domain>/deep-dive.ts`
 - Optional map/detail module when the right-side evidence surface needs separate logic.
 - Optional domain CSS under `src/executive-overview/styles/` when shared overview styles are no longer enough.
 - Tests for card field mapping, data parsing, and registry/rendering integration as appropriate.
@@ -29,13 +29,13 @@ For data-backed deep dives, this is the expected file checklist. Smaller or simp
 2. Add the data source ID to `KpiDataSource`.
 3. Add the deep-dive ID to `KpiDeepDiveId` when the KPI has a deep dive.
 4. Add the KPI to `KPI_ROSTER` and `LAYOUT_BLOCKS` in `src/executive-overview/config.ts`.
-5. Add a typed loader or card mapper like `real-estate-deals.ts` for data-backed KPIs; simple or static KPIs should keep this step minimal, but the KPI still needs a clear typed path into its card model.
+5. Add a typed loader or card mapper like `deep-dives/real-estate/card-fields.ts` for data-backed KPIs; simple or static KPIs should keep this step minimal, but the KPI still needs a clear typed path into its card model.
 6. Load the payload in `mount-executive-overview.ts` if async or generated data is needed.
-7. Route the payload through `static-kpi-data.ts` if the KPI needs shared card-model assembly.
-8. Add optional helper modules such as `*-deep-dive-data.ts` or map/detail files only when the renderer would otherwise get too heavy.
+7. Route the payload through `cards/static-kpi-data.ts` for shared card-model assembly only. Keep KPI-specific parsing and formatting in domain modules such as `deep-dives/real-estate/card-fields.ts`.
+8. Add optional domain helper modules such as `data.ts`, `map.ts`, or `detail.ts` under `src/executive-overview/deep-dives/<domain>/` only when the renderer would otherwise get too heavy.
 9. Implement a renderer returning `DeepDiveController` with `destroy()` and `onVisible()`.
-10. Register the renderer in `deep-dive-registry.ts`; if a capability is declared before the renderer is ready, the fallback should remain clear.
-11. Leave `deep-dive-rendering.ts` generic; only edit it for shared unavailable-state behavior, not KPI-specific content.
+10. Register the renderer in `deep-dives/registry.ts`; if a capability is declared before the renderer is ready, the fallback should remain clear.
+11. Leave `deep-dives/rendering.ts` generic; only edit it for shared unavailable-state behavior, not KPI-specific content.
 12. Import domain CSS through `styles/index.css` when needed.
 
 `renderRegisteredDeepDive(...)` may still return `void` for unavailable or unregistered fallback. The registry is intentionally partial over `KpiDeepDiveId`, so a declared deep-dive capability can fall back cleanly before its renderer exists. That fallback is a safety net for a temporarily missing renderer, not the normal way to ship a KPI that is not meant to open a deep dive yet.
@@ -61,7 +61,7 @@ For data-backed deep dives, this is the expected file checklist. Smaller or simp
 
 ## Do Not
 
-- Do not import domain modules directly from `kpi-deep-dive-overlay.ts`.
+- Do not import domain modules directly from `src/executive-overview/overlay/kpi-deep-dive-overlay.ts`.
 - Do not add renderer maps or KPI-specific branches inside the overlay shell.
 - Do not edit generated public data by hand.
 - Do not copy Real Estate CSS class names for unrelated domains.

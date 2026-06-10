@@ -5,14 +5,14 @@
 - `README.md`
 - `docs/kpi-deep-dive-template.md`
 - `src/executive-overview/config.ts`
-- `src/executive-overview/deep-dive-registry.ts`
+- `src/executive-overview/deep-dives/registry.ts`
 
 ## Working Rules
 
 - Preserve the executive overview visual contract unless the user asks for design changes.
 - Do not edit generated files in `public/real-estate/` by hand; regenerate them or explain why regeneration is unavailable.
-- Keep new deep-dive KPIs on the registry path in `src/executive-overview/deep-dive-registry.ts`.
-- Do not add KPI-specific branches to `kpi-deep-dive-overlay.ts`.
+- Keep new deep-dive KPIs on the registry path in `src/executive-overview/deep-dives/registry.ts`.
+- Do not add KPI-specific branches to `src/executive-overview/overlay/kpi-deep-dive-overlay.ts`.
 - Keep broad legacy cleanup, such as splitting `src/styles.css`, separate from KPI feature work.
 - Do not create commits or git worktrees unless the user asks.
 - Do not run tests when the user explicitly says not to.

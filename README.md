@@ -36,14 +36,16 @@ npm run dev
 - `scripts/build-real-estate-kpi.py`
 - `public/real-estate/`
 
+`src/executive-overview/data/` is for overview-level input loaders. Deep-dive data loading belongs under `src/executive-overview/deep-dives/<domain>/`; the alumni loader's LinkedIn helper imports are a narrow legacy dependency, not a shared pattern for new deep dives.
+
 ## Runtime Flow
 
 1. `src/main.ts` mounts the app shell and calls `mountExecutiveOverview`.
 2. `src/executive-overview/mount-executive-overview.ts` loads KPI inputs.
-3. `src/executive-overview/static-kpi-data.ts` builds card models from `KPI_ROSTER` and `LAYOUT_BLOCKS`.
-4. `src/executive-overview/kpi-card.ts` renders KPI cards.
-5. `src/executive-overview/kpi-deep-dive-overlay.ts` owns the overlay shell and lifecycle.
-6. `src/executive-overview/deep-dive-registry.ts` maps deep-dive IDs to content modules.
+3. `src/executive-overview/cards/static-kpi-data.ts` builds card models from `KPI_ROSTER` and `LAYOUT_BLOCKS`.
+4. `src/executive-overview/cards/kpi-card.ts` renders KPI cards.
+5. `src/executive-overview/overlay/kpi-deep-dive-overlay.ts` owns the overlay shell and lifecycle.
+6. `src/executive-overview/deep-dives/registry.ts` maps deep-dive IDs to content modules.
 
 ## Real Estate Data Artifacts
 
@@ -57,4 +59,4 @@ npm run dev
 
 ## Adding KPI Deep Dives
 
-Use `docs/kpi-deep-dive-template.md` when adding a new deep dive. Register new deep dives through `src/executive-overview/deep-dive-registry.ts`, and keep `kpi-deep-dive-overlay.ts` generic with no KPI-specific branches. Real Estate Deals is the first validated reference implementation.
+Use `docs/kpi-deep-dive-template.md` when adding a new deep dive. Register new deep dives through `src/executive-overview/deep-dives/registry.ts`, and keep `src/executive-overview/overlay/kpi-deep-dive-overlay.ts` generic with no KPI-specific branches. Real Estate Deals is the first validated reference implementation.

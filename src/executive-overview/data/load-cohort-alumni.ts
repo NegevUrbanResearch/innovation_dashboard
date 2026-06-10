@@ -1,5 +1,5 @@
-import { parseCohortVennOverlap } from "../linkedin-charts/csv";
-import { fetchDataCsv } from "../linkedin-charts/load-data";
+import { parseCohortVennOverlap } from "../../linkedin-charts/csv";
+import { fetchDataCsv } from "../../linkedin-charts/load-data";
 
 const COHORT_VENN_FILE = "cohort_venn_overlap.csv";
 

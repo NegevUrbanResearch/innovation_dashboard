@@ -9,7 +9,7 @@
     "build:real-estate-kpi": "python scripts/build-real-estate-kpi.py",
     "preview": "vite preview",
     "test:linkedin-charts": "node --experimental-strip-types --test src/linkedin-charts/jobs-mirrored-model.test.ts",
-    "test:executive-overview": "node --experimental-strip-types --test src/executive-overview/real-estate-deals.test.ts src/executive-overview/kpi-card.test.ts src/executive-overview/kpi-deep-dive-overlay.test.ts src/executive-overview/deep-dive-rendering.test.ts",
+    "test:executive-overview": "node --experimental-strip-types --test \"src/executive-overview/**/*.test.ts\"",
     "postinstall": "patch-package"
   },
   "devDependencies": {

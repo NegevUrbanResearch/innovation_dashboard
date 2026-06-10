@@ -57,19 +57,40 @@ export type RealEstateTimeseriesData = {
   quarterly: RealEstateTimeseriesRow[];
 };
 
-export type RealEstateDeepDiveData = RealEstateTimeseriesData & {
-  markers: RealEstateDealsFeatureCollection;
-};
-
 export const REAL_ESTATE_CURRENCY = "ILS";
 export const REAL_ESTATE_CURRENCY_LABEL = "₪";
 const TIMESERIES_FILE = "deals-timeseries.json";
 const MARKERS_FILE = "deals-markers.geojson";
 export const REAL_ESTATE_OUTSIDE_MARKET_COLOR = "#4d7c82";
 
-function publicDataUrl(name: string): string {
-  const base = import.meta.env.BASE_URL || "/";
-  return base.endsWith("/") ? `${base}real-estate/${name}` : `${base}/real-estate/${name}`;
+type ImportMetaWithOptionalEnv = ImportMeta & {
+  env?: {
+    BASE_URL?: string;
+  };
+};
+
+function publicDataUrl(path: string): string {
+  const base = (import.meta as ImportMetaWithOptionalEnv).env?.BASE_URL || "/";
+  const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+  return `${normalizedBase}${path.replace(/^\/+/, "")}`;
+}
+
+async function fetchJsonAsset(path: string): Promise<unknown | null> {
+  try {
+    const response = await fetch(publicDataUrl(path), { cache: "default" });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function cachedAsset<T>(loader: () => Promise<T | null>): () => Promise<T | null> {
+  let promise: Promise<T | null> | null = null;
+  return () => {
+    promise ??= loader();
+    return promise;
+  };
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -287,53 +308,13 @@ function parseMarkersPayload(value: unknown): RealEstateDealsFeatureCollection |
   };
 }
 
-let timeseriesCache: Promise<RealEstateTimeseriesData | null> | null = null;
-let markersCache: Promise<RealEstateDealsFeatureCollection | null> | null = null;
+export const loadRealEstateTimeseriesData = cachedAsset(async () => {
+  const payload = await fetchJsonAsset(`real-estate/${TIMESERIES_FILE}`);
+  return payload === null ? null : parseTimeseriesPayload(payload);
+});
 
-async function fetchJsonAsset(name: string): Promise<unknown | null> {
-  try {
-    const response = await fetch(publicDataUrl(name), { cache: "default" });
-    if (!response.ok) return null;
-    return await response.json();
-  } catch {
-    return null;
-  }
-}
+export const loadRealEstateMarkersData = cachedAsset(async () => {
+  const payload = await fetchJsonAsset(`real-estate/${MARKERS_FILE}`);
+  return payload === null ? null : parseMarkersPayload(payload);
+});
 
-export function loadRealEstateTimeseriesData(): Promise<RealEstateTimeseriesData | null> {
-  if (!timeseriesCache) {
-    timeseriesCache = (async () => {
-      const payload = await fetchJsonAsset(TIMESERIES_FILE);
-      return payload === null ? null : parseTimeseriesPayload(payload);
-    })();
-  }
-
-  return timeseriesCache;
-}
-
-export function loadRealEstateMarkersData(): Promise<RealEstateDealsFeatureCollection | null> {
-  if (!markersCache) {
-    markersCache = (async () => {
-      const payload = await fetchJsonAsset(MARKERS_FILE);
-      return payload === null ? null : parseMarkersPayload(payload);
-    })();
-  }
-
-  return markersCache;
-}
-
-export async function loadRealEstateDeepDiveData(): Promise<RealEstateDeepDiveData | null> {
-  const [timeseries, markers] = await Promise.all([
-    loadRealEstateTimeseriesData(),
-    loadRealEstateMarkersData(),
-  ]);
-
-  if (!timeseries || !markers) {
-    return null;
-  }
-
-  return {
-    ...timeseries,
-    markers,
-  };
-}

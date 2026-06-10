@@ -1,4 +1,4 @@
-import type { KpiCardModel } from "./types";
+import type { KpiCardModel } from "../types.ts";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,

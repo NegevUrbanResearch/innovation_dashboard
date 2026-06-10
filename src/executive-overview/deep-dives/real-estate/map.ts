@@ -10,7 +10,7 @@ import {
   type RealEstateDealsFeatureProperties,
   type RealEstatePeriodRange,
   type RealEstateResolution,
-} from "./real-estate-deep-dive-data";
+} from "./data.ts";
 
 type MapLibreModule = typeof import("maplibre-gl");
 type LayerMouseEvent = import("maplibre-gl").MapMouseEvent & {

@@ -1,5 +1,5 @@
-import { COPY } from "./copy.ts";
-import { NA, type KpiCardModel, type KpiDeltaDirection, type KpiDisplayFields } from "./types.ts";
+import { COPY } from "../copy.ts";
+import { NA, type KpiCardModel, type KpiDeltaDirection, type KpiDisplayFields } from "../types.ts";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,

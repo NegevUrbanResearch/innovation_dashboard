@@ -1,8 +1,8 @@
-import { KPI_ROSTER, LAYOUT_BLOCKS } from "./config";
+import { KPI_ROSTER, LAYOUT_BLOCKS } from "../config";
 import {
   realEstateDealsFields,
   type RealEstateDealsKpiPayload,
-} from "./real-estate-deals";
+} from "../deep-dives/real-estate/card-fields";
 import {
   NA,
   type KpiCardModel,
@@ -10,7 +10,7 @@ import {
   type KpiDisplayFields,
   type KpiId,
   type OverviewBlock,
-} from "./types";
+} from "../types";
 
 const KPI_BY_ID = new Map(KPI_ROSTER.map((kpi) => [kpi.id, kpi]));
 

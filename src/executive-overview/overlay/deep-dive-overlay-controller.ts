@@ -1,4 +1,3 @@
-import { renderRegisteredDeepDive } from "./deep-dive-registry";
 import {
   captureDeepDiveCloseSnapshot,
   captureDeepDiveOpenSnapshot,
@@ -8,34 +7,27 @@ import {
   playOriginFrontFlipOut,
   resetOriginFlipSurface,
   type DeepDiveMotionSnapshot,
-} from "./overlay-motion";
-import type { DeepDiveController, KpiCardModel } from "./types";
+} from "./overlay-motion.ts";
+import { createDeepDiveShell, loadingNode } from "./deep-dive-shell.ts";
+import {
+  hideBackgroundFromFocus,
+  restoreBackgroundAccessibility,
+  trapFocus,
+  type BackgroundAccessibilityState,
+} from "./deep-dive-focus.ts";
+import type { DeepDiveController, KpiCardModel } from "../types.ts";
 
-const FOCUSABLE_SELECTOR = [
-  "a[href]",
-  "button:not([disabled])",
-  "input:not([disabled])",
-  "select:not([disabled])",
-  "textarea:not([disabled])",
-  "[tabindex]:not([tabindex='-1'])",
-].join(", ");
+export type RenderDeepDive = (
+  card: KpiCardModel,
+  leftSlot: HTMLElement,
+  rightSlot: HTMLElement,
+) => DeepDiveController | void;
 
 export type DeepDiveOverlayController = {
   open(card: KpiCardModel, origin: HTMLElement): void;
   close(): void;
   destroy(): void;
 };
-
-function el<K extends keyof HTMLElementTagNameMap>(
-  tag: K,
-  className?: string,
-  text?: string,
-): HTMLElementTagNameMap[K] {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text !== undefined) node.textContent = text;
-  return node;
-}
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -50,52 +42,11 @@ function setOriginFlipState(origin: HTMLElement | null, state: "front" | "back")
   delete origin.dataset.flipState;
 }
 
-function getFocusableElements(scope: HTMLElement): HTMLElement[] {
-  return Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter((node) => {
-    if (node.hidden) return false;
-    if (node.getAttribute("aria-hidden") === "true") return false;
-    if (node.tabIndex < 0) return false;
-    return node.offsetParent !== null || node === document.activeElement;
-  });
-}
-
-export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayController {
-  const overlay = el("section", "exec-deep-dive-overlay");
-  overlay.hidden = true;
-  overlay.setAttribute("aria-hidden", "true");
-  overlay.dataset.state = "closed";
-
-  const backdrop = el("div", "exec-deep-dive-overlay__backdrop");
-  backdrop.setAttribute("aria-hidden", "true");
-
-  const shell = el("div", "exec-deep-dive-overlay__shell");
-  shell.setAttribute("role", "dialog");
-  shell.setAttribute("aria-modal", "true");
-  shell.setAttribute("aria-labelledby", "exec-deep-dive-overlay-title");
-
-  const header = el("header", "exec-deep-dive-overlay__header");
-  const titleBlock = el("div", "exec-deep-dive-overlay__title-block");
-  const title = el("h2", "exec-deep-dive-overlay__title");
-  title.id = "exec-deep-dive-overlay-title";
-  titleBlock.appendChild(title);
-
-  const closeButton = el("button", "exec-deep-dive-overlay__close", "Close");
-  closeButton.type = "button";
-  closeButton.setAttribute("aria-label", "Close deep dive overlay");
-
-  header.appendChild(titleBlock);
-  header.appendChild(closeButton);
-
-  const body = el("div", "exec-deep-dive-overlay__body");
-  const leftSlot = el("div", "exec-deep-dive-overlay__panel exec-deep-dive-overlay__panel--left");
-  const rightSlot = el("div", "exec-deep-dive-overlay__panel exec-deep-dive-overlay__panel--right");
-  body.appendChild(leftSlot);
-  body.appendChild(rightSlot);
-
-  shell.appendChild(header);
-  shell.appendChild(body);
-  overlay.appendChild(backdrop);
-  overlay.appendChild(shell);
+export function mountDeepDiveOverlayController(
+  host: HTMLElement,
+  renderDeepDive: RenderDeepDive,
+): DeepDiveOverlayController {
+  const { overlay, backdrop, shell, title, closeButton, leftSlot, rightSlot } = createDeepDiveShell();
   host.appendChild(overlay);
 
   let activeOrigin: HTMLElement | null = null;
@@ -105,7 +56,7 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
   let isDestroyed = false;
   let activeController: DeepDiveController | null = null;
   let transitionToken = 0;
-  const backgroundSiblings = Array.from(host.children).filter((node) => node !== overlay) as HTMLElement[];
+  let backgroundAccessibilityStates: BackgroundAccessibilityState[] = [];
 
   const disposeActiveSnapshot = () => {
     const snapshot = activeMotionSnapshot;
@@ -151,33 +102,6 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     }
   };
 
-  const restoreBackgroundAccessibility = () => {
-    for (const node of backgroundSiblings) {
-      if (node.dataset.overlayAriaHidden === "true") {
-        node.setAttribute("aria-hidden", "true");
-      } else {
-        node.removeAttribute("aria-hidden");
-      }
-      delete node.dataset.overlayAriaHidden;
-
-      if (node.dataset.overlayInert === "true") {
-        node.inert = true;
-      } else {
-        node.inert = false;
-      }
-      delete node.dataset.overlayInert;
-    }
-  };
-
-  const hideBackgroundFromFocus = () => {
-    for (const node of backgroundSiblings) {
-      node.dataset.overlayAriaHidden = node.getAttribute("aria-hidden") === "true" ? "true" : "false";
-      node.dataset.overlayInert = node.inert ? "true" : "false";
-      node.setAttribute("aria-hidden", "true");
-      node.inert = true;
-    }
-  };
-
   const handleKeydown = (event: KeyboardEvent) => {
     if (!isOpen) return;
 
@@ -188,30 +112,7 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     }
 
     if (event.key !== "Tab") return;
-
-    const focusable = getFocusableElements(shell);
-    if (!focusable.length) {
-      event.preventDefault();
-      shell.focus();
-      return;
-    }
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    const activeElement = document.activeElement as HTMLElement | null;
-
-    if (event.shiftKey) {
-      if (activeElement === first || !shell.contains(activeElement)) {
-        event.preventDefault();
-        last.focus();
-      }
-      return;
-    }
-
-    if (activeElement === last || !shell.contains(activeElement)) {
-      event.preventDefault();
-      first.focus();
-    }
+    trapFocus(event, shell);
   };
 
   function open(card: KpiCardModel, origin: HTMLElement): void {
@@ -223,18 +124,23 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     activeController?.destroy();
     activeController = null;
 
+    if (backgroundAccessibilityStates.length) {
+      restoreBackgroundAccessibility(backgroundAccessibilityStates);
+      backgroundAccessibilityStates = [];
+    }
+
     setOriginFlipState(activeOrigin, "front");
     activeOrigin = origin;
     const originRect = origin.getBoundingClientRect();
     activeOriginRect = new DOMRect(originRect.left, originRect.top, originRect.width, originRect.height);
     title.textContent = card.kpiName;
-    activeController = renderRegisteredDeepDive(card, leftSlot, rightSlot) || null;
+    activeController = renderDeepDive(card, leftSlot, rightSlot) || null;
 
     overlay.hidden = false;
     overlay.setAttribute("aria-hidden", "false");
     overlay.dataset.state = "opening";
     isOpen = true;
-    hideBackgroundFromFocus();
+    backgroundAccessibilityStates = hideBackgroundFromFocus(overlay, host);
 
     requestAnimationFrame(() => {
       if (!isOpen || isDestroyed || token !== transitionToken) return;
@@ -299,12 +205,13 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     overlay.setAttribute("aria-hidden", "true");
     overlay.hidden = true;
     resetOverlayVisuals();
-    restoreBackgroundAccessibility();
+    restoreBackgroundAccessibility(backgroundAccessibilityStates);
+    backgroundAccessibilityStates = [];
     restoreOriginVisibility(focusTarget);
     setOriginFlipState(focusTarget, "front");
     resetOriginFlipSurface(focusTarget);
-    leftSlot.replaceChildren(el("div", "exec-deep-dive__loading-state", "Loading deep dive..."));
-    rightSlot.replaceChildren(el("div", "exec-deep-dive__loading-state", "Awaiting content..."));
+    leftSlot.replaceChildren(loadingNode("Loading deep dive..."));
+    rightSlot.replaceChildren(loadingNode("Awaiting content..."));
     activeOrigin = null;
     activeOriginRect = null;
 
@@ -366,7 +273,8 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
     disposeActiveSnapshot();
     restoreOriginVisibility(activeOrigin);
     resetOriginFlipSurface(activeOrigin);
-    restoreBackgroundAccessibility();
+    restoreBackgroundAccessibility(backgroundAccessibilityStates);
+    backgroundAccessibilityStates = [];
     resetOverlayVisuals();
     document.removeEventListener("keydown", handleKeydown);
     backdrop.removeEventListener("click", close);
@@ -378,9 +286,8 @@ export function mountKpiDeepDiveOverlay(host: HTMLElement): DeepDiveOverlayContr
   backdrop.addEventListener("click", close);
   closeButton.addEventListener("click", close);
 
-  shell.tabIndex = -1;
-  leftSlot.appendChild(el("div", "exec-deep-dive__loading-state", "Loading deep dive..."));
-  rightSlot.appendChild(el("div", "exec-deep-dive__loading-state", "Awaiting content..."));
+  leftSlot.appendChild(loadingNode("Loading deep dive..."));
+  rightSlot.appendChild(loadingNode("Awaiting content..."));
 
   return { open, close, destroy };
 }

@@ -1,46 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { renderUnavailableDeepDive } from "./deep-dive-rendering.ts";
-import { NA, type KpiCardModel } from "./types.ts";
+import { renderUnavailableDeepDive } from "./rendering.ts";
+import { NA, type KpiCardModel } from "../types.ts";
+import { installMockDocument, MockNode } from "../../test/dom-harness.ts";
 
-class MockNode {
-  tagName: string;
-  className = "";
-  textContent = "";
-  children: Array<MockNode | TextNode> = [];
-  parent: MockNode | null = null;
-
-  constructor(tagName: string) {
-    this.tagName = tagName.toUpperCase();
-  }
-
-  appendChild(child: MockNode): MockNode {
-    child.parent = this;
-    this.children.push(child);
-    return child;
-  }
-
-  get innerText(): string {
-    return `${this.textContent}${this.children.map((child) => child.innerText).join("")}`;
-  }
-}
-
-class TextNode {
-  innerText: string;
-
-  constructor(text: string) {
-    this.innerText = text;
-  }
-}
-
-const documentStub = {
-  createElement<K extends keyof HTMLElementTagNameMap>(tag: K): HTMLElementTagNameMap[K] {
-    return new MockNode(tag) as unknown as HTMLElementTagNameMap[K];
-  },
-};
-
-Object.assign(globalThis, { document: documentStub });
+const restoreDocument = installMockDocument();
+test.after(() => {
+  restoreDocument();
+});
 
 function sampleCard(overrides: Partial<KpiCardModel> = {}): KpiCardModel {
   return {

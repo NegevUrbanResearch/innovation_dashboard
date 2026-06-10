@@ -10,8 +10,8 @@ import {
   type RealEstatePeriodRange,
   type RealEstateResolution,
   type RealEstateTimeseriesRow,
-} from "./real-estate-deep-dive-data";
-import { mountRealEstateDeepDiveMap, type RealEstateDeepDiveMapController } from "./real-estate-deep-dive-map";
+} from "./data.ts";
+import { mountRealEstateDeepDiveMap, type RealEstateDeepDiveMapController } from "./map.ts";
 
 export type RealEstateDeepDiveController = {
   destroy(): void;
