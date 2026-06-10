@@ -28,6 +28,7 @@ DEFAULT_AS_OF = date(2026, 6, 8)
 RESIDENTIAL = "\u05de\u05d2\u05d5\u05e8\u05d9\u05dd"
 IN_DISTRICT = "1.0"
 NEXT_UPDATE_LABEL = "Q1 2027"
+COORD_PRECISION = 5
 
 
 def parse_quarter_key(key: str) -> tuple[int, int]:
@@ -288,12 +289,13 @@ def build_markers(rows: list[dict[str, str]]) -> dict[str, object]:
         if x is None or y is None or period_quarter is None:
             continue
 
+        price_per_sqm = maybe_number(row.get("price_per_sqm", ""))
         features.append(
             {
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [x, y],
+                    "coordinates": [round(x, COORD_PRECISION), round(y, COORD_PRECISION)],
                 },
                 "properties": {
                     "periodMonth": period_month,
@@ -302,7 +304,7 @@ def build_markers(rows: list[dict[str, str]]) -> dict[str, object]:
                     "propertyCategory": normalize_text(row.get("property_category")),
                     "propertyType": normalize_text(row.get("property_type")),
                     "dealAmount": maybe_number(row.get("deal_amount", "")),
-                    "pricePerSqm": maybe_number(row.get("price_per_sqm", "")),
+                    "pricePerSqm": round(price_per_sqm, 2) if price_per_sqm is not None else None,
                     "areaSqm": maybe_number(row.get("area_of_asset_sqm", "")),
                 },
                 "_sortIndex": index,
@@ -448,7 +450,7 @@ def main() -> int:
         encoding="utf-8",
     )
     MARKERS_OUTPUT.write_text(
-        json.dumps(markers_payload, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(markers_payload, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",
     )
 

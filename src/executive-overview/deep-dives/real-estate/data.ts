@@ -226,86 +226,13 @@ function parseTimeseriesPayload(value: unknown): RealEstateTimeseriesData | null
   };
 }
 
-function parseFeature(value: unknown): RealEstateDealsFeature | null {
-  if (!isRecord(value)) return null;
-  if (value.type !== "Feature") return null;
-  if (!isRecord(value.geometry) || value.geometry.type !== "Point") return null;
-
-  const coordinates = Array.isArray(value.geometry.coordinates) ? value.geometry.coordinates : null;
-  if (!coordinates || coordinates.length < 2) return null;
-
-  const lng = readNumber(coordinates[0]);
-  const lat = readNumber(coordinates[1]);
-  if (lng === null || lat === null) return null;
-
-  if (!isRecord(value.properties)) return null;
-
-  const id = readString(value.properties.id);
-  const periodMonth = readString(value.properties.periodMonth);
-  const periodQuarter = readString(value.properties.periodQuarter);
-  const inInnovationDistrict = readBoolean(value.properties.inInnovationDistrict);
-  const propertyCategory = readString(value.properties.propertyCategory);
-  const propertyType = readString(value.properties.propertyType);
-  const dealAmount = readOwnNullableNumber(value.properties, "dealAmount");
-  const pricePerSqm = readOwnNullableNumber(value.properties, "pricePerSqm");
-  const areaSqm = readOwnNullableNumber(value.properties, "areaSqm");
-
-  if (
-    id === null ||
-    periodMonth === null ||
-    periodQuarter === null ||
-    inInnovationDistrict === null ||
-    propertyCategory === null ||
-    propertyType === null ||
-    dealAmount.kind === "missing" ||
-    dealAmount.kind === "invalid" ||
-    pricePerSqm.kind === "missing" ||
-    pricePerSqm.kind === "invalid" ||
-    areaSqm.kind === "missing" ||
-    areaSqm.kind === "invalid"
-  ) {
-    return null;
-  }
-
-  return {
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: [lng, lat],
-    },
-    properties: {
-      id,
-      periodMonth,
-      periodQuarter,
-      inInnovationDistrict,
-      propertyCategory,
-      propertyType,
-      dealAmount: dealAmount.value,
-      pricePerSqm: pricePerSqm.value,
-      areaSqm: areaSqm.value,
-    },
-  };
-}
-
-function parseMarkersPayload(value: unknown): RealEstateDealsFeatureCollection | null {
-  if (!isRecord(value) || value.type !== "FeatureCollection" || !Array.isArray(value.features)) {
-    return null;
-  }
-
-  if (!value.features.length) {
-    return null;
-  }
-
-  const features = value.features.map((feature) => parseFeature(feature));
-
-  if (features.some((feature) => feature === null)) {
-    return null;
-  }
-
-  return {
-    type: "FeatureCollection",
-    features: features as RealEstateDealsFeature[],
-  };
+function isMarkersPayload(value: unknown): value is RealEstateDealsFeatureCollection {
+  return (
+    isRecord(value) &&
+    value.type === "FeatureCollection" &&
+    Array.isArray(value.features) &&
+    value.features.length > 0
+  );
 }
 
 export const loadRealEstateTimeseriesData = cachedAsset(async () => {
@@ -315,6 +242,6 @@ export const loadRealEstateTimeseriesData = cachedAsset(async () => {
 
 export const loadRealEstateMarkersData = cachedAsset(async () => {
   const payload = await fetchJsonAsset(`real-estate/${MARKERS_FILE}`);
-  return payload === null ? null : parseMarkersPayload(payload);
+  return isMarkersPayload(payload) ? payload : null;
 });
 
