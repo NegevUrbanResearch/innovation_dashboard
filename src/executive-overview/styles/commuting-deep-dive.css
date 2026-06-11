@@ -295,57 +295,6 @@
   opacity: 1;
 }
 
-.exec-commuting-map__poster {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  border: 0;
-  cursor: pointer;
-  color: #f3f4f6;
-  font: inherit;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(135, 88, 0, 0.45), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(77, 124, 130, 0.4), transparent 55%),
-    linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-
-.exec-commuting-map__poster[data-state="loading"] {
-  cursor: progress;
-}
-
-.exec-commuting-map__poster-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06), transparent 60%);
-  pointer-events: none;
-}
-
-.exec-commuting-map__poster-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-size: 1.1rem;
-}
-
-.exec-commuting-map__poster-label {
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.exec-commuting-map__poster-hint {
-  font-size: 0.74rem;
-  color: rgba(243, 244, 246, 0.7);
-}
-
 .exec-commuting-map__status {
   position: absolute;
   bottom: 0.75rem;
