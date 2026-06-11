@@ -27,6 +27,7 @@ const STATIC_KPI_META: Omit<KpiDisplayFields, "kpiName" | "currentValue"> = {
 
 const STATIC_VALUES = {
   "static-companies": "50",
+  "static-commercial-patents": "175",
   "static-amenities": "117",
   "static-commuting-count": "12,475",
   "static-pedestrian-activity": "1,263",
@@ -48,6 +49,21 @@ function emptyFields(kpiName: string): KpiDisplayFields {
     baselineValue: NA,
     deltaValue: NA,
     baselinePeriodLabel: NA,
+    forecastDateLabel: NA,
+    forecastValueLabel: NA,
+  };
+}
+
+/** Development Pipeline: total sqm of projects in planning and approvals, 2026 vs 2025. */
+function developmentPipelineFields(kpiName: string): KpiDisplayFields {
+  return {
+    kpiName,
+    periodLabel: "2026",
+    currentValue: "47,184 sqm",
+    baselineValue: "76,113 sqm",
+    deltaValue: "-28,929",
+    deltaDirection: "down",
+    baselinePeriodLabel: "2025",
     forecastDateLabel: NA,
     forecastValueLabel: NA,
   };
@@ -80,6 +96,9 @@ function fieldsForKpi(
       currentValue: STATIC_VALUES[def.dataSource],
       ...STATIC_KPI_META,
     };
+  }
+  if (def.dataSource === "static-development-pipeline") {
+    return developmentPipelineFields(def.kpiName);
   }
   if (def.dataSource === "cohort-alumni") {
     return alumniFields(def.kpiName, alumniCount ?? NA);

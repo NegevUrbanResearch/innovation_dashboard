@@ -23,7 +23,7 @@ export const KPI_ROSTER: KpiDef[] = [
   KPI("economy-government-investment", "economy", "Government Investment", "none"),
   KPI("economy-commercial-investment", "economy", "Commercial Investment", "none"),
   KPI("economy-philanthropic-investment", "economy", "Philanthropic Investment", "none"),
-  KPI("economy-commercial-patents", "economy", "Commercial Patents", "none"),
+  KPI("economy-commercial-patents", "economy", "Commercial Patents", "static-commercial-patents"),
   // Network (5)
   KPI("network-district-employment", "network", "District Employment", "static-district-employment"),
   KPI("network-open-positions", "network", "Open Positions", "static-open-positions"),
@@ -50,7 +50,7 @@ export const KPI_ROSTER: KpiDef[] = [
     { id: "real-estate-deals", label: "Open real estate deep dive" },
   ),
   KPI("physical-development-rights", "physical", "Development Rights", "none"),
-  KPI("physical-development-pipeline", "physical", "Development Pipeline", "none"),
+  KPI("physical-development-pipeline", "physical", "Development Pipeline", "static-development-pipeline"),
   KPI("physical-microclimate", "physical", "Microclimate", "none"),
   KPI("physical-property-tax", "physical", "Property Tax", "none"),
 ];

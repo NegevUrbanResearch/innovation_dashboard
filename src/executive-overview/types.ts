@@ -25,11 +25,13 @@ export type KpiId =
 
 export type KpiDataSource =
   | "static-companies"
+  | "static-commercial-patents"
   | "static-amenities"
   | "static-commuting-count"
   | "static-pedestrian-activity"
   | "static-district-employment"
   | "static-open-positions"
+  | "static-development-pipeline"
   | "cohort-alumni"
   | "real-estate-deals"
   | "none";
