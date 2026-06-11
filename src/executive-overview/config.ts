@@ -31,7 +31,13 @@ export const KPI_ROSTER: KpiDef[] = [
   KPI("network-partners-integration", "network", "Partners Integration", "none"),
   KPI("network-social-mentions", "network", "Social Mentions", "none"),
   // Physical (10)
-  KPI("physical-commuting-count", "physical", "Commuting Count", "static-commuting-count"),
+  KPI(
+    "physical-commuting-count",
+    "physical",
+    "Commuting Count",
+    "static-commuting-count",
+    { id: "commuting-count", label: "Open daily commuters deep dive" },
+  ),
   KPI("physical-pedestrian-activity", "physical", "Pedestrian Activity", "static-pedestrian-activity"),
   KPI("physical-micromobility", "physical", "Micromobility", "none"),
   KPI("physical-district-amenities", "physical", "District Amenities", "static-amenities"),

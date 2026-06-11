@@ -1,11 +1,13 @@
 import { renderUnavailableDeepDive } from "./rendering.ts";
 import { mountRealEstateDeepDive } from "./real-estate/deep-dive.ts";
+import { mountCommutingDeepDive } from "./commuting/deep-dive.ts";
 import type { DeepDiveController, DeepDiveRenderer, KpiCardModel, KpiDeepDiveId } from "../types.ts";
 
 export type RegisteredDeepDiveRenderer = DeepDiveRenderer;
 
 const DEEP_DIVE_RENDERERS: Partial<Record<KpiDeepDiveId, RegisteredDeepDiveRenderer>> = {
   "real-estate-deals": (_card, slots) => mountRealEstateDeepDive(slots.left, slots.right),
+  "commuting-count": (_card, slots) => mountCommutingDeepDive(slots.left, slots.right),
 };
 
 export function getDeepDiveRenderer(id: KpiDeepDiveId): RegisteredDeepDiveRenderer | undefined {

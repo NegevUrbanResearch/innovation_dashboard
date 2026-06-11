@@ -1,0 +1,475 @@
+.exec-commuting {
+  display: grid;
+  grid-template-rows: auto auto auto minmax(13rem, 1fr) auto;
+  gap: 0.85rem;
+  min-height: 0;
+}
+
+.exec-commuting__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.exec-commuting__title-block {
+  min-width: 0;
+}
+
+.exec-commuting__title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.exec-commuting__summary {
+  margin: 0.35rem 0 0;
+  color: var(--eo-text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.4;
+  max-width: 46ch;
+}
+
+.exec-commuting__info {
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 30%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-physical-soft) 30%, white);
+  color: var(--eo-physical-accent);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+}
+
+.exec-commuting__info:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.exec-commuting__hero {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exec-commuting__hero-total {
+  min-width: 0;
+}
+
+.exec-commuting__hero-value {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--eo-physical-accent);
+}
+
+.exec-commuting__hero-label {
+  margin: 0.2rem 0 0;
+  color: var(--eo-text-secondary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.exec-commuting__hero-breakdown {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.exec-commuting__hero-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 16%, white);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+  color: var(--eo-text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.exec-commuting__hero-chip[data-active="true"] {
+  border-color: color-mix(in srgb, var(--eo-physical-accent) 44%, white);
+  background: color-mix(in srgb, var(--eo-physical-soft) 34%, white);
+}
+
+.exec-commuting__hero-chip-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--eo-text-secondary);
+}
+
+.exec-commuting__hero-chip-value {
+  font-family: var(--eo-font-value);
+  font-size: 1.05rem;
+  color: var(--eo-physical-accent);
+}
+
+.exec-commuting__section-label {
+  margin: 0 0 0.4rem;
+  color: var(--eo-text-secondary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.exec-commuting__control-row {
+  min-width: 0;
+}
+
+.exec-commuting__segmented {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+  padding: 0.2rem;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 18%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+}
+
+.exec-commuting__segment {
+  min-height: 2.1rem;
+  min-width: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--eo-text-primary);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.exec-commuting__segment[data-selected="true"] {
+  background: color-mix(in srgb, var(--eo-physical-soft) 70%, white);
+  color: var(--eo-physical-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--eo-physical-accent) 24%, white);
+}
+
+.exec-commuting__segment:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.exec-commuting__chart-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.exec-commuting__chart-host {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 12rem;
+}
+
+.exec-commuting__chart {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.exec-commuting__modes-host {
+  min-width: 0;
+}
+
+.exec-commuting__mode-bar {
+  display: flex;
+  width: 100%;
+  height: 0.85rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--eo-surface) 80%, white);
+}
+
+.exec-commuting__mode-segment {
+  height: 100%;
+}
+
+.exec-commuting__mode-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--eo-text-secondary);
+}
+
+.exec-commuting__mode-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.exec-commuting__mode-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+}
+
+.exec-commuting-unavailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 0.4rem;
+}
+
+.exec-commuting-unavailable__title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.exec-commuting-unavailable__copy {
+  margin: 0;
+  color: var(--eo-text-secondary);
+  line-height: 1.45;
+}
+
+/* Map */
+.exec-commuting-map {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+  min-height: 0;
+}
+
+.exec-commuting-map__header {
+  flex: 0 0 auto;
+}
+
+.exec-commuting-map__eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--eo-physical-accent) 74%, white);
+}
+
+.exec-commuting-map__caption {
+  margin: 0.2rem 0 0;
+  color: var(--eo-text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.exec-commuting-map__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 14rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #05070b;
+}
+
+.exec-commuting-map__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.exec-commuting-map__frame--ready {
+  opacity: 1;
+}
+
+.exec-commuting-map__poster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 0;
+  cursor: pointer;
+  color: #f3f4f6;
+  font: inherit;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(135, 88, 0, 0.45), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(77, 124, 130, 0.4), transparent 55%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.exec-commuting-map__poster[data-state="loading"] {
+  cursor: progress;
+}
+
+.exec-commuting-map__poster-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06), transparent 60%);
+  pointer-events: none;
+}
+
+.exec-commuting-map__poster-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 1.1rem;
+}
+
+.exec-commuting-map__poster-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.exec-commuting-map__poster-hint {
+  font-size: 0.74rem;
+  color: rgba(243, 244, 246, 0.7);
+}
+
+.exec-commuting-map__status {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(5, 7, 11, 0.78);
+  color: #f3f4f6;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+/* Dataset details modal */
+.exec-commuting-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.exec-commuting-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(16 19 23 / 0.45);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+
+.exec-commuting-modal__dialog {
+  position: relative;
+  width: min(54rem, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 24%, var(--eo-border-default));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 94%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 96%, var(--eo-physical-soft)) 100%
+    );
+  box-shadow: 0 26px 48px rgb(16 19 23 / 0.2);
+  color: var(--eo-text-primary);
+  font-family: var(--eo-font-ui);
+}
+
+.exec-commuting-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.exec-commuting-modal__title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.exec-commuting-modal__close {
+  flex: 0 0 auto;
+  min-width: 80px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 32%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 85%, white);
+  color: var(--eo-text-primary);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.exec-commuting-modal__close:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.exec-commuting-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.exec-commuting-modal__card {
+  padding: 0.85rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 14%, white);
+  background: color-mix(in srgb, var(--eo-surface) 90%, white);
+}
+
+.exec-commuting-modal__card-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--eo-physical-accent) 74%, white);
+}
+
+.exec-commuting-modal__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--eo-text-primary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.exec-commuting-modal__footnote {
+  margin: 1rem 0 0;
+  color: var(--eo-text-secondary);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .exec-commuting-modal__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

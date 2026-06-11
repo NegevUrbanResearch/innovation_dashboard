@@ -1,0 +1,73 @@
+destination,hour,proportion
+BGU,0,0.0
+BGU,1,8e-05
+BGU,2,0.0
+BGU,3,0.0
+BGU,4,0.000201
+BGU,5,0.006326
+BGU,6,0.007744
+BGU,7,0.053203
+BGU,8,0.19358
+BGU,9,0.185623
+BGU,10,0.130641
+BGU,11,0.090745
+BGU,12,0.087803
+BGU,13,0.070483
+BGU,14,0.053939
+BGU,15,0.028327
+BGU,16,0.026441
+BGU,17,0.022549
+BGU,18,0.021198
+BGU,19,0.011983
+BGU,20,0.00543
+BGU,21,0.002167
+BGU,22,0.000669
+BGU,23,0.000869
+Soroka Hospital,0,0.000413
+Soroka Hospital,1,0.000462
+Soroka Hospital,2,0.001459
+Soroka Hospital,3,0.0
+Soroka Hospital,4,0.000705
+Soroka Hospital,5,0.008926
+Soroka Hospital,6,0.068321
+Soroka Hospital,7,0.305266
+Soroka Hospital,8,0.224638
+Soroka Hospital,9,0.093956
+Soroka Hospital,10,0.053387
+Soroka Hospital,11,0.041955
+Soroka Hospital,12,0.026754
+Soroka Hospital,13,0.032178
+Soroka Hospital,14,0.058665
+Soroka Hospital,15,0.011285
+Soroka Hospital,16,0.010458
+Soroka Hospital,17,0.006008
+Soroka Hospital,18,0.015104
+Soroka Hospital,19,0.012112
+Soroka Hospital,20,0.005083
+Soroka Hospital,21,0.003308
+Soroka Hospital,22,0.018947
+Soroka Hospital,23,0.000608
+Gav Yam,0,0.0
+Gav Yam,1,0.0
+Gav Yam,2,0.0
+Gav Yam,3,0.0
+Gav Yam,4,0.0
+Gav Yam,5,0.000564
+Gav Yam,6,0.021769
+Gav Yam,7,0.18633
+Gav Yam,8,0.270697
+Gav Yam,9,0.187683
+Gav Yam,10,0.077825
+Gav Yam,11,0.019174
+Gav Yam,12,0.038462
+Gav Yam,13,0.049853
+Gav Yam,14,0.019851
+Gav Yam,15,0.013084
+Gav Yam,16,0.017031
+Gav Yam,17,0.044552
+Gav Yam,18,0.020415
+Gav Yam,19,0.00564
+Gav Yam,20,0.005865
+Gav Yam,21,0.008346
+Gav Yam,22,0.005978
+Gav Yam,23,0.00688
