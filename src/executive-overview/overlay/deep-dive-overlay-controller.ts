@@ -134,6 +134,7 @@ export function mountDeepDiveOverlayController(
     const originRect = origin.getBoundingClientRect();
     activeOriginRect = new DOMRect(originRect.left, originRect.top, originRect.width, originRect.height);
     title.textContent = card.kpiName;
+    shell.dataset.category = card.category;
     activeController = renderDeepDive(card, leftSlot, rightSlot) || null;
 
     overlay.hidden = false;
@@ -205,6 +206,7 @@ export function mountDeepDiveOverlayController(
     overlay.setAttribute("aria-hidden", "true");
     overlay.hidden = true;
     resetOverlayVisuals();
+    delete shell.dataset.category;
     restoreBackgroundAccessibility(backgroundAccessibilityStates);
     backgroundAccessibilityStates = [];
     restoreOriginVisibility(focusTarget);

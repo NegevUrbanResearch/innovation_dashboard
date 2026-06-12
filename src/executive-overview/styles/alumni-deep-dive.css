@@ -1,0 +1,265 @@
+/* Left panel — chart panel height inside overlay */
+.exec-alumni-deep-dive {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+/* Executive overview typography — design.md token stack */
+.exec-alumni-deep-dive,
+.exec-alumni-deep-dive .chart-panel {
+  font-family: var(--eo-font-ui);
+}
+
+.exec-alumni-deep-dive .chart-panel__title,
+.exec-alumni-deep-dive .bgu-partition__title,
+.exec-alumni-deep-dive .bgu-treemap__legend-title {
+  font-family: var(--eo-font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.exec-alumni-deep-dive .chart-panel__tab,
+.exec-alumni-deep-dive .chart-panel__view-btn,
+.exec-alumni-deep-dive .exec-alumni__cohort-segment {
+  font-family: var(--eo-font-ui);
+}
+
+.exec-alumni-deep-dive__left-host {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.exec-alumni-deep-dive__left-host > .chart-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.exec-alumni-venn__host,
+.exec-alumni-treemap__host {
+  flex: 1 1 auto;
+  min-height: 12rem;
+  min-width: 0;
+}
+
+/* Cohort toggle — mirror commuting segmented control (category-aware via shell) */
+.exec-alumni__cohort-toggle {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+  margin-bottom: 0.6rem;
+  padding: 0.2rem;
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 18%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+}
+
+.exec-alumni__cohort-segment {
+  min-height: 2.1rem;
+  min-width: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--eo-text-primary);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.exec-alumni__cohort-segment[data-selected="true"] {
+  background: color-mix(in srgb, var(--eo-category-soft) 70%, white);
+  color: var(--eo-category-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--eo-category-accent) 24%, white);
+}
+
+.exec-alumni__cohort-segment:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-category-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+/* Chart panel tabs / treemap toggle — pill segmented control */
+.exec-alumni-deep-dive .chart-panel__tabs {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+  gap: 0;
+  padding: 0.2rem;
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 18%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+  box-shadow: none;
+  overflow: visible;
+}
+
+.exec-alumni-deep-dive .chart-panel__tab {
+  min-height: 2.1rem;
+  min-width: 0;
+  padding: 0.45rem 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--eo-text-primary);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.exec-alumni-deep-dive .chart-panel__tab.is-active,
+.exec-alumni-deep-dive .chart-panel__tab[data-selected="true"] {
+  background: color-mix(in srgb, var(--eo-category-soft) 70%, white);
+  color: var(--eo-category-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--eo-category-accent) 24%, white);
+}
+
+.exec-alumni-deep-dive .chart-panel__tab:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-category-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.exec-alumni-deep-dive .chart-panel__toggle-track {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  padding: 0.2rem;
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 18%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eo-surface) 88%, white);
+  box-shadow: none;
+  overflow: visible;
+}
+
+.exec-alumni-deep-dive .chart-panel__view-btn {
+  min-height: 2.1rem;
+  min-width: 0;
+  padding: 0.45rem 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--eo-text-primary);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.exec-alumni-deep-dive .chart-panel__view-btn + .chart-panel__view-btn {
+  border-inline-start: 0;
+}
+
+.exec-alumni-deep-dive .chart-panel__view-btn.is-active,
+.exec-alumni-deep-dive .chart-panel__view-btn[data-selected="true"] {
+  background: color-mix(in srgb, var(--eo-category-soft) 70%, white);
+  color: var(--eo-category-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--eo-category-accent) 24%, white);
+}
+
+.exec-alumni-deep-dive .chart-panel__view-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--eo-category-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+/* Right panel — map slot fill */
+.exec-alumni-map {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 360px;
+  min-width: 0;
+}
+
+.exec-alumni-feeder-map {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.exec-alumni-feeder-map__canvas-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 14rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #05070b;
+}
+
+.exec-alumni-feeder-map__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.exec-alumni-feeder-map__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: rgba(5, 7, 11, 0.72);
+  color: #f3f4f6;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.exec-alumni-feeder-map__sample {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--eo-text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.exec-alumni-feeder-map__popup {
+  min-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--eo-text-primary);
+  font-family: var(--eo-font-ui);
+}
+
+.exec-alumni-feeder-map__popup-copy {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.exec-alumni-unavailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 0.4rem;
+}
+
+.exec-alumni-unavailable--map {
+  min-height: 14rem;
+}
+
+.exec-alumni-unavailable__title {
+  margin: 0;
+  font-family: var(--eo-font-value);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.exec-alumni-unavailable__copy {
+  margin: 0;
+  color: var(--eo-text-secondary);
+  line-height: 1.45;
+}

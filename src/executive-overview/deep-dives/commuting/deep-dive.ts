@@ -251,6 +251,9 @@ export function mountCommutingDeepDive(
 ): CommutingDeepDiveController {
   let destroyed = false;
   let chart: Chart | null = null;
+  let chartAllowed = false;
+  let deepDiveVisible = false;
+  let refresh: (() => void) | null = null;
   let mapController: CommutingMapController | null = null;
   const infoModal = buildInfoModal(leftSlot);
 
@@ -324,6 +327,9 @@ export function mountCommutingDeepDive(
 
     leftSlot.replaceChildren(shell);
     mapController = mountCommutingMap(rightSlot);
+    if (deepDiveVisible) {
+      mapController.reveal();
+    }
 
     function update(): void {
       const total = totalForScope(data, state.scope);
@@ -355,6 +361,7 @@ export function mountCommutingDeepDive(
     function renderChart(series: number[]): void {
       const labels = data.hours.map((hour) => formatHour(hour));
       if (!chart) {
+        if (!chartAllowed) return;
         chart = new Chart(canvas, {
           type: "line",
           data: { labels, datasets: [] },
@@ -408,6 +415,7 @@ export function mountCommutingDeepDive(
       chart.update();
     }
 
+    refresh = update;
     update();
   })();
 
@@ -421,6 +429,9 @@ export function mountCommutingDeepDive(
       infoModal.destroy();
     },
     onVisible() {
+      chartAllowed = true;
+      deepDiveVisible = true;
+      refresh?.();
       chart?.resize();
       mapController?.reveal();
     },

@@ -64,8 +64,6 @@ export function mountCommutingMap(host: HTMLElement): CommutingMapController {
     stage.appendChild(iframe);
   }
 
-  load();
-
   return {
     reveal() {
       load();

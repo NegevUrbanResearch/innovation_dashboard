@@ -11,9 +11,11 @@
 
 - Preserve the executive overview visual contract unless the user asks for design changes.
 - Do not edit generated files in `public/real-estate/` by hand; regenerate them or explain why regeneration is unavailable.
+- Do not hand-edit generated `public/alumni/` CSVs; run `npm run build:alumni-aggregates` (or `npm run build`). Exception: `city-centroids.json` when feeder cities change.
+- Aggregate alumni CSVs live in `public/alumni/` (tracked in git). Gitignored build inputs: `data/alumni/cleaned_flags.csv` and `data/alumni/analysis-config/`. Bootstrap once from sibling `linkedin-analysis` (see README Alumni Data Artifacts). `ALUMNI_CLEANED_FLAGS_PATH` overrides the default input path. Ongoing analysis changes belong under `scripts/alumni/`.
 - Keep new deep-dive KPIs on the registry path in `src/executive-overview/deep-dives/registry.ts`.
 - Do not add KPI-specific branches to `src/executive-overview/overlay/kpi-deep-dive-overlay.ts`.
-- Keep broad legacy cleanup, such as splitting `src/styles.css`, separate from KPI feature work.
+- Do not delete or hand-edit `src/styles.css` during alumni KPI work; chart CSS extraction into `alumni-charts.css` is handled separately (Task A4).
 - Do not create commits or git worktrees unless the user asks.
 - Do not run tests when the user explicitly says not to.
 - Treat untracked external or tooling folders such as `tools/` as out of scope unless the user asks.
@@ -21,7 +23,6 @@
 ## Verification
 
 - `npm run test:executive-overview`
-- `npm run test:linkedin-charts`
 - `npm run build`
 
 These are the expected verification commands after approved implementation work unless the user says not to run tests.
@@ -36,4 +37,4 @@ These are the expected verification commands after approved implementation work 
 6. Confirm the chart and map/detail panel load or show a clear unavailable state.
 7. Close the overlay and confirm focus and scroll behavior remain usable.
 
-`npm run build` regenerates Real Estate KPI artifacts before the Vite build.
+`npm run build` regenerates Real Estate and alumni aggregate artifacts before the Vite build.

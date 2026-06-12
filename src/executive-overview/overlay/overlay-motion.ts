@@ -1,3 +1,7 @@
+import { eases } from "animejs/easings/eases";
+
+let waapiModulePromise: Promise<typeof import("animejs/waapi")> | undefined;
+
 export type DeepDiveMotionSnapshot = {
   originRect: DOMRect;
   targetRect: DOMRect;
@@ -147,22 +151,48 @@ function toDomRect(rect: DOMRect): DOMRect {
   return new DOMRect(rect.left, rect.top, rect.width, rect.height);
 }
 
-function snapshotCenterMotion(fromRect: DOMRect, toRect: DOMRect): MotionRects {
-  const fromCenterX = fromRect.left + fromRect.width / 2;
-  const fromCenterY = fromRect.top + fromRect.height / 2;
-  const toCenterX = toRect.left + toRect.width / 2;
-  const toCenterY = toRect.top + toRect.height / 2;
-
+/** Maps a fixed DOM box (anchor) to a target visual rect using top-left origin. */
+export function topLeftRectMotion(anchorRect: RectLike, visualRect: RectLike): MotionRects {
   return {
-    translateX: toCenterX - fromCenterX,
-    translateY: toCenterY - fromCenterY,
-    scaleX: toRect.width / Math.max(fromRect.width, 1),
-    scaleY: toRect.height / Math.max(fromRect.height, 1),
+    translateX: visualRect.left - anchorRect.left,
+    translateY: visualRect.top - anchorRect.top,
+    scaleX: visualRect.width / Math.max(anchorRect.width, 1),
+    scaleY: visualRect.height / Math.max(anchorRect.height, 1),
   };
 }
 
-function formatMotionTransform(motion: MotionRects): string {
+export function formatMotionTransform(motion: MotionRects): string {
   return `translate3d(${formatNumber(motion.translateX)}px, ${formatNumber(motion.translateY)}px, 0) scale(${formatNumber(motion.scaleX)}, ${formatNumber(motion.scaleY)})`;
+}
+
+export function formatTopLeftRectTransform(anchorRect: RectLike, visualRect: RectLike): string {
+  return formatMotionTransform(topLeftRectMotion(anchorRect, visualRect));
+}
+
+export type ShellFitScale = {
+  scaleX: number;
+  scaleY: number;
+};
+
+export function lerpRect(from: RectLike, to: RectLike, progress: number): RectLike {
+  const p = clamp(progress, 0, 1);
+  return {
+    left: from.left + (to.left - from.left) * p,
+    top: from.top + (to.top - from.top) * p,
+    width: from.width + (to.width - from.width) * p,
+    height: from.height + (to.height - from.height) * p,
+  };
+}
+
+export function computeShellFitScale(containerRect: RectLike, shellRect: RectLike): ShellFitScale {
+  return {
+    scaleX: containerRect.width / Math.max(shellRect.width, 1),
+    scaleY: containerRect.height / Math.max(shellRect.height, 1),
+  };
+}
+
+function formatShellScaleTransform(scale: MotionRects): string {
+  return `scale(${formatScale(scale.scaleX)}, ${formatScale(scale.scaleY)})`;
 }
 
 function buildSharedElementPhaseModel(
@@ -171,12 +201,14 @@ function buildSharedElementPhaseModel(
   direction: MotionDirection,
 ): SharedElementPhaseModel {
   const identityTransform = "translate3d(0, 0, 0) scale(1)";
-  const travelTransform = formatMotionTransform(snapshotCenterMotion(originRect, targetRect));
+  const anchorRect = direction === "open" ? originRect : targetRect;
+  const endVisualRect = direction === "open" ? targetRect : originRect;
+  const travelTransform = formatTopLeftRectTransform(anchorRect, endVisualRect);
 
   return {
     travelTransform,
-    startTransform: direction === "open" ? identityTransform : travelTransform,
-    endTransform: direction === "open" ? travelTransform : identityTransform,
+    startTransform: identityTransform,
+    endTransform: travelTransform,
     travelBackdropOpacity: direction === "open" ? [0, 1] : [1, 0],
     travelDuration: 420,
     travelEase: direction === "open" ? "out(4)" : "inOut(3)",
@@ -220,9 +252,74 @@ function fixedGhostStyles(rect: DOMRect): Partial<CSSStyleDeclaration> {
     margin: "0",
     pointerEvents: "none",
     zIndex: "20",
-    transformOrigin: "50% 50%",
+    transformOrigin: "0 0",
     transform: "translate3d(0, 0, 0) scale(1)",
   };
+}
+
+function resolveTravelEase(ease: string): (progress: number) => number {
+  if (ease === "linear" || ease === "none") return eases.linear;
+
+  const match = /^(\w+)\(([^)]+)\)$/.exec(ease);
+  if (match) {
+    const type = match[1] as keyof typeof eases;
+    const param = Number(match[2]);
+    const factory = eases[type];
+    if (typeof factory === "function") {
+      return (factory as (power: number) => (progress: number) => number)(param);
+    }
+  }
+
+  const named = eases[ease as keyof typeof eases];
+  if (typeof named === "function") {
+    const resolved = (named as () => (progress: number) => number)();
+    if (typeof resolved === "function") return resolved;
+  }
+
+  return eases.linear;
+}
+
+function applyGhostTravelFrame(
+  ghost: HTMLElement,
+  anchorRect: DOMRect,
+  fromVisual: DOMRect,
+  toVisual: DOMRect,
+  progress: number,
+): void {
+  const currentRect = lerpRect(fromVisual, toVisual, progress);
+  ghost.style.transform = formatTopLeftRectTransform(anchorRect, currentRect);
+}
+
+async function animateGhostRectTravel(
+  ghost: HTMLElement,
+  anchorRect: DOMRect,
+  fromVisual: DOMRect,
+  toVisual: DOMRect,
+  duration: number,
+  ease: string,
+): Promise<void> {
+  const easeFn = resolveTravelEase(ease);
+  applyGhostTravelFrame(ghost, anchorRect, fromVisual, toVisual, 0);
+
+  await new Promise<void>((resolve) => {
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const linearProgress = clamp((now - start) / duration, 0, 1);
+      const easedProgress = easeFn(linearProgress);
+      applyGhostTravelFrame(ghost, anchorRect, fromVisual, toVisual, easedProgress);
+
+      if (linearProgress < 1) {
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      applyGhostTravelFrame(ghost, anchorRect, fromVisual, toVisual, 1);
+      resolve();
+    };
+
+    requestAnimationFrame(tick);
+  });
 }
 
 function makeDisposableSnapshot(
@@ -404,15 +501,38 @@ export function resetOriginFlipSurface(origin: HTMLElement | null): void {
   surface.style.removeProperty("transform");
 }
 
+export function measureShellNaturalRect(shell: HTMLElement): { targetRect: DOMRect; restore: () => void } {
+  const previousOpacity = shell.style.opacity;
+  const previousTransform = shell.style.transform;
+  const previousTransformOrigin = shell.style.transformOrigin;
+
+  shell.style.opacity = "1";
+  shell.style.transform = "translate3d(0, 0, 0) scale(1) rotateX(0deg)";
+  shell.style.transformOrigin = "0 0";
+  void shell.offsetHeight;
+
+  const targetRect = toDomRect(shell.getBoundingClientRect());
+
+  return {
+    targetRect,
+    restore() {
+      shell.style.opacity = previousOpacity;
+      shell.style.transform = previousTransform;
+      shell.style.transformOrigin = previousTransformOrigin;
+    },
+  };
+}
+
 export function captureDeepDiveOpenSnapshot(
   origin: HTMLElement,
   shell: HTMLElement,
 ): DeepDiveMotionSnapshot {
   const originRect = toDomRect(origin.getBoundingClientRect());
-  const targetRect = toDomRect(shell.getBoundingClientRect());
+  const { targetRect, restore } = measureShellNaturalRect(shell);
   const shellParent = shell.parentNode ?? undefined;
   const shellNextSibling = shell.nextSibling;
   const clone = buildMaterialGhost(originRect, "edge", [origin, shell], shell, targetRect);
+  restore();
 
   return makeDisposableSnapshot(originRect, targetRect, clone, shell, shellParent, shellNextSibling);
 }
@@ -425,17 +545,24 @@ export function captureDeepDiveCloseSnapshot(
   const targetRect = toDomRect(shell.getBoundingClientRect());
   const shellParent = shell.parentNode ?? undefined;
   const shellNextSibling = shell.nextSibling;
-  const clone = buildMaterialGhost(toDomRect(originRect), "back", [shell, origin], shell, targetRect);
+  const clone = buildMaterialGhost(targetRect, "back", [shell, origin], shell, targetRect);
   clone.classList.add("exec-deep-dive-motion-ghost--shell");
 
   return makeDisposableSnapshot(toDomRect(originRect), targetRect, clone, shell, shellParent, shellNextSibling);
+}
+
+function loadWaapiModule(): Promise<typeof import("animejs/waapi")> {
+  if (!waapiModulePromise) {
+    waapiModulePromise = import("animejs/waapi");
+  }
+  return waapiModulePromise;
 }
 
 async function animateWaapi(
   node: HTMLElement,
   params: Record<string, string[] | number[] | string | number>,
 ): Promise<void> {
-  const { waapi } = await import("animejs/waapi");
+  const { waapi } = await loadWaapiModule();
   await waapi.animate(node, params).then(() => undefined);
 }
 
@@ -476,12 +603,14 @@ export async function playDeepDiveOpenMotion(
 
   setMotionPhase(clone, phases.travelPhase);
   await Promise.all([
-    animateWaapi(clone, {
-      transform: phases.travel.transform,
-      opacity: [1, 1],
-      duration: phases.travel.duration,
-      ease: phases.travel.ease,
-    }),
+    animateGhostRectTravel(
+      clone,
+      snapshot.originRect,
+      snapshot.originRect,
+      snapshot.targetRect,
+      phases.travel.duration,
+      phases.travel.ease,
+    ),
     animateWaapi(backdrop, {
       opacity: phases.travelBackdrop.opacity,
       duration: phases.travelBackdrop.duration,
@@ -516,12 +645,14 @@ export async function playDeepDiveCloseMotion(
   await nextAnimationFrame();
   setMotionPhase(clone, phases.travelPhase);
   await Promise.all([
-    animateWaapi(clone, {
-      transform: phases.travel.transform,
-      opacity: [1, 1],
-      duration: phases.travel.duration,
-      ease: phases.travel.ease,
-    }),
+    animateGhostRectTravel(
+      clone,
+      snapshot.targetRect,
+      snapshot.targetRect,
+      snapshot.originRect,
+      phases.travel.duration,
+      phases.travel.ease,
+    ),
     animateWaapi(backdrop, {
       opacity: phases.travelBackdrop.opacity,
       duration: phases.travelBackdrop.duration,

@@ -6,8 +6,9 @@ as a native deep dive when linked from here.
 
 The system has two layers:
 
-1. **App shell** — the global chrome (header, nav, charts) that supports a
-   light and a dark theme via tokens on `<html data-theme>`.
+1. **App shell** — the global chrome (header, nav, charts) with light-theme tokens
+   on `<html data-theme="light">`. Dark app-shell tokens exist for legacy surfaces
+   but are not used by the executive overview or its deep dives.
 2. **Executive overview** — a fixed **light** surface with a categorical palette
    (`--eo-*` tokens). Deep dives open from this surface, so a linked dashboard
    should match the executive-overview look first.
@@ -37,10 +38,18 @@ The system has two layers:
 | Physical | `#875800` | `#fcd68d` |
 | Physical (outside) | `#4d7c82` | — |
 
-The **Physical** category (`#875800` / `#fcd68d`) is the deep-dive accent: the
-overlay chrome, controls, range slider, and map markers all derive from it. A
-linked "deep dive" dashboard should adopt the Physical accent unless it
-represents a different category.
+Source tokens in `overview-tokens.css`: `--eo-economy-accent` / `--eo-economy-soft`,
+`--eo-network-accent` / `--eo-network-soft`, `--eo-physical-accent` / `--eo-physical-soft`.
+
+KPI cards and the deep-dive overlay both resolve a **category accent** at runtime.
+The opened KPI's category sets `data-category` on the overlay shell (`economy`,
+`network`, or `physical`), which maps to:
+
+- `--eo-category-accent` — the category accent hex
+- `--eo-category-soft` — the category soft fill hex
+
+A linked "deep dive" dashboard should adopt the **same category** as the KPI that
+opens it (e.g. alumni retention → network burgundy; real-estate deals → physical gold).
 
 ### App shell — light theme (`html[data-theme="light"]`)
 
@@ -58,27 +67,13 @@ represents a different category.
 | `--accent` | `#4f46e5` | Accent / focus ring |
 | `--link` / `--link-hover` | `#4f46e5` / `#4338ca` | Links |
 
-### App shell — dark theme (`html[data-theme="dark"]`)
+Executive overview and deep dives are light-only; dark app-shell tokens are legacy
+and not used by this surface.
 
-| Token | Hex | Role |
-| --- | --- | --- |
-| `--bg` | `#0a0c10` | App background |
-| `--bg-muted` | `#121722` | Muted background |
-| `--surface` | `#161c27` | Surface |
-| `--surface-2` | `#1c2330` | Subtle raised |
-| `--surface-raised` | `#232b3b` | Raised surface |
-| `--border` | `rgba(148,163,184,0.16)` | Border |
-| `--border-strong` | `rgba(148,163,184,0.32)` | Strong border |
-| `--text` | `#f1f5f9` | Text |
-| `--text-secondary` | `#94a3b8` | Secondary text |
-| `--accent` | `#38bdf8` | Accent / focus ring |
-| `--link` / `--link-hover` | `#7dd3fc` / `#bae6fd` | Links |
-
-### Shared chart triads (stable across themes)
+### Shared chart triads
 
 - **Cohort Venn:** `#4a6fa5` (blue), `#47b8a0` (teal), `#e8c84a` (yellow).
-- **Residence donut (light):** `#0891b2`, `#4f46e5`, `#0d9488`, `#7c3aed`.
-- **Residence donut (dark):** `#22d3ee`, `#818cf8`, `#2dd4bf`, `#c084fc`.
+- **Residence donut:** `#0891b2`, `#4f46e5`, `#0d9488`, `#7c3aed`.
 
 ---
 
@@ -140,6 +135,10 @@ recognizable motif. Reuse it for card-like elements that belong to the overview.
 
 - Standard transition: `180ms ease` (hover/active states), `160ms` for controls.
 - Overlay entrance: `220ms ease` opacity + transform.
+- KPI card flip (open/close): the **back face** during the animation matches the
+  front card — flat `--eo-category-soft` fill with a `--eo-category-accent` border.
+  Once the overlay content loads, the shell keeps its own gradient chrome driven by
+  `--eo-category-accent` / `--eo-category-soft`.
 - Always wrap non-essential motion in `@media (prefers-reduced-motion: reduce)`.
 
 ### Focus
@@ -163,15 +162,22 @@ Visible focus everywhere: `outline: 2px solid var(--accent)` (app) or
 
 ### Deep-dive overlay (the container a linked dashboard lives in)
 
+The overlay shell inherits the **opened KPI's category** via `data-category` and
+`--eo-category-accent` / `--eo-category-soft`. Physical KPIs (e.g. real estate) use
+gold/amber; network KPIs (e.g. alumni retention) use burgundy; economy KPIs use teal.
+
 - Shell inset `1rem` from the viewport, `border-radius: 16px`, 1px border mixing
-  the physical accent into the default border, surface gradient
-  `linear-gradient(180deg, surface 92%→ white, surface 98%→ physical-soft)`.
-- Header row: eyebrow (uppercase, physical accent) + Libre Bodoni title on the
+  `--eo-category-accent` into the default border, surface gradient
+  `linear-gradient(180deg, surface 92%→ white, surface 98%→ category-soft)`.
+- Header row: eyebrow (uppercase, category accent) + Libre Bodoni title on the
   left, pill-shaped Close button on the right.
 - Body: two-column grid `minmax(20rem,0.95fr) / minmax(24rem,1.15fr)`, `1rem` gap.
-- Panels: `border-radius: 12px`, 1px hairline border (`physical-accent 14%`),
-  surface `color-mix(... 88%, white)`; the right panel adds a soft physical-tinted
+- Panels: `border-radius: 12px`, 1px hairline border (`category-accent 14%`),
+  surface `color-mix(... 88%, white)`; the right panel adds a soft category-tinted
   gradient.
+
+Shell, panels, segmented controls, range sliders, pills, and the close button all
+derive tints and rings from `--eo-category-*` (see `deep-dive-overlay.css`).
 
 ### Controls
 
@@ -200,18 +206,20 @@ category accent can drive borders (`~14–24%`), soft fills (`~32–70%`), and r
 
 ## 6. Quick-start tokens for a linked dashboard
 
-Drop these on a wrapper element to match the deep-dive (Physical) surface:
+Drop these on a wrapper element. Set `data-category` to match the KPI that links
+here, or override `--accent` / `--accent-soft` directly.
+
+**Network example** (alumni retention deep dive):
 
 ```css
-.deep-dive-surface {
+.deep-dive-surface[data-category="network"] {
   --canvas: #e6eee8;
   --surface: #f8fbf9;
   --text-primary: #101317;
   --text-secondary: #49454f;
   --border-default: #79747e;
-  --accent: #875800;        /* physical */
-  --accent-soft: #fcd68d;
-  --accent-alt: #4d7c82;    /* physical outside */
+  --accent: #74094a;        /* network */
+  --accent-soft: #d3adc4;
   --positive: #0f8e4a;
   --negative: #c93a3a;
 
@@ -229,6 +237,13 @@ Drop these on a wrapper element to match the deep-dive (Physical) surface:
 }
 ```
 
-If the linked dashboard should also support the app's dark mode, mirror the
-`html[data-theme="dark"]` token values from section 1 and switch on a
-`data-theme` attribute.
+**Category map** (swap accent pair as needed):
+
+| `data-category` | `--accent` | `--accent-soft` |
+| --- | --- | --- |
+| `economy` | `#368393` | `#c9eaf1` |
+| `network` | `#74094a` | `#d3adc4` |
+| `physical` | `#875800` | `#fcd68d` |
+
+Physical-linked dashboards may also use `--accent-alt: #4d7c82` for outside-region
+markers.

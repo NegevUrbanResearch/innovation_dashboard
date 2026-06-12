@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
-const SRC = path.join(ROOT, "public", "linkedin-data", "bgu_treemap_drilldown_agg.csv");
+const SRC = path.join(ROOT, "public", "alumni", "bgu_treemap_drilldown_agg.csv");
 
 const PANEL_OUTSIDE = "Lives outside BS";
 const PANEL_SOUTH = "South";

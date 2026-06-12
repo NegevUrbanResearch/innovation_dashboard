@@ -27,7 +27,13 @@ export const KPI_ROSTER: KpiDef[] = [
   // Network (5)
   KPI("network-district-employment", "network", "District Employment", "static-district-employment"),
   KPI("network-open-positions", "network", "Open Positions", "static-open-positions"),
-  KPI("network-alumni-retention", "network", "Alumni Retention", "cohort-alumni"),
+  KPI(
+    "network-alumni-retention",
+    "network",
+    "Alumni Retention",
+    "cohort-alumni",
+    { id: "alumni-retention", label: "Open alumni retention deep dive" },
+  ),
   KPI("network-partners-integration", "network", "Partners Integration", "none"),
   KPI("network-social-mentions", "network", "Social Mentions", "none"),
   // Physical (10)

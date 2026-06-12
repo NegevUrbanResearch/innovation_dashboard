@@ -41,8 +41,6 @@ export const en = {
   "iframe.urbanismTitle": "Urban95 amenities",
 
   "page.graphicsPlaceholderSuffix": "Graphics Placeholder",
-  "page.chartDataError":
-    "could not load chart data (check public/linkedin-data).",
 
   "chart.toggleCompanies": "Companies",
   "chart.toggleCities": "Cities",
@@ -235,6 +233,15 @@ export const en = {
   "chart.treemapIndustrySegment.software_it_services": "Software and IT services",
 
   "chart.treemapEducation.unknown": "Unknown field of study",
+
+  "alumniDeepDive.cohortAllBgu": "All BGU alumni",
+  "alumniDeepDive.cohortBsWorkers": "Working in Beer Sheva",
+  "alumniDeepDive.tabEmployers": "Alumni employers by sector",
+  "alumniDeepDive.tabGraduationFields": "Graduation year by field",
+  "alumniDeepDive.sampleGraduationFields":
+    "{n} BGU alumni working in Beer Sheva with known graduation year and field (LinkedIn extract).",
+  "alumniDeepDive.mapSampleNote":
+    "City flows reflect profiles with known residence and work cities; not all KPI profiles appear on the map.",
 } as const;
 
 export type MessageKey = keyof typeof en;

@@ -1,3 +1,4 @@
+@import "../../alumni-charts/alumni-charts.css";
 @import "./overview-tokens.css";
 @import "./overview-layout.css";
 @import "./kpi-card.css";
@@ -5,4 +6,5 @@
 @import "./real-estate-deep-dive.css";
 @import "./real-estate-map.css";
 @import "./commuting-deep-dive.css";
+@import "./alumni-deep-dive.css";
 @import "./overrides.css";

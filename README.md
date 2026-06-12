@@ -9,7 +9,7 @@ Executive KPI dashboard for the Beer Sheva Innovation District. The current live
 - Plain DOM modules
 - Chart.js
 - MapLibre
-- Python for generated Real Estate artifacts
+- Python for generated Real Estate and alumni artifacts
 
 ## Quick Start
 
@@ -22,21 +22,24 @@ npm run dev
 
 - `npm run dev`
 - `npm run build`
+- `npm run build:alumni-aggregates`
 - `npm run preview`
 - `npm run test:executive-overview`
-- `npm run test:linkedin-charts`
 
-`npm run build` runs `build:real-estate-kpi` before the Vite build.
+`npm run build` runs `build:real-estate-kpi` and `build:alumni-aggregates` before the Vite build.
 
 ## Project Map
 
 - `src/main.ts`
 - `src/executive-overview/`
-- `src/linkedin-charts/`
+- `src/alumni-charts/`
 - `scripts/build-real-estate-kpi.py`
+- `scripts/build-alumni-aggregates.py`
+- `scripts/alumni/`
+- `public/alumni/`
 - `public/real-estate/`
 
-`src/executive-overview/data/` is for overview-level input loaders. Deep-dive data loading belongs under `src/executive-overview/deep-dives/<domain>/`; the alumni loader's LinkedIn helper imports are a narrow legacy dependency, not a shared pattern for new deep dives.
+`src/executive-overview/data/` is for overview-level input loaders. Deep-dive data loading belongs under `src/executive-overview/deep-dives/<domain>/`; the alumni loader imports from `src/alumni-charts/` and aggregate CSVs in `public/alumni/` — a narrow legacy dependency, not a shared pattern for new deep dives.
 
 ## Runtime Flow
 
@@ -56,6 +59,20 @@ npm run dev
 - `REAL_ESTATE_KPI_AS_OF=YYYY-MM-DD` can pin the generation date.
 - If no source CSV exists, the script keeps the existing generated public artifacts and exits successfully, so stale generated data is possible.
 - Do not hand-edit generated `public/real-estate/` files.
+
+## Alumni Data Artifacts
+
+- `scripts/build-alumni-aggregates.py` writes aggregate CSVs to `public/alumni/`.
+- Gitignored build inputs:
+  - `data/alumni/cleaned_flags.csv`
+  - `data/alumni/analysis-config/` (taxonomy JSON)
+- One-time bootstrap from sibling `linkedin-analysis` (Phase 0 Task 1):
+  - Copy sibling `data/processed/cleaned_flags.csv` → `data/alumni/cleaned_flags.csv`
+  - Copy sibling `analysis-config/` → `data/alumni/analysis-config/`
+- `ALUMNI_CLEANED_FLAGS_PATH` overrides the default `cleaned_flags.csv` path.
+- `npm run build:alumni-aggregates` runs standalone; `npm run build` includes it before the Vite build.
+- Do not hand-edit generated `public/alumni/` CSVs. `city-centroids.json` is maintained manually when feeder cities change.
+- All ongoing analysis changes live under `scripts/alumni/` in this repo.
 
 ## Adding KPI Deep Dives
 

@@ -2,7 +2,10 @@ node_modules
 dist
 .DS_Store
 *.local
-/linkedin-data
+# Aggregate alumni CSVs live in public/alumni/ (tracked in git); row-level profile data stays gitignored under data/alumni/
 data/real-estate/
+data/alumni/
 .cursor
 mockups/
+__pycache__/
+*.py[cod]

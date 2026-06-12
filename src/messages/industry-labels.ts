@@ -1,6 +1,6 @@
 import type { MessageKey } from "./en";
 
-/** `education` slugs that use `chart.field.*` keys (aligned with FIELD_FINE in route-charts + CSV). */
+/** `education` slugs that use `chart.field.*` keys (aligned with treemap FIELD_FINE + CSV). */
 const TREEMAP_EDUCATION_FIELD_SLUGS = new Set<string>([
   "accounting_and_finance",
   "behavioral_sciences",

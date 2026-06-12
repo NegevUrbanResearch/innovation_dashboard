@@ -2,6 +2,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { FilterSpecification } from "maplibre-gl";
 
+import { registerMapLibreRtlTextPlugin } from "../../map/maplibre-rtl.ts";
 import {
   loadRealEstateMarkersData,
   REAL_ESTATE_CURRENCY,
@@ -25,7 +26,6 @@ export type RealEstateDeepDiveMapController = {
 };
 
 const MAP_STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
-const MAPLIBRE_RTL_PLUGIN_URL = `${import.meta.env.BASE_URL || "/"}vendor/mapbox-gl-rtl-text.js`;
 const DISTRICT_LAYER_ID = "exec-real-estate-district-points";
 const OUTSIDE_LAYER_ID = "exec-real-estate-outside-points";
 const MAP_LOAD_TIMEOUT_MS = 12000;
@@ -34,7 +34,6 @@ const DEFAULT_ZOOM = 11.5;
 const NO_MATCH_PERIOD = "__exec_real_estate_no_match_period__";
 const MAPLIBRE_IGNORED_WARNING = "Expected value to be of type number, but found null instead.";
 const EMPTY_FILTER_KEY = "__exec_real_estate_empty_filter__";
-let rtlPluginRegistration: Promise<void> | null = null;
 
 type PeriodProperty = "periodMonth" | "periodQuarter";
 type AvailablePeriodsByResolution = Record<RealEstateResolution, string[]>;
@@ -103,18 +102,6 @@ function extractMapErrorMessage(event: unknown): string | null {
 
 function isIgnorableMapWarning(event: unknown): boolean {
   return extractMapErrorMessage(event) === MAPLIBRE_IGNORED_WARNING;
-}
-
-function registerRtlTextPlugin(maplibre: MapLibreModule): Promise<void> {
-  if (!rtlPluginRegistration) {
-    rtlPluginRegistration = maplibre
-      .setRTLTextPlugin(MAPLIBRE_RTL_PLUGIN_URL, false)
-      .catch((error: unknown) => {
-        rtlPluginRegistration = null;
-        throw error;
-      });
-  }
-  return rtlPluginRegistration;
 }
 
 function buildPopupHtml(properties: RealEstateDealsFeatureProperties): string {
@@ -481,7 +468,7 @@ export function mountRealEstateDeepDiveMap(
     try {
       const maplibre = await import("maplibre-gl");
       if (destroyed) return;
-      await registerRtlTextPlugin(maplibre);
+      await registerMapLibreRtlTextPlugin(maplibre);
       if (destroyed) return;
 
       map = new maplibre.Map({

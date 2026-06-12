@@ -1,0 +1,475 @@
+residence_panel,industry_bucket,industry_segment,employer,education,n
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,unknown,185
+Works in BS,healthcare,healthcare_provider,Soroka Medical Center,unknown,60
+Works in BS,public_sector,academic,CBG - Cyber@Ben-Gurion University,unknown,17
+Works in BS,unknown,unknown,ICL Group,unknown,15
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,stem,10
+Works in BS,high_tech,semiconductors_hardware,NVIDIA,unknown,10
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,biology,9
+Works in BS,unknown,unknown,SCE - Shamoon College of Engineering,unknown,8
+Works in BS,healthcare,healthcare_provider,Assuta Medical Centers,unknown,7
+Works in BS,unknown,unknown,Beer Sheva Municipality,unknown,6
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,mechanical_engineering,6
+Works in BS,unknown,unknown,ADAMA Ltd.,unknown,5
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,business_administration,5
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,electrical_engineering,5
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,psychology,5
+Works in BS,healthcare,healthcare_provider,Clalit Health Services,unknown,5
+Works in BS,self_employed,other,Self-employed,unknown,5
+Works in BS,healthcare,healthcare_provider,Soroka Medical Center,medicine,5
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,computer_science,4
+Works in BS,high_tech,cyber_security,CyberArk,unknown,4
+Works in BS,high_tech,other_high_tech,Dell Technologies,unknown,4
+Works in BS,high_tech,software_it_services,Dell Technologies,unknown,4
+Works in BS,high_tech,semiconductors_hardware,"Vishay Intertechnology, Inc.",unknown,4
+Works in BS,high_tech,software_it_services,2bPrecise,unknown,3
+Works in BS,high_tech,software_it_services,AudioCodes,unknown,3
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,biomedical_engineering,3
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,chemical_engineering,3
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,materials_engineering,3
+Works in BS,high_tech,other_high_tech,DRS RADA Technologies,unknown,3
+Works in BS,unknown,unknown,ICL Industrial Products,unknown,3
+Works in BS,unknown,unknown,KPMG Israel,unknown,3
+Works in BS,unknown,unknown,Kaye Academic College of Education,unknown,3
+Works in BS,healthcare,healthcare_provider,Maccabi Health Services,unknown,3
+Works in BS,healthcare,healthcare_provider,Maccabi Health care Services,unknown,3
+Works in BS,public_sector,academic,Medical School for International Health at Ben Gurion University - MSIH,unknown,3
+Works in BS,unknown,unknown,Nitzanim Program,unknown,3
+Works in BS,unknown,unknown,Perach - Tutorial Project,unknown,3
+Works in BS,high_tech,software_it_services,RAD,unknown,3
+Works in BS,self_employed,other,Self Employed,unknown,3
+Works in BS,healthcare,pharma_biotech,Teva Pharmaceuticals,unknown,3
+Works in BS,high_tech,other_high_tech,Weirdoz,unknown,3
+Works in BS,unknown,unknown,האגודה הסטודנטיאלית אוניברסיטת בן גוריון,unknown,3
+Works in BS,unknown,unknown,חברת כיוונים - החברה לתרבות הפנאי באר שבע,unknown,3
+Works in BS,high_tech,other_high_tech,ADAMA Ltd.,unknown,2
+Works in BS,unknown,unknown,AudioCodes,unknown,2
+Works in BS,high_tech,other_high_tech,BGRacing,mechanical_engineering,2
+Works in BS,unknown,unknown,BGRacing,unknown,2
+Works in BS,unknown,unknown,Babcom Centers,unknown,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,economics,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,electrical_and_computer_engineering,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,geography,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,industrial_engineering,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,linguistics,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,medicine,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,non_stem,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,social_work,2
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,software_engineering,2
+Works in BS,unknown,unknown,Bezeq On Line,unknown,2
+Works in BS,unknown,unknown,Bizz.AI,unknown,2
+Works in BS,public_sector,academic,CBG - Cyber@Ben-Gurion University,stem,2
+Works in BS,unknown,unknown,Cactus Capital,unknown,2
+Works in BS,unknown,unknown,Cyber Education Center,unknown,2
+Works in BS,high_tech,defense_aerospace,Elbit Systems Ltd,unknown,2
+Works in BS,unknown,unknown,Eretz-Ir NGO,unknown,2
+Works in BS,unknown,unknown,IBM,unknown,2
+Works in BS,unknown,unknown,Igal Bilik's Research Lab,unknown,2
+Works in BS,high_tech,semiconductors_hardware,Intel Corporation,unknown,2
+Works in BS,unknown,unknown,Leidos,unknown,2
+Works in BS,high_tech,other_high_tech,LexisNexis Risk Solutions,unknown,2
+Works in BS,unknown,unknown,Lycored,unknown,2
+Works in BS,high_tech,other_high_tech,MDClone,unknown,2
+Works in BS,unknown,unknown,Magen David Adom in Israel,unknown,2
+Works in BS,unknown,unknown,NiCE,unknown,2
+Works in BS,unknown,unknown,OR Movement תנועת אור,unknown,2
+Works in BS,high_tech,software_it_services,Oracle,unknown,2
+Works in BS,unknown,unknown,PwC Israel,unknown,2
+Works in BS,high_tech,other_high_tech,RAVAL ACS LTD,unknown,2
+Works in BS,high_tech,defense_aerospace,Rafael Advanced Defense Systems,unknown,2
+Works in BS,unknown,unknown,ReGo Marketing,unknown,2
+Works in BS,high_tech,other_high_tech,Retama - Resilient software solutions,unknown,2
+Works in BS,high_tech,other_high_tech,Ribbon Communications,unknown,2
+Works in BS,healthcare,healthcare_provider,Soroka Medical Center,nursing,2
+Works in BS,unknown,unknown,Start Up Beer Sheva,unknown,2
+Works in BS,unknown,unknown,Super-Pharm,unknown,2
+Works in BS,unknown,unknown,The Israeli Ministry of Education משרד החינוך,unknown,2
+Works in BS,unknown,unknown,The Open University of Israel,unknown,2
+Works in BS,unknown,unknown,The Technological College of Beer-Sheva,unknown,2
+Works in BS,high_tech,software_it_services,Wix,unknown,2
+Works in BS,unknown,unknown,Yachdav Association,unknown,2
+Works in BS,unknown,unknown,מי שבע - תאגיד אזורי למים וביוב,unknown,2
+Works in BS,unknown,unknown,"""Maof"" School for Gifted Students",psychology,1
+Works in BS,unknown,unknown,A.D. Achlama,unknown,1
+Works in BS,unknown,unknown,ADAMA Ltd.,economics,1
+Works in BS,unknown,unknown,ADAMA Makhteshim LTD,biotechnology,1
+Works in BS,unknown,unknown,AJEEC-NISPED,unknown,1
+Works in BS,healthcare,healthcare_provider,"ANCAN - המרכז הלאומי ע""ש עזריאלי לחקר אוטיזם ונוירו-התפתחות",unknown,1
+Works in BS,unknown,unknown,"ANCAN - המרכז הלאומי ע""ש עזריאלי לחקר אוטיזם ונוירו-התפתחות",unknown,1
+Works in BS,unknown,unknown,Academania Psychometry,unknown,1
+Works in BS,unknown,unknown,Adanim youth village,unknown,1
+Works in BS,unknown,unknown,Adiv Finance,unknown,1
+Works in BS,unknown,unknown,Aharai !אחריי,unknown,1
+Works in BS,high_tech,software_it_services,Allscripts dbMotion,unknown,1
+Works in BS,high_tech,other_high_tech,Allscripts dbMotion – Population Health Management Solutions,unknown,1
+Works in BS,high_tech,software_it_services,Allscripts dbMotion – Population Health Management Solutions,unknown,1
+Works in BS,unknown,unknown,Alpha Tau Medical,unknown,1
+Works in BS,unknown,unknown,Altera Digital Health,unknown,1
+Works in BS,high_tech,software_it_services,Amazon Web Services (AWS),unknown,1
+Works in BS,high_tech,software_it_services,Amdocs,stem,1
+Works in BS,unknown,unknown,Andy's Kitchen,unknown,1
+Works in BS,unknown,unknown,Appen,unknown,1
+Works in BS,unknown,unknown,Aroma espresso bar,unknown,1
+Works in BS,unknown,unknown,Asiatica Restaurant,unknown,1
+Works in BS,high_tech,other_high_tech,AudioCodes,unknown,1
+Works in BS,unknown,unknown,Ayalim Association,unknown,1
+Works in BS,unknown,unknown,BGN,unknown,1
+Works in BS,unknown,unknown,BGN Technologies,unknown,1
+Works in BS,unknown,unknown,BGRacing,mechanical_engineering,1
+Works in BS,high_tech,other_high_tech,BGRacing,unknown,1
+Works in BS,unknown,unknown,BGU Center for External Studies,unknown,1
+Works in BS,unknown,academic,BGU International,data_science,1
+Works in BS,unknown,unknown,BGU International,unknown,1
+Works in BS,unknown,unknown,BGU Investment Club,unknown,1
+Works in BS,unknown,unknown,BGU Students association,industrial_engineering,1
+Works in BS,unknown,unknown,BGU-FOR Research Center,unknown,1
+Works in BS,unknown,unknown,Babyz Kpop,unknown,1
+Works in BS,unknown,unknown,Bar Giora,electrical_engineering,1
+Works in BS,unknown,unknown,Be'er Sheva Mental Health Center,unknown,1
+Works in BS,unknown,unknown,Be'er Sheva municipality,geography,1
+Works in BS,unknown,unknown,Beatriz Art,unknown,1
+Works in BS,unknown,unknown,Beer Sheva Mental Health Center,unknown,1
+Works in BS,high_tech,other_high_tech,Beer Sheva Municipality,unknown,1
+Works in BS,unknown,unknown,Beernews,political_science,1
+Works in BS,unknown,unknown,Beit Guy,psychology,1
+Works in BS,unknown,unknown,Beit Yatziv,unknown,1
+Works in BS,unknown,unknown,Beit Yona,non_stem,1
+Works in BS,healthcare,healthcare_provider,Bem Gurion University,unknown,1
+Works in BS,public_sector,academic,Ben-Gurion University Student Union,unknown,1
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,biotechnology,1
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,health_care_administration,1
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,nursing,1
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,physics,1
+Works in BS,public_sector,academic,Ben-Gurion University of the Negev,public_policy,1
+Works in BS,public_sector,academic,"Ben-Gurion University of the Negev, The Department of Physical Therapy",unknown,1
+Works in BS,unknown,unknown,Big Box,unknown,1
+Works in BS,unknown,unknown,Build - Urban Strategy,unknown,1
+Works in BS,unknown,unknown,Butchery Restaurant,unknown,1
+Works in BS,public_sector,academic,CBG - Cyber@Ben-Gurion University,software_engineering,1
+Works in BS,unknown,unknown,CBX Therapeutics,unknown,1
+Works in BS,unknown,unknown,CPA,business_administration,1
+Works in BS,public_sector,academic,CSEPS - Ben-Gurion University (BGEU),political_science,1
+Works in BS,unknown,unknown,CaPow,unknown,1
+Works in BS,unknown,unknown,Carasso Science Park,stem,1
+Works in BS,unknown,unknown,Chemagis,unknown,1
+Works in BS,unknown,unknown,Cinema City Israel,unknown,1
+Works in BS,healthcare,healthcare_provider,Clalit Health Services,nursing,1
+Works in BS,unknown,unknown,Clinical Psychotherapy and CBT Therapist,unknown,1
+Works in BS,healthcare,healthcare_provider,"Clinical Research Center, Soroka University Medical Center, Israel",unknown,1
+Works in BS,unknown,unknown,Computational Psychiatry Lab,unknown,1
+Works in BS,unknown,unknown,Courts Guard,stem,1
+Works in BS,unknown,unknown,Cramim Insurance Agency Ltd,unknown,1
+Works in BS,unknown,unknown,Credito,unknown,1
+Works in BS,unknown,unknown,Cyberglobes LTD,stem,1
+Works in BS,unknown,unknown,D.S. Bioanalytics,biology,1
+Works in BS,unknown,unknown,Dalet,unknown,1
+Works in BS,high_tech,other_high_tech,Dalet Digital Media Systems,unknown,1
+Works in BS,unknown,unknown,Danel (Adir Yehoshua) Ltd,unknown,1
+Works in BS,unknown,unknown,Danel Group (Adir Yehoshua) Ltd,unknown,1
+Works in BS,unknown,unknown,DataDudes.ai,unknown,1
+Works in BS,high_tech,other_high_tech,Defence industry,unknown,1
+Works in BS,high_tech,other_high_tech,Defense industry,unknown,1
+Works in BS,public_sector,academic,"Department of Industrial Engineering and Management, Ben Gurion University of the Negev",unknown,1
+Works in BS,public_sector,academic,"Department of Life Sciences, Ben-Gurion University of the Negev",unknown,1
+Works in BS,unknown,finance,Discount Bank בנק דיסקונט,unknown,1
+Works in BS,unknown,unknown,Domus Exceptional Hospitality,unknown,1
+Works in BS,unknown,unknown,Dorit Korine Group,unknown,1
+Works in BS,high_tech,software_it_services,Dulev design,unknown,1
+Works in BS,unknown,unknown,EY,unknown,1
+Works in BS,unknown,unknown,Eak engineering,civil_engineering,1
+Works in BS,unknown,unknown,Earth's Promise,unknown,1
+Works in BS,unknown,unknown,EasyTop environmental solutions Ltd.,unknown,1
+Works in BS,unknown,unknown,EcoVision,unknown,1
+Works in BS,unknown,unknown,EcologyWise,geography,1
+Works in BS,unknown,unknown,EcologyWise,unknown,1
+Works in BS,unknown,unknown,Education,unknown,1
+Works in BS,unknown,unknown,Educational Psychological Service,psychology,1
+Works in BS,unknown,unknown,Eliyahu Brothers,business_administration,1
+Works in BS,unknown,unknown,Eltra and Helion LTD,unknown,1
+Works in BS,unknown,unknown,Emergency center for Children,psychology,1
+Works in BS,unknown,unknown,Enosh-The Israeli Mental Health Association,business_administration,1
+Works in BS,unknown,unknown,Enosh-The Israeli Mental Health Association,social_work,1
+Works in BS,unknown,unknown,Eshnav - Career Development,unknown,1
+Works in BS,unknown,unknown,Etgar Human Resources,unknown,1
+Works in BS,unknown,unknown,Exency,unknown,1
+Works in BS,unknown,unknown,ExitValley,unknown,1
+Works in BS,high_tech,other_high_tech,EyeLight,unknown,1
+Works in BS,public_sector,academic,"Faculty of Health Sciences, Ben-Gurion University of the Negev",unknown,1
+Works in BS,unknown,unknown,Fire Fighter,civil_engineering,1
+Works in BS,unknown,unknown,FoodTech Nation,unknown,1
+Works in BS,unknown,unknown,Forte Investment House,unknown,1
+Works in BS,self_employed,other,Freelance,medicine,1
+Works in BS,self_employed,other,Freelance,unknown,1
+Works in BS,healthcare,healthcare_provider,Fresenius Medical Care,unknown,1
+Works in BS,unknown,unknown,"Gal Industries גל תעשיות הידראוליקה ובקרה בע""מ",unknown,1
+Works in BS,high_tech,other_high_tech,Gav-Yam Negev Advanced Technologies Park (ATP),unknown,1
+Works in BS,unknown,unknown,Geo-Teva Environmental Consulting LTD,unknown,1
+Works in BS,unknown,unknown,"Gevim Unit, Beersheba Mental Health Center",unknown,1
+Works in BS,unknown,unknown,HOT,unknown,1
+Works in BS,unknown,unknown,Ha-barnash brewery,business_administration,1
+Works in BS,unknown,unknown,Hadas Gabbay Ashush Private Clinic,unknown,1
+Works in BS,healthcare,healthcare_provider,Hadassah Medical Center,unknown,1
+Works in BS,unknown,unknown,"Hagit Shelly, Law office & notary",non_stem,1
+Works in BS,unknown,unknown,Haifa Group,unknown,1
+Works in BS,unknown,unknown,Hamikhlalah Ha'academit Lehandassah Sami Shamoon,unknown,1
+Works in BS,unknown,unknown,Hapoel Beer Sheva F.C,unknown,1
+Works in BS,unknown,unknown,Hapoel beer sheva f.c,unknown,1
+Works in BS,public_sector,academic,Hillel at Ben Gurion University,unknown,1
+Works in BS,unknown,unknown,Home sweet home,unknown,1
+Works in BS,unknown,unknown,Horev | Engineering Consulting & Solutions,unknown,1
+Works in BS,unknown,unknown,I Belong Israel (Masa Israeli),unknown,1
+Works in BS,unknown,unknown,IAF Technological College Beersheba,unknown,1
+Works in BS,high_tech,defense_aerospace,IAI - Israel Aerospace Industries,mechanical_engineering,1
+Works in BS,high_tech,defense_aerospace,IAI - Israel Aerospace Industries,unknown,1
+Works in BS,high_tech,defense_aerospace,IAI - Israel Aerospace Industries at Bet.Shin. AeroSystems,behavioral_sciences,1
+Works in BS,unknown,unknown,IB Marketing,unknown,1
+Works in BS,high_tech,software_it_services,IBM,unknown,1
+Works in BS,unknown,unknown,ICL,economics,1
+Works in BS,high_tech,other_high_tech,ICL Group,business_administration,1
+Works in BS,unknown,unknown,ICL Group,economics,1
+Works in BS,high_tech,other_high_tech,ICL Group,unknown,1
+Works in BS,high_tech,software_it_services,ICL Group,unknown,1
+Works in BS,unknown,unknown,ICL- Bromine Compounds ltd,unknown,1
+Works in BS,healthcare,healthcare_provider,IDF Medical Corps חיל הרפואה,unknown,1
+Works in BS,high_tech,other_high_tech,"IEC - Israel Electric Corporation חברת החשמל לישראל בע""מ",unknown,1
+Works in BS,unknown,unknown,IKEA,unknown,1
+Works in BS,unknown,unknown,IKI-Ilse Katz Institute for Nanoscale Science and Technology,unknown,1
+Works in BS,unknown,unknown,ISEF - Israel Scholarship Education Foundation,unknown,1
+Works in BS,unknown,unknown,Isotop,stem,1
+Works in BS,unknown,unknown,Israel Antiquities Authority,unknown,1
+Works in BS,unknown,unknown,Israel Land Authority - רשות מקרקעי ישראל,unknown,1
+Works in BS,unknown,unknown,Israel Ministry of Energy and Infrastructure - משרד האנרגיה והתשתיות,unknown,1
+Works in BS,unknown,unknown,Israel Nature and Parks Authority,economics,1
+Works in BS,unknown,unknown,Israel Prison Service,unknown,1
+Works in BS,unknown,unknown,Israel Sinfonietta Beer-Sheva,unknown,1
+Works in BS,unknown,unknown,Israeli Military Intelligence,unknown,1
+Works in BS,unknown,unknown,Israeli Ministry of Justice - משרד המשפטים,unknown,1
+Works in BS,public_sector,academic,"Junior Academic Staff Association, Ben Gurion University",unknown,1
+Works in BS,unknown,unknown,Jusidman science center for youth,unknown,1
+Works in BS,unknown,unknown,Kampai group,hospitality_management,1
+Works in BS,unknown,unknown,Kampai group | Stripes studio,psychology,1
+Works in BS,unknown,unknown,Kaye Academic College of Education,psychology,1
+Works in BS,unknown,unknown,"Kaye Academic College of Education | המכללה האקדמית לחינוך ע""ש קיי",unknown,1
+Works in BS,unknown,unknown,Kimberlite Venture Studio,unknown,1
+Works in BS,unknown,unknown,Knowledge Production,unknown,1
+Works in BS,unknown,unknown,LEADERS,unknown,1
+Works in BS,unknown,unknown,LOLA CAFE FRIENDS,unknown,1
+Works in BS,unknown,unknown,Latayal,stem,1
+Works in BS,unknown,unknown,Local Authorities,unknown,1
+Works in BS,unknown,unknown,Lunada - The Israeli children Museum in Beer Sheva,unknown,1
+Works in BS,high_tech,other_high_tech,Lycored,unknown,1
+Works in BS,unknown,unknown,MLoan,unknown,1
+Works in BS,healthcare,healthcare_provider,Maccabident,medicine,1
+Works in BS,unknown,unknown,Machteshim,unknown,1
+Works in BS,unknown,unknown,Mahsanei Hashuk Ltd,unknown,1
+Works in BS,unknown,unknown,Maintenance Wings,non_stem,1
+Works in BS,high_tech,software_it_services,Makif Aleph,stem,1
+Works in BS,unknown,unknown,Mamda IDF Behavioral Sciences Department,unknown,1
+Works in BS,unknown,unknown,Manpower Israel,business_administration,1
+Works in BS,unknown,unknown,Mark AS Industrial Group,unknown,1
+Works in BS,unknown,unknown,Maslan,unknown,1
+Works in BS,public_sector,academic,Mechanical aspects of multy cellular biology Ben Gurion University,biotechnology,1
+Works in BS,high_tech,software_it_services,Medflow Labs,unknown,1
+Works in BS,unknown,unknown,Medflow Labs,unknown,1
+Works in BS,unknown,unknown,Menolead-Herut Systems,unknown,1
+Works in BS,unknown,unknown,Methodian,unknown,1
+Works in BS,unknown,unknown,"Mey sheva, water and sewage",unknown,1
+Works in BS,unknown,unknown,Micha Beer Sheva,unknown,1
+Works in BS,unknown,unknown,Mickey Tamam Law Office | משרד עורכי דין מיקי תמם,unknown,1
+Works in BS,high_tech,software_it_services,Microsoft,unknown,1
+Works in BS,unknown,unknown,Midbarium,unknown,1
+Works in BS,unknown,unknown,Midbarium Animal Park,biology,1
+Works in BS,unknown,unknown,Millenium-Tal Sleep Labs,unknown,1
+Works in BS,unknown,unknown,Ministry of Environmental Protection,unknown,1
+Works in BS,healthcare,healthcare_provider,Ministry of Health Israel,unknown,1
+Works in BS,unknown,unknown,"Ministry of Welfare and Social Security, Israel",unknown,1
+Works in BS,unknown,unknown,Ministry of agriculture israel,public_policy,1
+Works in BS,unknown,unknown,Mishkan hatchelet,economics,1
+Works in BS,unknown,finance,Mizrahi-Tefahot Bank,unknown,1
+Works in BS,unknown,unknown,Molecular Cognition Laboratory BGU,unknown,1
+Works in BS,high_tech,software_it_services,Morphisec,unknown,1
+Works in BS,unknown,unknown,Municipal Absorption Department of Beer-Sheva,unknown,1
+Works in BS,unknown,unknown,N.tamir,unknown,1
+Works in BS,unknown,unknown,NATIONAL INSTITUTE FOR TESTING & EVALUATION,psychology,1
+Works in BS,unknown,unknown,NBEL- Nanobioelectronics Laboratory,biomedical_engineering,1
+Works in BS,healthcare,healthcare_provider,NGO,unknown,1
+Works in BS,unknown,unknown,"NGO for Democratic Rights and Liberties ""GOLOS""",unknown,1
+Works in BS,unknown,unknown,NIBN | The National Institute for Biotechnology in the Negev,unknown,1
+Works in BS,unknown,unknown,NSSG,computer_science,1
+Works in BS,high_tech,semiconductors_hardware,NVIDIA,electrical_engineering,1
+Works in BS,public_sector,academic,Nano fabrication center at Ben Gurion University,materials_engineering,1
+Works in BS,unknown,unknown,Natoon Group,unknown,1
+Works in BS,unknown,unknown,Negev Coexistence Forum for Civil Equality,unknown,1
+Works in BS,high_tech,other_high_tech,Negev Prime,unknown,1
+Works in BS,unknown,unknown,Negev Zoo,unknown,1
+Works in BS,unknown,unknown,Ness Technologies | נס טכנולוגיות,unknown,1
+Works in BS,unknown,unknown,Netafim,unknown,1
+Works in BS,unknown,unknown,Netivei Israel | נתיבי ישראל,unknown,1
+Works in BS,high_tech,other_high_tech,NeuroBrave,social_work,1
+Works in BS,high_tech,other_high_tech,NeuroBrave,unknown,1
+Works in BS,unknown,unknown,Neuropsychopharmacology Laboratory,linguistics,1
+Works in BS,unknown,unknown,Niloos Software ltd - Niloosoft,unknown,1
+Works in BS,unknown,unknown,Nirlat,unknown,1
+Works in BS,unknown,unknown,OR Movement,unknown,1
+Works in BS,unknown,unknown,OR&Co פיננסים ומשכנתאות,unknown,1
+Works in BS,high_tech,other_high_tech,Penta Drone Robotics,stem,1
+Works in BS,high_tech,other_high_tech,PointMe,unknown,1
+Works in BS,unknown,unknown,Private Company,unknown,1
+Works in BS,high_tech,software_it_services,ProYoLi Gaming,computer_science,1
+Works in BS,healthcare,healthcare_provider,Psychiatric Hospital,unknown,1
+Works in BS,unknown,unknown,Psychological Services for Students in BGU,unknown,1
+Works in BS,high_tech,software_it_services,Qualish,unknown,1
+Works in BS,high_tech,other_high_tech,Quantum Business Group,unknown,1
+Works in BS,high_tech,other_high_tech,R.A.D.S.,unknown,1
+Works in BS,high_tech,other_high_tech,RAD,electrical_engineering,1
+Works in BS,high_tech,software_it_services,RAD,software_engineering,1
+Works in BS,unknown,unknown,RAVAL ACS LTD,unknown,1
+Works in BS,unknown,unknown,Radiodrome,unknown,1
+Works in BS,unknown,unknown,Ramon Engineers,public_policy,1
+Works in BS,high_tech,other_high_tech,Raval a.c.s,mechanical_engineering,1
+Works in BS,high_tech,other_high_tech,Raval a.c.s,unknown,1
+Works in BS,unknown,unknown,Raval a.c.s,unknown,1
+Works in BS,unknown,unknown,Reallearn,unknown,1
+Works in BS,unknown,unknown,Redis,unknown,1
+Works in BS,unknown,unknown,Rega Cafe,unknown,1
+Works in BS,unknown,unknown,Regional water and sewage corp - mey 7 ltd,unknown,1
+Works in BS,high_tech,software_it_services,Ribbon Communications,unknown,1
+Works in BS,unknown,unknown,Road Safety and Tarnsport Authority,unknown,1
+Works in BS,unknown,unknown,Robee Contech LTD,unknown,1
+Works in BS,high_tech,software_it_services,Roboteam,unknown,1
+Works in BS,unknown,unknown,Ronin MMA Team,computer_science,1
+Works in BS,unknown,unknown,Rotem Industries - Medical Imaging,unknown,1
+Works in BS,unknown,unknown,Run to business - רן לוי יעוץ עסקי,unknown,1
+Works in BS,unknown,unknown,Runety,data_science,1
+Works in BS,unknown,unknown,SCE,unknown,1
+Works in BS,unknown,unknown,SCE - Shamoon College of Engineering,business_administration,1
+Works in BS,unknown,unknown,SCE - Shamoon College of Engineering,civil_engineering,1
+Works in BS,high_tech,other_high_tech,SCE - Shamoon College of Engineering,stem,1
+Works in BS,high_tech,other_high_tech,SCE Sami Shamoon College of Engineering,mechanical_engineering,1
+Works in BS,unknown,unknown,SCE המכללה האקדמית להנדסה,unknown,1
+Works in BS,unknown,unknown,SHAMAT (ש״מ״ת / Sherut Modiin Tguva / Intelligence Response Service),psychology,1
+Works in BS,unknown,unknown,SHAY BOKOBZA MORTGAGE & FINANCE,unknown,1
+Works in BS,unknown,unknown,SIGA - Multi Level OT Resilience,unknown,1
+Works in BS,unknown,unknown,SP2aqua,unknown,1
+Works in BS,healthcare,healthcare_provider,Saban Children’s Hospital at Soroka Medical Center,unknown,1
+Works in BS,high_tech,software_it_services,Salesforce,unknown,1
+Works in BS,unknown,unknown,Sami Shamoon College of Engineering,chemical_engineering,1
+Works in BS,unknown,unknown,"Sarit Cohen Chen- Commercial, Contracts, IP, Familiy Law- Law Office",unknown,1
+Works in BS,unknown,unknown,Schwartz - Natural Cosmetics,unknown,1
+Works in BS,unknown,unknown,Science center- Yeruham,mechanical_engineering,1
+Works in BS,self_employed,other,Self-Employed,computer_science,1
+Works in BS,self_employed,other,Self-Employed,mechanical_engineering,1
+Works in BS,self_employed,other,Self-Employed,unknown,1
+Works in BS,self_employed,other,Self-employed,biology,1
+Works in BS,self_employed,other,Self-employed,political_science,1
+Works in BS,healthcare,healthcare_provider,"Shaare Zedek Medical Center, Jerusalem",unknown,1
+Works in BS,unknown,unknown,Shahar Hanagar - Handyman Services,unknown,1
+Works in BS,unknown,unknown,Shamoon College of Engineering,unknown,1
+Works in BS,unknown,unknown,Shatil,behavioral_sciences,1
+Works in BS,unknown,unknown,Shiluv,unknown,1
+Works in BS,high_tech,other_high_tech,Sigmabit,unknown,1
+Works in BS,high_tech,software_it_services,Sigmabit,unknown,1
+Works in BS,unknown,unknown,Sigmabit,unknown,1
+Works in BS,high_tech,other_high_tech,Siraj Technologies,unknown,1
+Works in BS,unknown,unknown,Social Prescribing Network,unknown,1
+Works in BS,unknown,unknown,"SodaStream International, Ltd.",unknown,1
+Works in BS,healthcare,healthcare_provider,Soroca Medical Center,unknown,1
+Works in BS,healthcare,healthcare_provider,Soroka Medical Center,biotechnology,1
+Works in BS,healthcare,healthcare_provider,Soroka Medical Center,medical,1
+Works in BS,unknown,unknown,Statistx,unknown,1
+Works in BS,public_sector,academic,Student Association at Ben-Gurion University of the Negev,business_administration,1
+Works in BS,unknown,unknown,Summit Institute,unknown,1
+Works in BS,high_tech,other_high_tech,Systematics Ltd. Solutions at work.,unknown,1
+Works in BS,unknown,unknown,TAHAN (1985) Ltd,industrial_engineering,1
+Works in BS,unknown,unknown,"TAZUMOT- תעצומות- פיתוח מיקצועי, הדרכה וטיפול לשירותי שיקום, בריאות ורווחה",unknown,1
+Works in BS,high_tech,software_it_services,TOM Tikkun Olam Makers,unknown,1
+Works in BS,unknown,unknown,TSG IT Advanced Systems Ltd.,management_information_systems,1
+Works in BS,unknown,unknown,TSG IT Advanced Systems Ltd.,unknown,1
+Works in BS,unknown,unknown,Ta'ayeda,unknown,1
+Works in BS,unknown,unknown,Taasiyeda תעשיידע,unknown,1
+Works in BS,unknown,unknown,Tali Alon that's the point,unknown,1
+Works in BS,unknown,unknown,Team 3 Group,unknown,1
+Works in BS,unknown,unknown,Tech7 - Negev Innovation,unknown,1
+Works in BS,high_tech,other_high_tech,Tech7 Venture Studio,unknown,1
+Works in BS,unknown,unknown,Terem,unknown,1
+Works in BS,healthcare,pharma_biotech,Teva Pharmaceuticals,chemical_engineering,1
+Works in BS,public_sector,academic,"The AI for SW Lab, Ben-Gurion University of the Negev",unknown,1
+Works in BS,public_sector,academic,The Brains and Machines Lab at Ben-Gurion University,unknown,1
+Works in BS,unknown,unknown,The Center for the Study of Pedagogy - Research Practice Partnerships,unknown,1
+Works in BS,public_sector,academic,The Center for the Study of Pedagogy at Ben-Gurion University of the Negev,unknown,1
+Works in BS,unknown,unknown,The DeserTech & Climate Innovation Center,unknown,1
+Works in BS,unknown,unknown,The Fringe Theater Beer-Sheva,unknown,1
+Works in BS,unknown,unknown,The Goodman Acting School of the Negev,unknown,1
+Works in BS,unknown,unknown,The Israeli Center for Legal Guardianship,business_administration,1
+Works in BS,unknown,unknown,The Israeli Ministry of Education משרד החינוך,linguistics,1
+Works in BS,unknown,unknown,The Negev Museum of Art,unknown,1
+Works in BS,high_tech,other_high_tech,The Sequential Learning Group,unknown,1
+Works in BS,unknown,unknown,The Society for the Protection of Nature in Israel,unknown,1
+Works in BS,unknown,unknown,The Society for the Protection of Nature in Israel החברה להגנת הטבע,unknown,1
+Works in BS,healthcare,healthcare_provider,The child development department,psychology,1
+Works in BS,unknown,unknown,The cooks lab,unknown,1
+Works in BS,unknown,unknown,University of Cambridge,unknown,1
+Works in BS,unknown,unknown,Ursa Group,unknown,1
+Works in BS,high_tech,other_high_tech,Vaitzman Liberman Electrical Engineering,unknown,1
+Works in BS,high_tech,other_high_tech,Wavelength Pharmaceuticals,unknown,1
+Works in BS,unknown,unknown,We Are Move,unknown,1
+Works in BS,public_sector,academic,Weizmann Institute of Science,unknown,1
+Works in BS,high_tech,software_it_services,Wix.com,unknown,1
+Works in BS,unknown,unknown,Women in Medicine - Israel,medicine,1
+Works in BS,unknown,unknown,Work at home,unknown,1
+Works in BS,high_tech,other_high_tech,Y.AHARONI Electrical engineering Ltd,electrical_engineering,1
+Works in BS,unknown,unknown,YSB group,unknown,1
+Works in BS,unknown,unknown,Yated Yo'hazim,economics,1
+Works in BS,unknown,unknown,Yazamut 360°,unknown,1
+Works in BS,unknown,unknown,Yeted- Down Syndrome Children’s Association,political_science,1
+Works in BS,unknown,unknown,Zalame,unknown,1
+Works in BS,unknown,unknown,Zalame ACB,unknown,1
+Works in BS,unknown,academic,Zefat Academic College,unknown,1
+Works in BS,unknown,unknown,Zhuti - Medical Rights,unknown,1
+Works in BS,unknown,unknown,Zilberman High School,linguistics,1
+Works in BS,unknown,unknown,Zur Solutions Ltd,unknown,1
+Works in BS,high_tech,software_it_services,Zygo,unknown,1
+Works in BS,high_tech,other_high_tech,a.m projects,civil_engineering,1
+Works in BS,unknown,unknown,beer sheva college,economics,1
+Works in BS,unknown,unknown,bgu radio,unknown,1
+Works in BS,unknown,unknown,boarding school,social_work,1
+Works in BS,unknown,unknown,cen insurance l.t.d,unknown,1
+Works in BS,unknown,unknown,cramim rest,business_administration,1
+Works in BS,high_tech,software_it_services,dbMotion,unknown,1
+Works in BS,unknown,unknown,doctoral student,unknown,1
+Works in BS,unknown,unknown,even derech (milestone),unknown,1
+Works in BS,unknown,unknown,fringe theatre marketing,psychology,1
+Works in BS,unknown,unknown,jpi ltd,mechanical_engineering,1
+Works in BS,unknown,unknown,kivunim,unknown,1
+Works in BS,unknown,unknown,kivunim- be'er sheva (municipal youth department),unknown,1
+Works in BS,unknown,unknown,lawoffice,business_administration,1
+Works in BS,unknown,unknown,private - computer software company,computer_science,1
+Works in BS,unknown,academic,private initiative,unknown,1
+Works in BS,unknown,unknown,privet physiotherapy clinic,unknown,1
+Works in BS,unknown,unknown,"sk (sigal katz) הנחיית קבוצות, אימון וייעוץ תעסוקתי",unknown,1
+Works in BS,healthcare,healthcare_provider,soroka,medicine,1
+Works in BS,unknown,unknown,wisdom-tech,unknown,1
+Works in BS,unknown,unknown,בית הבירה באר שבע,unknown,1
+Works in BS,unknown,unknown,בית מוריה,unknown,1
+Works in BS,unknown,unknown,ג.י.א מסגרות הוסטל סחלב,unknown,1
+Works in BS,unknown,unknown,גיא ונוף,unknown,1
+Works in BS,unknown,unknown,"החברה למתנ""סים | IACC",unknown,1
+Works in BS,unknown,unknown,המרכז הישראלי לתעסוקה - The Israeli Employment Center,unknown,1
+Works in BS,unknown,unknown,זמן טבע,unknown,1
+Works in BS,unknown,unknown,יורם שוחט ושות רואי חשבון,unknown,1
+Works in BS,unknown,unknown,כוורת,unknown,1
+Works in BS,unknown,unknown,כיוונים באר שבע,unknown,1
+Works in BS,unknown,unknown,"מדבריום פארק החיות ע""ש ג'ק ג'וזף ומורטון מנדל",health_care_administration,1
+Works in BS,unknown,unknown,מינהל התכנון - Israeli Planning Administration,unknown,1
+Works in BS,unknown,unknown,מכבי שירותי בריאות,unknown,1
+Works in BS,unknown,unknown,"מנהלת הסכם הגג ב""ש-חברה כלכלית",unknown,1
+Works in BS,unknown,unknown,מרכז טיפולי לנוער בסיכון,social_work,1
+Works in BS,unknown,unknown,"עו""שות שינוי",unknown,1
+Works in BS,unknown,unknown,עיריית באר שבע,unknown,1
+Works in BS,unknown,unknown,עמותת דלת פתוחה,social_work,1
+Works in BS,unknown,unknown,"עמותת עור""ק",unknown,1
+Works in BS,unknown,unknown,"צבי תקשורת והוצאה לאור בע""מ",unknown,1
+Works in BS,unknown,unknown,קליניקה 7 חוליות,unknown,1
+Works in BS,unknown,unknown,רז לוי-הדרכה ושטח,unknown,1
+Works in BS,unknown,unknown,רשות הבדואים,unknown,1
+Works in BS,public_sector,academic,‘Kidumatica’ – Ben Gurion University,unknown,1

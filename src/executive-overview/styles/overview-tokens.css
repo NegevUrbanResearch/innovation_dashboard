@@ -41,4 +41,13 @@
   --eo-target-size: 12px;
   --eo-next-update-size: 10px;
 
+  /* Alumni chart panel tokens — map EO palette for Chart.js / SVG labels */
+  --text: var(--eo-text-primary);
+  --text-secondary: var(--eo-text-secondary);
+  --border-strong: color-mix(in srgb, var(--eo-border-default) 55%, transparent);
+  --surface-raised: color-mix(in srgb, var(--eo-surface) 92%, white);
+  --font: var(--eo-font-ui);
+  --accent: var(--eo-physical-accent);
+  --subnav-active-bg: color-mix(in srgb, var(--eo-physical-soft) 70%, white);
+  --subnav-active-border: color-mix(in srgb, var(--eo-physical-accent) 24%, white);
 }

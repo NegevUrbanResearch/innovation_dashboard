@@ -1,4 +1,13 @@
 .exec-deep-dive-overlay {
+  --text: var(--eo-text-primary);
+  --text-secondary: var(--eo-text-secondary);
+  --border-strong: color-mix(in srgb, var(--eo-border-default) 55%, transparent);
+  --surface-raised: color-mix(in srgb, var(--eo-surface) 92%, white);
+  --font: var(--eo-font-ui);
+  --accent: var(--eo-category-accent, var(--eo-physical-accent));
+  --subnav-active-bg: color-mix(in srgb, var(--eo-category-soft, var(--eo-physical-soft)) 70%, white);
+  --subnav-active-border: color-mix(in srgb, var(--eo-category-accent, var(--eo-physical-accent)) 24%, white);
+
   position: absolute;
   inset: 0;
   z-index: 12;
@@ -19,6 +28,17 @@
 }
 
 .exec-deep-dive-overlay__shell {
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+  --text: var(--eo-text-primary);
+  --text-secondary: var(--eo-text-secondary);
+  --border-strong: color-mix(in srgb, var(--eo-border-default) 55%, transparent);
+  --surface-raised: color-mix(in srgb, var(--eo-surface) 92%, white);
+  --font: var(--eo-font-ui);
+  --accent: var(--eo-category-accent);
+  --subnav-active-bg: color-mix(in srgb, var(--eo-category-soft) 70%, white);
+  --subnav-active-border: color-mix(in srgb, var(--eo-category-accent) 24%, white);
+
   position: absolute;
   inset: 1rem;
   display: grid;
@@ -27,13 +47,13 @@
   min-width: 0;
   min-height: 0;
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 24%, var(--eo-border-default));
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 24%, var(--eo-border-default));
   border-radius: 16px;
   background:
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--eo-surface) 92%, white) 0%,
-      color-mix(in srgb, var(--eo-surface) 98%, var(--eo-physical-soft)) 100%
+      color-mix(in srgb, var(--eo-surface) 98%, var(--eo-category-soft)) 100%
     );
   box-shadow:
     0 26px 48px rgb(16 19 23 / 0.14),
@@ -49,6 +69,21 @@
   transition:
     opacity 220ms ease,
     transform 220ms ease;
+}
+
+.exec-deep-dive-overlay__shell[data-category="physical"] {
+  --eo-category-accent: var(--eo-physical-accent);
+  --eo-category-soft: var(--eo-physical-soft);
+}
+
+.exec-deep-dive-overlay__shell[data-category="network"] {
+  --eo-category-accent: var(--eo-network-accent);
+  --eo-category-soft: var(--eo-network-soft);
+}
+
+.exec-deep-dive-overlay__shell[data-category="economy"] {
+  --eo-category-accent: var(--eo-economy-accent);
+  --eo-category-soft: var(--eo-economy-soft);
 }
 
 .exec-deep-dive-motion-ghost {
@@ -75,7 +110,7 @@
   user-select: none;
   max-width: none;
   max-height: none;
-  transform-origin: 50% 50%;
+  transform-origin: 0 0;
   transform-style: preserve-3d;
   perspective: 1200px;
   will-change: transform, opacity;
@@ -123,32 +158,25 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-radius: var(--eo-card-radius);
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 24%, var(--eo-border-default));
+  border-radius: var(--eo-motion-shell-radius, 16px);
   background:
     linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--eo-category-soft) 90%, white) 0%,
-      color-mix(in srgb, var(--eo-surface) 86%, var(--eo-category-soft)) 46%,
-      color-mix(in srgb, var(--eo-category-accent) 14%, var(--eo-surface)) 100%
+      180deg,
+      color-mix(in srgb, var(--eo-surface) 92%, white) 0%,
+      color-mix(in srgb, var(--eo-surface) 98%, var(--eo-category-soft)) 100%
     );
-  box-shadow: var(--eo-card-shadow);
+  box-shadow:
+    0 26px 48px rgb(16 19 23 / 0.14),
+    0 8px 20px rgb(16 19 23 / 0.1);
   transform: translateZ(0);
 }
 
-.exec-deep-dive-motion-ghost__back-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--eo-category-soft) 92%, white) 0%,
-      color-mix(in srgb, var(--eo-surface) 82%, var(--eo-category-soft)) 52%,
-      color-mix(in srgb, var(--eo-category-accent) 16%, var(--eo-surface)) 100%
-    );
-  opacity: 0;
+.exec-deep-dive-motion-ghost[data-motion-phase="close-final-frame"] .exec-deep-dive-motion-ghost__back-card {
+  border-radius: var(--eo-card-radius);
+  border: var(--eo-card-stroke) solid var(--eo-category-accent);
+  background: var(--eo-category-soft);
+  box-shadow: var(--eo-card-shadow);
 }
 
 .exec-deep-dive-motion-ghost__shell-scale {
@@ -158,10 +186,6 @@
   transform-origin: 0 0;
   transform-style: preserve-3d;
   will-change: transform;
-  opacity: 1;
-}
-
-.exec-deep-dive-motion-ghost[data-motion-phase="close-final-frame"] .exec-deep-dive-motion-ghost__back-card::before {
   opacity: 1;
 }
 
@@ -179,7 +203,9 @@
   transform-origin: 0 0;
   transition: none;
   pointer-events: none;
+  border: none;
   border-radius: inherit;
+  background: transparent;
   box-shadow: none;
 }
 
@@ -187,13 +213,13 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 24%, var(--eo-border-default));
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 24%, var(--eo-border-default));
   border-radius: var(--eo-motion-shell-radius);
   background:
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--eo-surface) 94%, white) 0%,
-      color-mix(in srgb, var(--eo-surface) 96%, var(--eo-physical-soft)) 100%
+      color-mix(in srgb, var(--eo-surface) 96%, var(--eo-category-soft)) 100%
     );
   box-shadow:
     0 26px 48px rgb(16 19 23 / 0.14),
@@ -205,7 +231,7 @@
 .exec-deep-dive-motion-ghost__canvas-reveal {
   position: absolute;
   display: block;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 12%, white);
   background: color-mix(in srgb, var(--eo-surface) 88%, white);
 }
 
@@ -219,7 +245,7 @@
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--eo-physical-accent) 18%, white) 0%,
+      color-mix(in srgb, var(--eo-category-accent) 18%, white) 0%,
       color-mix(in srgb, var(--eo-surface) 92%, white) 48%,
       transparent 100%
     );
@@ -244,7 +270,7 @@
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--eo-surface) 82%, white) 0%,
-      color-mix(in srgb, var(--eo-physical-soft) 16%, white) 100%
+      color-mix(in srgb, var(--eo-category-soft) 16%, white) 100%
     );
 }
 
@@ -259,7 +285,7 @@
     linear-gradient(90deg, rgb(16 19 23 / 0.05) 1px, transparent 1px),
     linear-gradient(0deg, rgb(16 19 23 / 0.05) 1px, transparent 1px),
     radial-gradient(circle at 72% 38%, var(--eo-physical-outside-accent) 0 4px, transparent 5px),
-    radial-gradient(circle at 32% 62%, var(--eo-physical-accent) 0 4px, transparent 5px),
+    radial-gradient(circle at 32% 62%, var(--eo-category-accent) 0 4px, transparent 5px),
     color-mix(in srgb, var(--eo-surface) 96%, white);
   background-size:
     24px 24px,
@@ -306,7 +332,7 @@
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--eo-physical-accent) 74%, white);
+  color: color-mix(in srgb, var(--eo-category-accent) 74%, white);
 }
 
 .exec-deep-dive-overlay__title {
@@ -320,7 +346,7 @@
 .exec-deep-dive-overlay__close {
   flex: 0 0 auto;
   min-width: 88px;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 32%, white);
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 32%, white);
   border-radius: 999px;
   background: color-mix(in srgb, var(--eo-surface) 85%, white);
   color: var(--eo-text-primary);
@@ -332,7 +358,7 @@
 }
 
 .exec-deep-dive-overlay__close:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  outline: 2px solid color-mix(in srgb, var(--eo-category-accent) 72%, white);
   outline-offset: 2px;
 }
 
@@ -350,7 +376,7 @@
   min-width: 0;
   min-height: 0;
   border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 14%, white);
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 14%, white);
   background: color-mix(in srgb, var(--eo-surface) 88%, white);
   padding: 1rem;
   overflow: auto;
@@ -361,7 +387,7 @@
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--eo-surface) 82%, white) 0%,
-      color-mix(in srgb, var(--eo-physical-soft) 16%, white) 100%
+      color-mix(in srgb, var(--eo-category-soft) 16%, white) 100%
     );
 }
 
@@ -386,7 +412,7 @@
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--eo-physical-accent) 72%, white);
+  color: color-mix(in srgb, var(--eo-category-accent) 72%, white);
 }
 
 .exec-deep-dive__placeholder-title {
@@ -429,9 +455,9 @@
   min-height: 2rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--eo-physical-accent) 18%, white);
-  background: color-mix(in srgb, var(--eo-physical-soft) 32%, white);
-  color: var(--eo-physical-accent);
+  border: 1px solid color-mix(in srgb, var(--eo-category-accent) 18%, white);
+  background: color-mix(in srgb, var(--eo-category-soft) 32%, white);
+  color: var(--eo-category-accent);
   font-size: 0.78rem;
   font-weight: 700;
 }

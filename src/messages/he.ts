@@ -43,8 +43,6 @@ export const he = {
   "iframe.urbanismTitle": "Urban95 — שירותים ומתקנים עירוניים",
 
   "page.graphicsPlaceholderSuffix": "(תחת בנייה)",
-  "page.chartDataError":
-    "לא ניתן לטעון את נתוני הגרף (בדוק את תיקיית public/linkedin-data).",
 
   "chart.toggleCompanies": "חברות",
   "chart.toggleCities": "ערים",
@@ -237,4 +235,13 @@ export const he = {
   "chart.treemapIndustrySegment.software_it_services": "תוכנה ושירותי IT",
 
   "chart.treemapEducation.unknown": "תחום לימודים לא ידוע",
+
+  "alumniDeepDive.cohortAllBgu": "כל בוגרי בן־גוריון",
+  "alumniDeepDive.cohortBsWorkers": "עובדים בבאר שבע",
+  "alumniDeepDive.tabEmployers": "מעסיקים לפי מגזור",
+  "alumniDeepDive.tabGraduationFields": "שנת סיום לפי תחום לימודים",
+  "alumniDeepDive.sampleGraduationFields":
+    "{n} בוגרי בן־גוריון העובדים בבאר שבע עם שנת סיום ותחום לימודים ידועים (מדגם LinkedIn).",
+  "alumniDeepDive.mapSampleNote":
+    "זרימות הערים משקפות פרופילים עם עיר מגורים ועיר עבודה ידועות; לא כל פרופילי ה-KPI מופיעים במפה.",
 } as const satisfies Record<MessageKey, string>;

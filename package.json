@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:real-estate-kpi && vite build",
+    "build": "npm run build:real-estate-kpi && npm run build:alumni-aggregates && vite build",
     "build:real-estate-kpi": "python scripts/build-real-estate-kpi.py",
+    "build:alumni-aggregates": "python scripts/build-alumni-aggregates.py",
     "preview": "vite preview",
-    "test:linkedin-charts": "node --experimental-strip-types --test src/linkedin-charts/jobs-mirrored-model.test.ts",
     "test:executive-overview": "node --experimental-strip-types --test \"src/executive-overview/**/*.test.ts\"",
     "postinstall": "patch-package"
   },

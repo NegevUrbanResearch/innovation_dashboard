@@ -36,7 +36,7 @@ export type KpiDataSource =
   | "real-estate-deals"
   | "none";
 
-export type KpiDeepDiveId = "real-estate-deals" | "commuting-count";
+export type KpiDeepDiveId = "real-estate-deals" | "commuting-count" | "alumni-retention";
 
 export type DeepDiveController = {
   destroy(): void;
