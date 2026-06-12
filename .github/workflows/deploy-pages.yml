@@ -47,7 +47,8 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
-      - run: npm run build
+      # Pages deploy uses committed public/ artifacts; gitignored source CSVs are local-only.
+      - run: npx vite build
         env:
           VITE_BASE_URL: /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
